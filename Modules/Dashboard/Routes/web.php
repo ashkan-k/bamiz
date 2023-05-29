@@ -14,6 +14,4 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Dashboard\Http\Controllers\Dashboard\DashboardController;
 
-Route::prefix('dashboard')->group(function() {
-    Route::get('/', [DashboardController::class, 'index']);
-});
+Route::get('/', [DashboardController::class, 'index']);

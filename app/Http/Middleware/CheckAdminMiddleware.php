@@ -15,10 +15,8 @@ class CheckAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check()) {
-            if (auth()->user()->isAdmin()) {
-                return $next($request);
-            }
+        if (auth()->check() && auth()->user()->isAdmin()) {
+            return $next($request);
         }
         abort(404);
     }
