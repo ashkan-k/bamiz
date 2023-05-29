@@ -13,13 +13,18 @@
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/admin/assets/css/select2.min.css">
+{{--    <link rel="stylesheet" type="text/css" href="/admin/assets/css/select2.min.css">--}}
+    <link href="/select2/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" type="text/css" href="/admin/assets/plugins/morris/morris.css">
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css" id="theme-styles">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+          crossorigin="anonymous"/>
 
 
     {!! SEOMeta::generate() !!}
@@ -257,6 +262,13 @@
 <script type="text/javascript" src="/admin/assets/plugins/morris/morris.min.js"></script>
 <script type="text/javascript" src="/admin/assets/plugins/raphael/raphael-min.js"></script>
 <script type="text/javascript" src="/admin/assets/js/app.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous"></script>
+{{--<script src="/helpers/js/angular.min.js"></script>--}}
+{{--<script src="/helpers/js/helpers.js"></script>--}}
+<script src="/select2/select2.min.js"></script>
 
 @livewireScripts
 
