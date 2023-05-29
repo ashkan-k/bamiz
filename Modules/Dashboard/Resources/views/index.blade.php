@@ -1,5 +1,5 @@
 @extends('layouts.admin-master')
-@section('titlePage','لیست علاقه مندی ها')
+@section('titlePage','داشبورد')
 @section('Styles')
 
 @endsection
@@ -10,7 +10,7 @@
 
     @livewire('dashboard::pages.dashboard' , [
 
-    'titlePage' => 'لیست علاقه مندی ها کاربران',
+    'titlePage' => 'داشبورد',
 
     ])
 
