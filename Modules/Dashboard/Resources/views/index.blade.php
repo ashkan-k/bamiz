@@ -1,9 +1,17 @@
-@extends('dashboard::layouts.master')
+@extends('layouts.admin-master')
+@section('titlePage','لیست علاقه مندی ها')
+@section('Styles')
 
+@endsection
+@section('Scripts')
+
+@endsection
 @section('content')
-    <h1>Hello World</h1>
 
-    <p>
-        This view is loaded from module: {!! config('dashboard.name') !!}
-    </p>
+    @livewire('dashboard::pages.dashboard' , [
+
+    'titlePage' => 'لیست علاقه مندی ها کاربران',
+
+    ])
+
 @endsection

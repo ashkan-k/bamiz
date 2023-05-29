@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\Route;
 //use \App\Http\Controllers\Admin\CooperationController;
 
 
-Route::get('',[DashboardController::class , 'index'])->name('dashboard-one');
+//Route::get('',[DashboardController::class , 'index'])->name('dashboard-one');
 //Route::post('/panel/CK' , [DashboardController::class , 'Upload_CLEDITOR_image']);
 //
 //Route::resource('categories', CategoryController::class)->only(['index' , 'create' , 'store' ,'edit' , 'update']);
