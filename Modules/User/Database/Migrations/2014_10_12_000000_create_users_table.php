@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('phone',11)->nullable();
-            $table->enum('status', EnumHelpers::$UserLevelEnum)->default('user');
+            $table->enum('level', EnumHelpers::$UserLevelEnum)->default('user');
 //            $table->boolean('block_status')->default(false);
 
             $table->timestamp('email_verified_at')->nullable();
