@@ -94,7 +94,7 @@
                 <i class="caret"></i>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="profile.html">پروفایل من</a></li>
+{{--                <li><a href="profile.html">پروفایل من</a></li>--}}
                 <li><a href="edit-profile.html">ویرایش پروفایل</a></li>
                 <li><a href="settings.html">تنظیمات</a></li>
                 <form action="{{ route('logout') }}" method="post">
