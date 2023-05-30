@@ -270,11 +270,26 @@
 {{--<script src="/helpers/js/helpers.js"></script>--}}
 <script src="/select2/select2.min.js"></script>
 
+@if (session()->has('message'))
+    <script>
+        Swal.fire({
+            title: "تبریک ! 🥳",
+            icon: 'success',
+            text: '{{ session('message') }}',
+            type: "success",
+            cancelButtonColor: 'var(--primary)',
+            confirmButtonText: 'اوکی',
+        })
+    </script>
+
+@endif
+
 @livewireScripts
 
 @yield('Scripts')
 
 @stack('StackScript')
+
 </body>
 
 </html>

@@ -2,6 +2,7 @@
 
 namespace Modules\User\Entities;
 
+use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use Searchable;
 
     protected $fillable = [
         'first_name',
@@ -25,6 +27,14 @@ class User extends Authenticatable
         'email_verified_at'
     ];
 
+    protected $search_fields = [
+        'first_name',
+        'last_name',
+        'username',
+        'email',
+        'phone',
+    ];
+
     protected static function newFactory()
     {
         return \Modules\User\Database\factories\UserFactory::new();
@@ -33,6 +43,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->level == 'admin';
+    }
+
+    public function get_avatar()
+    {
+        return $this->avatar ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
     //

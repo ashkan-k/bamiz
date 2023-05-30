@@ -100,15 +100,15 @@
 
 {{--                --}}{{--                ///////////////////////////////////////////////////--}}
 
-{{--                <li class="submenu">--}}
-{{--                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>کاربران بامیز</span> <span--}}
-{{--                            class="menu-arrow"></span></a>--}}
-{{--                    <ul class="list-unstyled" style="display: none;">--}}
-{{--                        <li><a href="{{ route('users.index') }}">لیست کاربران</a></li>--}}
-{{--                        <li><a href="{{ route('users.create') }}">افزودن کابر جدید</a></li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>کاربران بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('users.index') }}">لیست کاربران</a></li>
+                        <li><a href="{{ route('users.create') }}">افزودن کابر جدید</a></li>
 {{--                        <li><a href="{{ route('block_users.index') }}">لیست کاربران مسدودی</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
+                    </ul>
+                </li>
 
 {{--                --}}{{--                //////////////////////////////////////////////////////////--}}
 
