@@ -4,7 +4,7 @@
                 <span class="dash-widget-icon bg-success " style="border-radius: 50px;">
                     <i class="fa fa-money" aria-hidden="true"></i></span>
             <div class="dash-widget-info">
-                <h3>ت 98</h3>
+                <h3>ت {{ $data['income'] }}</h3>
                 <span>درآمد</span>
             </div>
         </div>
@@ -14,7 +14,7 @@
                 <span class="dash-widget-icon bg-info" style="border-radius: 50px;"><i class="fa fa-user-o"
                                                                                        aria-hidden="true"></i></span>
             <div class="dash-widget-info">
-                <h3>1072</h3>
+                <h3>{{ $data['users_count'] }}</h3>
                 <span>کاربران</span>
             </div>
         </div>
@@ -24,8 +24,8 @@
                 <span class="dash-widget-icon bg-warning" style="border-radius: 50px;"><i
                         class="fa fa-files-o"></i></span>
             <div class="dash-widget-info">
-                <h3>72</h3>
-                <span>پروژه ها</span>
+                <h3>{{ $data['restaurants'] }}</h3>
+                <span>رستوران ها</span>
             </div>
         </div>
     </div>
@@ -34,8 +34,8 @@
                 <span class="dash-widget-icon bg-danger" style="border-radius: 50px;"><i class="fa fa-tasks"
                                                                                          aria-hidden="true"></i></span>
             <div class="dash-widget-info">
-                <h3>618</h3>
-                <span>کارها</span>
+                <h3>{{ $data['reserves'] }}</h3>
+                <span>رزرو ها</span>
             </div>
         </div>
     </div>

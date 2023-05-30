@@ -31,7 +31,7 @@ return [
         'files' => [
             'routes/web' => 'Routes/web.php',
             'routes/api' => 'Routes/api.php',
-            'views/index' => 'Resources/views/index.blade.php',
+            'views/index' => 'Resources/views/list.blade.php',
             'views/master' => 'Resources/views/layouts/admin-master.blade.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
