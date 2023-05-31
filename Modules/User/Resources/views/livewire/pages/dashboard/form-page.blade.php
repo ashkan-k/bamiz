@@ -19,7 +19,7 @@
                         <label class="control-label col-lg-2">نام</label>
                         <div class="col-md-10">
                             <input id="title" type="text" name="first_name"
-                                   class="form-control rounded"
+                                   class="form-control"
                                    placeholder="نام را وارد کنید"
                                    value="@if(old('first_name')){{ old('first_name') }}@elseif(isset($item->first_name)){{ $item->first_name }}@endif">
 
@@ -33,7 +33,7 @@
                         <label class="control-label col-lg-2">نام خانوادگی</label>
                         <div class="col-md-10">
                             <input id="last_name" type="text" name="last_name"
-                                   class="form-control rounded"
+                                   class="form-control"
                                    placeholder="نام خانوادگی را وارد کنید"
                                    value="@if(old('last_name')){{ old('last_name') }}@elseif(isset($item->last_name)){{ $item->last_name }}@endif">
                             @error('last_name')
@@ -46,7 +46,7 @@
                         <label class="control-label col-lg-2">نام کاربری</label>
                         <div class="col-md-10">
                             <input required type="text" name="username"
-                                   class="form-control rounded"
+                                   class="form-control"
                                    placeholder="نام کاربری را وارد کنید"
                                    value="@if(old('username')){{ old('username') }}@elseif(isset($item->username)){{ $item->username }}@endif">
                             @error('username')
@@ -59,7 +59,7 @@
                         <label class="control-label col-lg-2">رمز عبور</label>
                         <div class="col-md-10">
                             <input {{ $type != 'edit' && "required" }} type="text" name="password"
-                                   class="form-control rounded"
+                                   class="form-control"
                                    placeholder="رمز عبور را وارد کنید"
                                    value="{{old('password') }}">
                             @error('password')
@@ -72,7 +72,7 @@
                         <label class="control-label col-lg-2">تکرار رمز عبور</label>
                         <div class="col-md-10">
                             <input {{ $type != 'edit' && "required" }} type="text" name="rep_password"
-                                   class="form-control rounded"
+                                   class="form-control"
                                    placeholder="تکرار رمز عبور را وارد کنید"
                                    value="{{ old('rep_password') }}">
                             @error('rep_password')
@@ -86,7 +86,7 @@
                         <label class="control-label col-lg-2">ایمیل</label>
                         <div class="col-md-10">
                             <input required type="email" name="email"
-                                   class="form-control rounded"
+                                   class="form-control"
                                    placeholder="ایمیل را وارد کنید"
                                    value="@if(old('email')){{ old('email') }}@elseif(isset($item->email)){{ $item->email }}@endif">
 
@@ -100,7 +100,7 @@
                         <label class="control-label col-lg-2">شماره تلفن</label>
                         <div class="col-md-10">
                             <input required type="text" name="phone"
-                                   class="form-control rounded"
+                                   class="form-control"
                                    placeholder="شماره تلفن را وارد کنید"
                                    value="@if(old('phone')){{ old('phone') }}@elseif(isset($item->phone)){{ $item->phone }}@endif">
                             @error('phone')
@@ -113,13 +113,13 @@
                         <label class="control-label col-lg-2">نقش</label>
                         <div class="col-md-10">
 
-                            <select class="form-control rounded" name="level">
+                            <select class="form-control" name="level">
 
                                 <option @if(isset($item->phone) && $item->level == 'admin') selected
                                         @endif value="admin">مدیر
                                 </option>
                                 <option @if(isset($item->phone) && $item->level == 'staff') selected
-                                        @endif value="admin">کارمند
+                                        @endif value="staff">کارمند
                                 </option>
                                 <option @if(isset($item->phone) && $item->level == 'user') selected @endif value="user">
                                     کاربر
@@ -141,7 +141,7 @@
                         <div class="col-sm-10">
 
                             <input type="file" name="avatar"
-                                   class="form-control rounded"
+                                   class="form-control"
                                    placeholder="عکس را وارد کنید"
                                    value="{{ old('avatar') }}">
 
@@ -165,11 +165,13 @@
 
                     <div class="col-lg-12">
                         <div class="m-1-25 m-b-20">
-                            <button class="btn btn-info btn-border-radius waves-effect" type="submit">ثبت</button>
-                            <a href="{{ route('users.index') }}"
-                               class="btn btn-danger btn-border-radius waves-effect">
-                                بازگشت
-                            </a>
+                            <div class="modal-footer">
+                                <a href="{{ route('users.index') }}"
+                                   class="btn btn-danger btn-border-radius waves-effect">
+                                    بازگشت
+                                </a>
+                                <button class="btn btn-info btn-border-radius waves-effect" type="submit">ثبت</button>
+                            </div>
                         </div>
                     </div>
                 </form>

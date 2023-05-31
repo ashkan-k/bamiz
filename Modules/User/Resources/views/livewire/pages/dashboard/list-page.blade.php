@@ -33,33 +33,22 @@
                             <td>{{$item->email}}</td>
                             <td>
 
-                                <span class=" @if($item->email_verified_at != null)
-
-                                {{ "label label-success-border rounded" }}
-
-                                @else
-
-                                {{ "label label-danger-border rounded" }}
-
-                                @endif">
-
+                                <span
+                                    class="label label-{{ $item->email_verified_at ? 'success' : 'danger' }}-border rounded">
                                     @if($item->email_verified_at != null)
-
                                         فعال
-
                                     @else
 
                                         غیر فعال
-
                                     @endif
-
                                 </span>
 
                             </td>
                             <td>{{ $item->phone == null ? 'ندارد' : $item->phone }}</td>
                             <td>
 
-                                <span class="label label-{{ $item->get_level_class() }}-border rounded">
+                                <span wire:click="$emit('triggerChangeLevelModal' , {{ $item }})"
+                                      class="label label-{{ $item->get_level_class() }}-border rounded">
                                     {{ $item->get_level() }}
                                 </span>
 
@@ -99,6 +88,71 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div wire:ignore.self class="modal fade bd-example-modal-lg" id="changeLevelModal" tabindex="-1" role="dialog"
+         aria-labelledby="changeLevelModalTitle" aria-hidden="true" dir="rtl"
+         style="text-align: right !important; margin-top: 250px">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header" style="width: 100%!important;">
+                    <h5 class="modal-title"
+                        id="exampleModalLongTitle">تغییر نقش</h5>
+
+                    <button type="button" class="close ml-2" data-dismiss="modal"
+                            style="position: absolute!important;left: 0!important; top: 10px"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form wire:submit.prevent="ChangeLevel">
+                    <div class="modal-body">
+                        <label class="form-label"
+                               for="id_level">نقش:</label>
+
+                        <div>
+                            <select wire:model="current_item_level" class="form-control" name="level">
+
+                                <option @if(isset($current_item_level) && $current_item_level == 'admin') selected
+                                        @endif value="admin">مدیر
+                                </option>
+                                <option @if(isset($current_item_level) && $current_item_level == 'staff') selected
+                                        @endif value="staff">کارمند
+                                </option>
+                                <option @if(isset($current_item_level) && $current_item_level == 'user') selected
+                                        @endif value="user">
+                                    کاربر
+                                </option>
+                                <option
+                                    @if(isset($current_item_level) && $current_item_level == 'restaurant_manager') selected
+                                    @endif value="restaurant_manager">مدیر رستوران
+                                </option>
+
+                            </select>
+
+                            @error('level')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-disabled="is_submited">
+                            بستن
+                        </button>&nbsp;
+                        <button type="submit" class="btn btn-primary">ذخیره
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 @push('StackScript')
@@ -132,6 +186,20 @@
             });
         });
         })
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+        @this.on('triggerChangeLevelModal', orderId => {
+            $('#changeLevelModal').modal('show');
+        });
+        });
+
+        window.addEventListener('itemLevelUpdated', event => {
+            $('#changeLevelModal').modal('hide');
+            showToast('نقش آیتم مورد نظر با موفقیت تغییر کرد.', 'success');
+        });
     </script>
 @endpush
 
