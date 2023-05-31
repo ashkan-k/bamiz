@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -43,6 +44,26 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->level == 'admin';
+    }
+
+    public function fullname()
+    {
+        if ($this->frist_name && $this->last_name) {
+            return $this->frist_name . ' ' . $this->last_name;
+        }
+
+        return $this->username;
+    }
+
+    public function set_password($new_password)
+    {
+        $this->update(['password' => Hash::make($new_password)]);
+    }
+
+    public function set_role($role)
+    {
+        $this->level = $role;
+        $this->save();
     }
 
     public function get_avatar()
