@@ -12,6 +12,7 @@ class ListPage extends Component
 
     public $titlePage = '';
     public $pagination;
+    public $limit = 10;
     public $search = '';
 
     protected $items;
@@ -23,7 +24,8 @@ class ListPage extends Component
 
     public function updated($propertyName)
     {
-        if ($propertyName == 'search' || $propertyName == 'pagination')
+        dd([$this->pagination]);
+        if (in_array($propertyName, ['search', 'pagination']))
         {
             $this->resetPage();
         }

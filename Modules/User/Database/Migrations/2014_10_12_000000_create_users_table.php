@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('phone',11)->nullable();
+            $table->string('phone')->nullable();
             $table->enum('level', EnumHelpers::$UserLevelEnum)->default('user');
 //            $table->boolean('block_status')->default(false);
 

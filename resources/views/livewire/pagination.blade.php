@@ -1,5 +1,5 @@
 @if($paginator->hasPages())
-    <div>
+    <div class="text-center">
         <ul class="pagination">
             {{-- Start Privious --}}
             @if ($paginator->onFirstPage())
