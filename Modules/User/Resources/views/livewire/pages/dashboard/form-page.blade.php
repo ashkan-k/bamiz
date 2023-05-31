@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">نام</label>
                         <div class="col-md-10">
-                            <input id="title" type="text" name="name"
+                            <input id="title" type="text" name="first_name"
                                    class="form-control rounded"
                                    placeholder="نام را وارد کنید"
                                    value="@if(old('first_name')){{ old('first_name') }}@elseif(isset($user->first_name)){{ $user->first_name }}@endif">
@@ -135,16 +135,6 @@
                             @enderror
                         </div>
                     </div>
-
-                    {{--                    <div class="form-group">--}}
-                    {{--                        <label class="control-label col-lg-2">آیا فعال است؟</label>--}}
-                    {{--                        <div class="col-md-10">--}}
-                    {{--                            <input type="checkbox" name="active"--}}
-                    {{--                                   class="form-control rounded"--}}
-                    {{--                                   placeholder="وضعیت فعال را وارد کنید"--}}
-                    {{--                                   value="{{ old('active') ?: 1 }}" {{ isset($user) && $user->active == 1 ? "checked" : "" }}>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">آواتار</label>
