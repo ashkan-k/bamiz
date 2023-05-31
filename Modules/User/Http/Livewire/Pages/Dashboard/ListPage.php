@@ -13,8 +13,7 @@ class ListPage extends Component
     public $titlePage = '';
     public $pagination;
     public $search = '';
-    public $current_item_level;
-    public $item_id;
+    public $data;
     protected $items;
 
     protected $listeners = ['triggerChangeLevelModal'];
@@ -35,12 +34,12 @@ class ListPage extends Component
     public function triggerChangeLevelModal(User $user)
     {
         $this->item = $user;
-        $this->current_item_level = $user->level;
+        $this->data['level'] = $user->level;
     }
 
     public function ChangeLevel()
     {
-        $this->item->update(['level' => $this->current_item_level]);
+        $this->item->update(['level' => $this->data['level']]);
         $this->dispatchBrowserEvent('itemLevelUpdated');
     }
 

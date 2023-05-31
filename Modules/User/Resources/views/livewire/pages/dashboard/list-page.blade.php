@@ -113,7 +113,7 @@
                                for="id_level">نقش:</label>
 
                         <div>
-                            <select wire:model="current_item_level" class="form-control" name="level">
+                            <select wire:model="data.level" class="form-control" name="level">
 
                                 <option @if(isset($current_item_level) && $current_item_level == 'admin') selected
                                         @endif value="admin">مدیر
