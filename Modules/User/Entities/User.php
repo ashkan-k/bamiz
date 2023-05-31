@@ -71,6 +71,32 @@ class User extends Authenticatable
         return $this->avatar ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
+    public function get_level(){
+        if ($this->level == 'user'){
+            return 'کاربر';
+        }
+        elseif ($this->level == 'staff'){
+            return 'کارمند';
+        }
+        elseif ($this->level == 'admin'){
+            return 'مدیر';
+        }
+        return  'مدیر رستوران';
+    }
+
+    public function get_level_class(){
+        if ($this->level == 'user'){
+            return 'info';
+        }
+        elseif ($this->level == 'staff'){
+            return 'warning';
+        }
+        elseif ($this->level == 'admin'){
+            return 'success';
+        }
+        return  'danger';
+    }
+
     //
 
 //    public function articles()

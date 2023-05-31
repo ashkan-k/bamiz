@@ -9,7 +9,7 @@ class FormPage extends Component
     public $titlePage;
     public $type = '';
 
-    public $user;
+    public $item;
 
     public function render()
     {

@@ -43,8 +43,6 @@
 
                                 @endif">
 
-{{--                                    //////////////////////////////////////////////////////////--}}
-
                                     @if($item->email_verified_at != null)
 
                                         فعال
@@ -61,40 +59,8 @@
                             <td>{{ $item->phone == null ? 'ندارد' : $item->phone }}</td>
                             <td>
 
-                                <span class=" @if($item->level == 'admin' || $item->level == 'staff')
-
-                                {{ "label label-success-border rounded" }}
-
-                                @elseif($item->level == 'user')
-
-                                {{ "label label-info-border rounded" }}
-
-                                @else
-
-                                {{ "label label-danger-border rounded" }}
-
-                                @endif">
-
-{{--                                    //////////////////////////////////////////////////////////--}}
-
-                                    @if($item->level == 'admin')
-
-                                        مدیر
-
-                                    @elseif($item->level == 'staff')
-
-                                        کارمند
-
-                                    @elseif($item->level == 'user')
-
-                                        کابر
-
-                                    @else
-
-                                        مدیر رستوران
-
-                                    @endif
-
+                                <span class="label label-{{ $item->get_level_class() }}-border rounded">
+                                    {{ $item->get_level() }}
                                 </span>
 
                             </td>
