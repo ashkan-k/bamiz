@@ -33,7 +33,7 @@
                             <td>{{$item->email}}</td>
                             <td>
 
-                                <span
+                                <span wire:click="$emit('triggerChangeActiveModal' , {{ $item }})"
                                     class="label label-{{ $item->email_verified_at ? 'success' : 'danger' }}-border rounded">
                                     @if($item->email_verified_at != null)
                                         فعال
@@ -153,6 +153,62 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div wire:ignore.self class="modal fade bd-example-modal-lg" id="changeActiveModal" tabindex="-1" role="dialog"
+         aria-labelledby="changeLevelModalTitle" aria-hidden="true" dir="rtl"
+         style="text-align: right !important; margin-top: 250px">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header" style="width: 100%!important;">
+                    <h5 class="modal-title"
+                        id="exampleModalLongTitle">تغییر وضعیت</h5>
+
+                    <button type="button" class="close ml-2" data-dismiss="modal"
+                            style="position: absolute!important;left: 0!important; top: 10px"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form wire:submit.prevent="ChangeActive">
+                    <div class="modal-body">
+                        <label class="form-label"
+                               for="id_level">وضعیت:</label>
+
+                        <div>
+                            <select wire:model="data.active_status" class="form-control" name="active_status">
+
+                                <option @if(isset($current_item_level) && $current_item_level == 'admin') selected
+                                        @endif value="1">فعال
+                                </option>
+                                <option @if(isset($current_item_level) && $current_item_level == 'staff') selected
+                                        @endif value="0">غیرفعال
+                                </option>
+
+                            </select>
+
+                            @error('level')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-disabled="is_submited">
+                            بستن
+                        </button>&nbsp;
+                        <button type="submit" class="btn btn-primary">ذخیره
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 @push('StackScript')
@@ -199,6 +255,20 @@
         window.addEventListener('itemLevelUpdated', event => {
             $('#changeLevelModal').modal('hide');
             showToast('نقش آیتم مورد نظر با موفقیت تغییر کرد.', 'success');
+        });
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+        @this.on('triggerChangeActiveModal', orderId => {
+            $('#changeActiveModal').modal('show');
+        });
+        });
+
+        window.addEventListener('itemActiveUpdated', event => {
+            $('#changeActiveModal').modal('hide');
+            showToast('وضعیت آیتم مورد نظر با موفقیت تغییر کرد.', 'success');
         });
     </script>
 @endpush

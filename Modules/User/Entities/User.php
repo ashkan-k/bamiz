@@ -41,7 +41,12 @@ class User extends Authenticatable
         return \Modules\User\Database\factories\UserFactory::new();
     }
 
-    public function isAdmin()
+    public function is_active()
+    {
+        return $this->email_verified_at ? 1 : 0;
+    }
+
+    public function is_admin()
     {
         return $this->level == 'admin';
     }

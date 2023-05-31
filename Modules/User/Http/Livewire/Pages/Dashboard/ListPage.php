@@ -16,7 +16,7 @@ class ListPage extends Component
     public $data;
     protected $items;
 
-    protected $listeners = ['triggerChangeLevelModal'];
+    protected $listeners = ['triggerChangeLevelModal', 'triggerChangeActiveModal'];
 
     public function mount()
     {
@@ -31,6 +31,7 @@ class ListPage extends Component
         }
     }
 
+    // Change User Level
     public function triggerChangeLevelModal(User $user)
     {
         $this->item = $user;
@@ -41,6 +42,20 @@ class ListPage extends Component
     {
         $this->item->update(['level' => $this->data['level']]);
         $this->dispatchBrowserEvent('itemLevelUpdated');
+    }
+
+    // Change User Active Status
+    public function triggerChangeActiveModal(User $user)
+    {
+        $this->item = $user;
+        $this->data['active_status'] = $user->email_verified_at ? 1 : 0;
+    }
+
+    public function ChangeActive()
+    {
+        $status = $this->data['active_status'] ? now() : null;
+        $this->item->update(['email_verified_at' => $status]);
+        $this->dispatchBrowserEvent('itemActiveUpdated');
     }
 
     public function destroy(User $user)
