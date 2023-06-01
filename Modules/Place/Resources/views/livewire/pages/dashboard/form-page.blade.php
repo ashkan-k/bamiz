@@ -105,7 +105,7 @@
                         <label class="control-label col-lg-2">استان</label>
                         <div class="col-md-10">
 
-                            <select id="id_province" class="form-control" name="province_id" required>
+                            <select wire:model="province" id="id_province" class="form-control" name="province_id" required>
 
                                 @foreach($provinces as $province)
 
@@ -197,7 +197,7 @@
 
     <script>
         $('#id_user').select2();
-        $('#id_province').select2();
+        // $('#id_province').select2();
         $('#id_city').select2();
     </script>
 @endsection

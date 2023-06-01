@@ -14,11 +14,17 @@ class FormPage extends Component
     public $type = '';
 
     public $item;
+    public $province;
 
     protected $users;
     protected $categories;
     protected $provinces;
     protected $cities;
+
+    public function updatedProvince()
+    {
+        dd('dddddd');
+    }
 
     public function render()
     {
