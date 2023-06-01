@@ -2,5 +2,6 @@
     "User": true,
     "Dashboard": true,
     "Place": true,
-    "Category": true
+    "Category": true,
+    "Common": true
 }
