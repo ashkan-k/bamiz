@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('place')->group(function() {
-    Route::get('/', 'PlaceController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Place\Http\Controllers\PlaceController;
+
+Route::resource('places', PlaceController::class);
