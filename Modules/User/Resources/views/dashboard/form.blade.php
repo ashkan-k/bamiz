@@ -1,18 +1,18 @@
 @extends('layouts.admin-master')
 
-@if(isset($item))
+@if(isset($user))
     @section('titlePage','ویرایش')
 @else
     @section('titlePage','افزودن کاربر')
 @endif
 
 @section('content')
-    @if(isset($item))
+    @if(isset($user))
         @livewire("user::pages.dashboard.form-page" , [
 
         'titlePage' => 'ویرایش کابر',
         'type' => 'edit',
-        'item' => $item
+        'item' => $user
 
         ])
     @else

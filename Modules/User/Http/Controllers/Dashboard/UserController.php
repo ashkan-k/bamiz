@@ -51,9 +51,4 @@ class UserController extends Controller
         $user->set_role($request->level);
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'users.index');
     }
-
-    public function destroy($id)
-    {
-        //
-    }
 }

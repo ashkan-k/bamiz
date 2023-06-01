@@ -219,7 +219,7 @@
             Swal.fire({
                 title: "هشدار ! ",
                 icon: 'warning',
-                text: "آیا می خواهید این کابر حذف شود ؟ 🤔",
+                text: "آیا می خواهید این کابر آیتم شود ؟ 🤔",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: '#00aced',
