@@ -45,7 +45,7 @@
 
                             </select>
 
-                            @error('level')
+                            @error('province_id')
                             <span class="text-danger text-wrap">{{ $message }}</span>
                             @enderror
                         </div>

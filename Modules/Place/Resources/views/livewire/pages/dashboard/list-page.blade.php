@@ -13,6 +13,7 @@
                     <tr>
                         <th>نام</th>
                         <th>مالک</th>
+                        <th>دسته بندی</th>
                         <th>استان</th>
                         <th>شهر</th>
                         <th>تعداد میز</th>
@@ -28,6 +29,7 @@
                         <tr>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->user ? $item->user->fullname() : '---' }}</td>
+                            <td>{{ $item->category ? $item->category->title : '---' }}</td>
                             <td>{{ $item->province ? $item->province->title : '---' }}</td>
                             <td>{{ $item->city ? $item->city->title : '---' }}</td>
                             <td>{{ $item->chairs_people_count }}</td>
