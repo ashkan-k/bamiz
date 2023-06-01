@@ -53,7 +53,7 @@ class Place extends Model
 
     public function save(array $options = [])
     {
-        $this->slug = Str::slug($this->title);
+        $this->slug = Str::slug($this->name);
         return parent::save($options);
     }
 
