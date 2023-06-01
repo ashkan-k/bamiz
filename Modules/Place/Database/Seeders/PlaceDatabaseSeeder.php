@@ -4,6 +4,7 @@ namespace Modules\Place\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Place\Entities\Place;
 
 class PlaceDatabaseSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class PlaceDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
+        Place::factory(15)->create();
         // $this->call("OthersTableSeeder");
     }
 }
