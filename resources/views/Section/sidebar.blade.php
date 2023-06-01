@@ -64,15 +64,14 @@
 
                 {{--                --}}{{--                //////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-coffee" aria-hidden="true"></i> <span>مراکز بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('centers.index') }}">لیست مراکز</a></li>--}}
-                {{--                        <li><a href="{{ route('centers.create') }}">افزودن مرکز جدید</a></li>--}}
-                {{--                        <li><a href="{{ route('trash_centers.index') }}">لیست مراکز غیر فعال</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-coffee" aria-hidden="true"></i> <span>مراکز بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('places.index') }}">لیست مراکز</a></li>
+                        <li><a href="{{ route('places.create') }}">افزودن مرکز جدید</a></li>
+                    </ul>
+                </li>
 
                 {{--                --}}{{--                //////////////////////////////////////////////////--}}
 
