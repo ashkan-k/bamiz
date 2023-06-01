@@ -2,6 +2,7 @@
 
 namespace Modules\Place\Entities;
 
+use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Common\Entities\City;
@@ -11,6 +12,7 @@ use Modules\User\Entities\User;
 class Place extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $fillable = [
         'name',
@@ -24,14 +26,25 @@ class Place extends Model
         'city_id',
     ];
 
+    protected $search_fields = [
+        'name',
+        'slug',
+        'description',
+        'user.username',
+        'user.first_name',
+        'user.last_name',
+        'province.title',
+        'city.title',
+    ];
+
     protected static function newFactory()
     {
         return \Modules\Place\Database\factories\PlaceFactory::new();
     }
 
-    public function get_image()
+    public function get_cover()
     {
-        return $this->image ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+        return $this->cover ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
     //
