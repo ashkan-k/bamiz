@@ -28,17 +28,20 @@ class PlaceController extends Controller
     {
         $cover = $this->UploadFile($request, 'cover', 'places_covers', $request->name);
 
-        Place::create(array_merge($request->all(), ['cover' => $cover]));
+        Place::create(array_merge($request->validated(), ['cover' => $cover]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'places.index');
     }
 
-    public function edit($id)
+    public function edit(Place $place)
     {
-        return view('place::edit');
+        return view('place::dashboard.form', compact('place'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PlaceRequest $request, Place $place)
     {
-        //
+        $cover = $this->UploadFile($request, 'cover', 'places_covers', $place->name, $place->cover);
+
+        $place->update(array_merge($request->validated(), ['cover' => $cover]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'places.index');
     }
 }
