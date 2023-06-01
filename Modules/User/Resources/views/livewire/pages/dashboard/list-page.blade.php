@@ -34,7 +34,7 @@
                             <td>
 
                                 <span wire:click="$emit('triggerChangeActiveModal' , {{ $item }})"
-                                    class="label label-{{ $item->email_verified_at ? 'success' : 'danger' }}-border rounded">
+                                    class="label_mouse_cursor label label-{{ $item->email_verified_at ? 'success' : 'danger' }}-border rounded">
                                     @if($item->email_verified_at != null)
                                         فعال
                                     @else
@@ -48,7 +48,7 @@
                             <td>
 
                                 <span wire:click="$emit('triggerChangeLevelModal' , {{ $item }})"
-                                      class="label label-{{ $item->get_level_class() }}-border rounded">
+                                      class="label_mouse_cursor label label-{{ $item->get_level_class() }}-border rounded">
                                     {{ $item->get_level() }}
                                 </span>
 

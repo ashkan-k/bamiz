@@ -39,7 +39,7 @@
                             <td>
 
                                 <span wire:click="$emit('triggerChangeActiveModal' , {{ $item }})"
-                                      class="label label-{{ $item->is_active ? 'success' : 'danger' }}-border rounded">
+                                      class="label_mouse_cursor label label-{{ $item->is_active ? 'success' : 'danger' }}-border rounded">
                                     @if($item->is_active)
                                         فعال
                                     @else

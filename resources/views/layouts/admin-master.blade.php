@@ -29,6 +29,12 @@
 
     {!! SEOMeta::generate() !!}
 
+    <style>
+        .label_mouse_cursor:hover{
+            cursor: pointer !important;
+        }
+    </style>
+
     @yield('Styles')
 
     @livewireStyles
