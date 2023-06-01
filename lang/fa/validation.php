@@ -260,5 +260,6 @@ return [
         'commission_amount' => 'مبلغ کمیسیون',
         'image' => 'عکس',
         'index' => 'شماره بخش',
+        'cover' => 'کاور(عکس)',
     ],
 ];

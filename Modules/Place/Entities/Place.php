@@ -5,6 +5,7 @@ namespace Modules\Place\Entities;
 use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Modules\Category\Entities\Category;
 use Modules\Common\Entities\City;
 use Modules\Common\Entities\Province;
@@ -48,6 +49,12 @@ class Place extends Model
     public function get_cover()
     {
         return $this->cover ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+    }
+
+    public function save(array $options = [])
+    {
+        $this->slug = Str::slug($this->title);
+        return parent::save($options);
     }
 
     //

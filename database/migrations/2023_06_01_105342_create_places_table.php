@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('cover');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('province_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('city_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
