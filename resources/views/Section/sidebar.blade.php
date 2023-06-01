@@ -14,7 +14,7 @@
                             class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('provinces.index') }}">استان ها</a></li>
-                        <li><a href="{{ route('cities.create') }}">شهر ها</a></li>
+                        <li><a href="{{ route('cities.index') }}">شهر ها</a></li>
                     </ul>
                 </li>
 

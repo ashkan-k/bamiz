@@ -29,7 +29,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" wire:ignore>
                         <label class="control-label col-lg-2">توضیحات مرکز</label>
                         <div class="col-md-10">
                                 <textarea id="id_description" type="text" name="description"
@@ -56,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" wire:ignore>
                         <label class="control-label col-lg-2">مدیر مرکز</label>
                         <div class="col-md-10">
 
@@ -101,11 +101,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" wire:ignore>
                         <label class="control-label col-lg-2">استان</label>
                         <div class="col-md-10">
 
-                            <select wire:model="province" id="id_province" class="form-control" name="province_id" required>
+                            <select id="id_province" class="form-control" name="province_id" required>
 
                                 @foreach($provinces as $province)
 
@@ -197,8 +197,21 @@
 
     <script>
         $('#id_user').select2();
-        // $('#id_province').select2();
         $('#id_city').select2();
+
+        $(document).ready(function () {
+            window.initSelectCompanyDrop = () => {
+                $('#id_province').select2();
+            }
+            initSelectCompanyDrop();
+            $('#id_province').on('change', function (e) {
+                Livewire.emit('ProvinceChangeListener', e.target.value)
+            });
+            window.livewire.on('select2', () => {
+                initSelectCompanyDrop();
+            });
+
+        });
     </script>
 @endsection
 

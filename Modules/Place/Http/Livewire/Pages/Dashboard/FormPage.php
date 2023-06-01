@@ -14,16 +14,30 @@ class FormPage extends Component
     public $type = '';
 
     public $item;
-    public $province;
+    public $province_id;
 
     protected $users;
     protected $categories;
     protected $provinces;
     protected $cities;
 
-    public function updatedProvince()
+    protected $listeners = ['ProvinceChangeListener'];
+
+    public function hydrate()
     {
-        dd('dddddd');
+        $this->emit('select2');
+    }
+
+    public function ProvinceChangeListener($selectedValue)
+    {
+        $this->province_id = $selectedValue;
+    }
+
+    public function mount()
+    {
+        if ($this->item) {
+            $this->province_id = $this->item->province_id;
+        }
     }
 
     public function render()
@@ -32,7 +46,7 @@ class FormPage extends Component
             'users' => User::all(),
             'categories' => Category::all(),
             'provinces' => Province::all(),
-            'cities' => City::all(),
+            'cities' => $this->province_id ? City::where('province_id', $this->province_id)->get() : [],
         ];
 
         return view('place::livewire.pages.dashboard.form-page', $data);
