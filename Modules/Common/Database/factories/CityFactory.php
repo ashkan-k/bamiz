@@ -3,6 +3,7 @@
 namespace Modules\Common\Database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Common\Entities\Province;
 
 class CityFactory extends Factory
 {
@@ -21,7 +22,8 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => fake()->title(),
+            'province_id' => Province::factory(),
         ];
     }
 }

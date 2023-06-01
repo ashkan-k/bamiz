@@ -8,7 +8,7 @@
 
 @section('content')
     @if(isset($province))
-        @livewire("user::pages.dashboard.province.form-page" , [
+        @livewire("common::pages.dashboard.province.form-page" , [
 
         'titlePage' => 'ویرایش کابر',
         'type' => 'edit',
@@ -17,7 +17,7 @@
         ])
     @else
 
-        @livewire("user::pages.dashboard.province.form-page" , [
+        @livewire("common::pages.dashboard.province.form-page" , [
 
         'titlePage' => 'افزودن استان جدید'
 

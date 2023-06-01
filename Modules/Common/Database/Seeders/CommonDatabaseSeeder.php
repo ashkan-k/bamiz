@@ -18,7 +18,7 @@ class CommonDatabaseSeeder extends Seeder
     {
         Model::unguard();
         Province::factory(15)->create();
-//        City::factory(15)->create();
+        City::factory(15)->create();
         // $this->call("OthersTableSeeder");
     }
 }
