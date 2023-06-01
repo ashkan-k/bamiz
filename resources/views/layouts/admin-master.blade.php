@@ -275,6 +275,7 @@
 {{--<script src="/helpers/js/angular.min.js"></script>--}}
 <script src="/helpers/js/helpers.js"></script>
 <script src="/select2/select2.min.js"></script>
+<script src="/ckeditor/ckeditor.js"></script>
 
 @if (session()->has('message'))
     <script>

@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">توضیحات مرکز</label>
                         <div class="col-md-10">
-                                <textarea id="description" type="text" name="description"
+                                <textarea id="id_description" type="text" name="description"
                                           class="form-control" required rows="8"
                                           placeholder="توضیحات را وارد کنید">@if(old('description')){{ old('description') }}@elseif(isset($item->description)){{ $item->description }}@endif</textarea>
 
@@ -60,7 +60,7 @@
                         <label class="control-label col-lg-2">مدیر مرکز</label>
                         <div class="col-md-10">
 
-                            <select class="form-control" name="user_id" required>
+                            <select id="id_user" class="form-control" name="user_id" required>
 
                                 @foreach($users as $user)
 
@@ -105,7 +105,7 @@
                         <label class="control-label col-lg-2">استان</label>
                         <div class="col-md-10">
 
-                            <select class="form-control" name="province_id" required>
+                            <select id="id_province" class="form-control" name="province_id" required>
 
                                 @foreach($provinces as $province)
 
@@ -128,7 +128,7 @@
                         <label class="control-label col-lg-2">شهر</label>
                         <div class="col-md-10">
 
-                            <select class="form-control" name="city_id" required>
+                            <select id="id_city" class="form-control" name="city_id" required>
 
                                 @foreach($cities as $city)
 
@@ -190,6 +190,17 @@
     </div>
 </div>
 
+@section('Scripts')
+    <script>
+        CKEDITOR.replace('id_description');
+    </script>
+
+    <script>
+        $('#id_user').select2();
+        $('#id_province').select2();
+        $('#id_city').select2();
+    </script>
+@endsection
 
 @push("StackScript")
 
