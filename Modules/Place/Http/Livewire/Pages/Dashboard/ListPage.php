@@ -13,7 +13,10 @@ class ListPage extends Component
     public $titlePage = '';
     public $pagination;
     public $search = '';
+    public $data;
     protected $items;
+
+    protected $listeners = ['triggerChangeStatusModal'];
 
     public function mount()
     {
@@ -31,6 +34,20 @@ class ListPage extends Component
     public function destroy(Place $place)
     {
         $place->delete();
+    }
+
+    // Change User Status
+    public function triggerChangeStatusModal(Place $place)
+    {
+        $this->item = $place;
+        $this->data['is_active'] = $place->is_active;
+    }
+
+    public function ChangeStatus()
+    {
+        $this->item->is_active = $this->data['is_active'];
+        $this->item->save();
+        $this->dispatchBrowserEvent('itemStatusUpdated');
     }
 
     public function render()
