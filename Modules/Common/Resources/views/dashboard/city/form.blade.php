@@ -8,16 +8,16 @@
 
 @section('content')
     @if(isset($city))
-        @livewire("user::pages.dashboard.city.form-page" , [
+        @livewire("common::pages.dashboard.city.form-page" , [
 
-        'titlePage' => 'ویرایش کابر',
+        'titlePage' => 'ویرایش شهر',
         'type' => 'edit',
         'item' => $city
 
         ])
     @else
 
-        @livewire("user::pages.dashboard.city.form-page" , [
+        @livewire("common::pages.dashboard.city.form-page" , [
 
         'titlePage' => 'افزودن شهر جدید'
 

@@ -25,4 +25,11 @@ class City extends Model
     {
         return \Modules\Common\Database\factories\CityFactory::new();
     }
+
+    //
+
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
 }

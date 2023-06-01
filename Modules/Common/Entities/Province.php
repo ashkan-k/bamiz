@@ -23,4 +23,11 @@ class Province extends Model
     {
         return \Modules\Common\Database\factories\ProvinceFactory::new();
     }
+
+    //
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }

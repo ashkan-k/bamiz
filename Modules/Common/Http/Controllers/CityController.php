@@ -6,6 +6,10 @@ use App\Http\Traits\Responses;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Common\Entities\City;
+use Modules\Common\Entities\Province;
+use Modules\Common\Http\Requests\CityRequest;
+use Modules\Common\Http\Requests\ProvinceRequest;
 
 class CityController extends Controller
 {
@@ -16,63 +20,25 @@ class CityController extends Controller
         return view('common::dashboard.city.list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('common::create');
+        return view('common::dashboard.city.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(CityRequest $request)
     {
-        //
+        City::create($request->validated());
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'cities.index');
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function edit(City $city)
     {
-        return view('common::show');
+        return view('common::dashboard.city.form', compact('city'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function update(CityRequest $request, City $city)
     {
-        return view('common::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $city->update($request->validated());
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'cities.index');
     }
 }
