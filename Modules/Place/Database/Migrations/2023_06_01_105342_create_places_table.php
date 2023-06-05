@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\EnumHelpers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -22,6 +23,8 @@ return new class extends Migration
             $table->integer('chairs_people_count')->default(1);
             $table->integer('viewCount')->default(0);
             $table->text('cover');
+
+            $table->enum('type', EnumHelpers::$PlaceTypesEnum)->default('restaurant');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
