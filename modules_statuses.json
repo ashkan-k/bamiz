@@ -4,5 +4,6 @@
     "Place": true,
     "Category": true,
     "Common": true,
-    "Gallery": true
+    "Gallery": true,
+    "Article": true
 }
