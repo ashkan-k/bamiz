@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('gallery')->group(function() {
-    Route::get('/', 'GalleryController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Gallery\Http\Controllers\GalleryController;
+
+Route::resource('galleries', GalleryController::class);

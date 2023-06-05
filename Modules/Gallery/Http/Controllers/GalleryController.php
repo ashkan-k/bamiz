@@ -2,78 +2,49 @@
 
 namespace Modules\Gallery\Http\Controllers;
 
+use App\Http\Traits\Responses;
+use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Gallery\Entities\Gallery;
+use Modules\Gallery\Http\Requests\GalleryRequest;
+use Modules\Place\Entities\Place;
 
 class GalleryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    use Responses, Uploader;
+
     public function index()
     {
-        return view('gallery::index');
+        return view('gallery::dashboard.list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('gallery::create');
+        return view('gallery::dashboard.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(GalleryRequest $request)
     {
-        //
+        $place = Place::find($request->place_id);
+        $image = $this->UploadFile($request, 'image', 'places_galleries', $place->name);
+
+        Gallery::create(array_merge($request->validated(), ['image' => $image]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'galleries.index');
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function edit(Gallery $gallery)
     {
-        return view('gallery::show');
+        return view('galleries::dashboard.form', compact('gallery'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function update(GalleryRequest $request, Gallery $gallery)
     {
-        return view('gallery::edit');
-    }
+        $place = Place::find($request->place_id);
+        $image = $this->UploadFile($request, 'image', 'places_galleries', $place->name, $gallery->image);
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $gallery->update(array_merge($request->validated(), ['image' => $image]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'galleries.index');
     }
 }
