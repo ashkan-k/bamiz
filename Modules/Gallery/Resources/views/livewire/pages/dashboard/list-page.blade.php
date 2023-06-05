@@ -6,7 +6,7 @@
 
                 @include('livewire.searchBox')
 
-                <a class="btn btn-primary pull-right" href="{{ route('galleries.create') }}">افزودن گالری جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('galleries.create') }}?place_id={{ request('place_id') }}&next_url={{ request()->fullUrl() }}">افزودن گالری جدید</a>
 
                 <table class="table table-hover">
                     <thead>
@@ -29,12 +29,12 @@
 
                             <td>
                                 <div class="buttons ">
-                                    <a href="{{ route('galleries.edit' , $item->id) }}"
-                                       class="btn btn-primary btn-action mr-1"
-                                       data-toggle="tooltip" title=""
-                                       data-original-title="ویرایش"><i
-                                            class="fas fa-pencil-alt"></i><i
-                                            class="fa fa-pencil"> </i> </a>
+{{--                                    <a href="{{ route('galleries.edit' , $item->id) }}"--}}
+{{--                                       class="btn btn-primary btn-action mr-1"--}}
+{{--                                       data-toggle="tooltip" title=""--}}
+{{--                                       data-original-title="ویرایش"><i--}}
+{{--                                            class="fas fa-pencil-alt"></i><i--}}
+{{--                                            class="fa fa-pencil"> </i> </a>--}}
                                     <button wire:click="$emit('triggerDelete' , {{ $item->id }})"
                                             type="button"
                                             data-original-title="حذف"

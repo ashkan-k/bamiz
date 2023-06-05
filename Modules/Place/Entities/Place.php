@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Modules\Category\Entities\Category;
 use Modules\Common\Entities\City;
 use Modules\Common\Entities\Province;
+use Modules\Gallery\Entities\Gallery;
 use Modules\User\Entities\User;
 
 class Place extends Model
@@ -83,5 +84,10 @@ class Place extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Gallery::class);
     }
 }

@@ -18,13 +18,25 @@ class Gallery extends Model
         'place.name',
     ];
 
-    public function place()
+    protected $filter_fields = [
+        'place_id',
+    ];
+
+
+    public function get_image()
     {
-        return $this->belongsTo(Place::class);
+        return $this->image ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
     protected static function newFactory()
     {
         return \Modules\Gallery\Database\factories\GalleryFactory::new();
+    }
+
+    //
+
+    public function place()
+    {
+        return $this->belongsTo(Place::class);
     }
 }

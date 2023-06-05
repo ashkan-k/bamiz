@@ -28,23 +28,13 @@ class GalleryController extends Controller
     public function store(GalleryRequest $request)
     {
         $place = Place::find($request->place_id);
-        $image = $this->UploadFile($request, 'image', 'places_galleries', $place->name);
+        $images = $request->file('images', []);
 
-        Gallery::create(array_merge($request->validated(), ['image' => $image]));
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'galleries.index');
-    }
+        foreach ($images as $image) {
+            $image = $this->Upload($image, 'places_galleries', $place->name);
+            $place->images()->create(['image' => $image]);
+        }
 
-    public function edit(Gallery $gallery)
-    {
-        return view('galleries::dashboard.form', compact('gallery'));
-    }
-
-    public function update(GalleryRequest $request, Gallery $gallery)
-    {
-        $place = Place::find($request->place_id);
-        $image = $this->UploadFile($request, 'image', 'places_galleries', $place->name, $gallery->image);
-
-        $gallery->update(array_merge($request->validated(), ['image' => $image]));
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'galleries.index');
+        return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ثبت شد.', $request->next_url);
     }
 }

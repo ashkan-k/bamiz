@@ -16,7 +16,6 @@
 
         ])
     @else
-
         @livewire("gallery::pages.dashboard.form-page" , [
 
         'titlePage' => 'افزودن گالری جدید'

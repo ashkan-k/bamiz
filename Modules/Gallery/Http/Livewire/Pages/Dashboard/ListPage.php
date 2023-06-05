@@ -13,10 +13,12 @@ class ListPage extends Component
     public $titlePage = '';
     public $pagination;
     public $search = '';
+    public $place_id;
     protected $items;
 
     public function mount()
     {
+        $this->place_id = request('place_id');
         $this->pagination = env('PAGINATION', 10);
     }
 
@@ -33,9 +35,16 @@ class ListPage extends Component
         $gallery->delete();
     }
 
+    private function FilterByPlace()
+    {
+        $this->items = $this->place_id ? $this->items->where(['place_id' => $this->place_id]) : $this->items;
+        return $this->items;
+    }
+
     public function render()
     {
-        $this->items = Gallery::Search($this->search)->latest()->paginate($this->pagination);
-        return view('gallery::livewire.pages.dashboard.list-page', ['items' => $this->items]);
+        $this->items = Gallery::Search($this->search)->latest();
+        $this->items = $this->FilterByPlace();
+        return view('gallery::livewire.pages.dashboard.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }

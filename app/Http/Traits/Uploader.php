@@ -13,6 +13,9 @@ trait Uploader
         $mouth = Carbon::now()->month;
         $day = Carbon::now()->day;
 
+        $base_folder = str_contains($base_folder, '.') && str_replace('.', '-', $base_folder);
+        $folder = str_contains($folder, '.') && str_replace('.', '-', $folder);
+
         $imagePath = "/uploads/{$base_folder}/{$year}-{$mouth}-{$day}/{$folder}/";
         $filename = Str::random(20) . '-' . time() . '.' . $file->getClientOriginalName();
 

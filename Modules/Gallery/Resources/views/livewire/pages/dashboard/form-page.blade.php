@@ -15,39 +15,46 @@
 
                     @csrf
 
-                    <div class="form-group">
-                        <label class="control-label col-lg-2">مرکز</label>
-                        <div class="col-md-10">
+                        <input type="hidden" name="place_id" value="{{ request('place_id') }}">
+                        <input type="hidden" name="next_url" value="{{ request('next_url') }}">
 
-                            <select class="form-control" name="place_id" required>
+{{--                    <div class="form-group">--}}
+{{--                        <label class="control-label col-lg-2">مرکز</label>--}}
+{{--                        <div class="col-md-10">--}}
 
-                                @foreach($places as $place)
+{{--                            <select class="form-control" name="place_id" required>--}}
 
-                                    <option
-                                        @if(isset($item->place_id) && $item->place_id == $place->id) selected
-                                        @endif value="{{ $place->id }}">{{ $place->name }}
-                                    </option>
+{{--                                @foreach($places as $place)--}}
 
-                                @endforeach
+{{--                                    <option--}}
+{{--                                        @if(isset($item->place_id) && $item->place_id == $place->id) selected--}}
+{{--                                        @endif value="{{ $place->id }}">{{ $place->name }}--}}
+{{--                                    </option>--}}
 
-                            </select>
+{{--                                @endforeach--}}
 
-                            @error('place_id')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
+{{--                            </select>--}}
+
+{{--                            @error('place_id')--}}
+{{--                            <span class="text-danger text-wrap">{{ $message }}</span>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">عکس</label>
                         <div class="col-sm-10">
 
-                            <input type="file" name="image"
+                            <input type="file" name="images[]" multiple
                                    class="form-control"
                                    placeholder="عکس را وارد کنید"
-                                   value="{{ old('image') }}">
+                                   value="{{ old('images') }}">
 
-                            @error('image')
+                            @error('images.*')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+
+                            @error('images')
                             <span class="text-danger text-wrap">{{ $message }}</span>
                             @enderror
 

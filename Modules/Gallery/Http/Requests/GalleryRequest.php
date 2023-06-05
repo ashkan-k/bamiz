@@ -15,11 +15,12 @@ class GalleryRequest extends FormRequest
     {
         $rules = [
             'place_id' => 'required|exists:places,id',
-            'image' => 'mimes:jpeg,png,bmp,jpg',
+            'images' => 'required',
+            'images.*' => 'required|mimes:jpeg,png,bmp,jpg',
         ];
 
         if (request()->method == 'POST'){
-            $rules['image'] .= '|required';
+            $rules['images.*'] .= '|required';
         }
 
         return $rules;
