@@ -3,5 +3,6 @@
     "Dashboard": true,
     "Place": true,
     "Category": true,
-    "Common": true
+    "Common": true,
+    "Gallery": true
 }
