@@ -25,7 +25,6 @@ return new class extends Migration
             $table->enum('status', EnumHelpers::$ArticleStatusEnum)->default('draft');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

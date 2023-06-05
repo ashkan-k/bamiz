@@ -2,78 +2,46 @@
 
 namespace Modules\Article\Http\Controllers\Dashboard;
 
+use App\Http\Traits\Responses;
+use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Article\Entities\Article;
+use Modules\Article\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    use Responses, Uploader;
+
     public function index()
     {
-        return view('article::index');
+        return view('article::dashboard.list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('article::create');
+        return view('article::dashboard.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        //
+        $image = $this->UploadFile($request, 'image', 'articles_images', $request->title);
+
+        Article::create(array_merge($request->validated(), ['image' => $image]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'articles.index');
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function edit(Article $article)
     {
-        return view('article::show');
+        return view('article::dashboard.form', compact('article'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function update(ArticleRequest $request, Article $article)
     {
-        return view('article::edit');
-    }
+        $image = $this->UploadFile($request, 'image', 'articles_images', $article->title, $article->image);
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $article->update(array_merge($request->validated(), ['image' => $image]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'articles.index');
     }
 }
