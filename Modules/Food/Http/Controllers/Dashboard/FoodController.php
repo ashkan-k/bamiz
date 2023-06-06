@@ -2,28 +2,24 @@
 
 namespace Modules\Food\Http\Controllers\Dashboard;
 
+use App\Http\Traits\Responses;
+use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class FoodController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    use Responses, Uploader;
+
     public function index()
     {
-        return view('food::index');
+        return view('food::dashboard.list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('food::create');
+        return view('food::dashboard.form');
     }
 
     /**
