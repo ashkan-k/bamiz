@@ -6,5 +6,6 @@
     "Common": true,
     "Gallery": true,
     "Article": true,
-    "Option": true
+    "Option": true,
+    "Food": true
 }
