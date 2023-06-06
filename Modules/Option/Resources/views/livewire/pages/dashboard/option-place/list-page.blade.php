@@ -19,7 +19,7 @@
 
                     @foreach ($items as $item)
                         <tr>
-                            <td>{{ $item->place ? $item->place->title : '---' }}</td>
+                            <td>{{ $item->place ? $item->place->name : '---' }}</td>
                             <td>{{ $item->option ? $item->option->title : '---' }}</td>
 
                             <td>{{ \Hekmatinasser\Verta\Verta:: instance($item->created_at)->format('%B %d، %Y') }}</td>

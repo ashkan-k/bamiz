@@ -17,8 +17,8 @@ class OptionPlace extends Model
     ];
 
     protected $search_fields = [
-        'place_id.title',
-        'option_id.title',
+        'place.name',
+        'option.title',
     ];
 
     protected static function newFactory()

@@ -54,6 +54,12 @@
                             <td>{{ \Hekmatinasser\Verta\Verta:: instance($item->created_at)->format('%B %d، %Y') }}</td>
                             <td>
                                 <div class="buttons ">
+                                    <a href="{{ route('option_places.index') }}?place_id={{ $item->id }}"
+                                       class="btn btn-success btn-action mr-1"
+                                       data-toggle="tooltip" title=""
+                                       data-original-title="تشریفات"><i
+                                            class="fas fa-check-square-o-alt"></i><i
+                                            class="fa fa-check-square-o"> </i> </a>
                                     <a href="{{ route('galleries.index') }}?place_id={{ $item->id }}"
                                        class="btn btn-warning btn-action mr-1"
                                        data-toggle="tooltip" title=""
