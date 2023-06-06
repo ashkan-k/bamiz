@@ -13,9 +13,19 @@ class FoodRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'title' => 'required|string',
+            'description' => 'string',
+            'place_id' => 'required|exists:places,id',
+            'price' => 'required|numeric',
+            'image' => 'mimes:jpeg,png,bmp,jpg',
         ];
+
+        if (request()->method == 'POST'){
+            $rules['image'] .= '|required';
+        }
+
+        return $rules;
     }
 
     /**

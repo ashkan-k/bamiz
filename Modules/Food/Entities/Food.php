@@ -5,6 +5,7 @@ namespace Modules\Food\Entities;
 use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Modules\Place\Entities\Place;
 
 class Food extends Model
@@ -32,6 +33,18 @@ class Food extends Model
     protected static function newFactory()
     {
         return \Modules\Food\Database\factories\FoodFactory::new();
+    }
+
+    public function save(array $options = [])
+    {
+        $this->slug = Str::slug($this->title);
+        try {
+            $saved =  parent::save($options);
+        }catch (\Exception $exception){
+            $this->slug = Str::random(20);
+            $saved =  parent::save($options);
+        }
+        return $saved;
     }
 
     //

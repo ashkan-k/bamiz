@@ -51,7 +51,7 @@
                     <div class="col-lg-12">
                         <div class="m-1-25 m-b-20">
                             <div class="modal-footer">
-                                <a href="{{ route('galleries.index') }}"
+                                <a href="{{ request('next_url') }}"
                                    class="btn btn-danger btn-border-radius waves-effect">
                                     بازگشت
                                 </a>

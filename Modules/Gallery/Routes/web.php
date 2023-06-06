@@ -12,6 +12,6 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Gallery\Http\Controllers\GalleryController;
+use Modules\Gallery\Http\Controllers\Dashboard\GalleryController;
 
 Route::resource('galleries', GalleryController::class);

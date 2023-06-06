@@ -7,6 +7,9 @@ use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Food\Entities\Food;
+use Modules\Food\Http\Requests\FoodRequest;
+use Modules\Place\Entities\Place;
 
 class FoodController extends Controller
 {
@@ -22,54 +25,26 @@ class FoodController extends Controller
         return view('food::dashboard.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(FoodRequest $request)
     {
-        //
+        $place = Place::findOrFail($request->place_id);
+        $image = $this->UploadFile($request, 'image', 'foods_images', $place->name);
+
+        Food::create(array_merge($request->validated(), ['image' => $image]));
+        return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ثبت شد.', $request->next_url);
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function edit(Food $food)
     {
-        return view('food::show');
+        return view('food::dashboard.form', compact('food'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function update(FoodRequest $request, Food $food)
     {
-        return view('food::edit');
-    }
+        $place = Place::findOrFail($request->place_id);
+        $image = $this->UploadFile($request, 'image', 'foods_images', $place->name, $food->image);
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $food->update(array_merge($request->validated(), ['image' => $image]));
+        return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ثبت شد.', $request->next_url);
     }
 }

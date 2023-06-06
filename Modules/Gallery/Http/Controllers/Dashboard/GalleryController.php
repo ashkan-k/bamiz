@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Gallery\Http\Controllers;
+namespace Modules\Gallery\Http\Controllers\Dashboard;
 
 use App\Http\Traits\Responses;
 use App\Http\Traits\Uploader;
@@ -27,7 +27,7 @@ class GalleryController extends Controller
 
     public function store(GalleryRequest $request)
     {
-        $place = Place::find($request->place_id);
+        $place = Place::findOrFail($request->place_id);
         $images = $request->file('images', []);
 
         foreach ($images as $image) {

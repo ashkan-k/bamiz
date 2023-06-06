@@ -5,7 +5,7 @@
                 <h2 class="card-title"><b>{{ $titlePage }}</b></h2>
 
                 <form class="form-horizontal"
-                      action="{{ $type == 'edit' ? route('options.update' , $item->id) : route('options.store') }}"
+                      action="{{ $type == 'edit' ? route('foods.update' , $item->id) : route('foods.store') }}"
                       method="post"
                       enctype="multipart/form-data">
 
@@ -14,6 +14,9 @@
                     @endif
 
                     @csrf
+
+                    <input type="hidden" name="place_id" value="{{ request('place_id') }}">
+                    <input type="hidden" name="next_url" value="{{ request('next_url') }}">
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">نام</label>
@@ -45,12 +48,12 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">ملبغ (تومان)</label>
                         <div class="col-md-10">
-                            <input id="amount" type="number" name="amount"
+                            <input id="price" type="number" name="price"
                                    class="form-control" required
                                    placeholder="ملبغ (تومان) را وارد کنید"
-                                   value="@if(old('amount')){{ old('amount') }}@elseif(isset($item->amount)){{ $item->amount }}@else 1 @endif">
+                                   value="@if(old('price')){{ old('price') }}@elseif(isset($item->price)){{ $item->price }}@else 1 @endif">
 
-                            @error('amount')
+                            @error('price')
                             <span class="text-danger text-wrap">{{ $message }}</span>
                             @enderror
                         </div>
@@ -85,7 +88,7 @@
                     <div class="col-lg-12">
                         <div class="m-1-25 m-b-20">
                             <div class="modal-footer">
-                                <a href="{{ route('options.index') }}"
+                                <a href="{{ request('next_url') }}"
                                    class="btn btn-danger btn-border-radius waves-effect">
                                     بازگشت
                                 </a>

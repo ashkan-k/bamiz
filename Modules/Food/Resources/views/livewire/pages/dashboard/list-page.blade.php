@@ -35,7 +35,7 @@
                             <td>{{ \Hekmatinasser\Verta\Verta:: instance($item->created_at)->format('%B %d، %Y') }}</td>
                             <td>
                                 <div class="buttons ">
-                                    <a href="{{ route('foods.edit' , $item->id) }}"
+                                    <a href="{{ route('foods.edit' , $item->id) }}?place_id={{ $this->place_id }}&next_url={{ $full_url }}"
                                        class="btn btn-primary btn-action mr-1"
                                        data-toggle="tooltip" title=""
                                        data-original-title="ویرایش"><i
