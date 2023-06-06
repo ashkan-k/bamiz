@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('image');
             $table->double('price')->default(0);
+            $table->integer('discount_percent')->nullable();
             $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();

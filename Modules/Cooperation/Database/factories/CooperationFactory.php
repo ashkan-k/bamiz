@@ -21,7 +21,12 @@ class CooperationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'phone' => fake()->phoneNumber(),
+            'address' => fake()->text(),
+            'description' => fake()->text(),
+            'file' => fake()->filePath(),
         ];
     }
 }

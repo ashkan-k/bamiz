@@ -13,7 +13,7 @@ class Food extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ["title", "description", "image", "place_id", "slug", "price"];
+    protected $fillable = ["title", "description", "image", "place_id", "slug", "price", 'discount_percent'];
 
     protected $search_fields = [
         'title',

@@ -9,8 +9,20 @@ class Cooperation extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
-    
+    protected $fillable = [ "first_name",  "last_name",  "phone",  "address",  "description",  "file" ];
+
+    protected $search_fields  = [
+        'first_name',
+        'last_name',
+        'phone',
+        'address',
+    ];
+
+    public function get_file()
+    {
+        return $this->file ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+    }
+
     protected static function newFactory()
     {
         return \Modules\Cooperation\Database\factories\CooperationFactory::new();
