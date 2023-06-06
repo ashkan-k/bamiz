@@ -13,22 +13,31 @@
                         <th>متن</th>
                         <th>کاربر</th>
                         <th>مرکز | مقاله</th>
-                        <th>تعداد لایک</th>
-                        <th>تاریخ انتشار</th>
+                        <th>لایک</th>
+                        <th>وضعیت</th>
+                        <th>تاریخ ثبت</th>
                         <th>اعمال</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    @foreach ($itmes as $item)
+                    @foreach ($items as $item)
                         <tr>
                             <td>{{$item->title}}</td>
-                            <td>{{\Illuminate\Support\Str::limit($item->body , 20)}}</td>
+                            <td title="{{ $item->body }}">{{\Illuminate\Support\Str::limit($item->body , 20)}}</td>
                             <td>{{$item->user->fullname()}}</td>
                             <td>
-                                {{ $item->commentable_type == 'App\Models\Article' ?  $item->commentable->title  :  $item->commentable->name }}
+                                {{ $item->commentable_type == 'Modules\Article\Entities\Article' ?  $item->commentable->title  :  $item->commentable->name }}
                             </td>
                             <td>{{$item->like_count}}</td>
+                            <td>
+
+                                <span wire:click="$emit('triggerChangeLevelModal' , {{ $item }})"
+                                      class="label_mouse_cursor label label-{{ $item->get_status_class() }}-border rounded">
+                                    {{ $item->get_status() }}
+                                </span>
+
+                            </td>
                             <td>{{ \Hekmatinasser\Verta\Verta:: instance($item->created_at)->format('%B %d، %Y') }}</td>
                             <td>
                                 <div class="buttons ">
@@ -38,12 +47,12 @@
                                        data-original-title="ویرایش"><i
                                             class="fas fa-pencil-alt"></i><i
                                             class="fa fa-pencil"> </i> </a>
-                                    <button wire:click="$emit('triggerNotApproved' , {{ $item->id }})"
+                                    <button wire:click="$emit('triggerDelete' , {{ $item->id }})"
                                             type="button"
-                                            data-original-title="تایید نکردن"
+                                            data-original-title="حذف"
                                             data-toggle="tooltip"
                                             class="btn btn-danger btn-action"><i
-                                            class="fa fa-ban"> </i>
+                                            class="fa fa-trash"> </i>
                                     </button>
                                 </div>
                             </td>
@@ -52,7 +61,7 @@
                     </tbody>
                 </table>
 
-                {{ $itmes->links('livewire.pagination') }}
+                {{ $items->links('livewire.pagination') }}
 
             </div>
         </div>

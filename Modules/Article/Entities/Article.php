@@ -76,7 +76,7 @@ class Article extends Model
 
     public function comments()
     {
-        return $this->morphMany('App\Models\Comment' , 'commentable');
+        return $this->morphMany('Modules\Comment\Entities\Comment' , 'commentable');
     }
 
     protected static function newFactory()
