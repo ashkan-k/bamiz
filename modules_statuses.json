@@ -8,5 +8,6 @@
     "Article": true,
     "Option": true,
     "Food": true,
-    "Cooperation": true
+    "Cooperation": true,
+    "Setting": true
 }
