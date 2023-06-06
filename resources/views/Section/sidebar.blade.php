@@ -121,15 +121,14 @@
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> <span>غذا های بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('products.index') }}">لیست غذا</a></li>--}}
-                {{--                        <li><a href="{{ route('products.create') }}">افزودن غذا جدید</a></li>--}}
-                {{--                        <li><a href="{{ route('trash_products.index') }}">لیست غذا های غیر فعال</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i> <span>همکاری بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('cooperations.index') }}">لیست درخواست ها</a></li>
+                        <li><a href="{{ route('cooperations.create') }}">افزودن درخواست</a></li>
+                    </ul>
+                </li>
 
                 {{--                --}}{{--                ///////////////////////////////////////////////////////////////////--}}
 

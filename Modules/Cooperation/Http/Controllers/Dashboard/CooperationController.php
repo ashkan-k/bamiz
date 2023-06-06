@@ -7,6 +7,8 @@ use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Cooperation\Entities\Cooperation;
+use Modules\Cooperation\Http\Requests\CooperationRequest;
 
 class CooperationController extends Controller
 {
@@ -22,54 +24,24 @@ class CooperationController extends Controller
         return view('cooperation::dashboard.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(CooperationRequest $request)
     {
-        //
+        $file = $this->UploadFile($request, 'file', 'cooperations_files', $request->first_name . '-' . $request->last_name);
+
+        Cooperation::create(array_merge($request->all(), ['file' => $file]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'cooperations.index');
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function edit(Cooperation $cooperation)
     {
-        return view('cooperation::show');
+        return view('cooperation::dashboard.form', compact('cooperation'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function update(CooperationRequest $request, Cooperation $cooperation)
     {
-        return view('cooperation::edit');
-    }
+        $file = $this->UploadFile($request, 'file', 'cooperations_files', $cooperation->first_name . '-' . $cooperation->last_name, $cooperation->file);
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $cooperation->update(array_merge($request->all(), ['file' => $file]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'cooperations.index');
     }
 }

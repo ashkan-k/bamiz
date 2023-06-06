@@ -19,7 +19,7 @@
                         <label class="control-label col-lg-2">نام</label>
                         <div class="col-md-10">
                             <input id="title" type="text" name="first_name"
-                                   class="form-control"
+                                   class="form-control" required
                                    placeholder="نام را وارد کنید"
                                    value="@if(old('first_name')){{ old('first_name') }}@elseif(isset($item->first_name)){{ $item->first_name }}@endif">
 
@@ -33,7 +33,7 @@
                         <label class="control-label col-lg-2">نام خانوادگی</label>
                         <div class="col-md-10">
                             <input id="last_name" type="text" name="last_name"
-                                   class="form-control"
+                                   class="form-control" required
                                    placeholder="نام خانوادگی را وارد کنید"
                                    value="@if(old('last_name')){{ old('last_name') }}@elseif(isset($item->last_name)){{ $item->last_name }}@endif">
                             @error('last_name')
@@ -68,11 +68,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group" wire:ignore>
+                    <div class="form-group">
                         <label class="control-label col-lg-2">توضیحات</label>
                         <div class="col-md-10">
                                 <textarea id="id_description" type="text" name="description"
-                                          class="form-control" required rows="8"
+                                          class="form-control" rows="8"
                                           placeholder="آدرس را وارد کنید">@if(old('description')){{ old('description') }}@elseif(isset($item->description)){{ $item->description }}@endif</textarea>
 
                             @error('description')
@@ -82,12 +82,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-2">عکس</label>
+                        <label class="control-label col-lg-2">فایل ضمیمه (اختیاری)</label>
                         <div class="col-sm-10">
 
                             <input type="file" name="file"
                                    class="form-control"
-                                   placeholder="عکس را وارد کنید"
+                                   placeholder="فایل ضمیمه را وارد کنید"
                                    value="{{ old('file') }}">
 
                             @error('file')
@@ -122,12 +122,6 @@
 
     </div>
 </div>
-
-@section('Scripts')
-    <script>
-        CKEDITOR.replace('id_description');
-    </script>
-@endsection
 
 @push("StackScript")
 

@@ -18,6 +18,7 @@ class Cooperation extends Model
         'last_name',
         'phone',
         'address',
+        'description',
     ];
 
     public function get_file()
