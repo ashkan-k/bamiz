@@ -9,5 +9,6 @@
     "Option": true,
     "Food": true,
     "Cooperation": true,
-    "Setting": true
+    "Setting": true,
+    "Comment": true
 }

@@ -293,14 +293,14 @@
 
                 {{--                --}}{{--                ////////////////////////////////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span>تنظیمات بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('settings.index') }}">لیست تنظیمات</a></li>--}}
-                {{--                        <li><a href="{{ route('settings.index') }}">افزودن تنظیمات</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span>تنظیمات بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('settings.index') }}">لیست تنظیمات</a></li>
+                        <li><a href="{{ route('settings.index') }}">افزودن تنظیمات</a></li>
+                    </ul>
+                </li>
 
                 {{--                ////////////////////////////////////////////////////////////////////////////--}}
 
