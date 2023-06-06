@@ -10,6 +10,7 @@ use Modules\Category\Entities\Category;
 use Modules\Common\Entities\City;
 use Modules\Common\Entities\Province;
 use Modules\Gallery\Entities\Gallery;
+use Modules\Option\Entities\Option;
 use Modules\User\Entities\User;
 
 class Place extends Model
@@ -89,5 +90,10 @@ class Place extends Model
     public function images()
     {
         return $this->hasMany(Gallery::class);
+    }
+
+    public function options()
+    {
+        return $this->belongsToMany(Option::class, 'option_places');
     }
 }

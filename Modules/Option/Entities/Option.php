@@ -5,6 +5,7 @@ namespace Modules\Option\Entities;
 use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Place\Entities\Place;
 
 class Option extends Model
 {
@@ -29,5 +30,12 @@ class Option extends Model
     protected static function newFactory()
     {
         return \Modules\Option\Database\factories\OptionFactory::new();
+    }
+
+    //
+
+    public function places()
+    {
+        return $this->belongsToMany(Place::class, 'option_places');
     }
 }
