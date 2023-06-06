@@ -110,15 +110,14 @@
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-gift" aria-hidden="true"></i> <span>تشریفات بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('options.index') }}">لیست تشریفات</a></li>--}}
-                {{--                        <li><a href="{{ route('trash_options.index') }}">لیست تشریفات غیر فعال</a></li>--}}
-                {{--                        <li><a href="{{ route('options.create') }}">افزودن تشریفات جدید</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-gift" aria-hidden="true"></i> <span>تشریفات بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('options.index') }}">لیست تشریفات</a></li>
+                        <li><a href="{{ route('options.create') }}">افزودن تشریفات جدید</a></li>
+                    </ul>
+                </li>
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////--}}
 

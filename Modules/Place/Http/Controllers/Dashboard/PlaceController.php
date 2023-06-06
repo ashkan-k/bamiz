@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Place\Http\Controllers;
+namespace Modules\Place\Http\Controllers\Dashboard;
 
 use App\Http\Traits\Responses;
 use App\Http\Traits\Uploader;
