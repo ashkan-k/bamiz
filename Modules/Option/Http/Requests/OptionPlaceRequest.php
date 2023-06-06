@@ -14,7 +14,7 @@ class OptionPlaceRequest extends FormRequest
     public function rules()
     {
         return [
-            'option_id' => 'required|array|min:1|exists:options,id',
+            'option_id' => 'array|min:1|exists:options,id',
         ];
     }
 
