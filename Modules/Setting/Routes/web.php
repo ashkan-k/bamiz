@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('setting')->group(function() {
-    Route::get('/', 'SettingController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Setting\Http\Controllers\Dashboard\SettingController;
+
+Route::resource('settings', SettingController::class);

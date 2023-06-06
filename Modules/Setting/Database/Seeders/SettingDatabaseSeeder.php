@@ -4,6 +4,7 @@ namespace Modules\Setting\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Setting\Entities\Setting;
 
 class SettingDatabaseSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class SettingDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        Setting::factory(15)->create();
 
         // $this->call("OthersTableSeeder");
     }

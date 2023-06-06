@@ -21,7 +21,8 @@ class SettingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'key' => fake()->title(),
+            'value' => fake()->text(),
         ];
     }
 }
