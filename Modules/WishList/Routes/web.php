@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('wishlist')->group(function() {
-    Route::get('/', 'WishListController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\WishList\Http\Controllers\Dashboard\WishListController;
+
+Route::resource('wishlists', WishListController::class);

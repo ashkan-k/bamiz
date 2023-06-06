@@ -145,14 +145,13 @@
 
                 {{--                --}}{{--                ///////////////////////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> <span>علاقه مندی ها بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('wish-lists.index') }}">لیست علاقه مندی ها</a></li>--}}
-                {{--                        <li><a href="{{ route('wish-lists.create') }}">افزودن علاقه مندی جدید </a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> <span>علاقه کاربران بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('wishlists.index') }}">لیست علاقه مندی ها</a></li>
+                    </ul>
+                </li>
 
                 {{--                --}}{{--                ///////////////////////////////////////////////////////////////////////////////////--}}
 
