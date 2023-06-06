@@ -54,7 +54,9 @@ class Article extends Model
 
     public function save(array $options = [])
     {
-        $this->user_id = auth()->id();
+        if (!$this->user_id){
+            $this->user_id = auth()->id();
+        }
         $this->slug = Str::slug($this->name);
         try {
             $saved =  parent::save($options);

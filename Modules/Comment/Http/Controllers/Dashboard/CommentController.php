@@ -8,22 +8,14 @@ use Illuminate\Routing\Controller;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
     public function index()
     {
-        return view('comment::index');
+        return view('comment::dashboard.list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('comment::create');
+        return view('comment::dashboard.form');
     }
 
     /**
