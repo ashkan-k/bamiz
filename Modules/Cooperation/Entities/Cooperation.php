@@ -2,12 +2,14 @@
 
 namespace Modules\Cooperation\Entities;
 
+use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Cooperation extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $fillable = [ "first_name",  "last_name",  "phone",  "address",  "description",  "file" ];
 

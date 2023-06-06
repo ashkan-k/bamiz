@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('cooperation')->group(function() {
-    Route::get('/', 'CooperationController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Cooperation\Http\Controllers\Dashboard\CooperationController;
+
+Route::resource('cooperations', CooperationController::class);

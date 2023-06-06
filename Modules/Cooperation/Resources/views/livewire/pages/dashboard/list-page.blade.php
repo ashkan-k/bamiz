@@ -6,7 +6,8 @@
 
                 @include('livewire.searchBox')
 
-                <a class="btn btn-primary pull-right" href="{{ route('cooperations.create') }}">افزودن درخواست همکاری جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('cooperations.create') }}">افزودن درخواست همکاری
+                    جدید</a>
 
                 <table class="table table-hover">
                     <thead>
@@ -28,10 +29,16 @@
                             <td>{{ $item->phone ?: '---' }}</td>
                             <td>
 
-                                <span onclick="window.location.href='{{ $item->get_file() }}'"
-                                      class="label_mouse_cursor label label-warning-border rounded">
-                                  {{ $item->get_file() }}
-                                </span>
+                                @if($item->file)
+                                    <span onclick="window.open('{{ $item->get_file() }}', '_blank')"
+                                          class="label_mouse_cursor label label-warning-border rounded">
+                                        دانلود فایل
+                                    </span>
+                                @else
+                                    <span class="label_mouse_cursor label label-warning-border rounded">
+                                         بدون فایل
+                                    </span>
+                                @endif
 
                             </td>
 
