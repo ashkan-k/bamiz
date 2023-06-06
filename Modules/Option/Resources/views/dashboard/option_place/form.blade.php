@@ -19,7 +19,7 @@
 
         @livewire("option::pages.dashboard.option-place.form-page" , [
 
-        'titlePage' => 'افزودن تشریفات جدید'
+        'titlePage' => 'الحاق تشریفات جدید'
 
         ])
     @endif

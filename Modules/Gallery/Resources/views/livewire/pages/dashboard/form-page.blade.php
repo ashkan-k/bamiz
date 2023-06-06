@@ -18,29 +18,6 @@
                         <input type="hidden" name="place_id" value="{{ request('place_id') }}">
                         <input type="hidden" name="next_url" value="{{ request('next_url') }}">
 
-{{--                    <div class="form-group">--}}
-{{--                        <label class="control-label col-lg-2">مرکز</label>--}}
-{{--                        <div class="col-md-10">--}}
-
-{{--                            <select class="form-control" name="place_id" required>--}}
-
-{{--                                @foreach($places as $place)--}}
-
-{{--                                    <option--}}
-{{--                                        @if(isset($item->place_id) && $item->place_id == $place->id) selected--}}
-{{--                                        @endif value="{{ $place->id }}">{{ $place->name }}--}}
-{{--                                    </option>--}}
-
-{{--                                @endforeach--}}
-
-{{--                            </select>--}}
-
-{{--                            @error('place_id')--}}
-{{--                            <span class="text-danger text-wrap">{{ $message }}</span>--}}
-{{--                            @enderror--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
                     <div class="form-group">
                         <label class="control-label col-lg-2">عکس</label>
                         <div class="col-sm-10">
