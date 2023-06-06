@@ -96,4 +96,9 @@ class Place extends Model
     {
         return $this->belongsToMany(Option::class, 'option_places');
     }
+
+    public function comments()
+    {
+        return $this->morphMany('Modules\Comment\Entities\Comment' , 'commentable');
+    }
 }

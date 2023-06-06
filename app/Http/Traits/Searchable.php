@@ -34,8 +34,6 @@ trait Searchable
             throw new \Exception("Please define the filter_fields property .");
         }
 
-        dd($request);
-
         foreach ($this->filter_fields as $field) {
            if ($request->$field){
                if (str_contains($field, '.')) {

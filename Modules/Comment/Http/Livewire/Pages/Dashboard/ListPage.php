@@ -13,10 +13,15 @@ class ListPage extends Component
     public $titlePage = '';
     public $pagination;
     public $search = '';
+    public $status;
+    public $data;
     protected $items;
+
+    protected $listeners = ['triggerChangeStatusModal'];
 
     public function mount()
     {
+        $this->status = request('status');
         $this->pagination = env('PAGINATION', 10);
     }
 
@@ -32,9 +37,30 @@ class ListPage extends Component
         $comment->delete();
     }
 
+    // Change User Status
+    public function triggerChangeStatusModal(Comment $comment)
+    {
+        $this->item = $comment;
+        $this->data['status'] = $comment->status;
+    }
+
+    public function ChangeStatus()
+    {
+        $this->item->status = $this->data['status'];
+        $this->item->save();
+        $this->dispatchBrowserEvent('itemStatusUpdated');
+    }
+
+    private function FilterByStatus()
+    {
+        $this->items = $this->status ? $this->items->where(['status' => $this->status]) : $this->items;
+        return $this->items;
+    }
+
     public function render()
     {
-        $this->items = Comment::Search($this->search)->latest()->paginate($this->pagination);
-        return view('comment::livewire.pages.dashboard.list-page', ['items' => $this->items]);
+        $this->items = Comment::Search($this->search)->latest();
+        $this->items = $this->FilterByStatus();
+        return view('comment::livewire.pages.dashboard.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }

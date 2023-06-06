@@ -132,14 +132,16 @@
 
                 {{--                --}}{{--                ///////////////////////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-comment" aria-hidden="true"></i> <span>نظرات بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('comments.index') }}">نظرات تایید شده</a></li>--}}
-                {{--                        <li><a href="{{ route('NotApprovedComments') }}">نظرات تایید نشده</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-comment" aria-hidden="true"></i> <span>نظرات بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('comments.index') }}">نظرات</a></li>
+                        <li><a href="{{ route('comments.index') }}?status=pending">در انتظارها</a></li>
+                        <li><a href="{{ route('comments.index') }}?status=approved">تایید شده ها</a></li>
+                        <li><a href="{{ route('comments.index') }}?status=reject">تایید نشده ها</a></li>
+                    </ul>
+                </li>
 
                 {{--                --}}{{--                ///////////////////////////////////////////////////////////////////--}}
 

@@ -24,6 +24,11 @@ class Comment extends Model
         'user.username',
     ];
 
+    protected $filter_fields = [
+        'status',
+        'user_id',
+    ];
+
     public function get_status(){
         if ($this->status == 'pending'){
             return 'در انتظار';
