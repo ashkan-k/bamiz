@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use Modules\Category\Entities\Category;
+use Modules\Comment\Entities\Comment;
 use Modules\Common\Entities\City;
 use Modules\Common\Entities\Province;
 use Modules\Gallery\Entities\Gallery;
 use Modules\Option\Entities\Option;
 use Modules\User\Entities\User;
+use Modules\WishList\Entities\WishList;
 
 class Place extends Model
 {
@@ -99,6 +101,11 @@ class Place extends Model
 
     public function comments()
     {
-        return $this->morphMany('Modules\Comment\Entities\Comment' , 'commentable');
+        return $this->morphMany(Comment::class , 'commentable');
+    }
+
+    public function wish_lists()
+    {
+        return $this->morphMany(WishList::class , 'wish_listable');
     }
 }

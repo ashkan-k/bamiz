@@ -6,6 +6,7 @@ use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
+use Modules\Comment\Entities\Comment;
 use Modules\Place\Entities\Place;
 use Modules\User\Entities\User;
 
@@ -76,7 +77,7 @@ class Article extends Model
 
     public function comments()
     {
-        return $this->morphMany('Modules\Comment\Entities\Comment' , 'commentable');
+        return $this->morphMany(Comment::class , 'commentable');
     }
 
     protected static function newFactory()

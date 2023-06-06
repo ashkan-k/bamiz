@@ -10,5 +10,6 @@
     "Food": true,
     "Cooperation": true,
     "Setting": true,
-    "Comment": true
+    "Comment": true,
+    "WishList": true
 }

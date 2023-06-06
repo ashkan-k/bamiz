@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use Modules\Place\Entities\Place;
+use Modules\WishList\Entities\WishList;
 
 class Food extends Model
 {
@@ -52,5 +53,10 @@ class Food extends Model
     public function place()
     {
         return $this->belongsTo(Place::class);
+    }
+
+    public function wish_lists()
+    {
+        return $this->morphMany(WishList::class , 'wish_listable');
     }
 }
