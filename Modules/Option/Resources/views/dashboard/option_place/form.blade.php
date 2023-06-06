@@ -8,7 +8,7 @@
 
 @section('content')
     @if(isset($option))
-        @livewire("option::pages.dashboard.form-page" , [
+        @livewire("option::pages.dashboard.option_place.form-page" , [
 
         'titlePage' => 'ویرایش تشریفات',
         'type' => 'edit',
@@ -17,7 +17,7 @@
         ])
     @else
 
-        @livewire("option::pages.dashboard.form-page" , [
+        @livewire("option::pages.dashboard.option_place.form-page" , [
 
         'titlePage' => 'افزودن تشریفات جدید'
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Option\Http\Livewire\Pages\Dashboard;
+namespace Modules\Option\Http\Livewire\Pages\Dashboard\Option;
 
 use Livewire\Component;
 
@@ -13,6 +13,6 @@ class FormPage extends Component
 
     public function render()
     {
-        return view('option::livewire.pages.dashboard.form-page');
+        return view('option::livewire.pages.dashboard.option.form-page');
     }
 }

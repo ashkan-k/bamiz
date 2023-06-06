@@ -13,5 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Option\Http\Controllers\Dashboard\OptionController;
+use Modules\Option\Http\Controllers\Dashboard\OptionPlaceController;
 
 Route::resource('options', OptionController::class);
+Route::resource('option_places', OptionPlaceController::class);

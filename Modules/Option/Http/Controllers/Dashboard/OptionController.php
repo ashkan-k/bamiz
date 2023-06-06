@@ -16,12 +16,12 @@ class OptionController extends Controller
 
     public function index()
     {
-        return view('option::dashboard.list');
+        return view('option::dashboard.option.list');
     }
 
     public function create()
     {
-        return view('option::dashboard.form');
+        return view('option::dashboard.option.form');
     }
 
     public function store(OptionRequest $request)
@@ -34,7 +34,7 @@ class OptionController extends Controller
 
     public function edit(Option $option)
     {
-        return view('option::dashboard.form', compact('option'));
+        return view('option::dashboard.option.form', compact('option'));
     }
 
     public function update(OptionRequest $request, Option $option)

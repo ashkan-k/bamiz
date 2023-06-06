@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Option\Http\Livewire\Pages\Dashboard;
+namespace Modules\Option\Http\Livewire\Pages\Dashboard\Option;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -36,6 +36,6 @@ class ListPage extends Component
     public function render()
     {
         $this->items = Option::Search($this->search)->latest()->paginate($this->pagination);
-        return view('option::livewire.pages.dashboard.list-page', ['items' => $this->items]);
+        return view('option::livewire.pages.dashboard.option.list-page', ['items' => $this->items]);
     }
 }
