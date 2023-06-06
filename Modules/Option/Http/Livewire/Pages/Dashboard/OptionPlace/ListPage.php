@@ -15,11 +15,13 @@ class ListPage extends Component
     public $pagination;
     public $search = '';
     public $place_id;
+    public $full_url;
     protected $items;
 
     public function mount()
     {
         $this->place_id = request('place_id');
+        $this->full_url = request()->fullUrl();
         $this->pagination = env('PAGINATION', 10);
     }
 

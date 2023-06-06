@@ -6,7 +6,7 @@
 
                 @include('livewire.searchBox')
 
-                <a class="btn btn-primary pull-right" href="{{ route('option_places.create') }}?place_id={{ request('place_id') }}&next_url={{ request()->fullUrl() }}">افزودن تشریفات جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('option_places.create') }}?place_id={{ $this->place_id }}&next_url={{ $full_url }}">افزودن تشریفات جدید</a>
 
                 <table class="table table-hover">
                     <thead>

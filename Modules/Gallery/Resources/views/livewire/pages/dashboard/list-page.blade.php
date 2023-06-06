@@ -6,7 +6,7 @@
 
                 @include('livewire.searchBox')
 
-                <a class="btn btn-primary pull-right" href="{{ route('galleries.create') }}?place_id={{ request('place_id') }}&next_url={{ request()->fullUrl() }}">افزودن گالری جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('galleries.create') }}?place_id={{ $this->place_id }}&next_url={{ $full_url }}">افزودن گالری جدید</a>
 
                 <table class="table table-hover">
                     <thead>
