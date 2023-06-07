@@ -55,6 +55,11 @@ class Ticket extends Model
         return 'danger';
     }
 
+    public function get_file()
+    {
+        return $this->file ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+    }
+
     protected static function newFactory()
     {
         return \Modules\Ticket\Database\factories\TicketFactory::new();

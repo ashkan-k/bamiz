@@ -2,16 +2,18 @@
 
 namespace Modules\Ticket\Http\Controllers\Dashboard;
 
+use App\Http\Traits\Helpers;
 use App\Http\Traits\Responses;
 use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Ticket\Entities\Ticket;
 use Modules\Ticket\Http\Requests\TicketRequest;
 
 class TicketController extends Controller
 {
-    use Responses, Uploader;
+    use Responses, Uploader, Helpers;
 
     public function index()
     {
@@ -31,34 +33,22 @@ class TicketController extends Controller
         return $this->SuccessRedirect('تیکت شما با موفقیت ثبت شد.', 'tickets.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function edit(Ticket $ticket)
     {
-        return view('ticket::edit');
+        if (auth()->user()->level != 'admin') {
+            $this->check_myself_queryset($ticket, 'web');
+        }
+        return view('ticket::dashboard.ticket.form', compact('ticket'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
+    public function update(TicketRequest $request, Ticket $ticket)
     {
-        //
-    }
+        if (auth()->user()->level != 'admin') {
+            $this->check_myself_queryset($ticket, 'web');
+        }
+        $file = $this->UploadFile($request, 'file', 'ticket_files', auth()->id(), $ticket->file);
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $ticket->update(array_merge($request->except(['status', 'user_id']), ['file' => $file]));
+        return $this->SuccessRedirect('تیکت شما با موفقیت ویرایش شد.', 'tickets.index');
     }
 }

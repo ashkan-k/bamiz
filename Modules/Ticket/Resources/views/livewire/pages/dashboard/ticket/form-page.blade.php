@@ -35,11 +35,11 @@
 
                             <select id="id_ticket_category_id" class="form-control" name="ticket_category_id" required>
 
-                                @foreach($categories as $item)
+                                @foreach($categories as $category)
 
                                     <option
-                                        @if(isset($item->ticket_category_id) && $item->ticket_category_id == $item->id) selected
-                                        @endif value="{{ $item->id }}">{{ $item->title }}
+                                        @if(isset($category->ticket_category_id) && $category->ticket_category_id == $category->id) selected
+                                        @endif value="{{ $category->id }}">{{ $category->title }}
                                     </option>
 
                                 @endforeach

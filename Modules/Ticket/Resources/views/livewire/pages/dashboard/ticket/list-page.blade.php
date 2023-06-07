@@ -8,7 +8,7 @@
 
                 <a class="btn btn-primary pull-right"
                    href="{{ route('tickets.create') }}">افزودن
-                    دسته بندی تیکت جدید</a>
+                    تیکت جدید</a>
 
                 <table class="table table-hover">
                     <thead>

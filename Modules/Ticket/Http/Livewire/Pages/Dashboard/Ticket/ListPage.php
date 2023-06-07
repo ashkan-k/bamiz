@@ -53,7 +53,10 @@ class ListPage extends Component
 
     public function render()
     {
-        $this->items = Ticket::Search($this->search)->latest()->paginate($this->pagination);
-        return view('ticket::livewire.pages.dashboard.ticket.list-page', ['items' => $this->items]);
+        $this->items = Ticket::Search($this->search)->latest();
+        if (auth()->user()->level != 'admin'){
+            $this->items = $this->items->whereBelongsTo(auth()->user());
+        }
+        return view('ticket::livewire.pages.dashboard.ticket.list-page', ['items' => $this->items ->paginate($this->pagination)]);
     }
 }
