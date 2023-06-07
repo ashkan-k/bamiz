@@ -4,7 +4,27 @@
             <div class="card-block">
                 <h4 class="card-title">{{$titlePage}}</h4>
 
-                @include('livewire.searchBox')
+                <form id="search">
+                    <div class="form-group">
+                        <div class="row">
+
+
+                            @include('livewire.searchBox')
+
+                            <div class="col-lg-3">
+                                <label class="control-label col-2">وضعیت</label>
+                                <select onchange="submit()" class="form-control rounded">
+                                    <option value="">همه موارد</option>
+                                    <option value="waiting">در انتظار</option>
+                                    <option value="answered">باز</option>
+                                    <option value="close">بسته</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
 
                 <a class="btn btn-primary pull-right"
                    href="{{ route('tickets.create') }}">افزودن
