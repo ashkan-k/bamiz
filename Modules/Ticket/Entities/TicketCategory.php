@@ -9,8 +9,12 @@ class TicketCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
-    
+    protected $fillable = ['title'];
+
+    protected $search_fields = [
+        'title',
+    ];
+
     protected static function newFactory()
     {
         return \Modules\Ticket\Database\factories\TicketCategoryFactory::new();

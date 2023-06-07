@@ -2,7 +2,10 @@
 
 namespace Modules\Ticket\Database\factories;
 
+use App\Enums\EnumHelpers;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Ticket\Entities\Ticket;
+use Modules\User\Entities\User;
 
 class TicketAnswerFactory extends Factory
 {
@@ -21,7 +24,10 @@ class TicketAnswerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'text' => fake()->text(),
+            'file' => fake()->filePath(),
+            'user_id' => User::factory(),
+            'ticket_id' => Ticket::factory(),
         ];
     }
 }
