@@ -51,9 +51,16 @@ class ListPage extends Component
         $this->dispatchBrowserEvent('itemStatusUpdated');
     }
 
+    private function FilterByStatus()
+    {
+        $this->items = $this->status ? $this->items->where(['status' => $this->status]) : $this->items;
+        return $this->items;
+    }
+
     public function render()
     {
         $this->items = Ticket::Search($this->search)->latest();
+        $this->items = $this->FilterByStatus();
         if (auth()->user()->level != 'admin'){
             $this->items = $this->items->whereBelongsTo(auth()->user());
         }

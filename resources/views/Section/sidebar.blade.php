@@ -218,16 +218,18 @@
 
                 {{--                --}}{{--                //////////////////////////////////////////////////--}}
 
-                {{--                <li class="menu-title">تیکت ها</li>--}}
+                <li class="menu-title">تیکت ها</li>
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> <span>تیکت ها</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('tickets.index') }}">لیست تیکت ها</a></li>--}}
-                {{--                        <li><a href="{{ route('tickets.create') }}">افزودن تیکت جدید</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> <span>تیکت ها</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('tickets.index') }}">همه تیکت ها</a></li>
+                        <li><a href="{{ route('tickets.index') }}?status=waiting">در انتظار ها</a></li>
+                        <li><a href="{{ route('tickets.index') }}?status=answered">پاسخ داده شده ها</a></li>
+                        <li><a href="{{ route('tickets.index') }}?status=close">بسته ها</a></li>
+                    </ul>
+                </li>
 
                 {{--                <li class="submenu">--}}
                 {{--                    <a href="#"><i class="fa fa-question" aria-hidden="true"></i> <span>پرسش ها</span> <span--}}

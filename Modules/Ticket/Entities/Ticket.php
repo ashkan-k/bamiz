@@ -31,8 +31,9 @@ class Ticket extends Model
     ];
 
     protected $filter_fields = [
-        'user.id',
-        'category.id',
+        'user_id',
+        'category_id',
+        'status',
     ];
 
     public function get_status()
