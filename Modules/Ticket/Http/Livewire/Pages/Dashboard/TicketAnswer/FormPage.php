@@ -6,8 +6,16 @@ use Livewire\Component;
 
 class FormPage extends Component
 {
+    public $titlePage;
+    public $type = '';
+
+    public $item;
+
     public function render()
     {
-        return view('ticket::livewire.pages.dashboard.ticket-answer.form-page');
+        $data = [
+            'answers' => $this->item->answers()->get()
+        ];
+        return view('ticket::livewire.pages.dashboard.ticket-answer.form-page', $data);
     }
 }

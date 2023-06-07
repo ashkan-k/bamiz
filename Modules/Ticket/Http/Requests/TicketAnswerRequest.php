@@ -14,7 +14,7 @@ class TicketAnswerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'text' => 'required',
         ];
     }
 

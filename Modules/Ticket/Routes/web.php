@@ -18,4 +18,5 @@ use Modules\Ticket\Http\Controllers\Dashboard\TicketController;
 
 Route::resource('tickets', TicketController::class);
 Route::resource('ticket-categories', TicketCategoryController::class);
-Route::resource('ticket-answers', TicketAnswerController::class);
+Route::get('ticket-answers/{ticket}', [TicketAnswerController::class, 'show'])->name('ticket-answers.show');
+Route::post('ticket-answers/{ticket}/store', [TicketAnswerController::class, 'store'])->name('ticket-answers.store');

@@ -49,6 +49,12 @@
 
                             <td>
                                 <div class="buttons ">
+                                    <a href="{{ route('ticket-answers.show' , $item->id) }}"
+                                       class="btn btn-warning btn-action mr-1"
+                                       data-toggle="tooltip" title=""
+                                       data-original-title="نمایش"><i
+                                            class="fas fa-eye-alt"></i><i
+                                            class="fa fa-eye"> </i> </a>
                                     <a href="{{ route('tickets.edit' , $item->id) }}"
                                        class="btn btn-primary btn-action mr-1"
                                        data-toggle="tooltip" title=""
@@ -75,70 +81,70 @@
         </div>
     </div>
 
-        @if(auth()->user()->level == 'admin')
-            <!-- Modal -->
-                <div wire:ignore.self class="modal fade bd-example-modal-lg" id="changeStatusModal" tabindex="-1" role="dialog"
-                     aria-labelledby="changeStatusModalTitle" aria-hidden="true" dir="rtl"
-                     style="text-align: right !important; margin-top: 250px">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+@if(auth()->user()->level == 'admin')
+    <!-- Modal -->
+        <div wire:ignore.self class="modal fade bd-example-modal-lg" id="changeStatusModal" tabindex="-1" role="dialog"
+             aria-labelledby="changeStatusModalTitle" aria-hidden="true" dir="rtl"
+             style="text-align: right !important; margin-top: 250px">
+            <div class="modal-dialog modal-dialog-centered" role="document">
 
-                        <div class="modal-content">
-                            <div class="modal-header" style="width: 100%!important;">
-                                <h5 class="modal-title"
-                                    id="exampleModalLongTitle">تغییر وضعیت</h5>
+                <div class="modal-content">
+                    <div class="modal-header" style="width: 100%!important;">
+                        <h5 class="modal-title"
+                            id="exampleModalLongTitle">تغییر وضعیت</h5>
 
-                                <button type="button" class="close ml-2" data-dismiss="modal"
-                                        style="position: absolute!important;left: 0!important; top: 10px"
-                                        aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                        <button type="button" class="close ml-2" data-dismiss="modal"
+                                style="position: absolute!important;left: 0!important; top: 10px"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <form wire:submit.prevent="ChangeStatus">
+                        <div class="modal-body">
+                            <label class="form-label"
+                                   for="id_status">وضعیت:</label>
+
+                            <div>
+                                <select wire:model="data.status" class="form-control" name="status">
+
+                                    <option
+                                        @if(isset($current_item_status) && $current_item_status == 'waiting') selected
+                                        @endif value="waiting">در انتظار
+                                    </option>
+                                    <option
+                                        @if(isset($current_item_status) && $current_item_status == 'answered') selected
+                                        @endif value="answered">پاسخ داده شده
+                                    </option>
+                                    <option
+                                        @if(isset($current_item_status) && $current_item_status == 'close') selected
+                                        @endif value="close">بسته
+                                    </option>
+
+                                </select>
+
+                                @error('status')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
                             </div>
-
-                            <form wire:submit.prevent="ChangeStatus">
-                                <div class="modal-body">
-                                    <label class="form-label"
-                                           for="id_status">وضعیت:</label>
-
-                                    <div>
-                                        <select wire:model="data.status" class="form-control" name="status">
-
-                                            <option
-                                                @if(isset($current_item_status) && $current_item_status == 'waiting') selected
-                                                @endif value="waiting">در انتظار
-                                            </option>
-                                            <option
-                                                @if(isset($current_item_status) && $current_item_status == 'answered') selected
-                                                @endif value="answered">پاسخ داده شده
-                                            </option>
-                                            <option
-                                                @if(isset($current_item_status) && $current_item_status == 'close') selected
-                                                @endif value="close">بسته
-                                            </option>
-
-                                        </select>
-
-                                        @error('status')
-                                        <span class="text-danger text-wrap">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-disabled="is_submited">
-                                        بستن
-                                    </button>&nbsp;
-                                    <button type="submit" class="btn btn-primary">ذخیره
-                                    </button>
-                                </div>
-                            </form>
-
                         </div>
 
-                    </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" ng-disabled="is_submited">
+                                بستن
+                            </button>&nbsp;
+                            <button type="submit" class="btn btn-primary">ذخیره
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
 
-        @endif
+            </div>
+        </div>
+
+    @endif
 
 </div>
 
