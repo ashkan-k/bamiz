@@ -11,6 +11,11 @@
 |
 */
 
-Route::prefix('ticket')->group(function() {
-    Route::get('/', 'TicketController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Ticket\Http\Controllers\Dashboard\TicketAnswerController;
+use Modules\Ticket\Http\Controllers\Dashboard\TicketCategoryController;
+use Modules\Ticket\Http\Controllers\Dashboard\TicketController;
+
+Route::resource('tickets', TicketController::class);
+Route::resource('ticket-categories', TicketCategoryController::class);
+Route::resource('ticket-answers', TicketAnswerController::class);

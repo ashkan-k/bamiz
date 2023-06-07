@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Ticket\Http\Controllers;
+namespace Modules\Ticket\Http\Controllers\Dashboard;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class TicketController extends Controller
+class TicketAnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
