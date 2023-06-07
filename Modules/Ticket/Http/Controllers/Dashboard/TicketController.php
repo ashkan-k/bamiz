@@ -3,46 +3,32 @@
 namespace Modules\Ticket\Http\Controllers\Dashboard;
 
 use App\Http\Traits\Responses;
+use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Ticket\Http\Requests\TicketRequest;
 
 class TicketController extends Controller
 {
-    use Responses;
+    use Responses, Uploader;
 
     public function index()
     {
         return view('ticket::dashboard.ticket.list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('ticket::create');
+        return view('ticket::dashboard.ticket.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(TicketRequest $request)
     {
-        //
-    }
+        $file = $this->UploadFile($request, 'file', 'ticket_files', auth()->id());
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('ticket::show');
+        auth()->user()->tickets()->create(array_merge($request->except(['status']), ['file' => $file]));
+        return $this->SuccessRedirect('تیکت شما با موفقیت ثبت شد.', 'tickets.index');
     }
 
     /**

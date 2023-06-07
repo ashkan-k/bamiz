@@ -7,7 +7,7 @@
                 @include('livewire.searchBox')
 
                 <a class="btn btn-primary pull-right"
-                   href="{{ route('ticket-categories.create') }}">افزودن
+                   href="{{ route('tickets.create') }}">افزودن
                     دسته بندی تیکت جدید</a>
 
                 <table class="table table-hover">
@@ -49,7 +49,7 @@
 
                             <td>
                                 <div class="buttons ">
-                                    <a href="{{ route('ticket-categories.edit' , $item->id) }}"
+                                    <a href="{{ route('tickets.edit' , $item->id) }}"
                                        class="btn btn-primary btn-action mr-1"
                                        data-toggle="tooltip" title=""
                                        data-original-title="ویرایش"><i

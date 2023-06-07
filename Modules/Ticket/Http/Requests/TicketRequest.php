@@ -14,7 +14,9 @@ class TicketRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required:max:255',
+            'text' => 'required',
+            'ticket_category_id' => 'required|exists:ticket_categories,id',
         ];
     }
 

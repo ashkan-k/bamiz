@@ -9,6 +9,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Article\Entities\Article;
+use Modules\Comment\Entities\Comment;
+use Modules\Place\Entities\Place;
+use Modules\Ticket\Entities\Ticket;
+use Modules\Ticket\Entities\TicketAnswer;
+use Modules\WishList\Entities\WishList;
 
 class User extends Authenticatable
 {
@@ -76,74 +82,66 @@ class User extends Authenticatable
         return $this->avatar ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
-    public function get_level(){
-        if ($this->level == 'user'){
+    public function get_level()
+    {
+        if ($this->level == 'user') {
             return 'کاربر';
-        }
-        elseif ($this->level == 'staff'){
+        } elseif ($this->level == 'staff') {
             return 'کارمند';
-        }
-        elseif ($this->level == 'admin'){
+        } elseif ($this->level == 'admin') {
             return 'مدیر';
         }
-        return  'مدیر رستوران';
+        return 'مدیر رستوران';
     }
 
-    public function get_level_class(){
-        if ($this->level == 'user'){
+    public function get_level_class()
+    {
+        if ($this->level == 'user') {
             return 'info';
-        }
-        elseif ($this->level == 'staff'){
+        } elseif ($this->level == 'staff') {
             return 'warning';
-        }
-        elseif ($this->level == 'admin'){
+        } elseif ($this->level == 'admin') {
             return 'success';
         }
-        return  'danger';
+        return 'danger';
     }
 
     //
 
-//    public function articles()
-//    {
-//        return $this->hasMany(Article::class);
-//    }
-//
-//    public function centers()
-//    {
-//        return $this->hasMany(Center::class);
-//    }
-//
-//    public function galleries()
-//    {
-//        return $this->hasMany(Gallery::class);
-//    }
-//
-//    public function comments()
-//    {
-//        return $this->hasMany(Comment::class);
-//    }
-//
-//    public function wish_lists()
-//    {
-//        return $this->hasMany(WishList::class);
-//    }
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    public function places()
+    {
+        return $this->hasMany(Place::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function wish_lists()
+    {
+        return $this->hasMany(WishList::class);
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function ticket_answeres()
+    {
+        return $this->hasMany(TicketAnswer::class);
+    }
 //
 //    public function reserves()
 //    {
 //        return $this->hasMany(Reserve::class);
 //    }
-//
-//    public function tickets()
-//    {
-//        return $this->hasMany(Ticket::class);
-//    }
-//
-//    public function answers()
-//    {
-//        return $this->hasMany(Answer::class);
-//    }
-//
 //    public function payments()
 //    {
 //        return $this->hasMany(Payment::class);
