@@ -11,5 +11,6 @@
     "Cooperation": true,
     "Setting": true,
     "Comment": true,
-    "WishList": true
+    "WishList": true,
+    "Ticket": true
 }
