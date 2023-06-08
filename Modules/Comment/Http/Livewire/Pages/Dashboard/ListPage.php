@@ -16,6 +16,11 @@ class ListPage extends Component
     public $status;
     public $data;
     protected $items;
+    public $status_filter_items = [
+        ['id' => 'pending', 'name' => 'در انتظار'],
+        ['id' => 'approved', 'name' => 'تایید شده'],
+        ['id' => 'reject', 'name' => 'رد شده'],
+    ];
 
     protected $listeners = ['triggerChangeStatusModal'];
 

@@ -4,7 +4,15 @@
             <div class="card-block">
                 <h4 class="card-title">{{$titlePage}}</h4>
 
-                @include('livewire.searchBox')
+                <hr>
+                <form id="search">
+                    <div class="form-group">
+                        <div class="row">
+                            @include('livewire.search_input')
+                            @include('livewire.limit_select_box')
+                        </div>
+                    </div>
+                </form>
 
                 <a class="btn btn-primary pull-right" href="{{ route('provinces.create') }}">افزودن استان جدید</a>
 
