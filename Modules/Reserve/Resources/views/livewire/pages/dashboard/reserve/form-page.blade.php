@@ -40,7 +40,7 @@
 
 
                     <div class="form-group" wire:ignore>
-                        <label class="control-label col-lg-2">مرکز</label>
+                        <label class="control-label col-lg-2">مرکز (رستوران، هتل و...)</label>
                         <div class="col-md-10">
 
                             <select id="id_place" required class="form-control" name="place_id">

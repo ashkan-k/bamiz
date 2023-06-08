@@ -15,7 +15,15 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('reserve_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
+            $table->string('amount')->default(0);
+            $table->string('refID')->nullable();
+            $table->string('authority');
+            $table->ipAddress('ip')->nullable();
+
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
