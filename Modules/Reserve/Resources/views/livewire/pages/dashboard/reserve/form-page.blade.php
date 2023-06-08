@@ -30,6 +30,10 @@
                                 @endforeach
                             </select>
 
+                            @error('user_id')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+
                         </div>
                     </div>
 
@@ -49,6 +53,10 @@
                                 @endforeach
                             </select>
 
+                            @error('place_id')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+
                         </div>
                     </div>
 
@@ -59,6 +67,10 @@
                                    class="form-control"
                                    placeholder=" تاریخ را وارد کنید"
                                    value="@if(old('date')){{ old('date') }}@elseif(isset($item->date)){{ $item->date }}@endif">
+
+                            @error('date')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 
@@ -69,6 +81,10 @@
                                    class="form-control"
                                    placeholder=" زمان شروع را وارد کنید"
                                    value="@if(old('start_time')){{ old('start_time') }}@elseif(isset($item->start_time)){{ $item->start_time }}@endif">
+
+                            @error('start_time')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 
@@ -79,6 +95,10 @@
                                    class="form-control"
                                    placeholder=" زمان پایان را وارد کنید"
                                    value="@if(old('end_time')){{ old('end_time') }}@elseif(isset($item->end_time)){{ $item->end_time }}@endif">
+
+                            @error('end_time')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 
@@ -89,6 +109,10 @@
                                    class="form-control"
                                    placeholder="تعداد مهمانان را وارد کنید"
                                    value="@if(old('guest_count')){{ old('guest_count') }}@elseif(isset($item->guest_count)){{ $item->guest_count }}@endif">
+
+                            @error('guest_count')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 
@@ -109,12 +133,16 @@
                     {{--                    </div>--}}
 
                     <div class="form-group">
-                        <label class="control-label col-lg-2">قیمت رزرو</label>
+                        <label class="control-label col-lg-2">قیمت رزرو (تومان)</label>
                         <div class="col-md-10">
                             <input required type="text" name="amount"
                                    class="form-control"
                                    placeholder="قیمت را وارد کنید"
                                    value="@if(old('amount')){{ old('amount') }}@elseif(isset($item->amount)){{ $item->amount }}@endif">
+
+                            @error('amount')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 

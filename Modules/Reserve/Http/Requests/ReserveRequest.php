@@ -15,8 +15,8 @@ class ReserveRequest extends FormRequest
     {
         return [
             'date' => 'required|date|date_format:Y-m-d|after:now',
-            'start_time' => 'required|time',
-            'end_time' => 'time',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'date_format:H:i',
             'guest_count' => 'required|numeric',
             'option_id.*' => 'numeric|exists:options,id'
         ];
