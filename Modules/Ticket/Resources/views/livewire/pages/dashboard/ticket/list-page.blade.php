@@ -4,27 +4,40 @@
             <div class="card-block">
                 <h4 class="card-title">{{$titlePage}}</h4>
 
+                <hr>
                 <form id="search">
                     <div class="form-group">
                         <div class="row">
-
-
-                            @include('livewire.searchBox')
-                            @include('livewire.select_box')
-
-                            <div class="col-lg-3">
-                                <label class="control-label col-2">وضعیت</label>
-                                <select onchange="submit()" class="form-control rounded">
-                                    <option value="">همه موارد</option>
-                                    <option value="waiting">در انتظار</option>
-                                    <option value="answered">باز</option>
-                                    <option value="close">بسته</option>
-                                </select>
-                            </div>
-
+                            @include('livewire.search_input')
+                            @include('livewire.limit_select_box')
+                            {{--                            {% include 'Admin/Filters/search_input.html' %}--}}
+                            {{--                            {% include 'Admin/Filters/select_box.html' with label='دسته بندی' name='category' items=category_filter_items %}--}}
+                            {{--                            {% include 'Admin/Filters/limit_select_box.html' %}--}}
                         </div>
                     </div>
                 </form>
+
+                {{--                <form id="search">--}}
+                {{--                    <div class="form-group">--}}
+                {{--                        <div class="row">--}}
+
+
+                {{--                            @include('livewire.searchBox')--}}
+                {{--                            @include('livewire.select_box')--}}
+
+                {{--                            <div class="col-lg-3">--}}
+                {{--                                <label class="control-label col-2">وضعیت</label>--}}
+                {{--                                <select onchange="submit()" class="form-control rounded">--}}
+                {{--                                    <option value="">همه موارد</option>--}}
+                {{--                                    <option value="waiting">در انتظار</option>--}}
+                {{--                                    <option value="answered">باز</option>--}}
+                {{--                                    <option value="close">بسته</option>--}}
+                {{--                                </select>--}}
+                {{--                            </div>--}}
+
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </form>--}}
 
 
                 <a class="btn btn-primary pull-right"
