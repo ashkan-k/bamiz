@@ -6,6 +6,8 @@ use App\Http\Traits\Responses;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Reserve\Entities\Reserve;
+use Modules\Reserve\Http\Requests\ReserveRequest;
 
 class ReserveController extends Controller
 {
@@ -16,23 +18,15 @@ class ReserveController extends Controller
         return view('reserve::dashboard.reserve.list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('reserve::create');
+        return view('reserve::dashboard.reserve.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(ReserveRequest $request)
     {
-        //
+        Reserve::create($request->validate());
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'reserves.index');
     }
 
     /**

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->time('start_time');
-            $table->time('end_time');
+            $table->time('end_time')->nullable();
             $table->integer('guest_count')->default(1);
             $table->string('amount')->default(0);
             $table->boolean('status')->default(false);

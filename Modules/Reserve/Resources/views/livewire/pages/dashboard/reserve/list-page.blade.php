@@ -15,7 +15,7 @@
                     </div>
                 </form>
 
-                <a class="btn btn-primary pull-right" href="{{ route('reserves.create') }}">افزودن مکان جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('reserves.create') }}">افزودن رزرو جدید</a>
 
                 <table class="table table-hover">
                     <thead>

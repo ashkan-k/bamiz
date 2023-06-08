@@ -14,7 +14,11 @@ class ReserveRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'date' => 'required|date|date_format:Y-m-d|after:now',
+            'start_time' => 'required|time',
+            'end_time' => 'time',
+            'guest_count' => 'required|numeric',
+            'option_id.*' => 'numeric|exists:options,id'
         ];
     }
 
