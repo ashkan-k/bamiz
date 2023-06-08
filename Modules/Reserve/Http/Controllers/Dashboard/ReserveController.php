@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Reserve\Http\Controllers;
+namespace Modules\Reserve\Http\Controllers\Dashboard;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;

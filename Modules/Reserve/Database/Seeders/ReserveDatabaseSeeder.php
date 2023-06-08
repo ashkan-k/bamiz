@@ -4,6 +4,7 @@ namespace Modules\Reserve\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Reserve\Entities\Reserve;
 
 class ReserveDatabaseSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class ReserveDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        Reserve::factory(15)->create();
 
         // $this->call("OthersTableSeeder");
     }

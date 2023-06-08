@@ -2,7 +2,10 @@
 
 namespace Modules\Reserve\Database\factories;
 
+use App\Enums\EnumHelpers;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Place\Entities\Place;
+use Modules\User\Entities\User;
 
 class ReserveFactory extends Factory
 {
@@ -21,7 +24,14 @@ class ReserveFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'date' => fake()->date(),
+            'start_time' => fake()->time(),
+            'end_time' => fake()->time(),
+            'guest_count' => fake()->randomNumber(),
+            'status' => fake()->boolean(),
+            'user_id' => User::factory(),
+            'place_id' => Place::factory(),
+            'type' => fake()->randomElement(EnumHelpers::$ReserveTypesEnum),
         ];
     }
 }

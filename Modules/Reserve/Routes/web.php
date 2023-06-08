@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('reserve')->group(function() {
-    Route::get('/', 'ReserveController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Reserve\Http\Controllers\Dashboard\ReserveController;
+
+Route::resource('reserves', ReserveController::class);

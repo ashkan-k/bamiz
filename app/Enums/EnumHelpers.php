@@ -11,4 +11,5 @@ class EnumHelpers
     static $ArticleStatusEnum = ['draft', 'publish', 'done'];
     static $CommentStatusEnum = ['pending', 'approved', 'reject'];
     static $TicketStatusEnum = ['waiting', 'answered', 'close'];
+    static $ReserveTypesEnum = ['table_for_food', 'work_appointment', 'table_for_birth_day_with_food', 'table_for_birth_day_without_food'];
 }
