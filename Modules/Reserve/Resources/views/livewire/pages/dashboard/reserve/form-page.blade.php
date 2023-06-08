@@ -24,7 +24,8 @@
                                 <option value="">کاربر را انتخاب کنید</option>
 
                                 @foreach($users as $user)
-                                    <option @if(isset($item->user_id) && $item->user_id == $user->id) selected
+                                    <option @if(old('user_id')) @if(old('user_id') == $user->id ) selected
+                                            @endif @elseif(isset($item->user_id) && $item->user_id == $user->id) selected
                                             @endif value="{{ $user->id }}">{{ $user->fullname() }}
                                     </option>
                                 @endforeach
@@ -47,8 +48,9 @@
                                 <option value="">مرکز را انتخاب کنید</option>
 
                                 @foreach($places as $place)
-                                    <option @if(isset($item->place_id) && $item->place_id == $user->id) selected
-                                            @endif value="{{ $place->id }}">{{ $place->name }}
+                                    <option @if(old('place_id')) @if(old('place_id') == $place->id ) selected
+                                            @endif @elseif(isset($item->place_id) && $item->place_id == $place->id) selected
+                                            @endif value="{{ $place->id }}" value="{{ $place->id }}">{{ $place->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -59,6 +61,29 @@
 
                         </div>
                     </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">مناسبت (موضوع رزرو)</label>
+                            <div class="col-md-10">
+
+                                <select id="id_type" required class="form-control" name="type">
+
+                                    <option value="">مناسبت را انتخاب کنید</option>
+
+                                    @foreach($types as $type)
+                                        <option @if(old('type')) @if(old('type') == $type['id'] ) selected
+                                                @endif @elseif(isset($item->type) && $item->type == $type['id']) selected
+                                                @endif value="{{ $type['id'] }}" value="{{ $type['id'] }}">{{ $type['name'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                @error('type')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                        </div>
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">تاریخ</label>
@@ -78,7 +103,7 @@
                         <label class="control-label col-lg-2">زمان شروع</label>
                         <div class="col-md-10">
                             <input id="id_start_time" required type="text" name="start_time"
-                                   class="form-control"
+                                   class="form-control" autocomplete="off"
                                    placeholder=" زمان شروع را وارد کنید"
                                    value="@if(old('start_time')){{ old('start_time') }}@elseif(isset($item->start_time)){{ $item->start_time }}@endif">
 
@@ -92,7 +117,7 @@
                         <label class="control-label col-lg-2">زمان پایان</label>
                         <div class="col-md-10">
                             <input id="id_end_time" type="text" name="end_time"
-                                   class="form-control"
+                                   class="form-control" autocomplete="off"
                                    placeholder=" زمان پایان را وارد کنید"
                                    value="@if(old('end_time')){{ old('end_time') }}@elseif(isset($item->end_time)){{ $item->end_time }}@endif">
 
@@ -116,26 +141,29 @@
                         </div>
                     </div>
 
-                    {{--                    <div class="form-group">--}}
-                    {{--                        <label class="control-label col-lg-2">تشریفات ویژه (اختیاری)</label>--}}
-                    {{--                        <div class="col-md-10">--}}
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">تشریفات ویژه (اختیاری)</label>
+                        <div class="col-md-10">
 
-                    {{--                            <select wire:model.defer='option_id' multiple class="form-control" name="option_id[]"--}}
-                    {{--                                    multiple data-live-search="true">--}}
+                            <select id="id_option" class="form-control" name="option_id[]"
+                                    multiple data-live-search="true">
 
-                    {{--                                @foreach($options as $c)--}}
-                    {{--                                    <option value="{{ $c->id }}">{{ $c->title }}</option>--}}
-                    {{--                                @endforeach--}}
+                                @foreach($options as $option)
+                                    <option @if(count(old('option_id', []))) @if(in_array($option->id, old('option_id'))) selected
+                                            @endif @elseif(isset($item) && count($item->options) > 0 && in_array($option->id, $item->options)) selected
+                                            @endif value="{{ $option->id }}" value="{{ $option->id }}">{{ $option->title }}
+                                    </option>
+                                @endforeach
 
-                    {{--                            </select>--}}
+                            </select>
 
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">قیمت رزرو (تومان)</label>
                         <div class="col-md-10">
-                            <input required type="text" name="amount"
+                            <input required type="number" name="amount"
                                    class="form-control"
                                    placeholder="قیمت را وارد کنید"
                                    value="@if(old('amount')){{ old('amount') }}@elseif(isset($item->amount)){{ $item->amount }}@endif">
@@ -186,6 +214,7 @@
     <script>
         $('#id_user').select2();
         $('#id_place').select2();
+        $('#id_option').select2();
     </script>
 @endsection
 

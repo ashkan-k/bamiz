@@ -2,6 +2,7 @@
 
 namespace Modules\Reserve\Http\Requests;
 
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReserveRequest extends FormRequest
@@ -14,11 +15,15 @@ class ReserveRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required|date|date_format:Y-m-d|after:now',
+            'date' => 'required|jdate:Y-m-d|after:' . \verta()->formatDate(),
             'start_time' => 'required|date_format:H:i',
-            'end_time' => 'date_format:H:i',
+            'end_time' => 'date_format:H:i|after:start_time',
             'guest_count' => 'required|numeric',
-            'option_id.*' => 'numeric|exists:options,id'
+            'amount' => 'numeric|min:1',
+            'user_id' => 'required|exists:users,id',
+            'place_id' => 'required|exists:places,id',
+            'option_id.*' => 'numeric|exists:options,id',
+            'type' => 'in:table_for_food,work_appointment,table_for_birth_day_with_food,table_for_birth_day_without_food',
         ];
     }
 

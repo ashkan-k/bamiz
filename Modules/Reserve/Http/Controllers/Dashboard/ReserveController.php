@@ -25,7 +25,9 @@ class ReserveController extends Controller
 
     public function store(ReserveRequest $request)
     {
-        Reserve::create($request->validated());
+        $reserve = Reserve::create($request->validated());
+//        $reserve->options()->sync($request->options);
+//        dd($reserve->options()->all());
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'reserves.index');
     }
 
