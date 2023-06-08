@@ -9,7 +9,8 @@
                     <div class="form-group">
                         <div class="row">
                             @include('livewire.search_input')
-{{--                            @include('livewire.select_box', ['label' => 'وضعیت', 'name' => 'status', 'items' => $status_filter_items])--}}
+                            @include('livewire.select_box', ['label' => 'وضعیت', 'name' => 'is_active', 'items' => $status_filter_items])
+                            @include('livewire.select_box', ['label' => 'نقش', 'name' => 'level', 'items' => $level_filter_items])
                             @include('livewire.limit_select_box')
                         </div>
                     </div>
