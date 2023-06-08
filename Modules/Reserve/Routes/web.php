@@ -14,4 +14,4 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Reserve\Http\Controllers\Dashboard\ReserveController;
 
-Route::resource('reserves', ReserveController::class);
+Route::resource('reserves', ReserveController::class)->parameter('reserf', 'reserve');

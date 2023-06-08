@@ -25,50 +25,20 @@ class ReserveController extends Controller
 
     public function store(ReserveRequest $request)
     {
-        $reserve = Reserve::create($request->validated());
-//        $reserve->options()->sync($request->options);
-//        dd($reserve->options()->all());
+        $reserf = Reserve::create($request->validated());
+        $reserf->options()->sync($request->option_id);
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'reserves.index');
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function edit(Reserve $reserf)
     {
-        return view('reserve::show');
+        return view('reserve::dashboard.reserve.form', compact('reserf'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function update(ReserveRequest $request, Reserve $reserf)
     {
-        return view('reserve::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $reserf->update($request->validated());
+        $reserf->options()->sync($request->option_id);
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'reserves.index');
     }
 }

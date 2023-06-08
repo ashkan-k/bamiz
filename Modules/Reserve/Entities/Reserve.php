@@ -78,7 +78,12 @@ class Reserve extends Model
 
     public function options()
     {
-        return $this->belongsToMany(Option::class);
+        return $this->belongsToMany(Option::class, 'reserve_options');
+    }
+
+    public function options_pluck_ids()
+    {
+        return $this->options()->get()->pluck('id')->toArray();
     }
 
     public function payment()

@@ -6,6 +6,7 @@ use App\Http\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Place\Entities\Place;
+use Modules\Reserve\Entities\Reserve;
 
 class Option extends Model
 {
@@ -37,5 +38,10 @@ class Option extends Model
     public function places()
     {
         return $this->belongsToMany(Place::class, 'option_places');
+    }
+
+    public function reserves()
+    {
+        return $this->belongsToMany(Reserve::class, 'reserve_options');
     }
 }

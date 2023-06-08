@@ -5,7 +5,7 @@
                 <h2 class="card-title"><b>{{ $titlePage }}</b></h2>
 
                 <form class="form-horizontal"
-                      action="{{ $type == 'edit'  ?  route('reserves.update' , $reserve_id)  :  route('reserves.store') }}"
+                      action="{{ $type == 'edit' ? route('reserves.update' , $item->id) : route('reserves.store') }}"
                       method="post"
                       enctype="multipart/form-data">
 
@@ -62,28 +62,29 @@
                         </div>
                     </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">مناسبت (موضوع رزرو)</label>
-                            <div class="col-md-10">
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">مناسبت (موضوع رزرو)</label>
+                        <div class="col-md-10">
 
-                                <select id="id_type" required class="form-control" name="type">
+                            <select id="id_type" required class="form-control" name="type">
 
-                                    <option value="">مناسبت را انتخاب کنید</option>
+                                <option value="">مناسبت را انتخاب کنید</option>
 
-                                    @foreach($types as $type)
-                                        <option @if(old('type')) @if(old('type') == $type['id'] ) selected
-                                                @endif @elseif(isset($item->type) && $item->type == $type['id']) selected
-                                                @endif value="{{ $type['id'] }}" value="{{ $type['id'] }}">{{ $type['name'] }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                @foreach($types as $type)
+                                    <option @if(old('type')) @if(old('type') == $type['id'] ) selected
+                                            @endif @elseif(isset($item->type) && $item->type == $type['id']) selected
+                                            @endif value="{{ $type['id'] }}"
+                                            value="{{ $type['id'] }}">{{ $type['name'] }}
+                                    </option>
+                                @endforeach
+                            </select>
 
-                                @error('type')
-                                <span class="text-danger text-wrap">{{ $message }}</span>
-                                @enderror
+                            @error('type')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
 
-                            </div>
                         </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">تاریخ</label>
@@ -149,9 +150,10 @@
                                     multiple data-live-search="true">
 
                                 @foreach($options as $option)
-                                    <option @if(count(old('option_id', []))) @if(in_array($option->id, old('option_id'))) selected
-                                            @endif @elseif(isset($item) && count($item->options) > 0 && in_array($option->id, $item->options)) selected
-                                            @endif value="{{ $option->id }}" value="{{ $option->id }}">{{ $option->title }}
+                                    <option
+                                        @if(count(old('option_id', []))) @if(in_array($option->id, old('option_id'))) selected
+                                        @endif @elseif(isset($item) && count($item->options_pluck_ids()) > 0 && in_array($option->id, $item->options_pluck_ids())) selected
+                                        @endif value="{{ $option->id }}" value="{{ $option->id }}">{{ $option->title }}
                                     </option>
                                 @endforeach
 
