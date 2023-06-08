@@ -60,6 +60,11 @@ class Reserve extends Model
         return  'danger';
     }
 
+    public function get_option_names()
+    {
+        return implode(', ', $this->options()->get()->pluck('title')->toArray());
+    }
+
     protected static function newFactory()
     {
         return \Modules\Reserve\Database\factories\ReserveFactory::new();

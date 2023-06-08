@@ -28,6 +28,7 @@
                         <th>تعداد نفرات</th>
                         <th>مبلغ</th>
                         <th>نوع</th>
+                        <th>تشریفات</th>
                         <th>وضعیت</th>
                         <th>تاریخ ثبت</th>
                         <th>اعمال</th>
@@ -46,6 +47,9 @@
                             <td>{{ number_format($item->amount) }}</td>
                             <td>
                                {{  $item->get_type() }}
+                            </td>
+                            <td>
+                                {{  $item->get_option_names() }}
                             </td>
                             <td>
 
