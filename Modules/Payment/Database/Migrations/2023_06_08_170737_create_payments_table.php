@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('reserve_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('amount')->default(0);
-            $table->string('refID')->nullable();
-            $table->string('authority');
+            $table->text('refID')->nullable();
+            $table->text('authority');
             $table->ipAddress('ip')->nullable();
 
             $table->boolean('status')->default(false);

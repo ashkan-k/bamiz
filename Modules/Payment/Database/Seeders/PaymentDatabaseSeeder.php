@@ -4,6 +4,7 @@ namespace Modules\Payment\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Payment\Entities\Payment;
 
 class PaymentDatabaseSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class PaymentDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        Payment::factory(15)->create();
 
         // $this->call("OthersTableSeeder");
     }

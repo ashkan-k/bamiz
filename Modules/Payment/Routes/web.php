@@ -11,6 +11,8 @@
 |
 */
 
-Route::prefix('payment')->group(function() {
-    Route::get('/', 'PaymentController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Payment\Http\Controllers\Dashboard\PaymentController;
+
+Route::resource('payments', PaymentController::class);
+

@@ -108,17 +108,6 @@
                     </ul>
                 </li>
 
-                {{--                --}}{{--                //////////////////////////////////////////////////////////--}}
-
-                <li class="submenu">
-                    <a href="#"><i class="fa fa-gift" aria-hidden="true"></i> <span>تشریفات بامیز</span> <span
-                            class="menu-arrow"></span></a>
-                    <ul class="list-unstyled" style="display: none;">
-                        <li><a href="{{ route('options.index') }}">لیست تشریفات</a></li>
-                        <li><a href="{{ route('options.create') }}">افزودن تشریفات جدید</a></li>
-                    </ul>
-                </li>
-
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////--}}
 
                 <li class="submenu">
@@ -186,17 +175,27 @@
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////////////////////////--}}
 
-                {{--                <li class="menu-title">رزرو ها</li>--}}
+                <li class="menu-title">رزرو ها</li>
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> <span>رزرو های بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('reserves.index') }}">لیست رزرو ها موفق</a></li>--}}
-                {{--                        <li><a href="{{ route('reserves.failed') }}">لیست رزرو ها ناموفق</a></li>--}}
-                {{--                        <li><a href="{{ route('reserves.create') }}">افزودن رزرو</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> <span>رزرو های بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('reserves.index') }}">لیست رزرو ها</a></li>
+                        <li><a href="{{ route('reserves.index') }}?status=1">لیست رزرو ها موفق</a></li>
+                        <li><a href="{{ route('reserves.index') }}?status=0">لیست رزرو ها ناموفق</a></li>
+                        <li><a href="{{ route('reserves.create') }}">افزودن رزرو</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-gift" aria-hidden="true"></i> <span>تشریفات بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('options.index') }}">لیست تشریفات</a></li>
+                        <li><a href="{{ route('options.create') }}">افزودن تشریفات جدید</a></li>
+                    </ul>
+                </li>
 
                 {{--                <li class="submenu">--}}
                 {{--                    <a href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> <span>غذا های رزرو شده</span> <span--}}
@@ -264,14 +263,13 @@
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-paypal" aria-hidden="true"></i> <span>پرداخت ها بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('success_payments.index') }}">پرداخت های موفق</a></li>--}}
-                {{--                        <li><a href="{{ route('failed_payments.index') }}">پرداخت ناموفق</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-paypal" aria-hidden="true"></i> <span>پرداخت ها بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('payments.index') }}">لیست پرداخت ها</a></li>
+                    </ul>
+                </li>
 
                 {{--                --}}{{--                ////////////////////////////////////////////////////////--}}
 
