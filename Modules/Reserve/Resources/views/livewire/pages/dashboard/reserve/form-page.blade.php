@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">تاریخ</label>
                         <div class="col-md-10">
-                            <input required type="date" name="date"
+                            <input id="id_date" required type="text" name="date"
                                    class="form-control"
                                    placeholder=" تاریخ را وارد کنید"
                                    value="@if(old('date')){{ old('date') }}@elseif(isset($item->date)){{ $item->date }}@endif">
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">زمان شروع</label>
                         <div class="col-md-10">
-                            <input required type="time" name="start_time"
+                            <input id="id_start_time" required type="text" name="start_time"
                                    class="form-control"
                                    placeholder=" زمان شروع را وارد کنید"
                                    value="@if(old('start_time')){{ old('start_time') }}@elseif(isset($item->start_time)){{ $item->start_time }}@endif">
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">زمان پایان</label>
                         <div class="col-md-10">
-                            <input type="time" name="end_time"
+                            <input id="id_end_time" type="text" name="end_time"
                                    class="form-control"
                                    placeholder=" زمان پایان را وارد کنید"
                                    value="@if(old('end_time')){{ old('end_time') }}@elseif(isset($item->end_time)){{ $item->end_time }}@endif">
@@ -138,6 +138,23 @@
 </div>
 
 @section('Scripts')
+    <script>
+        kamaDatepicker('id_date', {
+            placeholder: 'تاریخ',
+            buttonsColor: 'blue',
+            markHolidays: true
+        });
+        $("#id_date").attr('autocomplete', 'off');
+
+        $('#id_date').on('change', function () {
+            $('#id_date').val($('#id_date').val().replaceAll('/', '-'))
+        });
+
+        $(document).ready(function () {
+            $("#id_start_time").timepicker();
+            $("#id_end_time").timepicker();
+        });
+    </script>
     <script>
         $('#id_user').select2();
         $('#id_place').select2();

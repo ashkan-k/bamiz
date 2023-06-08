@@ -13,24 +13,28 @@
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/dataTables.bootstrap.min.css">
-{{--    <link rel="stylesheet" type="text/css" href="/admin/assets/css/select2.min.css">--}}
+    {{--    <link rel="stylesheet" type="text/css" href="/admin/assets/css/select2.min.css">--}}
     <link href="/select2/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" type="text/css" href="/admin/assets/plugins/morris/morris.css">
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css" id="theme-styles">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css"
+          id="theme-styles">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
           integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
           crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="/admin/assets/css/kamadatepicker.min.css"/>
+    <link rel="stylesheet" href="/timepicker2/dist/css/timepicker.min.css"/>
+
 
     {!! SEOMeta::generate() !!}
 
     <style>
-        .label_mouse_cursor:hover{
+        .label_mouse_cursor:hover {
             cursor: pointer !important;
         }
     </style>
@@ -276,6 +280,8 @@
 <script src="/helpers/js/helpers.js"></script>
 <script src="/select2/select2.min.js"></script>
 <script src="/ckeditor/ckeditor.js"></script>
+<script src="/admin/assets/js/kamadatepicker.min.js"></script>
+<script src="/timepicker2/dist/js/timepicker.min.js"></script>
 
 @if (session()->has('message'))
     <script>
