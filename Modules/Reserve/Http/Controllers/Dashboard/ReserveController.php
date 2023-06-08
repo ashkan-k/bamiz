@@ -2,19 +2,18 @@
 
 namespace Modules\Reserve\Http\Controllers\Dashboard;
 
+use App\Http\Traits\Responses;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ReserveController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    use Responses;
+
     public function index()
     {
-        return view('reserve::index');
+        return view('reserve::dashboard.reserve.list');
     }
 
     /**

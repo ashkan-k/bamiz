@@ -37,6 +37,29 @@ class Reserve extends Model
         "place.description",
     ];
 
+    public function get_type(){
+        if ($this->type == 'table_for_food'){
+            return 'رزرو میز برای سرو';
+        }
+        elseif ($this->type == 'work_appointment'){
+            return 'رزرو میز بدون سفارش (قرارکاری)';
+        }
+        elseif ($this->type == 'table_for_birth_day_with_food'){
+            return 'رزرو میز برای تولد با سرو';
+        }
+        return 'رزرو میز برای تولد بدون سرو';
+    }
+
+    public function get_type_class(){
+        if ($this->type == 'draft'){
+            return 'warning';
+        }
+        elseif ($this->type == 'publish'){
+            return 'success';
+        }
+        return  'danger';
+    }
+
     protected static function newFactory()
     {
         return \Modules\Reserve\Database\factories\ReserveFactory::new();
