@@ -13,10 +13,17 @@ class ListPage extends Component
     public $titlePage = '';
     public $pagination;
     public $search = '';
+    public $status;
     protected $items;
+    public $status_filter_items = [
+        ['id' => 'draft', 'name' => 'پیش نویس'],
+        ['id' => 'publish', 'name' => 'انتشار'],
+        ['id' => 'done', 'name' => 'پایان انتشار'],
+    ];
 
     public function mount()
     {
+        $this->status = request('status');
         $this->pagination = env('PAGINATION', 10);
     }
 
@@ -32,9 +39,16 @@ class ListPage extends Component
         $article->delete();
     }
 
+    private function FilterByStatus()
+    {
+        $this->items = $this->status ? $this->items->where(['status' => $this->status]) : $this->items;
+        return $this->items;
+    }
+
     public function render()
     {
-        $this->items = Article::Search($this->search)->latest()->paginate($this->pagination);
-        return view('article::livewire.pages.dashboard.list-page', ['items' => $this->items]);
+        $this->items = Article::Search($this->search)->latest();
+        $this->items = $this->FilterByStatus();
+        return view('article::livewire.pages.dashboard.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }

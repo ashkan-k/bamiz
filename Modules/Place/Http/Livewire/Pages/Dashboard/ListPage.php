@@ -14,12 +14,18 @@ class ListPage extends Component
     public $pagination;
     public $search = '';
     public $data;
+    public $is_active;
     protected $items;
+    public $status_filter_items = [
+        ['id' => '1', 'name' => 'فعال'],
+        ['id' => '0', 'name' => 'غیرفعال'],
+    ];
 
     protected $listeners = ['triggerChangeStatusModal'];
 
     public function mount()
     {
+        $this->is_active = request('is_active');
         $this->pagination = env('PAGINATION', 10);
     }
 
@@ -50,9 +56,16 @@ class ListPage extends Component
         $this->dispatchBrowserEvent('itemStatusUpdated');
     }
 
+    private function FilterByStatus()
+    {
+        $this->items = $this->is_active != null ? $this->items->where(['is_active' => $this->is_active]) : $this->items;
+        return $this->items;
+    }
+
     public function render()
     {
-        $this->items = Place::Search($this->search)->latest()->paginate($this->pagination);
-        return view('place::livewire.pages.dashboard.list-page', ['items' => $this->items]);
+        $this->items = Place::Search($this->search)->latest();
+        $this->items = $this->FilterByStatus();
+        return view('place::livewire.pages.dashboard.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }
