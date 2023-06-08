@@ -10,6 +10,7 @@
 
 
                             @include('livewire.searchBox')
+                            @include('livewire.select_box')
 
                             <div class="col-lg-3">
                                 <label class="control-label col-2">وضعیت</label>
