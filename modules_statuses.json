@@ -12,5 +12,7 @@
     "Setting": true,
     "Comment": true,
     "WishList": true,
-    "Ticket": true
+    "Ticket": true,
+    "Payment": true,
+    "Reserve": true
 }
