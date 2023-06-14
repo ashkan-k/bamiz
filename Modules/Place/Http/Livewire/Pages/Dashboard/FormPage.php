@@ -43,7 +43,7 @@ class FormPage extends Component
     public function render()
     {
         $data = [
-            'users' => User::all(),
+            'users' => User::whereLevel('restaurant_manager')->get(),
             'categories' => Category::all(),
             'provinces' => Province::all(),
             'cities' => $this->province_id ? City::where('province_id', $this->province_id)->get() : [],
