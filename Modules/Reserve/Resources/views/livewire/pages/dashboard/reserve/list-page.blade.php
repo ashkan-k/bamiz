@@ -8,9 +8,9 @@
                 <form id="search">
                     <div class="form-group">
                         <div class="row">
-                            @include('livewire.search_input')
-{{--                            @include('livewire.select_box', ['label' => 'وضعیت', 'name' => 'status', 'items' => $status_filter_items])--}}
-                            @include('livewire.limit_select_box')
+                            @include('livewire.filters.search_input')
+{{--                            @include('livewire.filters.select_box', ['label' => 'وضعیت', 'name' => 'status', 'items' => $status_filter_items])--}}
+                            @include('livewire.filters.limit_select_box')
                         </div>
                     </div>
                 </form>
