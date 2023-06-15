@@ -90,17 +90,33 @@
 @push('StackScript')
     @include('livewire.delete')
 
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
+    <script>
+        function SubmitBulkActionConfirm() {
+            var bulk_action_selected_items = @this.bulk_action_selected_items;
+            var bulk_action = @this.bulk_action;
 
-        @this.on('triggerBulkActionConfirm', orderId => {
-            @if(count($bulk_action_selected_items) == 0)
+            console.log(bulk_action  === '')
+
+            if (!bulk_action){
+                showToast('لطفا یک عملیات انتخاب کنید!', 'error');
+                return;
+            }
+
+            if (bulk_action_selected_items.length == 0){
                 showToast('حداقل یک آیتم را برای انجام عملیات انتخاب کنید!', 'error');
                 return;
-            @endif
-            console.log('dddddddddd')
-        });
-        });
+            }
+
+            console.log('wwwwwwwww')
+        }
     </script>
+
+    {{--    <script type="text/javascript">--}}
+    {{--        window.addEventListener('triggerBulkActionConfirm', event => {--}}
+    {{--            if (event.detail['status'] == 'error') {--}}
+    {{--                showToast(event.detail['message'], 'error');--}}
+    {{--            }--}}
+    {{--        });--}}
+    {{--    </script>--}}
 @endpush
 

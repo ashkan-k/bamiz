@@ -16,7 +16,7 @@
             </select>
         </div>
         <div class="col-md-2">
-            <button type="button" wire:click="$emit('triggerBulkActionConfirm')" class="btn btn-info" >برو انجام بده</button>
+            <button type="button" onclick="SubmitBulkActionConfirm()" class="btn btn-info" >برو انجام بده</button>
         </div>
     </div>
 </div>
