@@ -37,6 +37,17 @@
         .label_mouse_cursor:hover {
             cursor: pointer !important;
         }
+
+        .bulk-actions {
+            margin-bottom: 40px;
+            padding: 15px 10px;
+            border: solid 1px #ccc;
+            border-radius: 8px;
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+            border-top: 0;
+            background: #cecece;
+        }
     </style>
 
     @yield('Styles')

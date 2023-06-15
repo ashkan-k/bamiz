@@ -22,6 +22,7 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th>ردیف</th>
                         <th>عنوان</th>
                         <th>کاربر</th>
                         <th>تعداد لایک</th>
@@ -34,6 +35,10 @@
 
                     @foreach ($items as $item)
                         <tr>
+                            <td>
+                                <input type="checkbox" wire:change="AddItemsToBulkAction({{ $item->id }})" class="ml-2">
+                                {{ $loop->iteration }}
+                            </td>
                             <td>{{$item->title}}</td>
                             <td>{{$item->user ? $item->user->fullname() : '---'}}</td>
                             <td>{{$item->like_count}}</td>
@@ -84,5 +89,18 @@
 
 @push('StackScript')
     @include('livewire.delete')
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+        @this.on('triggerBulkActionConfirm', orderId => {
+            @if(count($bulk_action_selected_items) == 0)
+                showToast('حداقل یک آیتم را برای انجام عملیات انتخاب کنید!', 'error');
+                return;
+            @endif
+            console.log('dddddddddd')
+        });
+        });
+    </script>
 @endpush
 
