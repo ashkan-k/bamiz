@@ -23,6 +23,7 @@
                         <th>کاربر</th>
                         <th>مرکز | مقاله</th>
                         <th>لایک</th>
+                        <th>امتیاز</th>
                         <th>وضعیت</th>
                         <th>تاریخ ثبت</th>
                         <th>اعمال</th>
@@ -39,6 +40,7 @@
                                 {{ $item->commentable_type == 'Modules\Article\Entities\Article' ?  $item->commentable->title  :  $item->commentable->name }}
                             </td>
                             <td>{{$item->like_count}}</td>
+                            <td>{{$item->score ?? '---'}}</td>
                             <td>
 
                                 <span wire:click="$emit('triggerChangeStatusModal' , {{ $item }})"

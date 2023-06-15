@@ -29,6 +29,31 @@
                         </div>
                     </div>
 
+                    <div class="form-group" wire:ignore>
+                        <label class="control-label col-lg-2">والد</label>
+                        <div class="col-md-10">
+
+                            <select id="id_parent_id" class="form-control" name="parent_id">
+
+                                <option value="">بدون والد</option>
+
+                                @foreach($parents as $parent)
+
+                                    <option
+                                        @if(isset($item->parent_id) && $item->parent_id == $parent->id) selected
+                                        @endif value="{{ $parent->id }}">{{ $parent->title }}
+                                    </option>
+
+                                @endforeach
+
+                            </select>
+
+                            @error('parent_id')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="control-label col-lg-2">عکس</label>
                         <div class="col-sm-10">
@@ -74,8 +99,8 @@
 </div>
 
 
-@push("StackScript")
-
-
-
-@endpush
+@section('Scripts')
+    <script>
+        $('#id_parent_id').select2();
+    </script>
+@endsection

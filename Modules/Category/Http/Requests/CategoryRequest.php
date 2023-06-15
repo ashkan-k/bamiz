@@ -16,6 +16,7 @@ class CategoryRequest extends FormRequest
         $rules = [
             'title' => 'required|string',
             'image' => 'mimes:jpeg,png,bmp,jpg',
+            'parent_id' => 'nullable|exists:categories,id',
         ];
 
         if (request()->method == 'POST'){

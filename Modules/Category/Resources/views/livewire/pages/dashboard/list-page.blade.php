@@ -21,6 +21,7 @@
                     <tr>
                         <th>عنوان</th>
                         <th>اسلاگ</th>
+                        <th>والد</th>
                         <th>عکس</th>
                         <th>اعمال</th>
                     </tr>
@@ -31,6 +32,7 @@
                         <tr>
                             <td>{{$item->title}}</td>
                             <td>{{$item->slug}}</td>
+                            <td>{{$item->parent ? $item->parent->title : 'ندارد'}}</td>
 
                             <td>
                                 <a href="{{ $item->get_image() }}" target="-_blank"><img width="50"
