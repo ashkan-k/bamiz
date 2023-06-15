@@ -8,9 +8,9 @@ trait BulkActions
     public $bulk_action_selected_items = [];
     public $bulk_action = '';
 
-    public function AddItemsToBulkAction($new_item, $value=true)
+    public function AddItemsToBulkAction($new_item, $value)
     {
-        dd($new_item, $value);
+        dd($value);
         if (is_array($new_item)) {
             if ($value){
                 $this->bulk_action_selected_items = $new_item;
