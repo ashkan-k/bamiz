@@ -4,32 +4,10 @@ namespace App\Http\Traits;
 
 trait BulkActions
 {
-    public $bulk_action_items = [];
-    public $bulk_action_selected_items = [];
-    public $bulk_action = '';
-
-    public function AddItemsToBulkAction($new_item, $value)
+    public function SubmitBulkAction($selected_items, $action)
     {
-        if (is_array($new_item)) {
-            if ($value) {
-                $this->bulk_action_selected_items = $new_item;
-            } else {
-                $this->bulk_action_selected_items = [];
-            }
-        } else {
-            if ($value) {
-                array_push($this->bulk_action_selected_items, $new_item);
-            } else {
-                // TODO should remove item from selected list
-            }
-
-        }
-
-//        dd($this->bulk_action_selected_items);
-    }
-
-    public function SubmitBulkAction($selected_items)
-    {
-        dd('bulkaction button submitted', $selected_items);
+        // TODO handle bulk actions submited
+        $this->dispatchBrowserEvent('itemBulkActionsUpdated', ['message' => 'عملیات مورد نظر با موفقیت انجام شد.']);
+        $this->resetPage();
     }
 }

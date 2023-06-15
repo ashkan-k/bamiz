@@ -91,11 +91,6 @@
 
 @push('StackScript')
     @include('livewire.delete')
-
-    <script>
-        app.controller('myCtrl', function ($scope, $http) {
-            @include('livewire.bulk_actions.bulk_actions_js', ['items' => $items])
-        });
-    </script>
+    @include('livewire.bulk_actions.bulk_actions_js', ['items' => $items])
 @endpush
 
