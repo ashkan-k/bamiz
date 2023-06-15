@@ -3,7 +3,8 @@
 <div class="bulk-actions">
     <div class="row">
         <div class="col-md-5 pt-2">
-            <input type="checkbox" id="checkAll" @if(count($item_ids) == count($bulk_action_selected_items)) checked  @endif wire:change="AddItemsToBulkAction(<?php echo json_encode($item_ids) ?>, $event.target.value)" {{--[checked]="data && bulk_action_items.length == data.length" (change)="AddItemsToBulkAction(data,$event)" --}}>
+            <input type="checkbox" id="checkAll" @if(count($item_ids) == count($bulk_action_selected_items)) checked @endif
+                   wire:change="$emit('triggerChangeBulkActionItems', <?php echo json_encode($item_ids) ?>, 'checkAll')">
             <label for="checkAll" class="mr-3">انتخاب همه</label>
         </div>
         <div class="col-md-3">
@@ -18,7 +19,7 @@
             </select>
         </div>
         <div class="col-md-2">
-            <button type="button" onclick="SubmitBulkActionConfirm()" class="btn btn-info" >برو انجام بده</button>
+            <button type="button" onclick="SubmitBulkActionConfirm()" class="btn btn-info">برو انجام بده</button>
         </div>
     </div>
 </div>

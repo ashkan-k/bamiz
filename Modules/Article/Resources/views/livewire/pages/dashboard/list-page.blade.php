@@ -36,7 +36,10 @@
                     @foreach ($items as $item)
                         <tr>
                             <td>
-                                <input type="checkbox" wire:change="AddItemsToBulkAction({{ $item->id }}, $event.target.value)" @if(in_array($item->id, $bulk_action_selected_items)) checked  @endif class="ml-2">
+                                <input type="checkbox" id="id_checkbox_{{ $item->id }}"
+                                       wire:change="$emit('triggerChangeBulkActionItems', {{ $item->id }}, 'id_checkbox_{{ $item->id }}')"
+                                       @if(in_array($item->id, $bulk_action_selected_items)) checked
+                                       @endif class="ml-2">
                                 {{ $loop->iteration }}
                             </td>
                             <td>{{$item->title}}</td>
@@ -104,6 +107,20 @@
 
         @this.call('SubmitBulkAction');
         }
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+        @this.on('triggerChangeBulkActionItems', (item_id, name) => {
+            if ($("#" + name).is(":checked")) {
+                @this.call('AddItemsToBulkAction', item_id, true);
+            } else {
+                @this.call('AddItemsToBulkAction', item_id, false);
+            }
+        });
+
+        });
     </script>
 @endpush
 

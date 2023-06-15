@@ -10,13 +10,12 @@ trait BulkActions
 
     public function AddItemsToBulkAction($new_item, $value)
     {
-        dd($value);
         if (is_array($new_item)) {
-            if ($value){
-                $this->bulk_action_selected_items = $new_item;
-            }else{
-                $this->bulk_action_selected_items = [];
-            }
+//            if ($value){
+//                $this->bulk_action_selected_items = $new_item;
+//            }else{
+//                $this->bulk_action_selected_items = [];
+//            }
         } else {
             if ($value){
                 array_push($this->bulk_action_selected_items, $new_item);
@@ -25,6 +24,8 @@ trait BulkActions
             }
 
         }
+
+//        dd($this->bulk_action_selected_items);
     }
 
     public function SubmitBulkAction()
