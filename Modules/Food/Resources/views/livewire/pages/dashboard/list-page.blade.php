@@ -63,7 +63,7 @@
                     </tbody>
                 </table>
 
-                {{ $items->links('livewire.pagination') }}
+                {{ $items->onEachSide(3)->links('livewire.pagination') }}
 
             </div>
         </div>
