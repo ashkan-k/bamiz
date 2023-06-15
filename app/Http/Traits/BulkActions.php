@@ -11,15 +11,15 @@ trait BulkActions
     public function AddItemsToBulkAction($new_item, $value)
     {
         if (is_array($new_item)) {
-//            if ($value){
-//                $this->bulk_action_selected_items = $new_item;
-//            }else{
-//                $this->bulk_action_selected_items = [];
-//            }
+            if ($value) {
+                $this->bulk_action_selected_items = $new_item;
+            } else {
+                $this->bulk_action_selected_items = [];
+            }
         } else {
-            if ($value){
+            if ($value) {
                 array_push($this->bulk_action_selected_items, $new_item);
-            }else{
+            } else {
                 // TODO should remove item from selected list
             }
 

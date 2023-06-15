@@ -38,8 +38,7 @@
                             <td>
                                 <input type="checkbox" id="id_checkbox_{{ $item->id }}"
                                        wire:change="$emit('triggerChangeBulkActionItems', {{ $item->id }}, 'id_checkbox_{{ $item->id }}')"
-                                       @if(in_array($item->id, $bulk_action_selected_items)) checked
-                                       @endif class="ml-2">
+                                       @if(in_array($item->id, $bulk_action_selected_items)) checked @endif class="ml-2">
                                 {{ $loop->iteration }}
                             </td>
                             <td>{{$item->title}}</td>
@@ -117,6 +116,11 @@
                 @this.call('AddItemsToBulkAction', item_id, true);
             } else {
                 @this.call('AddItemsToBulkAction', item_id, false);
+
+                if (!Array.isArray(item_id)){
+                    $("#checkAll").prop('checked', false);
+                }
+
             }
         });
 
