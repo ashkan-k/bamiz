@@ -1,7 +1,9 @@
+<?php $item_ids = $items->pluck('id')->toArray(); ?>
+
 <div class="bulk-actions">
     <div class="row">
         <div class="col-md-5 pt-2">
-            <input type="checkbox" id="checkAll" wire:change="AddItemsToBulkAction(<?php echo json_encode($items->pluck('id')->toArray() ); ?>)" {{--[checked]="data && bulk_action_items.length == data.length" (change)="AddItemsToBulkAction(data,$event)" --}}>
+            <input type="checkbox" id="checkAll" @if(count($item_ids) == count($bulk_action_selected_items)) checked  @endif wire:change="AddItemsToBulkAction(<?php echo json_encode($item_ids) ?>, $event.target.value)" {{--[checked]="data && bulk_action_items.length == data.length" (change)="AddItemsToBulkAction(data,$event)" --}}>
             <label for="checkAll" class="mr-3">انتخاب همه</label>
         </div>
         <div class="col-md-3">

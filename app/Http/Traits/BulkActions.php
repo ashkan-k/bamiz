@@ -8,24 +8,27 @@ trait BulkActions
     public $bulk_action_selected_items = [];
     public $bulk_action = '';
 
-    public function AddItemsToBulkAction($new_item)
+    public function AddItemsToBulkAction($new_item, $value=true)
     {
+        dd($new_item, $value);
         if (is_array($new_item)) {
-            $this->bulk_action_selected_items = $new_item;
+            if ($value){
+                $this->bulk_action_selected_items = $new_item;
+            }else{
+                $this->bulk_action_selected_items = [];
+            }
         } else {
-            array_push($this->bulk_action_selected_items, $new_item);
+            if ($value){
+                array_push($this->bulk_action_selected_items, $new_item);
+            }else{
+                // TODO should remove item from selected list
+            }
+
         }
     }
 
-    public function SubmitBulkActionConfirm()
+    public function SubmitBulkAction()
     {
-        if (count($this->bulk_action_selected_items) == 0){
-            $this->dispatchBrowserEvent('triggerBulkActionConfirm', ['status' => 'error','message' => 'حداقل یک آیتم را برای انجام عملیات انتخاب کنید!']);
-        }
-
-        if (!$this->bulk_action){
-            $this->dispatchBrowserEvent('triggerBulkActionConfirm', ['status' => 'error','message' => 'لطفا یک عملیات انتخاب کنید!']);
-        }
-//        dd('bulkaction button submitted', $this->bulk_action_selected_items);
+        dd('bulkaction button submitted', $this->bulk_action_selected_items);
     }
 }

@@ -36,7 +36,7 @@
                     @foreach ($items as $item)
                         <tr>
                             <td>
-                                <input type="checkbox" wire:change="AddItemsToBulkAction({{ $item->id }})" class="ml-2">
+                                <input type="checkbox" wire:change="AddItemsToBulkAction({{ $item->id }}, $event.target.value)" @if(in_array($item->id, $bulk_action_selected_items)) checked  @endif class="ml-2">
                                 {{ $loop->iteration }}
                             </td>
                             <td>{{$item->title}}</td>
@@ -92,31 +92,18 @@
 
     <script>
         function SubmitBulkActionConfirm() {
-            var bulk_action_selected_items = @this.bulk_action_selected_items;
-            var bulk_action = @this.bulk_action;
-
-            console.log(bulk_action  === '')
-
-            if (!bulk_action){
+            if (!@this.bulk_action) {
                 showToast('لطفا یک عملیات انتخاب کنید!', 'error');
                 return;
             }
 
-            if (bulk_action_selected_items.length == 0){
+            if (@this.bulk_action_selected_items.length == 0) {
                 showToast('حداقل یک آیتم را برای انجام عملیات انتخاب کنید!', 'error');
                 return;
             }
 
-            console.log('wwwwwwwww')
+        @this.call('SubmitBulkAction');
         }
     </script>
-
-    {{--    <script type="text/javascript">--}}
-    {{--        window.addEventListener('triggerBulkActionConfirm', event => {--}}
-    {{--            if (event.detail['status'] == 'error') {--}}
-    {{--                showToast(event.detail['message'], 'error');--}}
-    {{--            }--}}
-    {{--        });--}}
-    {{--    </script>--}}
 @endpush
 
