@@ -14,11 +14,12 @@ class Comment extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = [ "title", "body", "like_count", "center_id", "user_id" , "status" , "commentable_type" , "commentable_id"];
+    protected $fillable = [ "title", "body", "like_count", "center_id", "user_id" , "status", "score" , "commentable_type" , "commentable_id"];
 
     protected $search_fields = [
         'title',
         'body',
+        'score',
         'user.first_name',
         'user.last_name',
         'user.username',

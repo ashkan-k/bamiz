@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('body');
             $table->integer('like_count')->nullable()->default(0);
             $table->enum('status', EnumHelpers::$CommentStatusEnum)->default('pending');
+            $table->enum('score', EnumHelpers::$CommentScoreEnum)->nullable();
 
             $table->unsignedBigInteger('commentable_id');
             $table->string('commentable_type');

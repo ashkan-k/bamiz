@@ -3,6 +3,7 @@
 namespace Modules\Category\Database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Category\Entities\Category;
 
 class CategoryFactory extends Factory
 {
@@ -24,6 +25,7 @@ class CategoryFactory extends Factory
             'title' => fake()->title(),
             'slug' => fake()->slug(),
             'image' => fake()->imageUrl(),
+            'parent_id' => Category::factory(),
         ];
     }
 }

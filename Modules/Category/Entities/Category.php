@@ -16,11 +16,13 @@ class Category extends Model
         'title',
         'slug',
         'image',
+        'parent_id',
     ];
 
     protected $search_fields  = [
         'title',
         'slug',
+        'parent.title',
     ];
 
     public function save(array $options = [])
@@ -43,5 +45,17 @@ class Category extends Model
     protected static function newFactory()
     {
         return \Modules\Category\Database\factories\CategoryFactory::new();
+    }
+
+    //
+
+    public function parent()
+    {
+        return $this->belongsTo('Category', 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany('Category', 'parent_id');
     }
 }

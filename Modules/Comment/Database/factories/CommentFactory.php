@@ -34,6 +34,7 @@ class CommentFactory extends Factory
             'commentable_id' => $commentable::factory(),
             'commentable_type' => $commentable,
             'status' => fake()->randomElement(EnumHelpers::$CommentStatusEnum),
+            'score' => fake()->randomElement(EnumHelpers::$CommentScoreEnum),
         ];
     }
 
