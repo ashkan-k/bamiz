@@ -36,10 +36,10 @@
                     @foreach ($items as $item)
                         <tr>
                             <td>
-                                <input type="checkbox" id="id_checkbox_{{ $item->id }}"
-                                       wire:change="$emit('triggerChangeBulkActionItems', {{ $item->id }}, 'id_checkbox_{{ $item->id }}')"
-                                       @if(in_array($item->id, $bulk_action_selected_items)) checked @endif class="ml-2">
-                                {{ $loop->iteration }}
+                                <input type="checkbox" ng-model="bulk_checkbox_{{ $item->id }}"
+                                       ng-checked="selected_items.includes({{ $item->id }})"
+                                       ng-change="AddItemsToBulkAction('{{ $item->id }}', bulk_checkbox_{{ $item->id }})"
+                                       class="ml-2">{{ $loop->iteration }}
                             </td>
                             <td>{{$item->title}}</td>
                             <td>{{$item->user ? $item->user->fullname() : '---'}}</td>
@@ -93,37 +93,8 @@
     @include('livewire.delete')
 
     <script>
-        function SubmitBulkActionConfirm() {
-            if (!@this.bulk_action) {
-                showToast('لطفا یک عملیات انتخاب کنید!', 'error');
-                return;
-            }
-
-            if (@this.bulk_action_selected_items.length == 0) {
-                showToast('حداقل یک آیتم را برای انجام عملیات انتخاب کنید!', 'error');
-                return;
-            }
-
-        @this.call('SubmitBulkAction');
-        }
-    </script>
-
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-
-        @this.on('triggerChangeBulkActionItems', (item_id, name) => {
-            if ($("#" + name).is(":checked")) {
-                @this.call('AddItemsToBulkAction', item_id, true);
-            } else {
-                @this.call('AddItemsToBulkAction', item_id, false);
-
-                if (!Array.isArray(item_id)){
-                    $("#checkAll").prop('checked', false);
-                }
-
-            }
-        });
-
+        app.controller('myCtrl', function ($scope, $http) {
+            @include('livewire.bulk_actions.bulk_actions_js', ['items' => $items])
         });
     </script>
 @endpush

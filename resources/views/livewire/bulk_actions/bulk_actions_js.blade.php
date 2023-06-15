@@ -23,7 +23,6 @@ var index = $scope.selected_items.indexOf(items);
 $scope.selected_items.splice(index,1);
 }
 }
-
 }
 
 $scope.SubmitBulkActionConfirm = function() {
@@ -49,7 +48,8 @@ confirmButtonText: 'بله',
 cancelButtonText:'لغو',
 }).then((result) => {
 if (result.isConfirmed) {
-$scope.SubmitBulkAction();
+{{--$scope.SubmitBulkAction();--}}
+@this.call('SubmitBulkAction', $scope.selected_items);
 }
 })
 
@@ -77,9 +77,9 @@ showToast('خطایی رخ داد.', 'error');
 
 $scope.SubmitBulkAction = function() {
 var data = {
-    'action': $scope.bulk_action,
-    'model': '{{ $model }}',
-    'items': $scope.selected_items,
+'action': $scope.bulk_action,
+'model': '{{ $model }}',
+'items': $scope.selected_items,
 };
 
 $scope.is_submited = true;

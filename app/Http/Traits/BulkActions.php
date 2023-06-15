@@ -28,8 +28,8 @@ trait BulkActions
 //        dd($this->bulk_action_selected_items);
     }
 
-    public function SubmitBulkAction()
+    public function SubmitBulkAction($selected_items)
     {
-        dd('bulkaction button submitted', $this->bulk_action_selected_items);
+        dd('bulkaction button submitted', $selected_items);
     }
 }

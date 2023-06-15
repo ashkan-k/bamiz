@@ -55,7 +55,7 @@
     @livewireStyles
 </head>
 
-<body>
+<body ng-app="myApp" ng-controller="myCtrl">
 <div class="main-wrapper">
     @include('Section.header')
     @include('Section.sidebar')
@@ -287,12 +287,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous"></script>
-{{--<script src="/helpers/js/angular.min.js"></script>--}}
+<script src="/helpers/js/angular.min.js"></script>
 <script src="/helpers/js/helpers.js"></script>
 <script src="/select2/select2.min.js"></script>
 <script src="/ckeditor/ckeditor.js"></script>
 <script src="/admin/assets/js/kamadatepicker.min.js"></script>
 <script src="/timepicker2/dist/js/timepicker.min.js"></script>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.config(function ($interpolateProvider, $httpProvider) {
+        $interpolateProvider.startSymbol('[[');
+        $interpolateProvider.endSymbol(']]');
+
+        // $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+        // $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+        $httpProvider.defaults.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+    });
+</script>
 
 @if (session()->has('message'))
     <script>
