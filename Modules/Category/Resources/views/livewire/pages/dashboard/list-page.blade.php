@@ -62,6 +62,8 @@
                     </tbody>
                 </table>
 
+                @include('livewire.bulk_actions.bulk_actions', ['actions' => [['delete', 'حذف کردن']], 'items' => $objects])
+
                 {{ $items->onEachSide(3)->links('livewire.pagination') }}
 
             </div>
