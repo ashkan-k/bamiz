@@ -1,19 +1,31 @@
-<script>
-    function Delete(key) {
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+
+    @this.on('triggerDelete', orderId => {
         Swal.fire({
             title: "هشدار ! ",
             icon: 'warning',
-            text: "آیا از حذف این آیتم اطمینان دارید؟🤔",
+            text: "آیا می خواهید این آیتم حذف شود ؟ 🤔",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: '#00aced',
             cancelButtonColor: '#e6294b',
-            confirmButtonText: 'حذف',
+            confirmButtonText: 'تایید',
             cancelButtonText: 'انصراف'
         }).then((result) => {
-            if (result.isConfirmed) {
-                $('#delete_form_' + key).submit();
+            //if user clicks on delete
+            if (result.value) {
+                // calling destroy method to delete
+            @this.call('destroy', orderId)
+                // success response
+                Swal.fire({
+                    title: session('message'),
+                    icon: 'success',
+                    type: 'success'
+                });
+
             }
-        })
-    }
+        });
+    });
+    })
 </script>

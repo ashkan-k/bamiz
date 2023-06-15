@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Option\Entities\Option;
 use Modules\Option\Entities\OptionPlace;
+use Modules\Place\Entities\Place;
 
 class ListPage extends Component
 {
@@ -15,12 +16,15 @@ class ListPage extends Component
     public $pagination;
     public $search = '';
     public $place_id;
+    public $place;
     public $full_url;
     protected $items;
 
     public function mount()
     {
         $this->place_id = request('place_id');
+        $this->place = Place::findOrFail($this->place_id);
+
         $this->full_url = request()->fullUrl();
         $this->pagination = env('PAGINATION', 10);
     }

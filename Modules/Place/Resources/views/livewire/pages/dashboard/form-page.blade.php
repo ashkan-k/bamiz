@@ -107,6 +107,8 @@
 
                             <select id="id_province" class="form-control" name="province_id" required>
 
+                                <option value="">استان را انتخاب کنید</option>
+
                                 @foreach($provinces as $province)
 
                                     <option
@@ -129,6 +131,8 @@
                         <div class="col-md-10">
 
                             <select id="id_city" class="form-control" name="city_id" required>
+
+                                <option value="">شهر را انتخاب کنید</option>
 
                                 @foreach($cities as $city)
 

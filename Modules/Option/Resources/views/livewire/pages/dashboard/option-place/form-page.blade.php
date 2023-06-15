@@ -19,7 +19,7 @@
                     <input type="hidden" name="next_url" value="{{ request('next_url') }}">
 
                     <div class="form-group" wire:ignore>
-                        <label class="control-label col-lg-2">مرکز</label>
+                        <label class="control-label col-lg-2">تشریفات</label>
                         <div class="col-md-10">
                             <select id="id_option_id" class="form-control" multiple name="option_id[]" >
 
