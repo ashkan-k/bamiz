@@ -36,7 +36,7 @@
                     @foreach ($items as $item)
                         <tr>
                             <td>
-                                <input type="checkbox" ng-model="bulk_checkbox_{{ $item->id }}"
+                                <input type="checkbox" ng-model="bulk_checkbox_{{ $item->id }}{{ $item->id }}"
                                        id="bulk_checkbox_{{ $item->id }}"
                                        ng-checked="selected_items.includes({{ $item->id }})"
                                        ng-change="AddItemsToBulkAction('{{ $item->id }}', bulk_checkbox_{{ $item->id }})"

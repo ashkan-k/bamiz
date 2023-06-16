@@ -1,4 +1,4 @@
-<div class="bulk-actions">
+<div class="bulk-actions" wire:ignore>
     <div class="row">
         <div class="col-md-5 pt-2">
             <input type="checkbox" id="checkAll" ng-model="select_all" ng-checked="items.length == selected_items.length" ng-change="AddItemsToBulkAction(<?php echo json_encode($items->pluck('id')->toArray() ); ?>, select_all)">

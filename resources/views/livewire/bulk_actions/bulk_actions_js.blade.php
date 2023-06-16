@@ -5,6 +5,16 @@
         $scope.is_submited = false;
         $scope.bulk_action = null;
 
+        $scope.init = function (){
+            for (const item in $scope.items){
+                $('#bulk_checkbox_' + $scope.items[item]).attr('checked', false);
+
+                console.log(item)
+                console.log($scope.items[item])
+            }
+            $('#checkAll').attr('checked', false);
+        }
+
         $scope.AddItemsToBulkAction = function (items, value) {
             if (Array.isArray(items)) {
                 if (value) {
@@ -78,6 +88,13 @@
             $scope.is_submited = false;
             $scope.selected_items = [];
             $scope.bulk_action = null;
+            for (const item in $scope.items){
+                $('#bulk_checkbox_' + $scope.items[item]).attr('checked', false);
+
+                console.log(item)
+                console.log($scope.items[item])
+            }
+            $('#checkAll').attr('checked', false);
             showToast(event.detail['message'], 'success');
         });
 
