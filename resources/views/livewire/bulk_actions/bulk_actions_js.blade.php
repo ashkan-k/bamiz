@@ -1,19 +1,9 @@
-<script>
+<script wire:ignore>
     app.controller('myCtrl', function ($scope, $http) {
         $scope.items = <?php echo json_encode($items->pluck('id')->toArray()); ?>;
         $scope.selected_items = [];
         $scope.is_submited = false;
         $scope.bulk_action = null;
-
-        $scope.init = function (){
-            for (const item in $scope.items){
-                $('#bulk_checkbox_' + $scope.items[item]).attr('checked', false);
-
-                console.log(item)
-                console.log($scope.items[item])
-            }
-            $('#checkAll').attr('checked', false);
-        }
 
         $scope.AddItemsToBulkAction = function (items, value) {
             if (Array.isArray(items)) {
