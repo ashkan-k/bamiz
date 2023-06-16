@@ -48,7 +48,7 @@
                 cancelButtonText: 'لغو',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    @this.call('SubmitBulkAction', $scope.selected_items, $scope.bulk_action, '{{ $model }}');
+                    @this.call('SubmitBulkAction', $scope.selected_items, $scope.bulk_action, "{{ str_replace('\\', '\\\\', $model) }}");
                     $scope.is_submited = false;
                     $scope.selected_items = [];
                     $scope.bulk_action = null;

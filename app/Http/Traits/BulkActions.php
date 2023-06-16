@@ -6,7 +6,8 @@ trait BulkActions
 {
     public function SubmitBulkAction($items, $action, $model)
     {
-        dd($model);
+        \Modules\Article\Entities\Article::all()
+        dd(str_replace('class', '', $model)::all());
         $model = "App\\Models\\" . $model;
 
 //        if (!in_array($action, $model::$bulk_actions)){
