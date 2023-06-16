@@ -37,9 +37,10 @@
                         <tr>
                             <td>
                                 <input type="checkbox" ng-model="bulk_checkbox_{{ $item->id }}"
+                                       id="bulk_checkbox_{{ $item->id }}"
                                        ng-checked="selected_items.includes({{ $item->id }})"
                                        ng-change="AddItemsToBulkAction('{{ $item->id }}', bulk_checkbox_{{ $item->id }})"
-                                       class="ml-2">{{ $loop->iteration }}
+                                       class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}" style="font-weight: normal !important;">{{ $loop->iteration }}</label>
                             </td>
                             <td>{{$item->title}}</td>
                             <td>{{$item->user ? $item->user->fullname() : '---'}}</td>
@@ -91,6 +92,6 @@
 
 @push('StackScript')
     @include('livewire.delete')
-    @include('livewire.bulk_actions.bulk_actions_js', ['items' => $items, 'model' => "\Modules\Article\Entities\Article::class"])
+    @include('livewire.bulk_actions.bulk_actions_js', ['items' => $items, 'model' => \Modules\Article\Entities\Article::class])
 @endpush
 

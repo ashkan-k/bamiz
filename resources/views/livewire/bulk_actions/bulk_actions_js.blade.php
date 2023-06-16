@@ -49,9 +49,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     @this.call('SubmitBulkAction', $scope.selected_items, $scope.bulk_action, "{{ str_replace('\\', '\\\\', $model) }}");
-                    $scope.is_submited = false;
-                    $scope.selected_items = [];
-                    $scope.bulk_action = null;
+
                 }
             })
 
@@ -76,12 +74,17 @@
             });
         }
 
+        window.addEventListener('itemBulkActionsUpdated', event => {
+            $scope.is_submited = false;
+            $scope.selected_items = [];
+            $scope.bulk_action = null;
+            showToast(event.detail['message'], 'success');
+        });
+
 
     });
 </script>
 
 <script>
-    window.addEventListener('itemBulkActionsUpdated', event => {
-        showToast(event.detail['message'], 'success');
-    });
+
 </script>
