@@ -91,6 +91,6 @@
 
 @push('StackScript')
     @include('livewire.delete')
-    @include('livewire.bulk_actions.bulk_actions_js', ['items' => $items])
+    @include('livewire.bulk_actions.bulk_actions_js', ['items' => $items, 'model' => \Modules\Article\Entities\Article::class])
 @endpush
 
