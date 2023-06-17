@@ -1,4 +1,4 @@
-<script wire:ignore>
+<script>
     app.controller('myCtrl', function ($scope, $http) {
         $scope.items = <?php echo json_encode($items->pluck('id')->toArray()); ?>;
         $scope.selected_items = [];
@@ -23,6 +23,8 @@
                     $scope.selected_items.splice(index, 1);
                 }
             }
+
+            console.log($scope.selected_items)
         }
 
         $scope.SubmitBulkActionConfirm = function () {
@@ -48,7 +50,7 @@
                 cancelButtonText: 'لغو',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    @this.call('SubmitBulkAction', $scope.selected_items, $scope.bulk_action, "{{ str_replace('\\', '\\\\', $model) }}");
+                @this.call('SubmitBulkAction', $scope.selected_items, $scope.bulk_action, "{{ str_replace('\\', '\\\\', $model) }}");
 
                 }
             })
@@ -78,7 +80,7 @@
             $scope.is_submited = false;
             $scope.selected_items = [];
             $scope.bulk_action = null;
-            for (const item in $scope.items){
+            for (const item in $scope.items) {
                 $('#bulk_checkbox_' + $scope.items[item]).attr('checked', false);
 
                 console.log(item)
@@ -89,9 +91,15 @@
         });
 
 
+    @this.on('triggerChangeStatusModal', (item_id, name) => {
+        var value;
+        if ($('#' + name).is(':checked')){
+            value = true;
+        }else {
+            value = false;
+        }
+        $scope.AddItemsToBulkAction(item_id, value);
     });
-</script>
 
-<script>
-
+    });
 </script>

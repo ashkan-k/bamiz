@@ -35,11 +35,12 @@
 
                     @foreach ($items as $item)
                         <tr>
-                            <td>
+                            <td wire:ignore>
                                 <input type="checkbox" ng-model="bulk_checkbox_{{ $item->id }}{{ $item->id }}"
                                        id="bulk_checkbox_{{ $item->id }}"
                                        ng-checked="selected_items.includes({{ $item->id }})"
-                                       ng-change="AddItemsToBulkAction('{{ $item->id }}', bulk_checkbox_{{ $item->id }})"
+                                       wire:change="$emit('triggerChangeStatusModal' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}')"
+{{--                                       ng-change="AddItemsToBulkAction('{{ $item->id }}', bulk_checkbox_{{ $item->id }})"--}}
                                        class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}" style="font-weight: normal !important;">{{ $loop->iteration }}</label>
                             </td>
                             <td>{{$item->title}}</td>
