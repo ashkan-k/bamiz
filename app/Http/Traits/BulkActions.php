@@ -7,6 +7,7 @@ trait BulkActions
     public function SubmitBulkAction($items, $action, $model)
     {
         $model = str_replace('::class', '', $model);
+//        dd($items);
 //        if (!in_array($action, $model::$bulk_actions)){
 //            return $this->FailResponse('عملیات مورد نظر مجاز نیست!');
 //        }
@@ -47,10 +48,8 @@ trait BulkActions
             }
         } catch (\Exception $exception) {
             $this->dispatchBrowserEvent('itemBulkActionsUpdated', ['type' => 'error', 'message' => $exception->getMessage()]);
-            $this->resetPage();
         }
 
         $this->dispatchBrowserEvent('itemBulkActionsUpdated', ['type' => 'success', 'message' => 'عملیات مورد نظر با موفقیت انجام شد.']);
-        $this->resetPage();
     }
 }

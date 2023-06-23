@@ -1,4 +1,4 @@
-<div class="bulk-actions" wire:ignore>
+<div class="bulk-actions">
     <div class="row">
         <div class="col-md-5 pt-2">
             <input type="checkbox" id="checkAll" ng-model="select_all" ng-checked="items.length == selected_items.length" wire:change="$emit('triggerChangeStatusModal' , <?php echo json_encode($items->pluck('id')->toArray() ); ?>, 'checkAll')">
