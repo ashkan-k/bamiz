@@ -5,7 +5,20 @@
         $scope.is_submited = false;
         $scope.bulk_action = null;
 
+        $scope.CheckUnCheckBoxes = function (item, value){
+            if (Array.isArray(item)) {
+                for (const i in item){
+                    $('#bulk_checkbox_' + item[i]).attr('checked', value);
+                }
+                $('#checkAll').attr('checked', value);
+            }else {
+                $('#bulk_checkbox_' + item).attr('checked', value);
+            }
+        }
+
         $scope.AddItemsToBulkAction = function (items, value) {
+            $scope.CheckUnCheckBoxes(items, value);
+
             if (Array.isArray(items)) {
                 if (value) {
                     for (const i in items) {
