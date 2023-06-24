@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 use Modules\Dashboard\Http\Controllers\Dashboard\DashboardController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('profile', [DashboardController::class, 'profile'])->name('profile');

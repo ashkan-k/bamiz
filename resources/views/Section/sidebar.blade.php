@@ -2,9 +2,12 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                <li class="menu-title">ملت وب</li>
+                <li class="menu-title">بامیز</li>
                 <li class="active">
                     <a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> داشبورد</a>
+                </li>
+                <li>
+                    <a href="{{ route('profile') }}"><i class="fa fa-user-circle-o"></i> پروفایل</a>
                 </li>
 
                 {{--                /////////////////////////////////////////////////////////////////////////--}}
