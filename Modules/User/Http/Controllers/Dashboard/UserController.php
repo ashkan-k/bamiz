@@ -31,9 +31,9 @@ class UserController extends Controller
         $avatar = $this->UploadFile($request, 'avatar', 'avatars', $request->username);
 
         $user = User::create(array_merge($request->all(), ['avatar' => $avatar]));
+        $user->email_verified_at = Carbon::now();
         $user->set_password($request->password);
         $user->set_role($request->level);
-        $user->email_verified_at = Carbon::now();
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'users.index');
     }
 

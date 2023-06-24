@@ -42,6 +42,7 @@ class ProfilePage extends Component
         $this->item->update($data);
         if ($password){
             $this->item->set_password($password);
+            auth()->loginUsingId($this->item->id);
         }
 
         $this->avatar = null;

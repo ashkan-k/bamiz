@@ -68,7 +68,8 @@ class User extends Authenticatable
 
     public function set_password($new_password)
     {
-        $this->update(['password' => Hash::make($new_password)]);
+        $this->password = Hash::make($new_password);
+        $this->save();
     }
 
     public function set_role($role)
