@@ -5,12 +5,21 @@ namespace Modules\Front\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Article\Entities\Article;
+use Modules\Category\Entities\Category;
+use Modules\Gallery\Entities\Gallery;
+use Modules\Place\Entities\Place;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        return view('front::index');
+        $places = Place::limit(5)->get();
+        $categories = Category::where('chid', 0)->get();
+        $latest_galleries = Gallery::latest()->take(20)->get();
+        $latest_articles = Article::where('status' , 'publish')->latest()->take(4)->get();
+
+        return view('front::index', compact('places', 'categories', 'latest_articles', 'latest_galleries'));
     }
 
 //    public function mizbans($slug)
