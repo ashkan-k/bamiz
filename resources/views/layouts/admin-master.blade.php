@@ -65,213 +65,37 @@
             @yield('content')
         </div>
         <div class="notification-box">
+
             <div class="msg-sidebar notifications msg-noti">
                 <div class="topnav-dropdown-header">
-                    <span>پیام ها</span>
+                    <span>پیام های پاسخ داده نشده</span>
                 </div>
                 <div class="drop-scroll msg-list-scroll">
                     <ul class="list-box">
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">R</span>
+                        @foreach($not_answered_tickets as $ticket)
+                            <li>
+                                <a href="{{ route('ticket-answers.show', $ticket->id) }}">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">R</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">{{ $ticket ? \Illuminate\Support\Str::limit($ticket->title, 15) : '' }}</span>
+                                            <span class="message-time" style="float: left !important;">{{ \Hekmatinasser\Verta\Verta:: instance($ticket->created_at)->format('%B %d، %Y') }}</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">{{ \Illuminate\Support\Str::limit($ticket->text, 30) }}</span>
+                                        </div>
                                     </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item new-message">
-                                    <div class="list-left">
-                                        <span class="avatar">J</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">1 Aug</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">T</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">M</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">C</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">D</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">B</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">R</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">C</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">M</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">J</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">L</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chat.html">
-                                <div class="list-item">
-                                    <div class="list-left">
-                                        <span class="avatar">T</span>
-                                    </div>
-                                    <div class="list-body">
-                                        <span class="message-author">امین صفرپور</span>
-                                        <span class="message-time">12:28 AM</span>
-                                        <div class="clearfix"></div>
-                                        <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="topnav-dropdown-footer">
                     <a href="chat.html">مشاهده همه پیام ها</a>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

@@ -37,6 +37,8 @@ class TicketAnswerController extends Controller
         $ticket->answers()->create($data);
         if (auth()->id() != $ticket->user_id) {
             $ticket->update(['status' => 'answered']);
+        }else{
+            $ticket->update(['status' => 'waiting']);
         }
 
         return $this->SuccessRedirect('پاسخ شما با موفقیت ثبت شد.', 'ticket-answers.show', [], $ticket->id);
