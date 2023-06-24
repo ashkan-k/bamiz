@@ -13,7 +13,7 @@
                 {{--                /////////////////////////////////////////////////////////////////////////--}}
 
                 <li class="submenu">
-                    <a href="#" ><i class="fa fa-map" aria-hidden="true"></i> <span>شهرو استان</span> <span
+                    <a href="#"><i class="fa fa-map" aria-hidden="true"></i> <span>شهرو استان</span> <span
                             class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('provinces.index') }}">استان ها</a></li>
