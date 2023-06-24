@@ -2,6 +2,8 @@
 
 namespace App\Http\Traits;
 
+use Illuminate\Support\Collection;
+
 trait BulkActions
 {
     public function SubmitBulkAction($items, $action, $model)

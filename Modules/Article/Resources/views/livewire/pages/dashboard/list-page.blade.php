@@ -19,6 +19,8 @@
                    href="{{ route('articles.create') }}">افزودن
                     مقاله جدید</a>
 
+                <p>[[ selected_items ]]</p>
+
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -36,12 +38,12 @@
                     @foreach ($items as $item)
                         <tr>
                             <td>
-                                <p>[[ selected_items ]]</p>
-                                <input type="checkbox" ng-model="bulk_checkbox_{{ $item->id }}{{ $item->id }}"
+                                <input type="checkbox"
+{{--                                       ng-model="bulk_checkbox_{{ $item->id }}"--}}
                                        id="bulk_checkbox_{{ $item->id }}"
 {{--                                       ng-checked="selected_items.includes({{ $item->id }})"--}}
-                                       wire:change="$emit('triggerChangeStatusModal' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}')"
-{{--                                       ng-change="AddItemsToBulkAction('{{ $item->id }}', bulk_checkbox_{{ $item->id }})"--}}
+                                       wire:change="$emit('triggerChangeStatusModal' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}', <?php echo json_encode($items->pluck('id')->toArray()); ?>)"
+{{--                                       ng-change="AddItemsToBulkAction('{{ $item->id }}', 'bulk_checkbox_{{ $item->id }}')"--}}
                                        class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}" style="font-weight: normal !important;">{{ $loop->iteration }}</label>
                             </td>
                             <td>{{$item->title}}</td>

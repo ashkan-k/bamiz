@@ -1,4 +1,4 @@
-<script>
+<script wire:ignore>
     app.controller('myCtrl', function ($scope, $http) {
         $scope.items = <?php echo json_encode($items->pluck('id')->toArray()); ?>;
         $scope.selected_items = [];
@@ -8,17 +8,22 @@
         $scope.CheckUnCheckBoxes = function (item, value){
             if (Array.isArray(item)) {
                 for (const i in item){
+                    console.log('aaaaaaaaaaaaaa')
+                    console.log($('#bulk_checkbox_' + item[i]))
                     $('#bulk_checkbox_' + item[i]).attr('checked', value);
                 }
                 $('#checkAll').attr('checked', value);
             }else {
                 $('#bulk_checkbox_' + item).attr('checked', value);
+                if ($scope.items.length == $scope.selected_items.length){
+                    $('#checkAll').attr('checked', value);
+                }else {
+                    $('#checkAll').attr('checked', false);
+                }
             }
         }
 
         $scope.AddItemsToBulkAction = function (items, value) {
-            $scope.CheckUnCheckBoxes(items, value);
-
             if (Array.isArray(items)) {
                 if (value) {
                     for (const i in items) {
@@ -36,6 +41,8 @@
                     $scope.selected_items.splice(index, 1);
                 }
             }
+
+            $scope.CheckUnCheckBoxes(items, value);
 
             console.log($scope.selected_items)
         }
@@ -95,22 +102,22 @@
             $scope.bulk_action = null;
             for (const item in $scope.items) {
                 $('#bulk_checkbox_' + $scope.items[item]).attr('checked', false);
-
-                console.log(item)
-                console.log($scope.items[item])
             }
             $('#checkAll').attr('checked', false);
             showToast(event.detail['message'], 'success');
         });
 
 
-    @this.on('triggerChangeStatusModal', (item_id, name) => {
+    @this.on('triggerChangeStatusModal', (item_id, name, all_items) => {
         var value;
         if ($('#' + name).is(':checked')){
             value = true;
         }else {
             value = false;
         }
+
+        $scope.items = all_items;
+
         $scope.AddItemsToBulkAction(item_id, value);
     });
 
