@@ -51,7 +51,7 @@
                             <td>{{ $item->chairs_people_count }}</td>
                             <td>
                                 <a href="{{ $item->get_cover(300) }}" target="-_blank"><img width="50"
-                                                                                         src="{{ $item->get_cover() }}"
+                                                                                         src="{{ $item->get_cover(300) }}"
                                                                                          alt="عکس کابر"></a>
                             </td>
                             <td>

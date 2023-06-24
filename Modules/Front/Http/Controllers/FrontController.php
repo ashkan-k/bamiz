@@ -16,9 +16,9 @@ class FrontController extends Controller
 
     public function index()
     {
-        $places = Place::with('options', function ($query){
+        $places = Place::with(['options' => function ($query){
             return $query->whereIn('title' , ['فضای بازی' , 'اینترنت رایگان' , 'موسیقی زنده' , 'فضای سبز' , 'فضای vip'])->get(['title'])->toArray();
-        })->with($this->place_relations)->limit(5)->get();
+        }])->with($this->place_relations)->limit(5)->get();
 
         $latest_places = Place::query()->orderByDesc('created_at')->take(4)->get();
         $categories = Category::whereDoesntHave('children')->get();

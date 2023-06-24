@@ -164,12 +164,21 @@
                             @enderror
 
                             @if(isset($item) && $item->cover)
-                                <div class="input-field col s12 mt-3">
-                                    <p>تصویر قبلی:</p>
-                                    <a href="{{ $item->get_cover() }}" target="_blank"><img
-                                            src="{{ $item->get_cover() }}"
-                                            width="70"
-                                            alt="{{ $item->title }}"></a>
+                                <div class="row">
+                                    <br>
+                                    @foreach( $item->cover['images'] as $key => $image)
+                                        <div class="col-sm-2 col-xs-10 "
+                                             style="border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55); margin-right: 30px ; margin-top: 30px">
+                                            <label class="control-label">
+                                                {{ $key }}
+                                                <input required type="radio" name="imagesThumb"
+                                                       value="{{ $image }}" {{ $item->cover['thumb'] == $image ? 'checked' : '' }} />
+                                                <a href="{{ $image }}" target="_blank"><img
+                                                        style="border-radius: 20px; margin-bottom: 8px;"
+                                                        src="{{ $image }}" width="100%"></a>
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             @endif
                         </div>
@@ -201,7 +210,7 @@
 
     <script>
         $('#id_user').select2();
-        $('#id_city').select2();
+        // $('#id_city').select2();
 
         $(document).ready(function () {
             window.initSelectCompanyDrop = () => {

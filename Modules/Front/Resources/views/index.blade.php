@@ -45,8 +45,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-xs-12">
                         <a href="/mizbans/{{ $ca->slug }}" class="grid_item">
                             <figure>
-                                <small
-                                    style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
+                                <small style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
                                     <h6 style="color: white"><i class="fa fa-map-marker"
                                                                 aria-hidden="true"></i>&nbsp;{{ $ca->title }}</h6>
                                 </small>
@@ -82,7 +81,7 @@
                         <div class="box_grid" style="border-radius: 10px">
                             <figure>
 
-                                <a href="/centers/{{ $place->slug }}"><img src="{{ $place->images['images']['900'] }}"
+                                <a href="/centers/{{ $place->slug }}"><img src="{{ $place->cover['images']['900'] }}"
                                                                             class="img-fluid"
                                                                             alt="{{ $place->name }}"
                                                                             width="800" height="533">
@@ -96,7 +95,7 @@
                             </figure>
                             <div class="wrapper row">
                                 <div class="">
-                                    <img src="{{ $place->images['images']['300'] }}" style="width: 50px; height: 50px">
+                                    <img src="{{ $place->cover['images']['300'] }}" style="width: 50px; height: 50px">
                                 </div>
                                 <div class="text-center" style="padding: 10px ">
                                     <h3><a href="/centers/{{ $place->slug }}">{{ $place->name }}</a></h3>
@@ -191,7 +190,7 @@
                                                                 aria-hidden="true"></i>&nbsp;{{ $place->province ? $place->province->name : '---' }}
                                     </h6>
                                 </small>
-                                <img src="{{ $place->images['images']['original'] }}" class="img-fluid"
+                                <img src="{{ $place->cover['images']['original'] }}" class="img-fluid"
                                      style="height:200px;width:400px" alt="{{ $place->name }}">
                                 <div class="info">
                                     <h3>{{ $place->name }}</h3>
@@ -224,11 +223,11 @@
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <a href="/galleries/{{ $lg->id }}" class="grid_item">
                             <figure>
-                                <div class="score"><strong>{{ $lg->score }}</strong></div>
-                                <img src="{{ $lg->captions[0] }}" class="img-fluid" alt="گالری تصاویر"
+                                <div class="score"><strong>5</strong></div>
+                                <img src="{{ $lg->get_image() }}" class="img-fluid" alt="{{ $lg->place ? $lg->place->name : '---' }}"
                                      style="height:200px;width:400px">
                                 <div class="info">
-                                    <h3> کاربر {{ $lg->user->username }} </h3>
+                                    <h3> مرکز {{ $lg->place ? $lg->place->name : '---' }} </h3>
                                 </div>
                             </figure>
                         </a>
@@ -268,18 +267,18 @@
 
                         <div class="col-lg-6">
                             <a class="box_news" href="/blog/{{ $la->slug }}">
-                                <figure><img src="{{ $la->images['images']['300'] }}" alt="{{ $la->title }}">
+                                <figure><img src="{{ $la->get_image() }}" alt="{{ $la->title }}">
 
                                 </figure>
                                 <ul>
                                     <li>
                                         <i class="fa fa-calendar"></i>&nbsp; {{ \Carbon\Carbon::parse( $la->created_at )->diffForHumans() }}
                                     </li>
-                                    <li><i class="fa fa-eye"></i>&nbsp;{{ $la->	ViewCount }}</li>
+                                    <li><i class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>
                                 </ul>
                                 <h4>{{ $la->title }}</h4>
                                 <p>
-                                    {{ $la->short_text }}
+                                    {{ \Illuminate\Support\Str::limit($la->text, 50) }}
                                 </p>
                             </a>
                         </div>

@@ -33,6 +33,10 @@ class Place extends Model
         'city_id',
     ];
 
+    protected $casts = [
+        'cover' => 'array'
+    ];
+
     protected $search_fields = [
         'name',
         'slug',
