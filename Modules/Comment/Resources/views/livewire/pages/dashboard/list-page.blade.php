@@ -37,7 +37,7 @@
                             <td>
                                 <input type="checkbox"
                                        id="bulk_checkbox_{{ $item->id }}"
-                                       wire:change="$emit('triggerChangeStatusModal' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}', <?php echo json_encode($items->pluck('id')->toArray()); ?>)"
+                                       wire:change="$emit('triggerAddBulkActionEvent' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}', <?php echo json_encode($items->pluck('id')->toArray()); ?>)"
                                        class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}" style="font-weight: normal !important;">{{ $loop->iteration }}</label>
                             </td>
                             <td>{{$item->title}}</td>

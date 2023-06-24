@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-5 pt-2">
             <input type="checkbox" id="checkAll"
-                   wire:change="$emit('triggerChangeStatusModal', <?php echo $all_items ?>, 'checkAll', <?php echo $all_items ?>)">
+                   wire:change="$emit('triggerAddBulkActionEvent', <?php echo $all_items ?>, 'checkAll', <?php echo $all_items ?>)">
             <label for="checkAll" class="mr-3">انتخاب همه</label>
         </div>
         <div class="col-md-3">

@@ -101,7 +101,7 @@
         });
 
 
-    @this.on('triggerChangeStatusModal', (item_id, name, all_items) => {
+    @this.on('triggerAddBulkActionEvent', (item_id, name, all_items) => {
         var value;
         if ($('#' + name).is(':checked')){
             value = true;

@@ -16,12 +16,15 @@ class ListPage extends Component
     public $pagination;
     public $search = '';
     public $status;
+    public $data;
     protected $items;
     public $status_filter_items = [
         ['id' => 'draft', 'name' => 'پیش نویس'],
         ['id' => 'publish', 'name' => 'انتشار'],
         ['id' => 'done', 'name' => 'پایان انتشار'],
     ];
+
+    protected $listeners = ['triggerChangeStatusModal'];
 
     public function mount()
     {
@@ -39,6 +42,20 @@ class ListPage extends Component
     public function destroy(Article $article)
     {
         $article->delete();
+    }
+
+    // Change User Status
+    public function triggerChangeStatusModal(Article $article)
+    {
+        $this->item = $article;
+        $this->data['status'] = $article->status;
+    }
+
+    public function ChangeStatus()
+    {
+        $this->item->status = $this->data['status'];
+        $this->item->save();
+        $this->dispatchBrowserEvent('itemStatusUpdated');
     }
 
     private function FilterByStatus()
