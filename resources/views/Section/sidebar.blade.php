@@ -220,6 +220,15 @@
                 <li class="menu-title">تیکت ها</li>
 
                 <li class="submenu">
+                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> <span>دسته بندی تیکت ها</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('ticket-categories.index') }}">لیست دسته بندی ها</a></li>
+                        <li><a href="{{ route('ticket-categories.create') }}">افزودن دسته بندی</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
                     <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> <span>تیکت ها</span> <span
                             class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
@@ -229,26 +238,6 @@
                         <li><a href="{{ route('tickets.index') }}?status=close">بسته ها</a></li>
                     </ul>
                 </li>
-
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-question" aria-hidden="true"></i> <span>پرسش ها</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('questions.index') }}">لیست پرسش ها</a></li>--}}
-                {{--                        <li><a href="{{ route('questions.create') }}">افزودن پرسش جدید</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
-
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i> <span>پاسخ ها</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('answers.index') }}">لیست پاسخ ها</a></li>--}}
-                {{--                        <li><a href="{{ route('answers.create') }}">افزودن پاسخ جدید</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
-
-                {{--                <hr>--}}
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////////////////////////////////--}}
 
@@ -270,17 +259,6 @@
                         <li><a href="{{ route('payments.index') }}">لیست پرداخت ها</a></li>
                     </ul>
                 </li>
-
-                {{--                --}}{{--                ////////////////////////////////////////////////////////--}}
-
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-paypal" aria-hidden="true"></i> <span>تیکت ها بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('success_payments.index') }}">پرداخت های موفق</a></li>--}}
-                {{--                        <li><a href="{{ route('failed_payments.index') }}">پرداخت ناموفق</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
 
                 {{--                --}}{{--                ///////////////////////////////////////////////////////////--}}
 
