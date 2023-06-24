@@ -7,18 +7,13 @@
 
         $scope.CheckUnCheckBoxes = function (item, value){
             if (Array.isArray(item)) {
-                for (const i in item){
-                    console.log('aaaaaaaaaaaaaa')
-                    console.log($('#bulk_checkbox_' + item[i]))
-                    $('#bulk_checkbox_' + item[i]).attr('checked', value);
-                }
-                $('#checkAll').attr('checked', value);
+                $('input:checkbox').prop('checked', value);
             }else {
-                $('#bulk_checkbox_' + item).attr('checked', value);
+                $('#bulk_checkbox_' + item).prop('checked', value);
                 if ($scope.items.length == $scope.selected_items.length){
-                    $('#checkAll').attr('checked', value);
+                    $('input:checkbox').prop('checked', value);
                 }else {
-                    $('#checkAll').attr('checked', false);
+                    $('#checkAll').prop('checked', false);
                 }
             }
         }
