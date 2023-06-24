@@ -1,7 +1,7 @@
 @extends('layouts.front-master')
 
 @section('titlePage')
-    رزرو میز کافه و رستوران با تورمجازی
+    رزرو میز کافه و رستوران و هتل با تورمجازی
 @endsection
 
 @section('content')
@@ -90,7 +90,7 @@
 
                                 <small style="background-color: #09b052e6;right: 0;color: white;font-size: medium;">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    {{ $place->province ? $place->province->name : '---' }}
+                                    {{ $place->province ? $place->province->title : '---' }}
                                 </small>
                             </figure>
                             <div class="wrapper row">
@@ -99,15 +99,15 @@
                                 </div>
                                 <div class="text-center" style="padding: 10px ">
                                     <h3><a href="/centers/{{ $place->slug }}">{{ $place->name }}</a></h3>
-                                    <span>{{ $place->description }}</span>
+                                    <span>{!! \Illuminate\Support\Str::limit($place->description, 50) !!}</span>
                                 </div>
                             </div>
                             <ul>
                                 <li>
                                     <i class="fa fa-wifi" title="اینترنت رایگان"
 
-                                       @if(array_search('اینترنت رایگان' , $options))
-                                       style="color: green"
+                                       @if(in_array('اینترنت رایگان' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
                                         @endif
 
                                     ></i>
@@ -115,8 +115,8 @@
                                 <li>
                                     <i class="fa fa-music" title="موسیقی زنده"
 
-                                       @if(array_search('موسیقی زنده' , $options) === 0)
-                                       style="color: green"
+                                       @if(in_array('موسیقی زنده' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
                                         @endif
 
                                     ></i>
@@ -124,8 +124,8 @@
                                 <li>
                                     <i class="fa fa-tree" title="فضای سبز"
 
-                                       @if(array_search('فضای سبز' , $options) === 0)
-                                       style="color: green"
+                                       @if(in_array('فضای سبز' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
                                         @endif
 
                                     ></i>
@@ -133,8 +133,8 @@
                                 <li>
                                     <i class="fa fa-star" title="فضای vip"
 
-                                       @if($place->options()->where('title' , 'فضای vip')->first())
-                                       style="color: green"
+                                       @if(in_array('فضای vip' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
                                         @endif
 
                                     ></i>
@@ -142,8 +142,8 @@
                                 <li>
                                     <i class="fa fa-child" title="فضای بازی"
 
-                                       @if(array_search('فضای بازی' , $options) === 0)
-                                       style="color: green"
+                                       @if(in_array('فضای بازی' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
                                         @endif
 
                                     ></i>
@@ -153,7 +153,7 @@
                                 <li class="text-left" title="بازدید">
                                     <i class="fa fa-eye"></i>
 
-                                    {{ $place->viewCount }}
+                                    {{ $place->viewCount }} بازدید
 
                                 </li>
                             </ul>
@@ -278,7 +278,7 @@
                                 </ul>
                                 <h4>{{ $la->title }}</h4>
                                 <p>
-                                    {{ \Illuminate\Support\Str::limit($la->text, 50) }}
+                                    {!! \Illuminate\Support\Str::limit($la->text, 50) !!}
                                 </p>
                             </a>
                         </div>

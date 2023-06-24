@@ -12,6 +12,7 @@ use Modules\Common\Entities\City;
 use Modules\Common\Entities\Province;
 use Modules\Gallery\Entities\Gallery;
 use Modules\Option\Entities\Option;
+use Modules\Reserve\Entities\Reserve;
 use Modules\User\Entities\User;
 use Modules\WishList\Entities\WishList;
 
@@ -101,6 +102,11 @@ class Place extends Model
     public function options()
     {
         return $this->belongsToMany(Option::class, 'option_places');
+    }
+
+    public function reserves()
+    {
+        return $this->hasMany(Reserve::class);
     }
 
     public function comments()

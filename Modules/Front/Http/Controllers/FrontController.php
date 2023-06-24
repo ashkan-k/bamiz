@@ -18,7 +18,11 @@ class FrontController extends Controller
     {
         $places = Place::with(['options' => function ($query){
             return $query->whereIn('title' , ['فضای بازی' , 'اینترنت رایگان' , 'موسیقی زنده' , 'فضای سبز' , 'فضای vip'])->get(['title'])->toArray();
-        }])->with($this->place_relations)->limit(5)->get();
+        }])->withCount([
+            'reserves as reserves_count' => function ($query) {
+                $query->where('status', 1);
+            },
+        ])->with($this->place_relations)->orderByDesc('reserves_count')->limit(5)->get();
 
         $latest_places = Place::query()->orderByDesc('created_at')->take(4)->get();
         $categories = Category::whereDoesntHave('children')->get();
