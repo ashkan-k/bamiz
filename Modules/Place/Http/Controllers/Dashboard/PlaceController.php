@@ -2,6 +2,7 @@
 
 namespace Modules\Place\Http\Controllers\Dashboard;
 
+use App\Http\Traits\ImageUploader;
 use App\Http\Traits\Responses;
 use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
@@ -12,7 +13,7 @@ use Modules\Place\Http\Requests\PlaceRequest;
 
 class PlaceController extends Controller
 {
-    use Responses, Uploader;
+    use Responses, ImageUploader;
 
     public function index()
     {
@@ -26,7 +27,7 @@ class PlaceController extends Controller
 
     public function store(PlaceRequest $request)
     {
-        $cover = $this->UploadFile($request, 'cover', 'places_covers', $request->name);
+        $cover = $this->UploadImage($request->cover, 'places_covers', $request->name);
 
         Place::create(array_merge($request->validated(), ['cover' => $cover]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'places.index');
@@ -39,8 +40,7 @@ class PlaceController extends Controller
 
     public function update(PlaceRequest $request, Place $place)
     {
-        $cover = $this->UploadFile($request, 'cover', 'places_covers', $place->name, $place->cover);
-
+        $cover = $request->cover ? $this->UploadImage($request->cover, 'places_covers', $request->name) : $place->cover;
         $place->update(array_merge($request->validated(), ['cover' => $cover]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'places.index');
     }

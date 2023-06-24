@@ -50,9 +50,9 @@ class Place extends Model
         return \Modules\Place\Database\factories\PlaceFactory::new();
     }
 
-    public function get_cover()
+    public function get_cover($size)
     {
-        return $this->cover ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+        return $this->cover['images'][$size] ?  : 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
     public function save(array $options = [])
