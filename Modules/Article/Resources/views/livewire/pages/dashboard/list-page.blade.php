@@ -19,8 +19,6 @@
                    href="{{ route('articles.create') }}">افزودن
                     مقاله جدید</a>
 
-                <p>[[ selected_items ]]</p>
-
                 <table class="table table-hover">
                     <thead>
                     <tr>

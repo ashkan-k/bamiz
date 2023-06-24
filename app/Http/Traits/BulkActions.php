@@ -9,10 +9,6 @@ trait BulkActions
     public function SubmitBulkAction($items, $action, $model)
     {
         $model = str_replace('::class', '', $model);
-//        dd($items);
-//        if (!in_array($action, $model::$bulk_actions)){
-//            return $this->FailResponse('عملیات مورد نظر مجاز نیست!');
-//        }
 
         try {
             if ($action == 'delete') {
