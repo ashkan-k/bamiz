@@ -2,6 +2,7 @@
 
 namespace Modules\Comment\Http\Livewire\Pages\Dashboard;
 
+use App\Http\Traits\BulkActions;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Comment\Entities\Comment;
@@ -9,6 +10,7 @@ use Modules\Comment\Entities\Comment;
 class ListPage extends Component
 {
     use WithPagination;
+    use BulkActions;
 
     public $titlePage = '';
     public $pagination;

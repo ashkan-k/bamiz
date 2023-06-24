@@ -21,6 +21,7 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th>ردیف</th>
                         <th>کلید</th>
                         <th>مقدار</th>
                         <th>اعمال</th>
@@ -30,6 +31,12 @@
 
                     @foreach ($items as $item)
                         <tr>
+                            <td>
+                                <input type="checkbox"
+                                       id="bulk_checkbox_{{ $item->id }}"
+                                       wire:change="$emit('triggerChangeStatusModal' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}', <?php echo json_encode($items->pluck('id')->toArray()); ?>)"
+                                       class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}" style="font-weight: normal !important;">{{ $loop->iteration }}</label>
+                            </td>
                             <td>{{$item->key}}</td>
                             <td title="{{ $item->value }}">{{\Illuminate\Support\Str::limit($item->value, 25)}}</td>
 
@@ -55,6 +62,8 @@
                     </tbody>
                 </table>
 
+                @include('livewire.bulk_actions.bulk_actions', ['actions' => [['delete', 'حذف کردن']], 'items' => $items])
+
                 {{ $items->onEachSide(3)->links('livewire.pagination') }}
 
             </div>
@@ -64,5 +73,6 @@
 
 @push('StackScript')
     @include('livewire.delete')
+    @include('livewire.bulk_actions.bulk_actions_js', ['items' => $items, 'model' => \Modules\Setting\Entities\Setting::class])
 @endpush
 

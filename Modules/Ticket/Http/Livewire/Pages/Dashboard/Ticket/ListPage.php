@@ -2,6 +2,7 @@
 
 namespace Modules\Ticket\Http\Livewire\Pages\Dashboard\Ticket;
 
+use App\Http\Traits\BulkActions;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Ticket\Entities\Ticket;
@@ -9,6 +10,7 @@ use Modules\Ticket\Entities\Ticket;
 class ListPage extends Component
 {
     use WithPagination;
+    use BulkActions;
 
     public $titlePage = '';
     public $pagination;

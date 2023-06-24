@@ -2,6 +2,7 @@
 
 namespace Modules\WishList\Http\Livewire\Pages\Dashboard;
 
+use App\Http\Traits\BulkActions;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\WishList\Entities\WishList;
@@ -9,6 +10,7 @@ use Modules\WishList\Entities\WishList;
 class ListPage extends Component
 {
     use WithPagination;
+    use BulkActions;
 
     public $titlePage = '';
     public $pagination;

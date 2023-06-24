@@ -2,6 +2,7 @@
 
 namespace Modules\Category\Http\Livewire\Pages\Dashboard;
 
+use App\Http\Traits\BulkActions;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Category\Entities\Category;
@@ -9,6 +10,7 @@ use Modules\Category\Entities\Category;
 class ListPage extends Component
 {
     use WithPagination;
+    use BulkActions;
 
     public $titlePage = '';
     public $pagination;

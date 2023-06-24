@@ -2,6 +2,7 @@
 
 namespace Modules\Common\Http\Livewire\Pages\Dashboard\Province;
 
+use App\Http\Traits\BulkActions;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Common\Entities\Province;
@@ -9,6 +10,7 @@ use Modules\Common\Entities\Province;
 class ListPage extends Component
 {
     use WithPagination;
+    use BulkActions;
 
     public $titlePage = '';
     public $pagination;
