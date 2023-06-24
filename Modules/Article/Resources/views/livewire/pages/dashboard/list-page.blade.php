@@ -39,16 +39,13 @@
                         <tr>
                             <td>
                                 <input type="checkbox"
-{{--                                       ng-model="bulk_checkbox_{{ $item->id }}"--}}
                                        id="bulk_checkbox_{{ $item->id }}"
-{{--                                       ng-checked="selected_items.includes({{ $item->id }})"--}}
                                        wire:change="$emit('triggerChangeStatusModal' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}', <?php echo json_encode($items->pluck('id')->toArray()); ?>)"
-{{--                                       ng-change="AddItemsToBulkAction('{{ $item->id }}', 'bulk_checkbox_{{ $item->id }}')"--}}
                                        class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}" style="font-weight: normal !important;">{{ $loop->iteration }}</label>
                             </td>
-                            <td>{{$item->title}}</td>
-                            <td>{{$item->user ? $item->user->fullname() : '---'}}</td>
-                            <td>{{$item->like_count}}</td>
+                            <td>{{ $item->title ? : '---' }}</td>
+                            <td>{{ $item->user ? $item->user->fullname() : '---'}}</td>
+                            <td>{{ $item->like_count ? : '---' }}</td>
                             <td>
 
                                 <span wire:click="$emit('triggerChangeLevelModal' , {{ $item }})"
