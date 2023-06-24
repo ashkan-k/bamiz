@@ -3,17 +3,17 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="menu-title">بامیز</li>
-                <li class="active">
+                <li class="@if(str_starts_with(\Illuminate\Support\Facades\Route::current()->getName(), 'dashboard')) active @endif">
                     <a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> داشبورد</a>
                 </li>
-                <li>
+                <li class="@if(str_starts_with(\Illuminate\Support\Facades\Route::current()->getName(), 'profile')) active @endif">
                     <a href="{{ route('profile') }}"><i class="fa fa-user-circle-o"></i> پروفایل</a>
                 </li>
 
                 {{--                /////////////////////////////////////////////////////////////////////////--}}
 
                 <li class="submenu">
-                    <a href="#"><i class="fa fa-map" aria-hidden="true"></i> <span>شهرو استان</span> <span
+                    <a href="#" ><i class="fa fa-map" aria-hidden="true"></i> <span>شهرو استان</span> <span
                             class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('provinces.index') }}">استان ها</a></li>
