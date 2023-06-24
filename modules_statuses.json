@@ -14,5 +14,6 @@
     "WishList": true,
     "Ticket": true,
     "Payment": true,
-    "Reserve": true
+    "Reserve": true,
+    "Front": true
 }
