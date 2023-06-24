@@ -38,8 +38,6 @@
             }
 
             $scope.CheckUnCheckBoxes(items, value);
-
-            console.log($scope.selected_items)
         }
 
         $scope.SubmitBulkActionConfirm = function () {
@@ -96,9 +94,9 @@
             $scope.selected_items = [];
             $scope.bulk_action = null;
             for (const item in $scope.items) {
-                $('#bulk_checkbox_' + $scope.items[item]).attr('checked', false);
+                $('#bulk_checkbox_' + $scope.items[item]).prop('checked', false);
             }
-            $('#checkAll').attr('checked', false);
+            $('#checkAll').prop('checked', false);
             showToast(event.detail['message'], 'success');
         });
 
