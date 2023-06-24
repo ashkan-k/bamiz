@@ -94,10 +94,9 @@
                 <i class="caret"></i>
             </a>
             <ul class="dropdown-menu">
-{{--                <li><a href="profile.html">پروفایل من</a></li>--}}
-                <li><a href="edit-profile.html">ویرایش پروفایل</a></li>
-                <li><a href="settings.html">تنظیمات</a></li>
-                <form action="{{ route('logout') }}" method="post">
+                <li><a href="{{ route('profile') }}">پروفایل من</a></li>
+                <li><a href="{{ route('settings.index') }}">تنظیمات</a></li>
+                <form action="{{ route('logout') }}" method="post" id="frm_logout">
 
                     @csrf
                     <input type="submit" value="خروج" class="btn btn-danger" style="width: 100%">
@@ -109,10 +108,9 @@
     <div class="dropdown mobile-user-menu pull-right">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
         <ul class="dropdown-menu pull-right">
-            <li><a href="profile.html">پروفایل من</a></li>
-            <li><a href="edit-profile.html">ویرایش پروفایل</a></li>
-            <li><a href="settings.html">تنظیمات</a></li>
-            <li><a href="login.html">خروج</a></li>
+            <li><a href="{{ route('profile') }}">پروفایل من</a></li>
+            <li><a href="{{ route('settings.index') }}">تنظیمات</a></li>
+            <li><a onclick="$('#frm_logout').submit()">خروج</a></li>
         </ul>
     </div>
 </div>
