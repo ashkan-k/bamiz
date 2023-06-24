@@ -12,14 +12,20 @@ use Modules\Place\Entities\Place;
 
 class FrontController extends Controller
 {
+    private $place_relations = ['user', 'category', 'province'];
+
     public function index()
     {
-        $places = Place::limit(5)->get();
-        $categories = Category::where('chid', 0)->get();
+        $places = Place::with('options', function ($query){
+            return $query->whereIn('title' , ['فضای بازی' , 'اینترنت رایگان' , 'موسیقی زنده' , 'فضای سبز' , 'فضای vip'])->get(['title'])->toArray();
+        })->with($this->place_relations)->limit(5)->get();
+
+        $latest_places = Place::query()->orderByDesc('created_at')->take(4)->get();
+        $categories = Category::whereDoesntHave('children')->get();
         $latest_galleries = Gallery::latest()->take(20)->get();
         $latest_articles = Article::where('status' , 'publish')->latest()->take(4)->get();
 
-        return view('front::index', compact('places', 'categories', 'latest_articles', 'latest_galleries'));
+        return view('front::index', compact('places', 'categories', 'latest_articles', 'latest_galleries', 'latest_places'));
     }
 
 //    public function mizbans($slug)
