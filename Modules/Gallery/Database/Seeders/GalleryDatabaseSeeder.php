@@ -16,7 +16,7 @@ class GalleryDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Gallery::factory(15)->create();
+        Gallery::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

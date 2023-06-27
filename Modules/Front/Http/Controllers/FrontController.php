@@ -16,7 +16,7 @@ class FrontController extends Controller
 
     public function index()
     {
-        $places = Place::with(['options' => function ($query){
+        $popular_places = Place::with(['options' => function ($query){
             return $query->whereIn('title' , ['فضای بازی' , 'اینترنت رایگان' , 'موسیقی زنده' , 'فضای سبز' , 'فضای vip'])->get(['title'])->toArray();
         }])->withCount([
             'reserves as reserves_count' => function ($query) {
@@ -24,12 +24,12 @@ class FrontController extends Controller
             },
         ])->with($this->place_relations)->orderByDesc('reserves_count')->limit(5)->get();
 
-        $latest_places = Place::query()->orderByDesc('created_at')->take(4)->get();
+        $latest_places = Place::latest()->take(4)->get();
         $categories = Category::whereDoesntHave('children')->get();
         $latest_galleries = Gallery::latest()->take(20)->get();
         $latest_articles = Article::where('status' , 'publish')->latest()->take(4)->get();
 
-        return view('front::index', compact('places', 'categories', 'latest_articles', 'latest_galleries', 'latest_places'));
+        return view('front::index', compact('popular_places', 'categories', 'latest_articles', 'latest_galleries', 'latest_places'));
     }
 
 //    public function mizbans($slug)

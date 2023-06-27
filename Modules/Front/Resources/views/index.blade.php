@@ -67,7 +67,7 @@
             <div id="reccomended" class="owl-carousel owl-theme">
 
             @php $options = []; @endphp
-            @foreach($places as $place)
+            @foreach($popular_places as $place)
 
                 @php
                         foreach ($place->options as $o)
@@ -187,7 +187,7 @@
                                 <small
                                     style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
                                     <h6 style="color: white"><i class="fa fa-map-marker"
-                                                                aria-hidden="true"></i>&nbsp;{{ $place->province ? $place->province->name : '---' }}
+                                                                aria-hidden="true"></i>&nbsp;{{ $place->province ? $place->province->title : '---' }}
                                     </h6>
                                 </small>
                                 <img src="{{ $place->cover['images']['original'] }}" class="img-fluid"
@@ -271,10 +271,10 @@
 
                                 </figure>
                                 <ul>
-                                    <li>
+                                    <li style="font-family: FontAwesome !important;">
                                         <i class="fa fa-calendar"></i>&nbsp; {{ \Carbon\Carbon::parse( $la->created_at )->diffForHumans() }}
                                     </li>
-                                    <li><i class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>
+                                    <li style="font-family: FontAwesome !important;"><i class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>
                                 </ul>
                                 <h4>{{ $la->title }}</h4>
                                 <p>
