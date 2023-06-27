@@ -108,9 +108,6 @@
                         <li>
                             <a href="/centers">رزرو میز</a>
                         </li>
-                        <li>
-                            <a href="/foods">رزرو غذا</a>
-                        </li>
                     </ul>
                 </li>
                 <li><span><a href="/cooperation">درخواست همکاری</a></span></li>
@@ -132,14 +129,17 @@
         <div class="container margin_60_35">
             <div class="row">
                 <div class="col-lg-5 col-md-12 p-r-5">
-                    <p><img src="/front/img/logo.svg" width="150" height="36" alt=""></p>
+                    <p><img src="{{ $settings['logo'] }}" width="150" height="36" alt=""></p>
                     <p>{{ $settings['introduction'] }}</p>
                     <div class="follow_us">
                         <ul>
                             <li>ما را دنبال کنید</li>
-                            <li><a href="{{ $settings['facebook'] }}"><i class="ti-facebook"></i></a></li>
-                            <li><a href="{{ $settings['twitter'] }}"><i class="ti-twitter-alt"></i></a></li>
-                            <li><a href="{{ $settings['instagram'] }}"><i class="ti-instagram"></i></a></li>
+                            <li><a href="{{ $settings['facebook'] }}"><i style="font-family: FontAwesome !important;"
+                                                                         class="ti-facebook"></i></a></li>
+                            <li><a href="{{ $settings['twitter'] }}"><i style="font-family: FontAwesome !important;"
+                                                                        class="ti-twitter-alt"></i></a></li>
+                            <li><a href="{{ $settings['instagram'] }}"><i style="font-family: FontAwesome !important;"
+                                                                          class="ti-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>

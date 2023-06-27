@@ -4,7 +4,7 @@ Theme URI: http://www.ansonika.com/panagea/
 Author: Ansonika
 Author URI: http://themeforest.net/user/Ansonika/
 
-[Table of contents] 
+[Table of contents]
 
 1. SITE STRUCTURE and TYPOGRAPHY
 - 1.1 Typography
@@ -19,7 +19,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 - 2.5 Login/register
 - 2.6 Map styles
 - 2.7 Contacts
-- 2.8 404 page 
+- 2.8 404 page
 - 2.9 Cart section
 - 2.10 Media Gallery
 - 2.11 Faq
@@ -8538,4 +8538,17 @@ a.social_bt.google:before {
   #style-switcher {
     display: none;
   }
+}
+
+@media screen and (max-width: 990px) {
+    .custom_search_box{
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 990px) {
+    .custom_search_box{
+        margin: 0 auto;
+        width: 50% !important;
+    }
 }

@@ -9,17 +9,15 @@
         <div id="hero_video">
             <div class="wrapper">
                 <div class="container">
-                    <h3>رزرو میز کافه رستوران با تورمجازی</h3>
-                    <p>کافه یا رستوران خود را جهت مشاهده تورمجازی و رزرو آنلاین جستجو نمائید</p>
+                    <h3>{{ $settings['banner_title'] }}</h3>
+                    <p>{{ $settings['banner_description'] }}</p>
 
-                    <form action="search" method="post">
-                        <input type="hidden" name="_token" value="EAuoTn8ZIHl9omCeW2qpi1KLeC4TnXydUrFc5W1d">
-                        <div class="row no-gutters custom-search-input-2">
+                    <form action="search">
+                        <div class="row no-gutters custom-search-input-2 custom_search_box">
                             <div class="col-lg-9">
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="title"
-                                           placeholder="بخشی از نام مرکز میزبان و یا دسته بندی و یا شهر و یا استان آن را وارد نمائید">
-                                    <i class="icon_search"></i>
+                                           placeholder="بخشی از نام مرکز میزبان و یا دسته بندی و... را وارد نمائید">
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -31,8 +29,8 @@
                 </div>
             </div>
         </div>
-        <img src="/front/img/video_fix.png" alt="" class="header-video--media" data-video-src="/front/video/intro"
-             data-teaser-source="video/intro" data-provider="" data-video-width="1920" data-video-height="960">
+        <img src="{{ $settings['banner_image'] }}" alt="" class="header-video--media" data-video-src="{{ $settings['banner_video'] }}"
+             data-teaser-source="{{ $settings['banner_video'] }}" data-provider="" data-video-width="1920" data-video-height="960">
     </section>
     <!-- /header-video -->
 
@@ -271,10 +269,10 @@
 
                                 </figure>
                                 <ul>
-                                    <li style="font-family: FontAwesome !important;">
-                                        <i class="fa fa-calendar"></i>&nbsp; {{ \Carbon\Carbon::parse( $la->created_at )->diffForHumans() }}
+                                    <li>
+                                        <i style="font-family: FontAwesome !important;" class="fa fa-calendar"></i>&nbsp; {{ \Carbon\Carbon::parse( $la->created_at )->diffForHumans() }}
                                     </li>
-                                    <li style="font-family: FontAwesome !important;"><i class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>
+                                    <li><i style="font-family: FontAwesome !important;" class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>
                                 </ul>
                                 <h4>{{ $la->title }}</h4>
                                 <p>
