@@ -22,32 +22,38 @@
                                placeholder="دنبال چه چیزی میگردید...؟">
                     </div>
                 </div>
+
                 <div class="col-lg-3">
-                    <div class="form-group">
-                        <input wire:model.defer="search_city_or_state" class="form-control" type="text"
-                               placeholder="فیلتر استان/شهر؟">
-                        <i class="icon_pin_alt"></i>
-                    </div>
+                    <select wire:model.defer="city" id="id_city" class="form-control" style="alignment: right">
+                        <option value="">همه شهر ها</option>
+                        @foreach($cities as $c)
+                            <option value="{{ $c->id }}">{{ $c->title }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="col-lg-3">
                     <select wire:model.defer="category" class="form-control" style="alignment: right">
-                        <option value="0">همه دسته بندی ها</option>
+                        <option value="">همه دسته بندی ها</option>
                         @foreach($categories as $c)
                             <option value="{{ $c->slug }}">{{ $c->title }}</option>
                         @endforeach
                     </select>
                 </div>
 
-{{--                <div class="col-lg-2">--}}
-{{--                    <p class="text-center"><a href="#0" class="btn_1 rounded">جستجو</a></p>--}}
-                    <input wire:click="render()" style="height: 40px !important; margin-right: 10px !important;" type="submit" class="btn_1" value="جستجو">
-{{--                </div>--}}
+                <div class="col-lg-2 search_button_mobile">
+                    <input wire:click="render()" style="height: 40px !important; width: 100% !important;"
+                           type="submit" class="btn_1" value="جستجو">
+                </div>
+
+                {{--                <div class="col-lg-2">--}}
+                {{--                    <p class="text-center"><a href="#0" class="btn_1 rounded">جستجو</a></p>--}}
+                {{--                </div>--}}
             </div>
             <!-- /row -->
         </div>
         <!-- /custom-search-input-2 -->
-        <div class="isotope-wrapper">
+        <div class="isotope-wrapper mt-3">
 
             @foreach($places as $place)
 
@@ -80,7 +86,8 @@
                             <ul>
                                 <li><i class="ti-eye"></i> {{ $place->viewCount }} بازدید</li>
                                 <li>
-                                    <div class="score"><strong>{{ $place->province ? $place->province->title : '---' }}</strong></div>
+                                    <div class="score">
+                                        <strong>{{ $place->province ? $place->province->title : '---' }}</strong></div>
                                 </li>
                             </ul>
                         </div>
@@ -94,7 +101,13 @@
 
         {!! $places->links() !!}
 
-        <p class="text-center"><a href="#0" class="btn_1 rounded">اینجا باید بیجینیت قرار بگیرد</a></p>
+        {{--        <p class="text-center"><a href="#0" class="btn_1 rounded">اینجا باید بیجینیت قرار بگیرد</a></p>--}}
 
     </div>
 </div>
+
+@section('Scripts')
+    <script>
+        // $('#id_city').select2();
+    </script>
+@endsection

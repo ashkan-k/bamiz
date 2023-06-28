@@ -8552,3 +8552,13 @@ a.social_bt.google:before {
         width: 50% !important;
     }
 }
+
+@media screen and (max-width: 990px) {
+    .search_button_mobile{
+        margin-top: 20px !important;
+    }
+}
+
+.wish_bt:hover{
+    cursor: pointer !important;
+}

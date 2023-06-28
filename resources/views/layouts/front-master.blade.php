@@ -36,6 +36,8 @@
 
     <link rel="stylesheet" type="text/css" href="/admin/assets/css/font-awesome.min.css">
 
+    <link href="/select2/select2.min.css" rel="stylesheet"/>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css"
           id="theme-styles">
@@ -48,6 +50,15 @@
     <link rel="stylesheet" href="/timepicker2/dist/css/timepicker.min.css"/>
 
     {!! SEOMeta::generate() !!}
+
+    <style>
+        .select2-selection--single{
+            height: 41px !important;
+        }
+        #select2-id_city-container{
+            padding-top: 5px;
+        }
+    </style>
 
     @stack('Styles')
 
@@ -300,6 +311,8 @@
 @endif
 
 @livewireScripts
+
+@yield('Scripts')
 
 @stack('StackScript')
 

@@ -5,6 +5,8 @@ namespace Modules\Front\Http\Livewire\Front\Pages;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Category\Entities\Category;
+use Modules\Common\Entities\City;
+use Modules\Common\Entities\Province;
 use Modules\Place\Entities\Place;
 
 class PlacesPage extends Component
@@ -18,6 +20,7 @@ class PlacesPage extends Component
     public $category;
     protected $places;
     protected $categories;
+    public $city;
 
     public function mount()
     {
@@ -43,13 +46,22 @@ class PlacesPage extends Component
         $this->places = $this->category ? $this->places->where('category_id', $this->category) : $this->places;
     }
 
+    private function FilterByCity()
+    {
+        $this->places = $this->city ? $this->places->where('city_id', $this->city) : $this->places;
+    }
+
     public function render()
     {
         $this->places = Place::Search($this->search)->with(['wish_lists'])->latest();
-        $this->categories = Category::all();
-
         $this->FilterByCategory();
+        $this->FilterByCity();
 
-        return view('front::livewire.front.pages.places-page', ['places' => $this->places->paginate($this->pagination), 'categories' => $this->categories]);
+        $data = [
+            'places' => $this->places->paginate($this->pagination),
+            'categories' => Category::all(),
+            'cities' => City::all(),
+        ];
+        return view('front::livewire.front.pages.places-page', $data);
     }
 }
