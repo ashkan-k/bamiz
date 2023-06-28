@@ -57,6 +57,8 @@ class PlacesPage extends Component
         $this->FilterByCategory();
         $this->FilterByCity();
 
+//        dd($this->places->get());
+
         $data = [
             'places' => $this->places->paginate($this->pagination),
             'categories' => Category::all(),

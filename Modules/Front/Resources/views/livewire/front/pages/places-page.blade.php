@@ -52,25 +52,14 @@
             </div>
             <!-- /row -->
         </div>
-        <!-- /custom-search-input-2 -->
-        <div class="isotope-wrapper mt-3">
 
-            @foreach($places as $place)
+        <div class="wrapper-grid mt-5">
+            <div class="row">
 
-                <div class="box_list isotope-item popular">
-                    <div class="row no-gutters">
-                        <div class="col-lg-5" box_list isotope-item popular>
+                @foreach($places as $place)
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="box_grid" style="height: 504px !important;">
                             <figure>
-                                <a href="/centers/{{ $place->slug }}"><img
-                                        src="{{ $place->cover['images']['original'] }}" class="img-fluid" alt=""
-                                        width="800" height="533">
-                                    <div class="read_more"><span>مشاهده</span></div>
-                                </a>
-                            </figure>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="wrapper">
-
                                 @if(auth()->check())
                                     @if($place->wish_lists->where('user_id' , auth()->user()->id)->isEmpty())
                                         <a wire:click="AddToWishList('{{ $place->id }}')" class="wish_bt"></a>
@@ -80,11 +69,25 @@
                                     @endif
                                 @endif
 
-                                <h3><a href="/centers/{{ $place->slug }}"> {{ $place->name }} </a></h3>
-                                <p>{!! $place->description !!}</p>
+                                <a href="/centers/{{ $place->slug }}"><img
+                                        src="{{ $place->cover['images']['original'] }}" class="img-fluid" alt=""
+                                        width="800" height="533">
+                                    <div class="read_more"><span>مشاهده</span></div>
+                                </a>
+
+                                <small>{{ $place->category ? $place->category->title : '---' }}</small>
+                            </figure>
+                            <div class="wrapper">
+                                <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
+                                        class="icon_star"></i><i class="icon_star"></i></div>
+                                <h3><a href="/centers/{{ $place->slug }}"> {{ \Illuminate\Support\Str::limit($place->name, 30) }} </a></h3>
+
+                                <p>{!! \Illuminate\Support\Str::limit($place->description, 80) !!}</p>
+
+                                {{--                                <span class="price">From <strong>$54</strong> /per person</span>--}}
                             </div>
                             <ul>
-                                <li><i class="ti-eye"></i> {{ $place->viewCount }} بازدید</li>
+                                <li><i class="ti-eye"></i>{{ $place->viewCount }} بازدید</li>
                                 <li>
                                     <div class="score">
                                         <strong>{{ $place->province ? $place->province->title : '---' }}</strong></div>
@@ -92,12 +95,11 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-            @endforeach
-
+            </div>
+            <!-- /row -->
         </div>
-        <!-- /isotope-wrapper -->
 
         {!! $places->links() !!}
 
