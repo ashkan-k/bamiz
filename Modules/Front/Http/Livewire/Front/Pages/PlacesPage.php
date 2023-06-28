@@ -15,6 +15,7 @@ class PlacesPage extends Component
     public $pagination;
     public $search = '';
     public $place_id;
+    public $category;
     protected $places;
     protected $categories;
 
@@ -23,48 +24,32 @@ class PlacesPage extends Component
         $this->pagination = env('PAGINATION', 10);
     }
 
-    public function SearchAndFilter()
+    public function AddToWishList(Place $place)
     {
-        $this->places = Place::Search($this->search)->Filter();
-        dd($this->places);
+        auth()->user()->wish_lists()->create([
+            'wish_listable_id' => $place->id,
+            'wish_listable_type' => get_class($place),
+        ]);
     }
 
-    private function getCenterBySlug($slug)
+    public function DeleteFromWishList(Place $place)
     {
-        return Center::where('slug' , $slug)->first();
+        auth()->user()->wish_lists()->where('wish_listable_id', $place->id)
+            ->where('wish_listable_type', get_class($place))->delete();
     }
 
-    public function AddToWishList($slug)
+    private function FilterByCategory()
     {
-        $center = $this->getCenterBySlug($slug);
-        if ($center)
-        {
-            auth()->user()->wish_lists()->create([
-                'wish_listable_id' => $center->id,
-                'wish_listable_type' => get_class($center),
-            ]);
-        }
-    }
-
-    public function DeleteFromWishList($slug)
-    {
-        $center = $this->getCenterBySlug($slug);
-        if ($center)
-        {
-            auth()->user()->wish_lists()
-                ->where('wish_listable_id', $center->id)->where('wish_listable_type', get_class($center))->delete();
-        }
-    }
-
-    private function getData()
-    {
-        $this->places = Place::with(['wish_lists'])->latest()->paginate($this->pagination);
-        $this->categories = Category::all();
+        $this->places = $this->category ? $this->places->where('category_id', $this->category) : $this->places;
     }
 
     public function render()
     {
-        $this->getData();
-        return view('front::livewire.front.pages.places-page' , ['places' => $this->places, 'categories' => $this->categories]);
+        $this->places = Place::Search($this->search)->with(['wish_lists'])->latest();
+        $this->categories = Category::all();
+
+        $this->FilterByCategory();
+
+        return view('front::livewire.front.pages.places-page', ['places' => $this->places->paginate($this->pagination), 'categories' => $this->categories]);
     }
 }

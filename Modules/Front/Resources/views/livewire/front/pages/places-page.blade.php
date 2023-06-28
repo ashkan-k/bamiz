@@ -18,7 +18,7 @@
             <div class="row no-gutters inner">
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <input wire:model.defer="search_word" class="form-control" type="text"
+                        <input wire:model.defer="search" class="form-control" type="text"
                                placeholder="دنبال چه چیزی میگردید...؟">
                     </div>
                 </div>
@@ -31,17 +31,17 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <select wire:model.defer="search_category" class="form-control" style="alignment: right">
+                    <select wire:model.defer="category" class="form-control" style="alignment: right">
                         <option value="0">همه دسته بندی ها</option>
                         @foreach($categories as $c)
-                            <option value="{{ $c->id }}">{{ $c->title }}</option>
+                            <option value="{{ $c->slug }}">{{ $c->title }}</option>
                         @endforeach
                     </select>
                 </div>
 
 {{--                <div class="col-lg-2">--}}
 {{--                    <p class="text-center"><a href="#0" class="btn_1 rounded">جستجو</a></p>--}}
-                    <input wire:click="SearchAndFilter()" style="height: 43px !important; margin-right: 10px !important;" type="submit" class="btn_1" value="جستجو">
+                    <input wire:click="render()" style="height: 40px !important; margin-right: 10px !important;" type="submit" class="btn_1" value="جستجو">
 {{--                </div>--}}
             </div>
             <!-- /row -->
@@ -67,9 +67,9 @@
 
                                 @if(auth()->check())
                                     @if($place->wish_lists->where('user_id' , auth()->user()->id)->isEmpty())
-                                        <a wire:click="AddToWishList('{{ $place->slug }}')" class="wish_bt"></a>
+                                        <a wire:click="AddToWishList('{{ $place->id }}')" class="wish_bt"></a>
                                     @else
-                                        <a wire:click="DeleteFromWishList('{{ $place->slug }}')"
+                                        <a wire:click="DeleteFromWishList('{{ $place->id }}')"
                                            class="wish_bt liked"></a>
                                     @endif
                                 @endif

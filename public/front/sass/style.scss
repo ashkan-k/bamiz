@@ -4,7 +4,7 @@ Theme URI: http://www.ansonika.com/panagea/
 Author: Ansonika
 Author URI: http://themeforest.net/user/Ansonika/
 
-[Table of contents] 
+[Table of contents]
 
 1. SITE STRUCTURE and TYPOGRAPHY
 - 1.1 Typography
@@ -19,7 +19,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 - 2.5 Login/register
 - 2.6 Map styles
 - 2.7 Contacts
-- 2.8 404 page 
+- 2.8 404 page
 - 2.9 Cart section
 - 2.10 Media Gallery
 - 2.11 Faq
@@ -182,7 +182,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 			padding-left: 18px;
 		}
 	}
-	
+
 }
 
 /* Submenu 2nd level right */
@@ -246,7 +246,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 
 /* All styles for screen size under 991px */
 @media only screen and (max-width: 991px) {
-	
+
 	nav#menu {
 		display: none !important;
 	}
@@ -267,7 +267,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 			}
 		}
 	}
-	
+
 }
 
 #menu.fake_menu {
@@ -428,16 +428,16 @@ ul,ol {
 }
 .main_title_2 {
 	span {
-		width:120px; 
-		height:2px; 
-		background-color:#e1e1e1; 
-		display:block; 
+		width:120px;
+		height:2px;
+		background-color:#e1e1e1;
+		display:block;
 		margin:auto;
 		em {
-			width:60px; 
-			height:2px; 
-			background-color:$color-1; 
-			display:block; 
+			width:60px;
+			height:2px;
+			background-color:$color-1;
+			display:block;
 			margin:auto;
 		}
 	}
@@ -463,15 +463,15 @@ ul,ol {
 
 .main_title_3 {
 	span {
-		width:120px; 
-		height:2px; 
-		background-color:#e1e1e1; 
-		display:block; 
+		width:120px;
+		height:2px;
+		background-color:#e1e1e1;
+		display:block;
 		em {
-			width:60px; 
-			height:2px; 
-			background-color:$color-1; 
-			display:block; 
+			width:60px;
+			height:2px;
+			background-color:$color-1;
+			display:block;
 		}
 	}
 	margin-bottom: 25px;
@@ -509,7 +509,7 @@ h3.slide_typo {
 }
 
 /*General links color*/
-a {	
+a {
 	color: $color-1;
 	text-decoration: none;
 	@include transition-default;
@@ -532,7 +532,7 @@ a.btn_1,
     text-align: center;
     line-height: $line-height-none;
 	@include transition-default;
-	@include border-radius(3px); 
+	@include border-radius(3px);
 	&:hover {background: $color-2; color:#fff;}
 	&.full-width{
 		display: block;
@@ -625,7 +625,7 @@ a.btn_map_in,
 	display: inline-block;
     line-height: $line-height-none;
 	@include transition-default;
-	@include border-radius(3px); 
+	@include border-radius(3px);
 	&:hover {background: $color-2; color:#fff;}
 }
 /*-------- 1.3 Structure --------*/
@@ -881,29 +881,29 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before, header.s
 	@include mobile {height: 350px;}
 	&.general {
 		&:before {
-			background: url(../img/hero_in_bg_2.jpg) center center no-repeat; 
-			@include background-size(cover); 
+			background: url(../img/hero_in_bg_2.jpg) center center no-repeat;
+			@include background-size(cover);
 		}
 		.wrapper {@include rgba(bg, #000, 0.6);}
 	}
 	&.tours {
 		&:before {
-			background: url(../img/hero_in_bg_1.jpg) center center no-repeat; 
-			@include background-size(cover); 
+			background: url(../img/hero_in_bg_1.jpg) center center no-repeat;
+			@include background-size(cover);
 		}
 		.wrapper {@include rgba(bg, #000, 0.6);}
 	}
 	&.hotels {
 		&:before {
-			background: url(../img/hero_in_bg_4.jpg) center center no-repeat; 
-			@include background-size(cover); 
+			background: url(../img/hero_in_bg_4.jpg) center center no-repeat;
+			@include background-size(cover);
 		}
 		.wrapper {@include rgba(bg, #000, 0.6);}
 	}
 	&.restaurants {
 		&:before {
-			background: url(../img/hero_in_bg_5.jpg) center center no-repeat; 
-			@include background-size(cover); 
+			background: url(../img/hero_in_bg_5.jpg) center center no-repeat;
+			@include background-size(cover);
 		}
 		.wrapper {@include rgba(bg, #000, 0.6);}
 	}
@@ -911,8 +911,8 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before, header.s
 		height: 550px;
 		@include extra-small-mobile {height: 500px;}
 		&:before {
-			background: url(../img/hero_in_tours_detail.jpg) center center no-repeat; 
-			@include background-size(cover); 
+			background: url(../img/hero_in_tours_detail.jpg) center center no-repeat;
+			@include background-size(cover);
 		}
 		.wrapper {@include rgba(bg, #000, 0.6);}
 	}
@@ -920,8 +920,8 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before, header.s
 		height: 550px;
 		@include extra-small-mobile {height: 500px;}
 		&:before {
-			background: url(../img/hero_in_hotels_detail.jpg) center center no-repeat; 
-			@include background-size(cover); 
+			background: url(../img/hero_in_hotels_detail.jpg) center center no-repeat;
+			@include background-size(cover);
 		}
 		.wrapper {@include rgba(bg, #000, 0.6);}
 	}
@@ -929,15 +929,15 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before, header.s
 		height: 550px;
 		@include extra-small-mobile {height: 500px;}
 		&:before {
-			background: url(../img/hero_in_restaurants_detail.jpg) center center no-repeat; 
-			@include background-size(cover); 
+			background: url(../img/hero_in_restaurants_detail.jpg) center center no-repeat;
+			@include background-size(cover);
 		}
 		.wrapper {@include rgba(bg, #000, 0.6);}
 	}
 	&.contacts {
 		&:before {
-			background: url(../img/hero_in_bg_3.jpg) center center no-repeat; 
-			@include background-size(cover); 
+			background: url(../img/hero_in_bg_3.jpg) center center no-repeat;
+			@include background-size(cover);
 		}
 		.wrapper {@include rgba(bg, #000, 0.6);}
 	}
@@ -1203,7 +1203,7 @@ ul#additional_links {
 			opacity: 0.5;
 			@include transition-default;
 			&:hover {opacity: 1;}
-			
+
 		}
 		&:after {content: "|";font-weight: 300;position: relative;left: 10px;}
 	}
@@ -1515,7 +1515,7 @@ html[xmlns] .flexslider .slides {
 		animation-fill-mode: both;
 		-webkit-animation-name: zoomIn;
 		animation-name: zoomIn;
-	
+
 }
 
 #slider.flexslider li.flex-active-slide .meta .info p {
@@ -1587,7 +1587,7 @@ html[xmlns] .flexslider .slides {
 }
 
 #carousel_slider {
-    
+
 	&.flexslider {
 		overflow: hidden;
 		background-color: transparent;
@@ -1758,7 +1758,7 @@ video {
 }
 
 /* Home single hero */
-.hero_single {	
+.hero_single {
 	width: 100%;
 	position: relative;
 	overflow: hidden;
@@ -3263,7 +3263,7 @@ ul.cbp_tmtimeline {
 	padding: 0;
 	list-style: none;
 	position: relative;
-} 
+}
 
 /* The line */
 .cbp_tmtimeline:before {
@@ -3329,7 +3329,7 @@ img.thumb_visit {
 	@include fontSize(13px);
 }
 
-.cbp_tmtimeline > li .cbp_tmlabel h4 { 
+.cbp_tmtimeline > li .cbp_tmlabel h4 {
 	margin:0 0 5px 0;
 	padding:0;
 	@include fontSize(16px);
@@ -3414,7 +3414,7 @@ img.thumb_visit {
 		float: right;
 		left: auto;
 		margin: -65px 5px 0 0px;
-	}	
+	}
 }
 
 ul.hotel_facilities {
@@ -3431,8 +3431,8 @@ ul.hotel_facilities {
 		img {
 			margin-right: 10px;
 
-		} 
-	} 
+		}
+	}
 }
 
 .room_type {
@@ -3449,7 +3449,7 @@ ul.hotel_facilities {
 	h4 {
 		@include mobile {margin-top: 25px;}
 	}
-} 
+}
 
 /*-------- 2.5 Login/register --------*/
 #login_bg, #register_bg {
@@ -3483,7 +3483,7 @@ ul.hotel_facilities {
 		@include mobile {width: 100%; padding: 30px;}
 		form {
 			margin-bottom: 60px;
-			display: block;	
+			display: block;
 			.form-group {
 			input {
 				  padding-left: 40px;
@@ -3680,7 +3680,7 @@ a.social_bt {
 
 /*-------- 2.6 Map styles --------*/
 .map {
-	width: 100%; 
+	width: 100%;
 	height: 500px;
 	&.map_single {
 		height: 400px;
@@ -3743,7 +3743,7 @@ a.social_bt {
 		strong {
 			display: block;
 			font-weight: 500;
-			
+
 		}
 	}
 	&:after{
@@ -5007,7 +5007,7 @@ ul.list_feat {
 							margin-bottom: 15px;
 						}
 						i {
-						    
+
 						    line-height: 48px;
 						    top: 1px;
 						    right: 1px;
@@ -5194,7 +5194,7 @@ a.btn_search_map_view {
 					float: right;
 					margin-right: 0;
 				}
-				
+
 			}
 		}
 	}
@@ -5410,7 +5410,7 @@ a.address {
 	background-color: $color-4;
 	color: #fff;
 	padding: 45px;
-	opacity: 0;	
+	opacity: 0;
 	p {opacity: 0.8;}
 	h3 {color: #fff;}
 }
@@ -5535,7 +5535,7 @@ $arrow_color: $gray_light !default;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-color: #fff;
   border-radius: $input_border_radius;
-  border: none; 
+  border: none;
   box-sizing: border-box;
   clear: both;
   cursor: pointer;
@@ -5564,23 +5564,23 @@ $arrow_color: $gray_light !default;
     border-color: $primary_light;
   }
   // Arrow
-  &:after { 
+  &:after {
     border-bottom: 2px solid $arrow_color;
     border-right: 2px solid $arrow_color;
     content: '';
-    display: block; 
+    display: block;
     height: 8px;
     margin-top: -5px;
     pointer-events: none;
-    position: absolute; 
-    right: 20px; 
-    top: 50%; 
+    position: absolute;
+    right: 20px;
+    top: 50%;
     transform-origin: 66% 66%;
     transform: rotate(45deg);
     transition: all 0.15s ease-in-out;
     width: 8px;
   }
-  
+
   &.open {
     @extend :active;
     &:after {
@@ -5596,11 +5596,11 @@ $arrow_color: $gray_light !default;
     border-color: lighten($gray_light, 2%);
     color: $gray;
     pointer-events: none;
-    &:after { 
+    &:after {
       border-color: lighten($arrow_color, 20%);
     }
   }
-  
+
   // Modifiers
   &.wide {
     width: 100%;
@@ -5620,7 +5620,7 @@ $arrow_color: $gray_light !default;
     font-size: $font_size_small;
     height: $input_height_small;
     line-height: $input_height_small - 2;
-    &:after { 
+    &:after {
       height: 4px;
       width: 4px;
     }
@@ -5629,7 +5629,7 @@ $arrow_color: $gray_light !default;
       min-height: $input_height_small - 2;
     }
   }
-  
+
   // List and options
   .list {
     background-color: #fff;
@@ -5653,7 +5653,7 @@ $arrow_color: $gray_light !default;
 	// for overflow fix. from here.
     height: 18vh;
     overflow: auto;
-    
+
     // for custom scrollbar inside select box
     &::-webkit-scrollbar{
       width: 14px;
@@ -5687,10 +5687,10 @@ $arrow_color: $gray_light !default;
     padding-right: $dropdown_padding + 11;
     text-align: left;
     transition: all 0.2s;
-    &:hover, &.focus, &.selected.focus { 
+    &:hover, &.focus, &.selected.focus {
       background-color: $gray_lighter;
     }
-    &.selected { 
+    &.selected {
       font-weight: 500;
     }
     &.disabled {
@@ -6378,49 +6378,53 @@ a.social_bt.google {
 		margin: 0 0px 10px 0;
 		overflow: hidden;
 	}
-	
+
 	.colors li {
 		float: left;
 		margin: 4px 2px 0 2px;
 	}
-	
+
 	.colors li a {
 		display: block;
 		width: 17px;
 		height: 17px;
 		cursor: pointer;
 	}
-	
+
 	.default {
 		background: $color-1;
 	}
-	
+
 	.aqua {
 		background: #1cbbb4;
 	}
-	
+
 	.green_switcher {
 		background: #82ca9c;
 	}
-	
+
 	.orange {
 		background: #f7941d;
 	}
-	
+
 	.blue {
 		background: #004dda;
 	}
-	
+
 	.colors li a.active {
 		box-shadow: 0 0 0 2px #fff inset
 	}
-	
+
 	.colors li a {
 		border-radius: 3px;
 	}
-	
+
 	@media only screen and (max-width: 1024px) {
 		#style-switcher {
 			display: none;
 		}
 	}
+
+.wish_bt:hover{
+    cursor: pointer !important;
+}
