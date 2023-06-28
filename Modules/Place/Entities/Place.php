@@ -50,6 +50,12 @@ class Place extends Model
         'city.title',
     ];
 
+    protected $filter_fields = [
+        'category_id',
+        'province_id',
+        'city_id',
+    ];
+
     protected static function newFactory()
     {
         return \Modules\Place\Database\factories\PlaceFactory::new();

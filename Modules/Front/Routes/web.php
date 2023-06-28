@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 use Modules\Front\Http\Controllers\FrontController;
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
+Route::get('places' , [FrontController::class , 'places'])->name('places');
