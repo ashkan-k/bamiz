@@ -122,7 +122,7 @@
                     </ul>
                 </li>
                 <li><span><a href="/cooperation">درخواست همکاری</a></span></li>
-                <li><span><a href="/blogs">بلاگ</a></span></li>
+                <li><span><a href="{{ route('articles') }}">بلاگ</a></span></li>
                 <li><span><a href="/about_us">درباره بامیز </a></span></li>
                 <li><span><a href="/contact_us">تماس با بامیز </a></span></li>
             </ul>

@@ -58,7 +58,7 @@ class Article extends Model
         if (!$this->user_id){
             $this->user_id = auth()->id();
         }
-        $this->slug = Str::slug($this->name);
+        $this->slug = Slugify($this->title);
         try {
             $saved =  parent::save($options);
         }catch (\Exception $exception){

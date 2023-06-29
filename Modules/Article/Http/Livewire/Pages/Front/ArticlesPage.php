@@ -33,7 +33,7 @@ class ArticlesPage extends Component
 
     public function render()
     {
-        $this->articles = Article::with(['user'])->Search($this->search)->latest();
+        $this->articles = Article::with(['user'])->whereStatus('publish')->Search($this->search)->latest();
         $this->most_popular_articles = Article::orderByDesc('like_count')->limit(3)->get();
 
         $data = [

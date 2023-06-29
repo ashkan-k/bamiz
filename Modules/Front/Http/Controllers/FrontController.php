@@ -62,10 +62,6 @@ class FrontController extends Controller
 //        session()->flash('contact_us_message' , 'کاربر عزیز پیام تماس شما با موفقیت ثبت شد.');
 //        return redirect('/contact_us');
 //    }
-//    public function blog_detail()
-//    {
-//        return view('Front.blog_detail');
-//    }
 //
 //    public function blogs_center()
 //    {

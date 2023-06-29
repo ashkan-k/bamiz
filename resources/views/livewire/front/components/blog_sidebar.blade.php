@@ -6,10 +6,10 @@
         @foreach($most_popular_articles as $a)
             <li>
                 <div class="alignleft">
-                    <a href="/blogs/{{ $a->slug }}"><img src="{{ $a->get_image() }}" alt="{{ $a->title }}"></a>
+                    <a href="{{ route('article_detail', $a->slug) }}"><img src="{{ $a->get_image() }}" width="120" alt="{{ $a->title }}"></a>
                 </div>
                 <small>{{ \Carbon\Carbon::parse($a->created_at)->diffForHumans() }}</small>
-                <h3><a href="/blogs/{{ $a->slug }}" title="">{{ \Illuminate\Support\Str::limit($a->title , 20) }}</a></h3>
+                <h3><a href="{{ route('article_detail', $a->slug) }}" title="">{{ \Illuminate\Support\Str::limit($a->title , 20) }}</a></h3>
             </li>
         @endforeach
 

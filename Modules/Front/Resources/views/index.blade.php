@@ -47,7 +47,7 @@
                 @foreach($categories as $ca)
 
                     <div class="col-xl-3 col-lg-6 col-md-6 col-xs-12">
-                        <a href="/mizbans/{{ $ca->slug }}" class="grid_item">
+                        <a href="{{ route('categories', $ca->slug) }}" class="grid_item">
                             <figure>
                                 <small
                                     style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
@@ -274,7 +274,7 @@
                     @foreach($latest_articles as $la)
 
                         <div class="col-lg-6">
-                            <a class="box_news" href="/blog/{{ $la->slug }}">
+                            <a class="box_news" href="{{ route('article_detail', $la->slug) }}">
                                 <figure><img src="{{ $la->get_image() }}" alt="{{ $la->title }}">
 
                                 </figure>

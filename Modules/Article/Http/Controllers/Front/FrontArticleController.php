@@ -8,6 +8,7 @@ use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Article\Entities\Article;
 use Modules\Place\Entities\Place;
 use Modules\Place\Http\Requests\PlaceRequest;
 
@@ -16,5 +17,10 @@ class FrontArticleController extends Controller
     public function articles()
     {
         return view('article::front.articles');
+    }
+
+    public function article_detail(Article $article)
+    {
+        return view('article::front.article-detail', compact('article'));
     }
 }

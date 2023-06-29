@@ -18,7 +18,7 @@
                         <div class="row no-gutters">
                             <div class="col-lg-7">
                                 <figure>
-                                    <a href="/blogs/{{ $a->slug }}"><img src="{{ $a->get_image() }}"
+                                    <a href="{{ route('article_detail', $a->slug) }}"><img src="{{ $a->get_image() }}"
                                                                          alt="{{ $a->title }}">
                                         <div class="preview"><span>مشاهده</span></div>
                                     </a>
@@ -29,7 +29,7 @@
                                     <small>{{ \Carbon\Carbon::parse($a->created_at)->diffForHumans() }}</small>
                                     <br><br>
                                     <h3>
-                                        <a href="/blogs/{{ $a->slug }}">{{ \Illuminate\Support\Str::limit($a->title, 50) }}</a>
+                                        <a href="{{ route('article_detail', $a->slug) }}">{{ \Illuminate\Support\Str::limit($a->title, 50) }}</a>
                                     </h3>
                                     <p>{!! \Illuminate\Support\Str::limit($a->text, 150) !!}</p>
                                     <ul>
