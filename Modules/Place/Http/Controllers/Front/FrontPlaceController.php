@@ -8,6 +8,7 @@ use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Category\Entities\Category;
 use Modules\Place\Entities\Place;
 use Modules\Place\Http\Requests\PlaceRequest;
 
@@ -16,5 +17,10 @@ class FrontPlaceController extends Controller
     public function places()
     {
         return view('place::front.places');
+    }
+
+    public function categories(Category $category)
+    {
+        return view('place::front.places', compact('category'));
     }
 }

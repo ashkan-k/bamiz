@@ -15,9 +15,10 @@ class PlacesPage extends Component
 
     public $titlePage = '';
     public $pagination;
+
     public $search = '';
-    public $place_id;
     public $category;
+
     protected $places;
     protected $categories;
     public $city;

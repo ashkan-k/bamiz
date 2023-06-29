@@ -36,7 +36,7 @@
                     <select wire:model.defer="category" class="form-control" style="alignment: right">
                         <option value="">همه دسته بندی ها</option>
                         @foreach($categories as $c)
-                            <option value="{{ $c->slug }}">{{ $c->title }}</option>
+                            <option value="{{ $c->id }}">{{ $c->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -45,10 +45,6 @@
                     <input wire:click="SearchAndFilter()" style="height: 40px !important; width: 100% !important;"
                            type="submit" class="btn_1" value="جستجو">
                 </div>
-
-                {{--                <div class="col-lg-2">--}}
-                {{--                    <p class="text-center"><a href="#0" class="btn_1 rounded">جستجو</a></p>--}}
-                {{--                </div>--}}
             </div>
             <!-- /row -->
         </div>
@@ -101,9 +97,6 @@
 
             {{ $places->onEachSide(3)->links('livewire.front_pagination') }}
         </div>
-
-{{--        {!! $places->links() !!}--}}
-
     </div>
 </div>
 

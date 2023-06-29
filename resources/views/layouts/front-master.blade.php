@@ -101,15 +101,14 @@
         </a>
         <nav id="menu" class="main-menu">
             <ul>
-
                 @php $categories = \Modules\Category\Entities\Category::all() @endphp
 
                 <li><span><a href="/">صفحه نخست</a></span></li>
-                <li><span><a>میزبان</a></span>
+                <li><span><a>میزبان ها</a></span>
                     <ul>
                         @foreach($categories as $c)
                             <li>
-                                <a href="/mizbans/{{ $c->slug }}">{{ $c->title }}</a>
+                                <a href="{{ route('categories', $c->slug) }}">{{ $c->title ?: '---' }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -118,7 +117,7 @@
                 <li><span><a>رزرو سریع</a></span>
                     <ul>
                         <li>
-                            <a href="/centers">رزرو میز</a>
+                            <a href="{{ route('places') }}">رزرو میز</a>
                         </li>
                     </ul>
                 </li>

@@ -1,12 +1,16 @@
 @extends('layouts.front-master')
 
+<?php $title = isset($category) ? $category->title : "کافه و رستوران و هتل های بامیز"; ?>
+
 @section('titlePage')
-    کافه و رستوران و هتل های بامیز
+    {{ $title }}
 @endsection
 
 @section('content')
-    <?php $title = isset($object) ? $object->name : "کافه و رستوران و هتل های بامیز"; ?>
+    <?php $category = isset($category) ? $category->id : null; ?>
+
     @livewire('place::pages.front.places-page', [
-        'titlePage' => $title
+        'titlePage' => $title,
+        'category' => $category,
     ])
 @endsection
