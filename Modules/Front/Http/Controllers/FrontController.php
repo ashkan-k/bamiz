@@ -24,10 +24,10 @@ class FrontController extends Controller
             },
         ])->with($this->place_relations)->orderByDesc('reserves_count')->limit(5)->get();
 
-        $latest_places = Place::latest()->take(4)->get();
+        $latest_places = Place::with('province')->latest()->limit(4)->get();
         $categories = Category::whereDoesntHave('children')->get();
-        $latest_galleries = Gallery::latest()->take(20)->get();
-        $latest_articles = Article::where('status', 'publish')->latest()->take(4)->get();
+        $latest_galleries = Gallery::with('place')->latest()->limit(20)->get();
+        $latest_articles = Article::where('status', 'publish')->latest()->limit(4)->get();
 
         return view('front::index', compact('popular_places', 'categories', 'latest_articles', 'latest_galleries', 'latest_places'));
     }
