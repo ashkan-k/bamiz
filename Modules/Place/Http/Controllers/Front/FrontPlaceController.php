@@ -23,4 +23,9 @@ class FrontPlaceController extends Controller
     {
         return view('place::front.places', compact('category'));
     }
+
+    public function place_detail(Place $place)
+    {
+        return view('place::front.place-detail', compact('place'));
+    }
 }

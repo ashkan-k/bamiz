@@ -18,6 +18,12 @@ class Setting extends Model
         'value',
     ];
 
+    public static function getPriceFromSettings()
+    {
+        $setting =  Setting::firstOrCreate(['key' => 'price'] , ['value' => 1000]);
+        return $setting->value;
+    }
+
     protected static function newFactory()
     {
         return \Modules\Setting\Database\factories\SettingFactory::new();
