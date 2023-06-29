@@ -17,8 +17,9 @@ class ReserveRequest extends FormRequest
         return [
             'date' => 'required|jdate:Y-m-d|after:' . \verta()->formatDate(),
             'start_time' => 'required|date_format:H:i',
-            'end_time' => 'date_format:H:i|after:start_time',
+//            'end_time' => 'date_format:H:i|after:start_time',
             'guest_count' => 'required|numeric',
+            'chair_number' => 'nullable|numeric',
             'amount' => 'numeric|min:1',
             'user_id' => 'required|exists:users,id',
             'place_id' => 'required|exists:places,id',

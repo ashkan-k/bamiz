@@ -12,13 +12,11 @@ use Modules\Place\Entities\Place;
 
 class FrontController extends Controller
 {
-    private $place_relations = ['user', 'category', 'province'];
+    private $place_relations = ['user', 'category', 'province', 'options'];
 
     public function index()
     {
-        $popular_places = Place::with(['options' => function ($query) {
-            return $query->whereIn('title', ['فضای بازی', 'اینترنت رایگان', 'موسیقی زنده', 'فضای سبز', 'فضای vip'])->get(['title'])->toArray();
-        }])->withCount([
+        $popular_places = Place::withCount([
             'reserves as reserves_count' => function ($query) {
                 $query->where('status', 1);
             },

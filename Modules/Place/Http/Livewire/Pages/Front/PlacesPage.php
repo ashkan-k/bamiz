@@ -27,6 +27,11 @@ class PlacesPage extends Component
         $this->pagination = env('PAGINATION', 10);
     }
 
+    public function SearchAndFilter()
+    {
+        // Empty Body just used for reloading page data
+    }
+
     public function updated($propertyName)
     {
         if (in_array($propertyName, ['search', 'pagination', 'category', 'city']))
@@ -61,7 +66,7 @@ class PlacesPage extends Component
 
     public function render()
     {
-        $this->places = Place::Search($this->search)->with(['wish_lists'])->latest();
+        $this->places = Place::with(['province', 'category'])->Search($this->search)->with(['wish_lists'])->latest();
         $this->FilterByCategory();
         $this->FilterByCity();
 

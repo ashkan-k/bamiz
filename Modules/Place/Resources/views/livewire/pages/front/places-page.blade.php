@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="col-lg-2 search_button_mobile">
-                    <input wire:click="render()" style="height: 40px !important; width: 100% !important;"
+                    <input wire:click="SearchAndFilter()" style="height: 40px !important; width: 100% !important;"
                            type="submit" class="btn_1" value="جستجو">
                 </div>
 

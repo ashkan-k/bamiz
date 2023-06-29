@@ -114,15 +114,29 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-lg-2">زمان پایان</label>
-                        <div class="col-md-10">
-                            <input id="id_end_time" type="text" name="end_time"
-                                   class="form-control" autocomplete="off"
-                                   placeholder=" زمان پایان را وارد کنید"
-                                   value="@if(old('end_time')){{ old('end_time') }}@elseif(isset($item->end_time)){{ $item->end_time }}@endif">
+                    {{--                    <div class="form-group">--}}
+                    {{--                        <label class="control-label col-lg-2">زمان پایان</label>--}}
+                    {{--                        <div class="col-md-10">--}}
+                    {{--                            <input id="id_end_time" type="text" name="end_time"--}}
+                    {{--                                   class="form-control" autocomplete="off"--}}
+                    {{--                                   placeholder=" زمان پایان را وارد کنید"--}}
+                    {{--                                   value="@if(old('end_time')){{ old('end_time') }}@elseif(isset($item->end_time)){{ $item->end_time }}@endif">--}}
 
-                            @error('end_time')
+                    {{--                            @error('end_time')--}}
+                    {{--                            <span class="text-danger text-wrap">{{ $message }}</span>--}}
+                    {{--                            @enderror--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">شماره میز (اختیاری)</label>
+                        <div class="col-md-10">
+                            <input type="text" name="chair_number"
+                                   class="form-control"
+                                   placeholder="شماره میز را وارد کنید"
+                                   value="@if(old('chair_number')){{ old('chair_number') }}@elseif(isset($item->chair_number)){{ $item->chair_number }}@endif">
+
+                            @error('chair_number')
                             <span class="text-danger text-wrap">{{ $message }}</span>
                             @enderror
                         </div>
