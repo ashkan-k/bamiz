@@ -2,7 +2,7 @@
     <section class="hero_in restaurants start_bg_zoom">
         <div class="wrapper">
             <div class="container">
-                <h1 class="fadeInUp animated"><span></span>Paris Eat &amp; Drink list</h1>
+                <h1 class="fadeInUp animated"><span></span>{{ $titlePage }}</h1>
             </div>
         </div>
     </section>

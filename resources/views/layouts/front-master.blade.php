@@ -60,7 +60,8 @@
         }
     </style>
 
-    @stack('Styles')
+    @yield('Styles')
+    @stack('StackStyle')
 
     @livewireStyles
 
