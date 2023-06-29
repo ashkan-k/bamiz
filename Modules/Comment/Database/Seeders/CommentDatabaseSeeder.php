@@ -16,7 +16,7 @@ class CommentDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Comment::factory(15)->create();
+        Comment::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

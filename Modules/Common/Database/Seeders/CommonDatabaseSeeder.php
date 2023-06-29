@@ -17,8 +17,8 @@ class CommonDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Province::factory(15)->create();
-        City::factory(15)->create();
+        Province::factory(5)->create();
+        City::factory(5)->create();
         // $this->call("OthersTableSeeder");
     }
 }

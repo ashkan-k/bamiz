@@ -16,7 +16,7 @@ class ArticleDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Article::factory(15)->create();
+        Article::factory(5)->create();
         // $this->call("OthersTableSeeder");
     }
 }

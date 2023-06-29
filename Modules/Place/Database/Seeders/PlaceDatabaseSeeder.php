@@ -16,7 +16,7 @@ class PlaceDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Place::factory(15)->create();
+        Place::factory(5)->create();
         // $this->call("OthersTableSeeder");
     }
 }

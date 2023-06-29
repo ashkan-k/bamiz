@@ -16,7 +16,7 @@ class SettingDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Setting::factory(15)->create();
+        Setting::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

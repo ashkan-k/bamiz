@@ -18,9 +18,9 @@ class TicketDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        TicketCategory::factory(15)->create();
-        Ticket::factory(15)->create();
-        TicketAnswer::factory(15)->create();
+        TicketCategory::factory(5)->create();
+        Ticket::factory(5)->create();
+        TicketAnswer::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

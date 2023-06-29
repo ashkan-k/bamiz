@@ -17,8 +17,8 @@ class OptionDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Option::factory(15)->create();
-        OptionPlace::factory(15)->create();
+        Option::factory(5)->create();
+        OptionPlace::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

@@ -16,7 +16,7 @@ class CategoryDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Category::factory(15)->create();
+        Category::factory(5)->create();
         // $this->call("OthersTableSeeder");
     }
 }

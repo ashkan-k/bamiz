@@ -16,7 +16,7 @@ class FoodDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Food::factory(15)->create();
+        Food::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

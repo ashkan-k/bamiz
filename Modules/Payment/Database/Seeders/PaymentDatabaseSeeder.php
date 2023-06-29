@@ -16,7 +16,7 @@ class PaymentDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Payment::factory(15)->create();
+        Payment::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

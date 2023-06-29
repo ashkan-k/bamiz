@@ -16,7 +16,7 @@ class ReserveDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Reserve::factory(15)->create();
+        Reserve::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

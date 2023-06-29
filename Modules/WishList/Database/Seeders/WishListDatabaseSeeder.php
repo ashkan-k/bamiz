@@ -16,7 +16,7 @@ class WishListDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        WishList::factory(15)->create();
+        WishList::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }

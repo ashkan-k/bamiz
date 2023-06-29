@@ -16,7 +16,7 @@ class CooperationDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        Cooperation::factory(15)->create();
+        Cooperation::factory(5)->create();
 
         // $this->call("OthersTableSeeder");
     }
