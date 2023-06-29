@@ -24,6 +24,9 @@ return new class extends Migration
             $table->integer('viewCount')->default(0);
             $table->text('cover');
 
+            $table->double('address_lat')->nullable();
+            $table->double('address_long')->nullable();
+
             $table->enum('type', EnumHelpers::$PlaceTypesEnum)->default('restaurant');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

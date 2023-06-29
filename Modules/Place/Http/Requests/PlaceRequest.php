@@ -22,9 +22,11 @@ class PlaceRequest extends FormRequest
             'province_id' => 'required|exists:provinces,id',
             'city_id' => 'required|exists:cities,id',
             'cover' => 'mimes:jpeg,png,bmp,jpg',
+            'lat' => ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
+            'long' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/']
         ];
 
-        if (request()->method == 'POST'){
+        if (request()->method == 'POST') {
             $rules['cover'] .= '|required';
         }
 

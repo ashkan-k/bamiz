@@ -32,6 +32,8 @@ class Place extends Model
         'category_id',
         'province_id',
         'city_id',
+        'address_lat',
+        'address_long',
     ];
 
     protected $casts = [
@@ -42,6 +44,8 @@ class Place extends Model
         'name',
         'slug',
         'description',
+        'address_lat',
+        'address_long',
         'user.username',
         'user.first_name',
         'user.last_name',
