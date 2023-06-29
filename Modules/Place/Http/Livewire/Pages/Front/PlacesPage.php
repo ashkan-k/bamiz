@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Front\Http\Livewire\Front\Pages;
+namespace Modules\Place\Http\Livewire\Pages\Front;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -70,6 +70,6 @@ class PlacesPage extends Component
             'categories' => Category::all(),
             'cities' => City::all(),
         ];
-        return view('front::livewire.front.pages.places-page', $data);
+        return view('place::livewire.pages.front.places-page', $data);
     }
 }

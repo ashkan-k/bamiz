@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    @livewire('front::front.pages.places-page')
+    @livewire('place::pages.front.places-page')
 @endsection

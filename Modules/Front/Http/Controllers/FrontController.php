@@ -32,11 +32,6 @@ class FrontController extends Controller
         return view('front::index', compact('popular_places', 'categories', 'latest_articles', 'latest_galleries', 'latest_places'));
     }
 
-    public function places()
-    {
-        return view('front::places');
-    }
-
 //    public function mizbans($slug)
 //    {
 //        return view('Front.mizbans' , compact('slug'));
