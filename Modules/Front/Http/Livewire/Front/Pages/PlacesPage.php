@@ -27,6 +27,14 @@ class PlacesPage extends Component
         $this->pagination = env('PAGINATION', 10);
     }
 
+    public function updated($propertyName)
+    {
+        if (in_array($propertyName, ['search', 'pagination', 'category', 'city']))
+        {
+            $this->resetPage();
+        }
+    }
+
     public function AddToWishList(Place $place)
     {
         auth()->user()->wish_lists()->create([
@@ -57,10 +65,8 @@ class PlacesPage extends Component
         $this->FilterByCategory();
         $this->FilterByCity();
 
-//        dd($this->places->get());
-
         $data = [
-            'places' => $this->places->paginate($this->pagination),
+            'places' => $this->places->paginate(1),
             'categories' => Category::all(),
             'cities' => City::all(),
         ];

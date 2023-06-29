@@ -29,8 +29,14 @@
                 </div>
             </div>
         </div>
-        <img src="{{ $settings['banner_image'] }}" alt="" class="header-video--media" data-video-src="{{ $settings['banner_video'] }}"
-             data-teaser-source="{{ $settings['banner_video'] }}" data-provider="" data-video-width="1920" data-video-height="960">
+        <img src="{{ $settings['banner_image'] }}" alt="" class="header-video--media" data-video-src="video/adventure"
+             data-teaser-source="video/adventure" data-provider="" data-video-width="1920" data-video-height="960"
+             style="display: none;">
+
+        <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
+            <source src="{{ $settings['banner_video_mp4'] }}" type="video/mp4">
+            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">
+        </video>
     </section>
     <!-- /header-video -->
 
@@ -43,7 +49,8 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-xs-12">
                         <a href="/mizbans/{{ $ca->slug }}" class="grid_item">
                             <figure>
-                                <small style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
+                                <small
+                                    style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
                                     <h6 style="color: white"><i class="fa fa-map-marker"
                                                                 aria-hidden="true"></i>&nbsp;{{ $ca->title }}</h6>
                                 </small>
@@ -68,10 +75,10 @@
             @foreach($popular_places as $place)
 
                 @php
-                        foreach ($place->options as $o)
-                         {
-                                $options[] = $o['title'];
-                         }
+                    foreach ($place->options as $o)
+                     {
+                            $options[] = $o['title'];
+                     }
                 @endphp
 
                 <!-- item -->
@@ -80,9 +87,9 @@
                             <figure>
 
                                 <a href="/centers/{{ $place->slug }}"><img src="{{ $place->cover['images']['900'] }}"
-                                                                            class="img-fluid"
-                                                                            alt="{{ $place->name }}"
-                                                                            width="800" height="533">
+                                                                           class="img-fluid"
+                                                                           alt="{{ $place->name }}"
+                                                                           width="800" height="533">
                                     <div class="read_more"><span>مشاهده</span></div>
                                 </a>
 
@@ -91,12 +98,14 @@
                                     {{ $place->province ? $place->province->title : '---' }}
                                 </small>
                             </figure>
-                            <div class="wrapper row">
+                            <div class="wrapper row" style="height: 175px !important;">
                                 <div class="">
                                     <img src="{{ $place->cover['images']['300'] }}" style="width: 50px; height: 50px">
                                 </div>
                                 <div class="text-center" style="padding: 10px ">
-                                    <h3><a href="/centers/{{ $place->slug }}">{{ $place->name }}</a></h3>
+                                    <h3>
+                                        <a href="/centers/{{ $place->slug }}">{{ \Illuminate\Support\Str::limit($place->name, 30) }}</a>
+                                    </h3>
                                     <span>{!! \Illuminate\Support\Str::limit($place->description, 50) !!}</span>
                                 </div>
                             </div>
@@ -222,7 +231,8 @@
                         <a href="/galleries/{{ $lg->id }}" class="grid_item">
                             <figure>
                                 <div class="score"><strong>5</strong></div>
-                                <img src="{{ $lg->get_image() }}" class="img-fluid" alt="{{ $lg->place ? $lg->place->name : '---' }}"
+                                <img src="{{ $lg->get_image() }}" class="img-fluid"
+                                     alt="{{ $lg->place ? $lg->place->name : '---' }}"
                                      style="height:200px;width:400px">
                                 <div class="info">
                                     <h3> مرکز {{ $lg->place ? $lg->place->name : '---' }} </h3>
@@ -272,7 +282,8 @@
                                     <li>
                                         <i style="font-family: FontAwesome !important;" class="fa fa-calendar"></i>&nbsp; {{ \Carbon\Carbon::parse( $la->created_at )->diffForHumans() }}
                                     </li>
-                                    <li><i style="font-family: FontAwesome !important;" class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>
+                                    <li><i style="font-family: FontAwesome !important;"
+                                           class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>
                                 </ul>
                                 <h4>{{ $la->title }}</h4>
                                 <p>

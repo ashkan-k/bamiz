@@ -77,7 +77,7 @@
 
                                 <small>{{ $place->category ? $place->category->title : '---' }}</small>
                             </figure>
-                            <div class="wrapper">
+                            <div class="wrapper" style="height: 170px !important;">
                                 <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
                                         class="icon_star"></i><i class="icon_star"></i></div>
                                 <h3><a href="/centers/{{ $place->slug }}"> {{ \Illuminate\Support\Str::limit($place->name, 30) }} </a></h3>
@@ -98,12 +98,11 @@
                 @endforeach
 
             </div>
-            <!-- /row -->
+
+            {{ $places->onEachSide(3)->links('livewire.front_pagination') }}
         </div>
 
-        {!! $places->links() !!}
-
-        {{--        <p class="text-center"><a href="#0" class="btn_1 rounded">اینجا باید بیجینیت قرار بگیرد</a></p>--}}
+{{--        {!! $places->links() !!}--}}
 
     </div>
 </div>
