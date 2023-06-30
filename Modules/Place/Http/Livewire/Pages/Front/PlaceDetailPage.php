@@ -125,7 +125,7 @@ class PlaceDetailPage extends Component
     public function render()
     {
         $this->getData();
-        return view('livewire.front.place-detail');
+        return view('place::livewire.pages.front.place-detail-page');
     }
 
 //    public function render()
