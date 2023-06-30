@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/fddsfdsf', function () {
+    return view('test_map');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

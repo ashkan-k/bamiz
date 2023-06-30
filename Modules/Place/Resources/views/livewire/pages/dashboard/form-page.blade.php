@@ -1,3 +1,15 @@
+@section('Styles')
+    <link rel="stylesheet" href="https://cdn.map.ir/web-sdk/1.4.2/css/mapp.min.css">
+    <link rel="stylesheet" href="https://cdn.map.ir/web-sdk/1.4.2/css/fa/style.css">
+
+    <style>
+        #app {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+@endsection
+
 <div class="row">
     <div class="col-xs-12">
         <div class="col-lg-12">
@@ -151,6 +163,19 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label col-lg-2">لینک تور مجازی</label>
+                        <div class="col-md-10">
+                                <textarea id="id_tour_link" type="text" name="tour_link"
+                                          class="form-control" required rows="4"
+                                          placeholder="توضیحات را وارد کنید">@if(old('tour_link')){{ old('tour_link') }}@elseif(isset($item->tour_link)){{ $item->tour_link }}@endif</textarea>
+
+                            @error('tour_link')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label col-lg-2">عکس</label>
                         <div class="col-sm-10">
 
@@ -185,6 +210,25 @@
 
                     </div>
 
+                    <div class="form-group" wire:ignore
+                         style="width: 100% !important; height: 500px !important; @if(isset($item)) margin-top: 80px @else margin-top: 50px @endif !important; overflow: hidden !important;">
+                        <label class="control-label col-lg-2">آدرس روی نقشه</label>
+                        <div class="col-md-10" style="margin-top: 30px !important;">
+                            <div id="app" style="width: 100% !important; height: 500px !important;"></div>
+                        </div>
+
+                        @error('address_lat')
+                        <span class="text-danger text-wrap">{{ $message }}</span>
+                        @enderror
+
+                        @error('address_long')
+                        <span class="text-danger text-wrap">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <input type="hidden" id="id_address_lat" name="address_lat" value="">
+                    <input type="hidden" id="id_address_long" name="address_long" value="">
+
                     <div class="col-lg-12">
                         <div class="m-1-25 m-b-20">
                             <div class="modal-footer">
@@ -204,6 +248,9 @@
 </div>
 
 @section('Scripts')
+    <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.env.js"></script>
+    <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.min.js"></script>
+
     <script>
         CKEDITOR.replace('id_description');
     </script>
@@ -225,6 +272,107 @@
             });
 
         });
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+            var app = new Mapp({
+                element: '#app',
+                presets: {
+                    latlng: {
+                        @if(isset($item->address_lat))
+                            lat: '{{ $item->address_lat }}',
+                        @else
+                            lat: 35.73249,
+                        @endif
+
+                        @if(isset($item->address_long))
+                            lng: '{{ $item->address_long }}',
+                        @else
+                            lng: 51.42268,
+                        @endif
+                    },
+
+                    @if(isset($item->address_lat) && isset($item->address_long))
+                        zoom: 16
+                    @else
+                        zoom: 7
+                    @endif
+                },
+                apiKey: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjhiN2EwNjYwODY2YTMxZDAyNTA5NmZiYmIzZGVhZDQ4NDg4Y2VjYjQ0YTM5NTQxNzE3OTk4YjVjMTI1MGZjMDUxYjIxYmFmNDJkYjA2ZDMyIn0.eyJhdWQiOiIyMTQ5MSIsImp0aSI6IjhiN2EwNjYwODY2YTMxZDAyNTA5NmZiYmIzZGVhZDQ4NDg4Y2VjYjQ0YTM5NTQxNzE3OTk4YjVjMTI1MGZjMDUxYjIxYmFmNDJkYjA2ZDMyIiwiaWF0IjoxNjc4NzQ5OTY0LCJuYmYiOjE2Nzg3NDk5NjQsImV4cCI6MTY4MTE2OTE2NCwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.AobDdWKizuV0DAL8IFyUb8jLBrx8AzVu21HEOxAUTD8WhMZ-riaPX53e6_A7oj1NbwCBpTc8Jm3w2QAsYsTae2lCDoZB05X2pEcjoAYXpzRV2z-tBLgwairxtJunrKDSjKTIg9LpGzFu93xBQGmUnOfOho-Se4s_vIdUlrl19tdEPaKO763sHFQPnqf4Fbwh-L_ARuKaUV8j8aseg9n-vGbQ4w5juRbtMeNMm9adtt1ZVGWGUOJAHUD83IM4-FCiA7-P3Xincar-BXTY0PN1EK9Yvhn7akGQRudPYBsnU5NGe8ABmAFfXzdMwbSWnx1YO8fSfTmiQc2tHAqf1JmiIg'
+            });
+            app.addLayers();
+
+            // Show selected location as a marker
+            @if(isset($item->address_lat) && isset($item->address_long))
+            ShowMarker(app, '{{ $item->address_lat }}', '{{ $item->address_long }}');
+            @endif
+
+            // Implement location picker
+            app.map.on('click', function (e) {
+                // آدرس یابی و نمایش نتیجه در یک باکس مشخص
+                ShowMarker(app, e.latlng.lat, e.latlng.lng);
+
+                // برای سفارشی سازی نمایش نتیجه به جای متد بالا از متد زیر میتوان استفاده کرد
+
+                // app.findReverseGeocode({
+                //   state: {
+                //     latlng: {
+                //       lat: e.latlng.lat,
+                //       lng: e.latlng.lng
+                //     },
+                //     zoom: 16
+                //   },
+                //   after: function(data) {
+                //     app.addMarker({
+                //       name: 'advanced-marker',
+                //       latlng: {
+                //         lat: e.latlng.lat,
+                //         lng: e.latlng.lng
+                //       },
+                //       icon: app.icons.red,
+                //       popup: {
+                //         title: {
+                //           i18n: 'آدرس '
+                //         },
+                //         description: {
+                //           i18n: data.address
+                //         },
+                //         class: 'marker-class',
+                //         open: true
+                //       }
+                //     });
+                //   }
+                // });
+            });
+        });
+
+        function ShowMarker(app, lat, long) {
+            $('#id_address_lat').val(lat);
+            $('#id_address_long').val(long);
+
+            app.showReverseGeocode({
+                state: {
+                    latlng: {
+                        lat: lat,
+                        lng: long,
+                    },
+                    zoom: 16
+                }
+            });
+
+            app.addMarker({
+                name: 'advanced-marker',
+                latlng: {
+                    lat: lat,
+                    lng: long,
+                },
+                icon: app.icons.red,
+                popup: false
+            });
+        }
+
     </script>
 @endsection
 

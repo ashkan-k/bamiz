@@ -66,7 +66,7 @@ class ListPage extends Component
 
     public function render()
     {
-        $this->items = Place::Search($this->search)->latest();
+        $this->items = Place::Search($this->search)->with(['user', 'province', 'city', 'category'])->latest();
         $this->items = $this->FilterByStatus();
         return view('place::livewire.pages.dashboard.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }

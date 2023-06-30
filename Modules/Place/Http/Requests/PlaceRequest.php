@@ -16,14 +16,15 @@ class PlaceRequest extends FormRequest
         $rules = [
             'name' => 'required|string',
             'description' => 'required',
+            'tour_link' => 'required',
             'chairs_people_count' => 'required|numeric',
             'user_id' => 'required|exists:users,id',
             'category_id' => 'required|exists:categories,id',
             'province_id' => 'required|exists:provinces,id',
             'city_id' => 'required|exists:cities,id',
             'cover' => 'mimes:jpeg,png,bmp,jpg',
-            'lat' => ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
-            'long' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/']
+            'address_lat' => ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
+            'address_long' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/']
         ];
 
         if (request()->method == 'POST') {
