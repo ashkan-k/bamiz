@@ -14,9 +14,15 @@
                     </div>
                 </form>
 
-                <a class="btn btn-primary pull-right"
-                   href="{{ route('worktimes.create') }}">افزودن
-                    زمان کاری جدید</a>
+                @if(isset($place_id))
+                    <a class="btn btn-primary pull-right"
+                       href="{{ route('worktimes.create') }}?place_id={{ $place_id }}&next_url={{ $full_url }}">افزودن
+                        زمان کاری جدید</a>
+                @else
+                    <a class="btn btn-primary pull-right"
+                       href="{{ route('worktimes.create') }}">افزودن
+                        زمان کاری جدید</a>
+                @endif
 
                 <table class="table table-hover">
                     <thead>
@@ -38,7 +44,8 @@
                                 <input type="checkbox"
                                        id="bulk_checkbox_{{ $item->id }}"
                                        wire:change="$emit('triggerAddBulkActionEvent' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}', <?php echo json_encode($items->pluck('id')->toArray()); ?>)"
-                                       class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}" style="font-weight: normal !important;">{{ $loop->iteration }}</label>
+                                       class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}"
+                                                            style="font-weight: normal !important;">{{ $loop->iteration }}</label>
                             </td>
 
                             <td>{{ $item->place ? $item->place->name : '---' }}</td>
@@ -53,12 +60,21 @@
 
                             <td>
                                 <div class="buttons ">
-                                    <a href="{{ route('worktimes.edit' , $item->id) }}"
-                                       class="btn btn-primary btn-action mr-1"
-                                       data-toggle="tooltip" title=""
-                                       data-original-title="ویرایش"><i
-                                            class="fas fa-pencil-alt"></i><i
-                                            class="fa fa-pencil"> </i> </a>
+                                    @if(isset($place_id))
+                                        <a href="{{ route('worktimes.edit' , $item->id) }}?place_id={{ $place_id }}&next_url={{ $full_url }}"
+                                           class="btn btn-primary btn-action mr-1"
+                                           data-toggle="tooltip" title=""
+                                           data-original-title="ویرایش"><i
+                                                class="fas fa-pencil-alt"></i><i
+                                                class="fa fa-pencil"> </i> </a>
+                                    @else
+                                        <a href="{{ route('worktimes.edit' , $item->id) }}"
+                                           class="btn btn-primary btn-action mr-1"
+                                           data-toggle="tooltip" title=""
+                                           data-original-title="ویرایش"><i
+                                                class="fas fa-pencil-alt"></i><i
+                                                class="fa fa-pencil"> </i> </a>
+                                    @endif
                                     <button wire:click="$emit('triggerDelete' , {{ $item->id }})"
                                             type="button"
                                             data-original-title="حذف"

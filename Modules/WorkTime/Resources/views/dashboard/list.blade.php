@@ -9,9 +9,7 @@
 @section('content')
 
     @livewire('worktime::pages.dashboard.list-page' , [
-
-    'titlePage' => 'زمان کاری ها',
-
+    'titlePage' => 'زمان کاری ها'
     ])
 
 @endsection

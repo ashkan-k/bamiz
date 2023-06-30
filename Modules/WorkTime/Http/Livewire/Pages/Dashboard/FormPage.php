@@ -11,6 +11,7 @@ class FormPage extends Component
     public $type = '';
 
     public $item;
+    public $place;
 
     public function mount()
     {

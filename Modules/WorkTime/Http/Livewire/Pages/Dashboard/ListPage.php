@@ -16,9 +16,13 @@ class ListPage extends Component
     public $pagination;
     public $search = '';
     protected $items;
+    public $full_url;
+    public $place_id;
 
     public function mount()
     {
+        $this->place_id = request('place_id');
+        $this->full_url = request()->fullUrl();
         $this->pagination = env('PAGINATION', 10);
     }
 
@@ -35,9 +39,16 @@ class ListPage extends Component
         $worktime->delete();
     }
 
+    private function FilterByPlace()
+    {
+        $this->items = $this->place_id ? $this->items->where(['place_id' => $this->place_id]) : $this->items;
+        return $this->items;
+    }
+
     public function render()
     {
-        $this->items = WorkTime::Search($this->search)->latest()->paginate($this->pagination);
-        return view('worktime::livewire.pages.dashboard.list-page', ['items' => $this->items]);
+        $this->items = WorkTime::Search($this->search)->latest();
+        $this->items = $this->FilterByPlace();
+        return view('worktime::livewire.pages.dashboard.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }

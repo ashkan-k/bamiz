@@ -41,7 +41,8 @@
                                 <input type="checkbox"
                                        id="bulk_checkbox_{{ $item->id }}"
                                        wire:change="$emit('triggerAddBulkActionEvent' , {{ $item->id }}, 'bulk_checkbox_{{ $item->id }}', <?php echo json_encode($items->pluck('id')->toArray()); ?>)"
-                                       class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}" style="font-weight: normal !important;">{{ $loop->iteration }}</label>
+                                       class="ml-2"> <label for="bulk_checkbox_{{ $item->id }}"
+                                                            style="font-weight: normal !important;">{{ $loop->iteration }}</label>
                             </td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->user ? $item->user->fullname() : '---' }}</td>
@@ -51,8 +52,8 @@
                             <td>{{ $item->chairs_people_count }}</td>
                             <td>
                                 <a href="{{ $item->get_cover(300) }}" target="-_blank"><img width="50"
-                                                                                         src="{{ $item->get_cover(300) }}"
-                                                                                         alt="عکس کابر"></a>
+                                                                                            src="{{ $item->get_cover(300) }}"
+                                                                                            alt="عکس کابر"></a>
                             </td>
                             <td>
 
@@ -88,6 +89,11 @@
                                        data-original-title="گالری تصاویر"><i
                                             class="fas fa-image-alt"></i><i
                                             class="fa fa-image"> </i> </a>
+                                    <a href="{{ route('worktimes.index') }}?place_id={{ $item->id }}"
+                                       class="btn btn-danger btn-action mr-1"
+                                       data-toggle="tooltip" title=""
+                                       data-original-title="زمان کاری"><i
+                                            class="fa fa-clock-o"> </i> </a>
                                     <a href="{{ route('places.edit' , $item->id) }}"
                                        class="btn btn-primary btn-action mr-1"
                                        data-toggle="tooltip" title=""

@@ -15,30 +15,36 @@
 
                     @csrf
 
-                    <div class="form-group" wire:ignore>
-                        <label class="control-label col-lg-2">مرکز</label>
-                        <div class="col-md-10">
+                    <input type="hidden" name="next_url" value="{{ request('next_url') }}">
 
-                            <select id="id_place_id" required class="form-control" name="place_id">
+                    @if(isset($place))
+                        <input type="hidden" name="place_id" value="{{ $place->id }}">
+                    @else
+                        <div class="form-group" wire:ignore>
+                            <label class="control-label col-lg-2">مرکز</label>
+                            <div class="col-md-10">
 
-                                <option value="">مرکز را انتخاب کنید</option>
+                                <select id="id_place_id" required class="form-control" name="place_id">
 
-                                @foreach($places as $place)
+                                    <option value="">مرکز را انتخاب کنید</option>
 
-                                    <option
-                                        @if((isset($item->place_id) && $item->place_id == $place->id) || (old('place_id') == $place->id)) selected
-                                        @endif value="{{ $place->id }}">{{ $place->name }}
-                                    </option>
+                                    @foreach($places as $place)
 
-                                @endforeach
+                                        <option
+                                            @if((isset($item->place_id) && $item->place_id == $place->id) || (old('place_id') == $place->id)) selected
+                                            @endif value="{{ $place->id }}">{{ $place->name }}
+                                        </option>
 
-                            </select>
+                                    @endforeach
 
-                            @error('place_id')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
+                                </select>
+
+                                @error('place_id')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <div class="form-group" wire:ignore>
                         <label for="id_week_days" class="control-label col-lg-2">روز های هفته</label>
