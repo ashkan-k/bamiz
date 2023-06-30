@@ -15,28 +15,6 @@ class ContactUsController extends Controller
 
     public function index()
     {
-        return view('setting::dashboard.list');
-    }
-
-    public function create()
-    {
-        return view('setting::dashboard.form');
-    }
-
-    public function store(ContactUsRequest $request)
-    {
-        ContactUs::create($request->validated());
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'contact_us.index');
-    }
-
-    public function edit(ContactUs $contactUs)
-    {
-        return view('setting::dashboard.form', compact('contactUs'));
-    }
-
-    public function update(ContactUsRequest $request, ContactUs $contactUs)
-    {
-        $contactUs->update($request->validated());
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'contact_us.index');
+        return view('contactus::dashboard.list');
     }
 }

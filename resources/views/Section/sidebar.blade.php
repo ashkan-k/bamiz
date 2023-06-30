@@ -233,14 +233,13 @@
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-phone" aria-hidden="true"></i> <span>تماس با ما بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('contact_us.index') }}">لیست تماس با ما</a></li>--}}
-                {{--                        <li><a href="{{ route('contact_us.create') }}">افزودن تماس با ما جدید</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-phone" aria-hidden="true"></i> <span>تماس با ما بامیز</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('contact_us.index') }}">لیست تماس با ما</a></li>
+                    </ul>
+                </li>
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////////////////////////////////--}}
 

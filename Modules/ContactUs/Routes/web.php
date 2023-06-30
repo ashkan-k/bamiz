@@ -14,4 +14,4 @@
 use Illuminate\Support\Facades\Route;
 use Modules\ContactUs\Http\Controllers\Dashboard\ContactUsController;
 
-Route::resource('contact_us', ContactUsController::class, ['parameters' => ['contact_us' => 'contactUs' ]]);
+Route::resource('contact_us', ContactUsController::class, ['parameters' => ['contact_us' => 'contactUs' ]])->only(['index']);
