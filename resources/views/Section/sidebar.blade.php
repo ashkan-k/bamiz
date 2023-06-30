@@ -23,25 +23,14 @@
 
                 {{--                --}}{{--                /////////////////////////////////////////////////////--}}
 
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-flag" aria-hidden="true"></i> <span>شهرهای بامیز</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('cities.index') }}">لیست شهر ها</a></li>--}}
-                {{--                        <li><a href="{{ route('cities.create') }}">افزودن شهر جدید</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
-
-                {{--                --}}{{--                ////////////////////////////////////////////////////////--}}
-
-                {{--                <li class="submenu">--}}
-                {{--                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> <span>زمان کاری میزبان ها</span> <span--}}
-                {{--                            class="menu-arrow"></span></a>--}}
-                {{--                    <ul class="list-unstyled" style="display: none;">--}}
-                {{--                        <li><a href="{{ route('work-times.index') }}">لیست زمان های کاری</a></li>--}}
-                {{--                        <li><a href="{{ route('work-times.create') }}">افزودن زمان کاری جدید</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> <span>زمان کاری میزبان ها</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('worktimes.index') }}">لیست زمان های کاری</a></li>
+                        <li><a href="{{ route('worktimes.create') }}">افزودن زمان کاری</a></li>
+                    </ul>
+                </li>
 
                 {{--                --}}{{--                //////////////////////////////////////////////////////////////////////--}}
 
