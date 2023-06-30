@@ -16,7 +16,6 @@ class WorkTimeDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
         WorkTime::factory(5)->create();
 
         // $this->call("OthersTableSeeder");

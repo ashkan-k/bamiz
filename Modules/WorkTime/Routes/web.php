@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('worktime')->group(function() {
-    Route::get('/', 'WorkTimeController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\WorkTime\Http\Controllers\Dashboard\WorkTimeController;
+
+Route::resource('worktimes', WorkTimeController::class);

@@ -22,7 +22,7 @@
                             <a href="activities.html">
                                 <div class="media-left">
                                             <span class="avatar">
-												<img alt="John Doe" src="assets/img/user.jpg"
+												<img alt="John Doe" src="/admin/assets/img/user.jpg"
                                                      class="img-responsive img-circle">
 											</span>
                                 </div>

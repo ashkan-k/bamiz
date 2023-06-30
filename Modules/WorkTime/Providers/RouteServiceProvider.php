@@ -47,8 +47,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
+        Route::middleware(['web', 'check_admin'])
             ->namespace($this->moduleNamespace)
+            ->prefix('dashboard')
             ->group(module_path('WorkTime', '/Routes/web.php'));
     }
 

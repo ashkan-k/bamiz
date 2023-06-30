@@ -264,5 +264,6 @@ return [
         'start_time' => 'تاریخ شروع',
         'end_time' => 'تاریخ پایان',
         'parent_id' => 'والد',
+        'place_id' => 'مرکز',
     ],
 ];
