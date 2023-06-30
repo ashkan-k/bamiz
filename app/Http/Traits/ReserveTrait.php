@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\traits;
+namespace App\Http\Controllers\Traits;
 
 
 use App\Models\Center;

@@ -65,7 +65,7 @@
                                     @endif
                                 @endif
 
-                                <a href="/centers/{{ $place->slug }}"><img
+                                <a href="{{ route('place_detail', $place->slug) }}"><img
                                         src="{{ $place->cover['images']['original'] }}" class="img-fluid" alt=""
                                         width="800" height="533">
                                     <div class="read_more"><span>مشاهده</span></div>
@@ -76,7 +76,7 @@
                             <div class="wrapper" style="height: 170px !important;">
                                 <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
                                         class="icon_star"></i><i class="icon_star"></i></div>
-                                <h3><a href="/centers/{{ $place->slug }}"> {{ \Illuminate\Support\Str::limit($place->name, 30) }} </a></h3>
+                                <h3><a href="{{ route('place_detail', $place->slug) }}"> {{ \Illuminate\Support\Str::limit($place->name, 30) }} </a></h3>
 
                                 <p>{!! \Illuminate\Support\Str::limit($place->description, 80) !!}</p>
 

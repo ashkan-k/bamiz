@@ -382,7 +382,7 @@
                             </form>
                         @else
                             <div style="margin-top: 25px !important;" class="alert alert-danger">برای ثبت نظر ابتدا
-                                <a class="text-info" href="/login"> وارد </a> شوید
+                                <a class="text-info" href="{{ route('login') }}"> وارد </a> شوید
                             </div>
                         @endif
                     </div>
@@ -436,18 +436,7 @@
                                         @endforeach
 
                                     </select>
-
-                                    <br>
-                                    <div class="form-group clearfix">
-                                        <select wire:model="chair_id" class="form-control" name="chair_id">
-                                            <option value="">میز خاصی مد نظر ندارم</option>
-
-                                            @foreach($chairs as $c)
-                                                <option value="{{ $c['id'] }}"> میز شماره {{ $c['number'] }} </option>
-                                            @endforeach
-
-                                        </select>
-                                    </div>
+                                    <p class="text-danger">مدت زمان حضور در محل رزرو شده دو ساعت است.</p>
 
                                     <div class="form-group">
                                         <small style="color: red">تعداد صندلی های هر میز
@@ -472,7 +461,6 @@
                                                     class="btn_1 full-width outline wishlist"><i
                                                     class="icon_heart"></i> اضافه به علاقه مندی ها
                                             </button>
-
                                         @else
                                             <button wire:click.prevent="DeleteFromWishList()"
                                                     class="btn_1 full-width outline wishlist"><i
@@ -480,16 +468,14 @@
                                             </button>
                                         @endif
 
-
                                         @if(session()->has('wishlist_status'))
                                             <div class="mt-3 text-center text-success" style="font-size: 14px !important;">{{ session()->get('wishlist_status') }}</div>
                                         @endif
-
                                     @else
                                         <hr>
                                         <span class="alert alert-danger">برای افزدون به علاقه مندی ها ابتدا <a
                                                 class="text-info"
-                                                href="/login"> وارد </a> شوید</span>
+                                                href="{{ route('login') }}"> وارد </a> شوید</span>
                                     @endif
 
                                 </div>
