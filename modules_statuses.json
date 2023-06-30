@@ -16,5 +16,6 @@
     "Payment": true,
     "Reserve": true,
     "Front": true,
-    "WorkTime": true
+    "WorkTime": true,
+    "ContactUs": true
 }
