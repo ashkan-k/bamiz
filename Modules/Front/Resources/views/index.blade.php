@@ -50,8 +50,8 @@
                         <a href="{{ route('categories', $ca->slug) }}" class="grid_item">
                             <figure>
                                 <small
-                                    style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
-                                    <h6 style="color: white"><i class="fa fa-map-marker"
+                                    style="background-color: #09b052e6;right: 0;color: white;width: 150px; padding-left: 0px !important;">
+                                    <h6 style="color: white"><i style="font-family: FontAwesome !important;" class="fa fa-coffee"
                                                                 aria-hidden="true"></i>&nbsp;{{ $ca->title }}</h6>
                                 </small>
                                 <img src="{{ $ca->get_image() }}" class="img-fluid"

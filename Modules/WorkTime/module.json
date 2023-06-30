@@ -1,0 +1,11 @@
+{
+    "name": "WorkTime",
+    "alias": "worktime",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\WorkTime\\Providers\\WorkTimeServiceProvider"
+    ],
+    "files": []
+}

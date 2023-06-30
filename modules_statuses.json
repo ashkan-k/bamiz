@@ -15,5 +15,6 @@
     "Ticket": true,
     "Payment": true,
     "Reserve": true,
-    "Front": true
+    "Front": true,
+    "WorkTime": true
 }

@@ -15,6 +15,7 @@ use Modules\Option\Entities\Option;
 use Modules\Reserve\Entities\Reserve;
 use Modules\User\Entities\User;
 use Modules\WishList\Entities\WishList;
+use Modules\WorkTime\Entities\WorkTime;
 
 class Place extends Model
 {
@@ -128,5 +129,10 @@ class Place extends Model
     public function wish_lists()
     {
         return $this->morphMany(WishList::class , 'wish_listable');
+    }
+
+    public function work_time()
+    {
+        return $this->hasOne(WorkTime::class);
     }
 }
