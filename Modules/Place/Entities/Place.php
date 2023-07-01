@@ -36,6 +36,7 @@ class Place extends Model
         'city_id',
         'address_lat',
         'address_long',
+        'type',
     ];
 
     protected $casts = [
@@ -58,6 +59,7 @@ class Place extends Model
     ];
 
     protected $filter_fields = [
+        'type',
         'category_id',
         'province_id',
         'city_id',
@@ -68,9 +70,28 @@ class Place extends Model
         return \Modules\Place\Database\factories\PlaceFactory::new();
     }
 
+    public function get_type(){
+        if ($this->type == 'restaurant'){
+            return 'رستوران';
+        }
+        elseif ($this->type == 'cafe'){
+            return 'کافه';
+        }
+        return  'هتل';
+    }
+
     public function get_cover($size)
     {
         return $this->cover ? $this->cover['images'][$size] : 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+    }
+
+    public static function GetTypes()
+    {
+        return [
+            ['id' => 'restaurant', 'name' => 'رستوران'],
+            ['id' => 'cafe', 'name' => 'کافه'],
+            ['id' => 'hotel', 'name' => 'هتل'],
+        ];
     }
 
     public function save(array $options = [])

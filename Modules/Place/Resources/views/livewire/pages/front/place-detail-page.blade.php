@@ -287,7 +287,7 @@
                                             فاکتور سفارش کسر می شود</strong></div>
                                 </div>
 
-                                <div class="form-group mt-2">
+                                <div class="form-group mt-2" wire:ignore>
                                     <small style="color: red">تعداد صندلی های هر میز
                                         : {{ $object->chairs_people_count }}</small>
                                     <input required class="form-control" type="text"
@@ -295,13 +295,13 @@
                                            placeholder="تعداد مهمانان">
                                 </div>
 
-                                <div class="form-group">
-                                    <input required class="form-control" type="date" name="date"
-                                           id="date"
+                                <div class="form-group" wire:ignore>
+                                    <input required class="form-control" type="text" name="date"
+                                           id="id_date"
                                            placeholder="تاریخ رزرو">
                                 </div>
 
-                                <div class="form-group clearfix mt-2">
+                                <div class="form-group clearfix mt-2" wire:ignore>
                                     <select required class="form-control" id="chain_no" name="time">
                                         <option value="">ساعت رزرو</option>
 
@@ -310,10 +310,13 @@
                                         @endforeach
 
                                     </select>
-                                    <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل دو
-                                        ساعت می باشد.</p>
+                                    @if(in_array($object->type, ['restaurant', 'cafe']))
+                                        <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل
+                                            دو
+                                            ساعت می باشد.</p>
+                                    @endif
 
-                                    <select required class="form-control" id="chain_no" name="type">
+                                    <select required class="form-control mt-3" id="chain_no" name="type">
                                         <option value="">مناسبت (موضوع رزرو)</option>
                                         @foreach($reserve_types as $res_type)
                                             <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected
@@ -324,7 +327,7 @@
                                         @endforeach
                                     </select>
 
-                                    <div class="text-center text-danger"><b>سفارش تشریفات میز در صورت
+                                    <div class="text-center text-danger"><b>سفارش تشریفات در صورت
                                             تمایل در
                                             مرحله بعد
                                             انجام می شود</b></div>
@@ -383,80 +386,16 @@
     <script src="/front/js/map/OpenLayers.js"></script>
     <script src="/front/js/map/map.js"></script>
     <script>
-
-        function load_marker(id, lon, lat, from_prj, title, service, address, type, x1, x2, y1, y2) {
-            var size = new OpenLayers.Size(32, 32);
-            var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h);
-            var icon = new OpenLayers.Icon("_uploads_/_default_/marker.png", size, offset);
-            // var icon = new OpenLayers.Icon("assets_mehman/Bundle/JS/map/map_markers/"+iconname, size, offset);
-            var marker = new OpenLayers.Marker(new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection('EPSG:' + from_prj), map.getProjection()), icon);
-            marker.id = id;
-            arrayMarks.push(marker);
-            markers.addMarker(marker);
-        }
-
-        function loadMap() {
-            var lon = 50.01697
-            var lat = 36.29433
-
-            initmap('position', 14, lon, lat);
-            markers = new OpenLayers.Layer.Markers("بامیز");
-            map.addLayer(markers);
-
-
-            var id = 3
-            var address = "قزوین/قزوین";
-            var fullname = "پیتزا پل";
-            var service = "پیتزا پل قبل از اینکه خوشمزه باشه سالمه";
-            load_marker(id, lon, lat, 4326, fullname, service, address, "point", 0, 0, 0, 0);
-        }
-
-        loadMap();
-
-        $("#btn_check_reserve").on("click", function (event) {
-            var date = $("#date").val();
-            var time = $("#time").val();
-            var chair_no = $("#chain_no").val();
-            var guest_count = $("#guest_count").val();
-
-            let formDataa = new FormData();
-            formDataa.append('date', date);
-            formDataa.append('time', time);
-            formDataa.append('chair_no', chair_no);
-            formDataa.append('guest_count', guest_count);
-            formDataa.append('id_center', 3);
-
-            $.ajax({
-                url: "http://bamiz.ir/check_reserve",
-                type: 'POST',
-                cache: false,
-                data: formDataa,
-                contentType: false,
-                processData: false,
-                headers: {
-                    'X-CSRF-TOKEN': $("#csrf-token").attr('content')
-                },
-                beforeSend: function () {
-                    // $("#waitingLink").click();
-                    // ShowWaiting("بارگذاری مراکز میزبان");
-                },
-                success: function (result) {
-                    if (!result.error) {
-                        $("#reserve_form").submit();
-                    } else {
-                        alert(result.message);
-                        // ShowMessage(result.message, result.type);
-                    }
-                },
-                complete: function () {
-                    // CloseWaiting();
-                },
-                error: function () {
-                    showToast('خطای ناشتاخته', '« صفحه را تجدید (بازنشانی) کرده و مجددا تلاش نمایید. »', 'error');
-                }
-            });
+        kamaDatepicker('id_date', {
+            placeholder: 'تاریخ رزرو',
+            buttonsColor: 'blue',
+            markHolidays: true
         });
+        $("#id_date").attr('autocomplete', 'off');
 
+        $('#id_date').on('change', function () {
+            $('#id_date').val($('#id_date').val().replaceAll('/', '-'))
+        });
     </script>
 @endpush
 

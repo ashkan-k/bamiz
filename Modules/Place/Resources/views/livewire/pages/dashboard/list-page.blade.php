@@ -26,7 +26,7 @@
                         <th>دسته بندی</th>
                         <th>استان</th>
                         <th>شهر</th>
-                        <th>تعداد صندلی هر میز</th>
+                        <th>نوع</th>
                         <th>عکس</th>
                         <th>وضعیت</th>
                         <th>تاریخ ثبت</th>
@@ -49,7 +49,7 @@
                             <td>{{ $item->category ? $item->category->title : '---' }}</td>
                             <td>{{ $item->province ? $item->province->title : '---' }}</td>
                             <td>{{ $item->city ? $item->city->title : '---' }}</td>
-                            <td>{{ $item->chairs_people_count }}</td>
+                            <td>{{ $item->get_type() }}</td>
                             <td>
                                 <a href="{{ $item->get_cover(300) }}" target="-_blank"><img width="50"
                                                                                             src="{{ $item->get_cover(300) }}"

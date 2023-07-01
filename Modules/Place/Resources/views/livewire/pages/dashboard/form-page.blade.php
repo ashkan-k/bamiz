@@ -91,6 +91,29 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label col-lg-2">نوع مرکز</label>
+                        <div class="col-md-10">
+
+                            <select class="form-control" name="type" required>
+                                <option value="">نوع مرکز را انتخاب کنید</option>
+
+                                @foreach($types as $type)
+                                    <option @if(old('type')) @if(old('type') == $type['id'] ) selected
+                                            @endif @elseif(isset($item->type) && $item->type == $type['id']) selected
+                                            @endif value="{{ $type['id'] }}"
+                                            value="{{ $type['id'] }}">{{ $type['name'] }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+
+                            @error('type')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label col-lg-2">دسته بندی</label>
                         <div class="col-md-10">
 
@@ -282,22 +305,22 @@
                 presets: {
                     latlng: {
                         @if(isset($item->address_lat))
-                            lat: '{{ $item->address_lat }}',
+                        lat: '{{ $item->address_lat }}',
                         @else
-                            lat: 35.73249,
+                        lat: 35.73249,
                         @endif
 
-                        @if(isset($item->address_long))
-                            lng: '{{ $item->address_long }}',
+                            @if(isset($item->address_long))
+                        lng: '{{ $item->address_long }}',
                         @else
-                            lng: 51.42268,
+                        lng: 51.42268,
                         @endif
                     },
 
                     @if(isset($item->address_lat) && isset($item->address_long))
-                        zoom: 16
+                    zoom: 16
                     @else
-                        zoom: 7
+                    zoom: 7
                     @endif
                 },
                 apiKey: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjhiN2EwNjYwODY2YTMxZDAyNTA5NmZiYmIzZGVhZDQ4NDg4Y2VjYjQ0YTM5NTQxNzE3OTk4YjVjMTI1MGZjMDUxYjIxYmFmNDJkYjA2ZDMyIn0.eyJhdWQiOiIyMTQ5MSIsImp0aSI6IjhiN2EwNjYwODY2YTMxZDAyNTA5NmZiYmIzZGVhZDQ4NDg4Y2VjYjQ0YTM5NTQxNzE3OTk4YjVjMTI1MGZjMDUxYjIxYmFmNDJkYjA2ZDMyIiwiaWF0IjoxNjc4NzQ5OTY0LCJuYmYiOjE2Nzg3NDk5NjQsImV4cCI6MTY4MTE2OTE2NCwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.AobDdWKizuV0DAL8IFyUb8jLBrx8AzVu21HEOxAUTD8WhMZ-riaPX53e6_A7oj1NbwCBpTc8Jm3w2QAsYsTae2lCDoZB05X2pEcjoAYXpzRV2z-tBLgwairxtJunrKDSjKTIg9LpGzFu93xBQGmUnOfOho-Se4s_vIdUlrl19tdEPaKO763sHFQPnqf4Fbwh-L_ARuKaUV8j8aseg9n-vGbQ4w5juRbtMeNMm9adtt1ZVGWGUOJAHUD83IM4-FCiA7-P3Xincar-BXTY0PN1EK9Yvhn7akGQRudPYBsnU5NGe8ABmAFfXzdMwbSWnx1YO8fSfTmiQc2tHAqf1JmiIg'

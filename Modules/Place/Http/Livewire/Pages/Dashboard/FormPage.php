@@ -6,6 +6,7 @@ use Livewire\Component;
 use Modules\Category\Entities\Category;
 use Modules\Common\Entities\City;
 use Modules\Common\Entities\Province;
+use Modules\Place\Entities\Place;
 use Modules\User\Entities\User;
 
 class FormPage extends Component
@@ -43,6 +44,7 @@ class FormPage extends Component
     public function render()
     {
         $data = [
+            'types' => Place::GetTypes(),
             'users' => User::whereLevel('restaurant_manager')->get(),
             'categories' => Category::all(),
             'provinces' => Province::all(),

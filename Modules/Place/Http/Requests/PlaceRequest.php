@@ -22,6 +22,7 @@ class PlaceRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'province_id' => 'required|exists:provinces,id',
             'city_id' => 'required|exists:cities,id',
+            'type' => 'required|in:restaurant,cafe,hotel',
             'cover' => 'mimes:jpeg,png,bmp,jpg',
             'address_lat' => ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
             'address_long' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/']
