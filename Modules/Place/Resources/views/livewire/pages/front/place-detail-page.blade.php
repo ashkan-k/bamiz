@@ -81,7 +81,7 @@
 
                         <hr>
                         <h3>موقعیت جغرافیایی</h3>
-                        <div id="map" class="map map_single add_bottom_30 olMap">
+                        <div id="map" class="map map_single add_bottom_30 olMap" wire:ignore>
                             <div id="app"></div>
                         </div>
                         <!-- End Map -->
@@ -100,58 +100,58 @@
                                         <small>مجموع {{ $comments->count() }} رای اخذ شده</small>
                                     </div>
                                 </div>
-{{--                                <div class="col-lg-9">--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-lg-10 col-9">--}}
-{{--                                            <div class="progress">--}}
-{{--                                                <div class="progress-bar" role="progressbar" style="width: 90%"--}}
-{{--                                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-2 col-3"><small><strong>5 ستاره</strong></small></div>--}}
-{{--                                    </div>--}}
-{{--                                    <!-- /row -->--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-lg-10 col-9">--}}
-{{--                                            <div class="progress">--}}
-{{--                                                <div class="progress-bar" role="progressbar" style="width: 95%"--}}
-{{--                                                     aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-2 col-3"><small><strong>4 ستاره</strong></small></div>--}}
-{{--                                    </div>--}}
-{{--                                    <!-- /row -->--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-lg-10 col-9">--}}
-{{--                                            <div class="progress">--}}
-{{--                                                <div class="progress-bar" role="progressbar" style="width: 60%"--}}
-{{--                                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-2 col-3"><small><strong>3 ستاره</strong></small></div>--}}
-{{--                                    </div>--}}
-{{--                                    <!-- /row -->--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-lg-10 col-9">--}}
-{{--                                            <div class="progress">--}}
-{{--                                                <div class="progress-bar" role="progressbar" style="width: 20%"--}}
-{{--                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-2 col-3"><small><strong>2 ستاره</strong></small></div>--}}
-{{--                                    </div>--}}
-{{--                                    <!-- /row -->--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-lg-10 col-9">--}}
-{{--                                            <div class="progress">--}}
-{{--                                                <div class="progress-bar" role="progressbar" style="width: 0"--}}
-{{--                                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-2 col-3"><small><strong>1 ستاره</strong></small></div>--}}
-{{--                                    </div>--}}
-{{--                                    <!-- /row -->--}}
-{{--                                </div>--}}
+                                {{--                                <div class="col-lg-9">--}}
+                                {{--                                    <div class="row">--}}
+                                {{--                                        <div class="col-lg-10 col-9">--}}
+                                {{--                                            <div class="progress">--}}
+                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 90%"--}}
+                                {{--                                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                        <div class="col-lg-2 col-3"><small><strong>5 ستاره</strong></small></div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <!-- /row -->--}}
+                                {{--                                    <div class="row">--}}
+                                {{--                                        <div class="col-lg-10 col-9">--}}
+                                {{--                                            <div class="progress">--}}
+                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 95%"--}}
+                                {{--                                                     aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                        <div class="col-lg-2 col-3"><small><strong>4 ستاره</strong></small></div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <!-- /row -->--}}
+                                {{--                                    <div class="row">--}}
+                                {{--                                        <div class="col-lg-10 col-9">--}}
+                                {{--                                            <div class="progress">--}}
+                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 60%"--}}
+                                {{--                                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                        <div class="col-lg-2 col-3"><small><strong>3 ستاره</strong></small></div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <!-- /row -->--}}
+                                {{--                                    <div class="row">--}}
+                                {{--                                        <div class="col-lg-10 col-9">--}}
+                                {{--                                            <div class="progress">--}}
+                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 20%"--}}
+                                {{--                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                        <div class="col-lg-2 col-3"><small><strong>2 ستاره</strong></small></div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <!-- /row -->--}}
+                                {{--                                    <div class="row">--}}
+                                {{--                                        <div class="col-lg-10 col-9">--}}
+                                {{--                                            <div class="progress">--}}
+                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 0"--}}
+                                {{--                                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                        <div class="col-lg-2 col-3"><small><strong>1 ستاره</strong></small></div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <!-- /row -->--}}
+                                {{--                                </div>--}}
                             </div>
                             <!-- /row -->
                         </div>
@@ -251,7 +251,8 @@
                                 </div>
                             </form>
                         @else
-                            <div style="margin-top: 25px !important;" class="alert alert-danger text-center">برای ثبت نظر ابتدا
+                            <div style="margin-top: 25px !important;" class="alert alert-danger text-center">برای ثبت
+                                نظر ابتدا
                                 <a class="text-info" href="{{ route('login') }}"> وارد </a> شوید
                             </div>
                         @endif
@@ -338,24 +339,28 @@
                                             انجام می شود</b></div>
 
                                     @if(auth()->check())
-                                        <button id="btn_check_reserve" type="submit" class="btn_1 full-width outline mt-5">
+                                        <button id="btn_check_reserve" type="submit"
+                                                class="btn_1 full-width outline mt-5">
                                             <i
                                                 class="icon-calendar-outlilne"></i> تکمیل رزرو
                                         </button>
 
-                                        @if(!$is_Added_To_WishList)
-                                            <button wire:click.prevent="AddToWishList()"
-                                                    class="btn_1 full-width outline wishlist mt-3"><i
-                                                    class="icon_heart"></i> اضافه به علاقه مندی ها
-                                            </button>
-                                        @else
-                                            <button wire:click.prevent="DeleteFromWishList()"
-                                                    class="btn_1 full-width outline wishlist mt-3"><i
-                                                    class="icon_heart"></i> حذف از علاقه مندی ها
-                                            </button>
-                                        @endif
+                                        <button wire:click.prevent="AddRemoveWishList('add')"
+                                                @if($is_Added_To_WishList) style="display: none" @endif
+                                                id="id_add_to_wishlist"
+                                                class="btn_1 full-width outline wishlist mt-3"><i
+                                                class="icon_heart"></i> اضافه به علاقه مندی ها
+                                        </button>
+                                        <button wire:click.prevent="AddRemoveWishList('remove')"
+                                                @if(!$is_Added_To_WishList) style="display: none" @endif
+                                                id="id_remove_to_wishlist"
+                                                class="btn_1 full-width outline wishlist mt-3"><i
+                                                class="icon_heart"></i> حذف از علاقه مندی ها
+                                        </button>
                                     @else
-                                        <button onclick="window.location.href = '{{ route('login') }}?next=/{{ request()->path() }}'" id="btn_check_reserve" type="button" class="btn_1 full-width outline mt-5">
+                                        <button
+                                            onclick="window.location.href = '{{ route('login') }}?next=/{{ request()->path() }}'"
+                                            id="btn_check_reserve" type="button" class="btn_1 full-width outline mt-5">
                                             <i
                                                 class="icon-calendar-outlilne"></i> ورود به سایت برای رزرو
                                         </button>
@@ -392,14 +397,14 @@
     </div>
 </div>
 
-@push('StackScript')
+@section('Scripts')
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.env.js"></script>
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.min.js"></script>
 
-    <script>
+    <script wire:ignore>
 
         @if(isset($object->address_lat) && isset($object->address_long))
-            $(document).ready(function () {
+        $(document).ready(function () {
             var app = new Mapp({
                 element: '#app',
                 presets: {
@@ -438,6 +443,20 @@
 
         $('#id_date').on('change', function () {
             $('#id_date').val($('#id_date').val().replaceAll('/', '-'))
+        });
+    </script>
+@endsection
+
+@push('StackScript')
+    <script>
+        window.addEventListener('wishlistStatusUpdated', event => {
+            if (event.detail['type'] == 'add') {
+                $('#id_add_to_wishlist').hide();
+                $('#id_remove_to_wishlist').show();
+            } else {
+                $('#id_add_to_wishlist').show();
+                $('#id_remove_to_wishlist').hide();
+            }
         });
     </script>
 @endpush
