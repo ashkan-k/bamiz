@@ -1,3 +1,15 @@
+@section('Styles')
+    <link rel="stylesheet" href="https://cdn.map.ir/web-sdk/1.4.2/css/mapp.min.css">
+    <link rel="stylesheet" href="https://cdn.map.ir/web-sdk/1.4.2/css/fa/style.css">
+
+    <style>
+        #app {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+@endsection
+
 <div>
     <section class="hero_in tours_detail start_bg_zoom">
         <div class="wrapper">
@@ -78,7 +90,7 @@
                         <hr>
                         <h3>موقعیت جغرافیایی</h3>
                         <div id="map" class="map map_single add_bottom_30 olMap">
-
+                            <div id="app"></div>
                         </div>
                         <!-- End Map -->
                     </section>
@@ -382,9 +394,41 @@
 </div>
 
 @push('StackScript')
-    <!-- Map -->
-    <script src="/front/js/map/OpenLayers.js"></script>
-    <script src="/front/js/map/map.js"></script>
+    <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.env.js"></script>
+    <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.min.js"></script>
+
+    <script>
+
+        @if(isset($object->address_lat) && isset($object->address_long))
+            $(document).ready(function () {
+            var app = new Mapp({
+                element: '#app',
+                presets: {
+                    latlng: {
+                        lat: '{{ $object->address_lat }}',
+                        lng: '{{ $object->address_long }}',
+                    },
+                    zoom: 16
+                },
+                apiKey: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjhiN2EwNjYwODY2YTMxZDAyNTA5NmZiYmIzZGVhZDQ4NDg4Y2VjYjQ0YTM5NTQxNzE3OTk4YjVjMTI1MGZjMDUxYjIxYmFmNDJkYjA2ZDMyIn0.eyJhdWQiOiIyMTQ5MSIsImp0aSI6IjhiN2EwNjYwODY2YTMxZDAyNTA5NmZiYmIzZGVhZDQ4NDg4Y2VjYjQ0YTM5NTQxNzE3OTk4YjVjMTI1MGZjMDUxYjIxYmFmNDJkYjA2ZDMyIiwiaWF0IjoxNjc4NzQ5OTY0LCJuYmYiOjE2Nzg3NDk5NjQsImV4cCI6MTY4MTE2OTE2NCwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.AobDdWKizuV0DAL8IFyUb8jLBrx8AzVu21HEOxAUTD8WhMZ-riaPX53e6_A7oj1NbwCBpTc8Jm3w2QAsYsTae2lCDoZB05X2pEcjoAYXpzRV2z-tBLgwairxtJunrKDSjKTIg9LpGzFu93xBQGmUnOfOho-Se4s_vIdUlrl19tdEPaKO763sHFQPnqf4Fbwh-L_ARuKaUV8j8aseg9n-vGbQ4w5juRbtMeNMm9adtt1ZVGWGUOJAHUD83IM4-FCiA7-P3Xincar-BXTY0PN1EK9Yvhn7akGQRudPYBsnU5NGe8ABmAFfXzdMwbSWnx1YO8fSfTmiQc2tHAqf1JmiIg'
+            });
+            app.addLayers();
+            app.addFullscreen();
+            // app.markReverseGeocode({
+            app.showReverseGeocode({
+                state: {
+                    latlng: {
+                        lat: '{{ $object->address_lat }}',
+                        lng: '{{ $object->address_long }}',
+                    },
+                    zoom: 16,
+                },
+            });
+        });
+        @endif
+
+    </script>
+
     <script>
         kamaDatepicker('id_date', {
             placeholder: 'تاریخ رزرو',
