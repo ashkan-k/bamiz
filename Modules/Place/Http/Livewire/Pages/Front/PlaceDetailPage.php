@@ -69,13 +69,11 @@ class PlaceDetailPage extends Component
                 'wish_listable_id' => $this->object->id,
                 'wish_listable_type' => get_class($this->object),
             ]);
-//            $this->is_Added_To_WishList = true;
         } else {
             auth()->user()->wish_lists()
                 ->where('wish_listable_id', $this->object->id)
                 ->where('wish_listable_type', get_class($this->object))
                 ->delete();
-//            $this->is_Added_To_WishList = false;
         }
 
         $this->dispatchBrowserEvent('wishlistStatusUpdated', ['type' => $operate]);
