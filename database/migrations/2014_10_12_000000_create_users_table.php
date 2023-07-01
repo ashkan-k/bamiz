@@ -18,18 +18,16 @@ return new class extends Migration
             $table->id();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('email')->unique();
-            $table->string('username')->unique();
+            $table->string('email')->nullable()->unique();
+            $table->string('username')->nullable()->unique();
             $table->string('password');
-            $table->string('phone')->nullable();
+            $table->string('phone')->unique();
             $table->enum('level', EnumHelpers::$UserLevelEnum)->default('user');
-//            $table->boolean('block_status')->default(false);
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->text('avatar')->nullable();
 
-//            $table->bigInteger('score')->nullable()->default(0);
             $table->timestamps();
         });
     }

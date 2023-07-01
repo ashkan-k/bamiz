@@ -3,6 +3,7 @@
 namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -30,7 +31,13 @@ class UserRequest extends FormRequest
                 'password' => 'required|same:rep_password',
                 'username' => 'required|unique:users',
                 'avatar' => 'mimes:jpeg,png,bmp,jpg',
-                'phone' => 'required|max:11|unique:users'
+                'phone' => [
+                    'nullable',
+                    'min:11',
+                    'max:11',
+                    'regex:/(^\+?(09|98|0)?(9([0-9]{9}))$)/',
+                    Rule::unique('users', 'phone')->ignore($this->user)
+                ],
             ];
         }
 
@@ -39,7 +46,6 @@ class UserRequest extends FormRequest
             'username' => 'required',
             'password' => 'same:rep_password',
             'avatar' => 'mimes:jpeg,png,bmp,jpg',
-            'phone' => 'required|max:11'
         ];
 
     }
