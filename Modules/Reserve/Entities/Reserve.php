@@ -65,6 +65,16 @@ class Reserve extends Model
         return implode(', ', $this->options()->get()->pluck('title')->toArray());
     }
 
+    public static function GetTypes()
+    {
+        return [
+            ['id' => 'table_for_food', 'name' => 'رزرو میز برای سرو'],
+            ['id' => 'work_appointment', 'name' => 'رزرو میز بدون سفارش (قرارکاری)'],
+            ['id' => 'table_for_birth_day_with_food', 'name' => 'رزرو میز برای تولد با سرو'],
+            ['id' => 'table_for_birth_day_without_food', 'name' => 'رزرو میز برای تولد بدون سرو'],
+        ];
+    }
+
     protected static function newFactory()
     {
         return \Modules\Reserve\Database\factories\ReserveFactory::new();

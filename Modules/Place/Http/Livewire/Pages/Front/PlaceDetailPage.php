@@ -5,6 +5,7 @@ namespace Modules\Place\Http\Livewire\Pages\Front;
 use App\Http\Traits\CommentTrait;
 use Livewire\Component;
 use Modules\Comment\Entities\Comment;
+use Modules\Reserve\Entities\Reserve;
 use Modules\Setting\Entities\Setting;
 
 class PlaceDetailPage extends Component
@@ -16,6 +17,7 @@ class PlaceDetailPage extends Component
     public $time;
     public $date;
     public $guest_count;
+    public $type;
 
     public $is_Added_To_WishList = true;
 
@@ -24,7 +26,6 @@ class PlaceDetailPage extends Component
     public $title;
     public $body;
     public $star = 0;
-
 
     public $work_days = [];
     public $times = [];
@@ -46,12 +47,11 @@ class PlaceDetailPage extends Component
         $this->star = $this->star !=0 ?  $this->star : null;
 
         auth()->user()->comments()->create([
-            'title' => $this->title,
-            'body' => $this->body,
             'commentable_id' => $this->object->id,
-            'status' => false,
-            'score' => $this->star,
-            'commentable_type' => get_class($this->object)
+            'commentable_type' => get_class($this->object),
+            'body' => $this->body,
+            'title' => $this->title,
+            'score' => $this->star
         ]);
 
         $this->title = $this->body = null;
@@ -68,7 +68,6 @@ class PlaceDetailPage extends Component
         ]);
 
         $this->is_Added_To_WishList = true;
-        session()->flash('wishlist_status' , 'با موفقیت به علاقه مندی ها افزوده شد');
     }
 
     public function DeleteFromWishList()
@@ -79,42 +78,31 @@ class PlaceDetailPage extends Component
             ->delete();
 
         $this->is_Added_To_WishList = false;
-        session()->flash('wishlist_status' , 'با موفقیت از علاقه مندی ها حذف شد');
     }
 
     private function getTimes()
     {
         $work_time = $this->object->work_time;
-        for ($i = $work_time->start_time ; $i <= $work_time->end_time ; $i++)
+        $start_hour = date('H', strtotime($work_time->start_time));
+        $end_hour = date('H', strtotime($work_time->end_time));
+        for ($i = $start_hour ; $i <= $end_hour ; $i++)
         {
-            $this->times[$i] = $i;
+            $this->times[] = $i;
         }
     }
 
     private function getData()
     {
-        $this->comments = Comment::where(function ($query){
-            return $query->where('status' , 'approved')
-                ->where('commentable_id' , $this->object->id)
-                ->where('commentable_type' , get_class($this->object));
-        })->get();
+        $this->comments = $this->object->comments()->where('status' , 'approved')->get();
         $this->work_days = explode(', '  , $this->object->work_time->week_days);
         $this->getTimes();
     }
-
-//    public function updated()
-//    {
-//        if (isset($this->time) && isset($this->date) && isset($this->>object->id))
-//        {
-//            $this->ShowChairs();
-//        }
-//    }
 
     public function mount()
     {
         $this->object->increment('viewCount');
 
-        if (auth()->check() && $this->object->wish_lists->where('user_id' , auth()->user()->id)->isEmpty())
+        if (auth()->check() && $this->object->wish_lists->where('user_id' , auth()->id())->isEmpty())
         {
             $this->is_Added_To_WishList = false;
         }
@@ -125,20 +113,7 @@ class PlaceDetailPage extends Component
     public function render()
     {
         $this->getData();
-        return view('place::livewire.pages.front.place-detail-page');
+        $reserve_types = Reserve::GetTypes();
+        return view('place::livewire.pages.front.place-detail-page', ['reserve_types' => $reserve_types]);
     }
-
-//    public function render()
-//    {
-//        $this->>objects = Place::with(['province', 'category'])->Search($this->search)->with(['wish_lists'])->latest();
-//        $this->FilterByCategory();
-//        $this->FilterByCity();
-//
-//        $data = [
-//            'places' => $this->>objects->paginate($this->pagination),
-//            'categories' => Category::all(),
-//            'cities' => City::all(),
-//        ];
-//        return view('place::livewire.pages.front.places-page', $data);
-//    }
 }

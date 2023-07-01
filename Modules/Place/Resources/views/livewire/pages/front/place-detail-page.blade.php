@@ -2,7 +2,7 @@
     <section class="hero_in tours_detail start_bg_zoom">
         <div class="wrapper">
             <div class="container">
-                <h1 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name }}</h1>
+                <h1 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h1>
             </div>
         </div>
     </section>
@@ -23,10 +23,10 @@
                 <div class="col-lg-8">
                     <section id="description">
                         <h2>توضیحات</h2>
-                        <p> {{ \Illuminate\Support\Str::limit($object->description , 150) }} </p>
+                        <p>{!! \Illuminate\Support\Str::limit($object->description , 150) !!}</p>
                         <hr>
 
-                        <h3>آخرین تصاویر اینستاگرام</h3>
+                        <h3>گالری تصاویر</h3>
                         <div id="instagram-feed" class="clearfix"></div>
 
                         <hr>
@@ -35,8 +35,8 @@
                             <div class="row">
 
                                 <div class="col-md-8">
-                                    <h4>{{ $object->name }}</h4>
-                                    <p> {{ \Illuminate\Support\Str::limit($object->description , 150) }} </p>
+                                    <h4>{{ $object->name ?: '---' }}</h4>
+                                    <p>{!! $object->description ?: '---' !!}</p>
                                     <ul class="hotel_facilities">
                                         <li><img src="/front/img/hotel_facilites_icon_2.svg" alt="">متوسط : کلاس قیمت
                                         </li>
@@ -65,7 +65,7 @@
                         <hr>
 
                         <h3>ساعات کاری</h3>
-                        <p>ساعات کاری کافه | رستوران ({{ $object->name }}) به شرح ذیل می باشد</p>
+                        <p>ساعات کاری کافه | رستوران | هتل ({{ $object->name ?: '---' }}) به شرح ذیل می باشد</p>
 
                         <ul class="cbp_tmtimeline">
 
@@ -78,8 +78,8 @@
                                     </div>
                                     <div class="cbp_tmlabel">
                                         <p>
-                                            ساعت کاری از ساعت {{ $object->work_time->fromHour }} صبح
-                                            الی {{ $object->work_time->toHour }} شب
+                                            ساعت کاری از ساعت {{ $object->work_time->start_time }} صبح
+                                            الی {{ $object->work_time->end_time }} شب
                                         </p>
                                     </div>
                                 </li>
@@ -91,128 +91,7 @@
                         <hr>
                         <h3>موقعیت جغرافیایی</h3>
                         <div id="map" class="map map_single add_bottom_30 olMap">
-                            <div id="OpenLayers_Map_4_OpenLayers_ViewPort"
-                                 class="olMapViewport olControlDragPanActive olControlZoomBoxActive olControlPinchZoomActive olControlNavigationActive olControlActive"
-                                 style="position: relative; overflow: hidden; width: 100%; height: 100%;">
-                                <div id="OpenLayers_Map_4_OpenLayers_Container"
-                                     style="position: absolute; z-index: 749; left: 488px; top: 146px;">
-                                    <div id="OpenLayers_Layer_OSM_30" dir="ltr" class="olLayerDiv olLayerGrid"
-                                         style="position: absolute; width: 100%; height: 100%; z-index: 325;"><img
-                                            class="olTileImage" crossorigin="anonymous"
-                                            src="http://b.tile.openstreetmap.org/14/10467/6417.png"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: 25px; top: 155px; width: 256px; height: 256px;"><img
-                                            class="olTileImage" crossorigin="anonymous"
-                                            src="http://a.tile.openstreetmap.org/14/10467/6416.png"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: 25px; top: -101px; width: 256px; height: 256px;"><img
-                                            class="olTileImage" crossorigin="anonymous"
-                                            src="http://b.tile.openstreetmap.org/14/10466/6417.png"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -231px; top: 155px; width: 256px; height: 256px;"><img
-                                            class="olTileImage" crossorigin="anonymous"
-                                            src="http://c.tile.openstreetmap.org/14/10466/6416.png"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -231px; top: -101px; width: 256px; height: 256px;"><img
-                                            class="olTileImage"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -487px; top: -101px; width: 256px; height: 256px;"
-                                            crossorigin="anonymous"
-                                            src="http://a.tile.openstreetmap.org/14/10465/6416.png"><img
-                                            class="olTileImage"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -487px; top: 155px; width: 256px; height: 256px;"
-                                            crossorigin="anonymous"
-                                            src="http://a.tile.openstreetmap.org/14/10465/6417.png"><img
-                                            class="olTileImage"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -487px; top: -357px; width: 256px; height: 256px;"
-                                            crossorigin="anonymous"
-                                            src="http://c.tile.openstreetmap.org/14/10465/6415.png"><img
-                                            class="olTileImage"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -231px; top: -357px; width: 256px; height: 256px;"
-                                            crossorigin="anonymous"
-                                            src="http://a.tile.openstreetmap.org/14/10466/6415.png"><img
-                                            class="olTileImage"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: 25px; top: -357px; width: 256px; height: 256px;"
-                                            crossorigin="anonymous"
-                                            src="http://c.tile.openstreetmap.org/14/10467/6415.png"><img
-                                            class="olTileImage"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -743px; top: -357px; width: 256px; height: 256px;"
-                                            crossorigin="anonymous"
-                                            src="http://b.tile.openstreetmap.org/14/10464/6415.png"><img
-                                            class="olTileImage"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -743px; top: -101px; width: 256px; height: 256px;"
-                                            crossorigin="anonymous"
-                                            src="http://a.tile.openstreetmap.org/14/10464/6416.png"><img
-                                            class="olTileImage"
-                                            style="visibility: inherit; opacity: 1; position: absolute; left: -743px; top: 155px; width: 256px; height: 256px;"
-                                            crossorigin="anonymous"
-                                            src="http://c.tile.openstreetmap.org/14/10464/6417.png">
-                                    </div>
-                                    <div id="OpenLayers_Layer_Markers_81" dir="ltr" class="olLayerDiv"
-                                         style="position: absolute; width: 100%; height: 100%; z-index: 330;">
-                                        <div id="OL_Icon_83"
-                                             style="position: absolute; width: 32px; height: 32px; left: 349px; top: 168px;">
-                                            <img id="OL_Icon_83_innerImage" class="olAlphaImg"
-                                                 src="_uploads_/_default_/marker.png"
-                                                 style="position: relative; width: 32px; height: 32px;"></div>
-                                    </div>
-                                </div>
-                                <div id="OpenLayers_Control_Attribution_2"
-                                     class="olControlAttribution olControlNoSelect"
-                                     unselectable="on" style="position: absolute; z-index: 1002;">© <a
-                                        href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
-                                </div>
-                                <div id="OpenLayers_Control_PanZoom_3" class="olControlPanZoom olControlNoSelect"
-                                     unselectable="on" style="position: absolute; left: 4px; top: 4px; z-index: 1002;">
-                                    <div id="OpenLayers_Control_PanZoom_3_panup" class="olButton"
-                                         style="position: absolute; left: 13px; top: 4px; width: 18px; height: 18px; cursor: pointer;">
-                                        <img id="OpenLayers_Control_PanZoom_3_panup_innerImage" class="olAlphaImg"
-                                             src="js/map/img/north-mini.png"
-                                             style="position: relative; width: 18px; height: 18px;"></div>
-                                    <div id="OpenLayers_Control_PanZoom_3_panleft" class="olButton"
-                                         style="position: absolute; left: 4px; top: 22px; width: 18px; height: 18px; cursor: pointer;">
-                                        <img id="OpenLayers_Control_PanZoom_3_panleft_innerImage" class="olAlphaImg"
-                                             src="js/map/img/west-mini.png"
-                                             style="position: relative; width: 18px; height: 18px;"></div>
-                                    <div id="OpenLayers_Control_PanZoom_3_panright" class="olButton"
-                                         style="position: absolute; left: 22px; top: 22px; width: 18px; height: 18px; cursor: pointer;">
-                                        <img id="OpenLayers_Control_PanZoom_3_panright_innerImage" class="olAlphaImg"
-                                             src="js/map/img/east-mini.png"
-                                             style="position: relative; width: 18px; height: 18px;"></div>
-                                    <div id="OpenLayers_Control_PanZoom_3_pandown" class="olButton"
-                                         style="position: absolute; left: 13px; top: 40px; width: 18px; height: 18px; cursor: pointer;">
-                                        <img id="OpenLayers_Control_PanZoom_3_pandown_innerImage" class="olAlphaImg"
-                                             src="js/map/img/south-mini.png"
-                                             style="position: relative; width: 18px; height: 18px;"></div>
-                                    <div id="OpenLayers_Control_PanZoom_3_zoomin" class="olButton"
-                                         style="position: absolute; left: 13px; top: 63px; width: 18px; height: 18px; cursor: pointer;">
-                                        <img id="OpenLayers_Control_PanZoom_3_zoomin_innerImage" class="olAlphaImg"
-                                             src="js/map/img/zoom-plus-mini.png"
-                                             style="position: relative; width: 18px; height: 18px;"></div>
-                                    <div id="OpenLayers_Control_PanZoom_3_zoomworld" class="olButton"
-                                         style="position: absolute; left: 13px; top: 81px; width: 18px; height: 18px; cursor: pointer;">
-                                        <img id="OpenLayers_Control_PanZoom_3_zoomworld_innerImage" class="olAlphaImg"
-                                             src="js/map/img/zoom-world-mini.png"
-                                             style="position: relative; width: 18px; height: 18px;"></div>
-                                    <div id="OpenLayers_Control_PanZoom_3_zoomout" class="olButton"
-                                         style="position: absolute; left: 13px; top: 99px; width: 18px; height: 18px; cursor: pointer;">
-                                        <img id="OpenLayers_Control_PanZoom_3_zoomout_innerImage" class="olAlphaImg"
-                                             src="js/map/img/zoom-minus-mini.png"
-                                             style="position: relative; width: 18px; height: 18px;"></div>
-                                </div>
-                                <div id="OpenLayers_Control_DrawFeature_38"
-                                     class="olControlDrawFeature olControlNoSelect"
-                                     unselectable="on" style="position: absolute; z-index: 1004;"></div>
-                                <div id="OpenLayers_Control_DrawFeature_44"
-                                     class="olControlDrawFeature olControlNoSelect"
-                                     unselectable="on" style="position: absolute; z-index: 1005;"></div>
-                                <div id="OpenLayers_Control_DrawFeature_50"
-                                     class="olControlDrawFeature olControlNoSelect"
-                                     unselectable="on" style="position: absolute; z-index: 1006;"></div>
-                                <div id="OpenLayers_Control_DragFeature_56"
-                                     class="olControlDragFeature olControlNoSelect"
-                                     unselectable="on" style="position: absolute; z-index: 1007;"></div>
-                                <div id="OpenLayers_Control_DrawFeature_59"
-                                     class="olControlDrawFeature olControlNoSelect"
-                                     unselectable="on" style="position: absolute; z-index: 1008;"></div>
-                                <div id="OpenLayers_Control_65" class="olControl olControlNoSelect" unselectable="on"
-                                     style="position: absolute; z-index: 1009;"></div>
-                            </div>
+
                         </div>
                         <!-- End Map -->
                     </section>
@@ -293,11 +172,11 @@
                                     <div class="review-box clearfix">
                                         <figure class="rev-thumb"><img
                                                 src="{{ $c->user ? $c->user->get_avatar() : '---' }}"
-                                                alt="">
+                                                alt="{{ $c->user ? $c->user->fullname() : '---' }}">
                                         </figure>
 
                                         <div class="rev-content">
-                                            <h5> {{ $c->title }} </h5>
+                                            <h5> {{ $c->title ?: '---' }} </h5>
                                             <div class="rating">
                                                 <i class="icon_star voted"></i><i class="icon_star voted"></i><i
                                                     class="icon_star voted"></i><i class="icon_star voted"></i><i
@@ -309,7 +188,7 @@
                                             </div>
                                             <div class="rev-text">
                                                 <p>
-                                                    {{ $c->body }}
+                                                    {{ $c->body ?: '---' }}
                                                 </p>
                                             </div>
                                         </div>
@@ -317,8 +196,6 @@
                                     <!-- /review-box -->
                                 </div>
                             @endforeach
-
-
                         @else
                             <h5>هنوز نظری وجود ندارد.</h5>
                     @endif
@@ -372,7 +249,8 @@
                                     </div>
 
                                     @if(session()->has('comment_add'))
-                                        <div class="mt-3 text-center text-success" style="font-size: 14px !important;">{{ session()->get('comment_add') }}</div>
+                                        <div class="mt-3 text-center text-success"
+                                             style="font-size: 14px !important;">{{ session()->get('comment_add') }}</div>
                                     @endif
 
                                     <div class="form-group col-md-12 add_top_20">
@@ -407,13 +285,14 @@
 
                         @endif
 
-                        <form action="{{ route('reserve' , $object->slug) }}" method="post">
+                        {{--                        <form action="{{ route('reserve' , $object->slug) }}" method="post">--}}
+                        <form action="" method="post">
 
                             @csrf
 
                             <div class="box_detail">
                                 <div class="price">
-                                    <span> {{ $price }} <small> تومان هزینه رزرو هر نفر</small></span>
+                                    <span> {{ $price ?: '---' }} <small> تومان هزینه رزرو هر نفر</small></span>
                                     <div class="score"><strong>{{ $object->reserves->count() }} رزرو موفق</strong></div>
                                     <br>
                                     <div class="text-center" style="margin-top: 10px;color: red"><strong>هزینه رزرو از
@@ -428,7 +307,7 @@
                                 </div>
 
                                 <div class="form-group clearfix">
-                                    <select wire:model="time" required class="form-control" id="chain_no" name="time">
+                                    <select required class="form-control" id="chain_no" name="time">
                                         <option value="">ساعت رزرو</option>
 
                                         @foreach($times as $c)
@@ -436,40 +315,48 @@
                                         @endforeach
 
                                     </select>
-                                    <p class="text-danger">مدت زمان حضور در محل رزرو شده دو ساعت است.</p>
+                                    <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل دو
+                                        ساعت می باشد.</p>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <small style="color: red">تعداد صندلی های هر میز
                                             : {{ $object->chairs_people_count }}</small>
-                                        <input wire:model="guest_count" required class="form-control" type="text"
+                                        <input required class="form-control" type="text"
                                                name="guest_count" id="quest_count"
                                                placeholder="تعداد مهمانان">
                                     </div>
 
+                                    <select required class="form-control" id="chain_no" name="type">
+                                        <option value="">مناسبت (موضوع رزرو)</option>
+                                        @foreach($reserve_types as $res_type)
+                                            <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected
+                                                    @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected
+                                                    @endif value="{{ $res_type['id'] }}"
+                                                    value="{{ $res_type['id'] }}">{{ $res_type['name'] }}
+                                            </option>
+                                        @endforeach
+                                    </select>
 
-                                    <div class="text-center text-red"><b>سفارش تشریفات میز و رزرو غذا در صورت تمایل در
+                                    <div class="text-center text-danger"><b>سفارش تشریفات میز در صورت
+                                            تمایل در
                                             مرحله بعد
                                             انجام می شود</b></div>
 
-
-                                    <button id="btn_check_reserve" type="submit" class="btn_1 full-width outline"><i
+                                    <button id="btn_check_reserve" type="submit" class="btn_1 full-width outline mt-5">
+                                        <i
                                             class="icon-calendar-outlilne"></i> تکمیل رزرو
                                     </button>
                                     @if(auth()->check())
                                         @if(!$is_Added_To_WishList)
                                             <button wire:click.prevent="AddToWishList()"
-                                                    class="btn_1 full-width outline wishlist"><i
+                                                    class="btn_1 full-width outline wishlist mt-3"><i
                                                     class="icon_heart"></i> اضافه به علاقه مندی ها
                                             </button>
                                         @else
                                             <button wire:click.prevent="DeleteFromWishList()"
-                                                    class="btn_1 full-width outline wishlist"><i
+                                                    class="btn_1 full-width outline wishlist mt-3"><i
                                                     class="icon_heart"></i> حذف از علاقه مندی ها
                                             </button>
-                                        @endif
-
-                                        @if(session()->has('wishlist_status'))
-                                            <div class="mt-3 text-center text-success" style="font-size: 14px !important;">{{ session()->get('wishlist_status') }}</div>
                                         @endif
                                     @else
                                         <hr>
@@ -538,8 +425,6 @@
         }
 
         loadMap();
-
-        onLoad();
 
         $("#btn_check_reserve").on("click", function (event) {
             var date = $("#date").val();

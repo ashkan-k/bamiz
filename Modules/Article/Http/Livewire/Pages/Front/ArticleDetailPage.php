@@ -35,12 +35,11 @@ class ArticleDetailPage extends Component
     public function SubmitNewComment()
     {
         $this->ValidateCommentData();
-        self::CheckBadWords($this->title , $this->body);
+        self::CheckBadWords($this->title, $this->body);
 
         $this->star = $this->star != null ? $this->star : null;
 
-        Comment::create([
-            'user_id' => auth()->user()->id,
+        auth()->user()->comments()->create([
             'commentable_id' => $this->object->id,
             'commentable_type' => get_class($this->object),
             'body' => $this->body,
@@ -51,7 +50,7 @@ class ArticleDetailPage extends Component
         $this->title = $this->body = null;
         $this->star = 0;
 
-        session()->flash('comment_add' , 'نظر شما کاربر عزیز با موفقیت ثبت شد و پس تایید مدیر در سایت قرار میگیرد.');
+        session()->flash('comment_add', 'نظر شما کاربر عزیز با موفقیت ثبت شد و پس تایید مدیر در سایت قرار میگیرد.');
     }
 
     public function mount()

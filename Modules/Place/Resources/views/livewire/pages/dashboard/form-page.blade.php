@@ -55,11 +55,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-2">تعداد میز های مرکز</label>
+                        <label class="control-label col-lg-2">تعداد صندلی های هر میز مرکز</label>
                         <div class="col-md-10">
                             <input id="chairs_people_count" type="text" name="chairs_people_count"
                                    class="form-control" required
-                                   placeholder="تعداد میز را وارد کنید"
+                                   placeholder="تعداد صندلی ها را وارد کنید"
                                    value="@if(old('chairs_people_count')){{ old('chairs_people_count') }}@elseif(isset($item->chairs_people_count)){{ $item->chairs_people_count }}@else 1 @endif">
 
                             @error('chairs_people_count')
