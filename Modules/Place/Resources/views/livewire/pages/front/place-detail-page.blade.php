@@ -23,49 +23,36 @@
                 <div class="col-lg-8">
                     <section id="description">
                         <h2>توضیحات</h2>
-                        <p>{!! \Illuminate\Support\Str::limit($object->description , 150) !!}</p>
+                        <p>{!! $object->description ?: '---' !!}</p>
                         <hr>
 
-                        <h3>گالری تصاویر</h3>
-                        <div id="instagram-feed" class="clearfix"></div>
+                        {{--                        <h3>گالری تصاویر</h3>--}}
+                        {{--                        <div id="instagram-feed" class="clearfix"></div>--}}
 
-                        <hr>
+                        {{--                        <hr>--}}
 
-                        <div class="room_type first">
-                            <div class="row">
-
-                                <div class="col-md-8">
-                                    <h4>{{ $object->name ?: '---' }}</h4>
-                                    <p>{!! $object->description ?: '---' !!}</p>
-                                    <ul class="hotel_facilities">
-                                        <li><img src="/front/img/hotel_facilites_icon_2.svg" alt="">متوسط : کلاس قیمت
-                                        </li>
-                                        <li><img src="/front/img/hotel_facilites_icon_2.svg" alt="">ظرفیت : 50 نفر</li>
-                                        <li><img src="/front/img/hotel_facilites_icon_8.svg" alt="">مالیات بر ارزش
-                                            افزوده 10
-                                            درصد
-                                        </li>
-                                        <li><img src="/front/img/hotel_facilites_icon_4.svg" alt="">اینترنت - دارد</li>
-                                        <li><img src="/front/img/hotel_facilites_icon_5.svg" alt=""> فضای بازی کودکان-
-                                            میز
-                                            مخصوص
-                                        </li>
-                                        <li><img src="/front/img/hotel_facilites_icon_5.svg" alt="">فضای VIP - 1</li>
-                                        <li><img src="/front/img/hotel_facilites_icon_5.svg" alt="">موسیقی زنده - آخر
-                                            هفته
-                                            ها
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- /row -->
+                        <div class="row">
+                            @foreach($object->options as $op)
+                                @if($loop->iteration < 4)
+                                    <div class="col-lg-6">
+                                        <ul class="bullets">
+                                            <li>{{ $op->title }}</li>
+                                        </ul>
+                                    </div>
+                                @else
+                                    <div class="col-lg-6">
+                                        <ul class="bullets">
+                                            <li>{{ $op->title }}</li>
+                                        </ul>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
 
                         <hr>
 
                         <h3>ساعات کاری</h3>
-                        <p>ساعات کاری کافه | رستوران | هتل ({{ $object->name ?: '---' }}) به شرح ذیل می باشد</p>
+                        <p>ساعات کاری کافه | رستوران | هتل {{ $object->name ?: '---' }} به شرح ذیل می باشد</p>
 
                         <ul class="cbp_tmtimeline">
 
@@ -300,13 +287,21 @@
                                             فاکتور سفارش کسر می شود</strong></div>
                                 </div>
 
+                                <div class="form-group mt-2">
+                                    <small style="color: red">تعداد صندلی های هر میز
+                                        : {{ $object->chairs_people_count }}</small>
+                                    <input required class="form-control" type="text"
+                                           name="guest_count" id="quest_count"
+                                           placeholder="تعداد مهمانان">
+                                </div>
+
                                 <div class="form-group">
-                                    <input wire:model="date" required class="form-control" type="date" name="date"
+                                    <input required class="form-control" type="date" name="date"
                                            id="date"
                                            placeholder="تاریخ رزرو">
                                 </div>
 
-                                <div class="form-group clearfix">
+                                <div class="form-group clearfix mt-2">
                                     <select required class="form-control" id="chain_no" name="time">
                                         <option value="">ساعت رزرو</option>
 
@@ -317,14 +312,6 @@
                                     </select>
                                     <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل دو
                                         ساعت می باشد.</p>
-
-                                    <div class="form-group mt-2">
-                                        <small style="color: red">تعداد صندلی های هر میز
-                                            : {{ $object->chairs_people_count }}</small>
-                                        <input required class="form-control" type="text"
-                                               name="guest_count" id="quest_count"
-                                               placeholder="تعداد مهمانان">
-                                    </div>
 
                                     <select required class="form-control" id="chain_no" name="type">
                                         <option value="">مناسبت (موضوع رزرو)</option>
