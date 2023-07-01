@@ -82,7 +82,10 @@
         <ul id="top_menu">
 
             @if(auth()->check())
-                <li><a href="{{ route('logout') }}" class="login" title="خروج">خروج</a></li>
+                <form style="display: none" action="{{ route('logout') }}" method="post" id="frm_logout">
+                    @csrf
+                </form>
+                <li><a onclick="$('#frm_logout').submit()" class="login" title="خروج">خروج</a></li>
             @else
                 <li><span> <a href="{{ route('login') }}">ورود</a> </span></li>
 

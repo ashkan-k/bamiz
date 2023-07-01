@@ -94,8 +94,8 @@ class PlaceDetailPage extends Component
     private function getData()
     {
         $this->comments = $this->object->comments()->where('status' , 'approved')->get();
-        $this->work_days = explode(', '  , $this->object->work_time->week_days);
-        $this->getTimes();
+        $this->work_days = $this->object->work_time ? explode(', '  , $this->object->work_time->week_days) : [];
+        $this->object->work_time && $this->getTimes();
     }
 
     public function mount()

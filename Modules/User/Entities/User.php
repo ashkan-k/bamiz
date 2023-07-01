@@ -107,6 +107,11 @@ class User extends Authenticatable
         return 'danger';
     }
 
+    public function is_staff()
+    {
+        return in_array($this->level, ['staff', 'admin']);
+    }
+
     //
 
     public function articles()

@@ -45,26 +45,18 @@
 
                         <div class="row">
                             @foreach($object->options as $op)
-                                @if($loop->iteration < 4)
-                                    <div class="col-lg-6">
-                                        <ul class="bullets">
-                                            <li>{{ $op->title }}</li>
-                                        </ul>
-                                    </div>
-                                @else
-                                    <div class="col-lg-6">
-                                        <ul class="bullets">
-                                            <li>{{ $op->title }}</li>
-                                        </ul>
-                                    </div>
-                                @endif
+                                <div class="col-lg-6">
+                                    <ul class="bullets">
+                                        <li>{{ $op->title }}</li>
+                                    </ul>
+                                </div>
                             @endforeach
                         </div>
 
                         <hr>
 
                         <h3>ساعات کاری</h3>
-                        <p>ساعات کاری کافه | رستوران | هتل {{ $object->name ?: '---' }} به شرح ذیل می باشد</p>
+                        <p>ساعات کاری {{ $object->get_type() }} {{ $object->name ?: '---' }} به شرح ذیل می باشد</p>
 
                         <ul class="cbp_tmtimeline">
 
@@ -98,67 +90,68 @@
 
                     <section id="comments">
                         <h2>نظرات کاربران</h2>
-                        <div class="reviews-container">
+                        <div class="reviews-container mt-5">
                             <div class="row">
-                                <div class="col-lg-3">
+                                <h5>میانگین امتیاز</h5>
+                                <div class="col-lg-12">
                                     <div id="review_summary">
-                                        <strong>5</strong>
+                                        <strong>{{ $comments->avg('score') ?: '0' }}</strong>
                                         <em>از</em>
-                                        <small>مجموع 10 رای اخذ شده</small>
+                                        <small>مجموع {{ $comments->count() }} رای اخذ شده</small>
                                     </div>
                                 </div>
-                                <div class="col-lg-9">
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%"
-                                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>5 ستاره</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 95%"
-                                                     aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>4 ستاره</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 60%"
-                                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>3 ستاره</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 20%"
-                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>2 ستاره</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 0"
-                                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>1 ستاره</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                </div>
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-lg-10 col-9">--}}
+{{--                                            <div class="progress">--}}
+{{--                                                <div class="progress-bar" role="progressbar" style="width: 90%"--}}
+{{--                                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-2 col-3"><small><strong>5 ستاره</strong></small></div>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- /row -->--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-lg-10 col-9">--}}
+{{--                                            <div class="progress">--}}
+{{--                                                <div class="progress-bar" role="progressbar" style="width: 95%"--}}
+{{--                                                     aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-2 col-3"><small><strong>4 ستاره</strong></small></div>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- /row -->--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-lg-10 col-9">--}}
+{{--                                            <div class="progress">--}}
+{{--                                                <div class="progress-bar" role="progressbar" style="width: 60%"--}}
+{{--                                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-2 col-3"><small><strong>3 ستاره</strong></small></div>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- /row -->--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-lg-10 col-9">--}}
+{{--                                            <div class="progress">--}}
+{{--                                                <div class="progress-bar" role="progressbar" style="width: 20%"--}}
+{{--                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-2 col-3"><small><strong>2 ستاره</strong></small></div>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- /row -->--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-lg-10 col-9">--}}
+{{--                                            <div class="progress">--}}
+{{--                                                <div class="progress-bar" role="progressbar" style="width: 0"--}}
+{{--                                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-2 col-3"><small><strong>1 ستاره</strong></small></div>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- /row -->--}}
+{{--                                </div>--}}
                             </div>
                             <!-- /row -->
                         </div>
@@ -258,7 +251,7 @@
                                 </div>
                             </form>
                         @else
-                            <div style="margin-top: 25px !important;" class="alert alert-danger">برای ثبت نظر ابتدا
+                            <div style="margin-top: 25px !important;" class="alert alert-danger text-center">برای ثبت نظر ابتدا
                                 <a class="text-info" href="{{ route('login') }}"> وارد </a> شوید
                             </div>
                         @endif
@@ -344,11 +337,12 @@
                                             مرحله بعد
                                             انجام می شود</b></div>
 
-                                    <button id="btn_check_reserve" type="submit" class="btn_1 full-width outline mt-5">
-                                        <i
-                                            class="icon-calendar-outlilne"></i> تکمیل رزرو
-                                    </button>
                                     @if(auth()->check())
+                                        <button id="btn_check_reserve" type="submit" class="btn_1 full-width outline mt-5">
+                                            <i
+                                                class="icon-calendar-outlilne"></i> تکمیل رزرو
+                                        </button>
+
                                         @if(!$is_Added_To_WishList)
                                             <button wire:click.prevent="AddToWishList()"
                                                     class="btn_1 full-width outline wishlist mt-3"><i
@@ -361,6 +355,11 @@
                                             </button>
                                         @endif
                                     @else
+                                        <button onclick="window.location.href = '{{ route('login') }}?next=/{{ request()->path() }}'" id="btn_check_reserve" type="button" class="btn_1 full-width outline mt-5">
+                                            <i
+                                                class="icon-calendar-outlilne"></i> ورود به سایت برای رزرو
+                                        </button>
+
                                         <hr>
                                         <span class="alert alert-danger">برای افزدون به علاقه مندی ها ابتدا <a
                                                 class="text-info"

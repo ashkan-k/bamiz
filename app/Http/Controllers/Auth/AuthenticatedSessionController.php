@@ -29,7 +29,14 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $next_url = '/';
+        if (\request('next')){
+            $next_url = \request('next');
+        }elseif (\auth()->user()->is_staff()){
+            $next_url = RouteServiceProvider::HOME;
+        }
+
+        return redirect()->intended($next_url);
     }
 
     /**
