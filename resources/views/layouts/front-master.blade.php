@@ -66,7 +66,7 @@
     @livewireStyles
 
 </head>
-<body class="rtl">
+<body class="rtl" ng-app="myApp" ng-controller="myCtrl">
 <div id="page">
 
     <header class="header menu_fixed">
@@ -298,6 +298,18 @@
 <script src="/ckeditor/ckeditor.js"></script>
 <script src="/admin/assets/js/kamadatepicker.min.js"></script>
 <script src="/timepicker2/dist/js/timepicker.min.js"></script>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.config(function ($interpolateProvider, $httpProvider) {
+        $interpolateProvider.startSymbol('[[');
+        $interpolateProvider.endSymbol(']]');
+
+        // $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+        // $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+        $httpProvider.defaults.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+    });
+</script>
 
 @if (session()->has('message'))
     <script>

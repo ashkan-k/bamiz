@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\WishList\Http\Controllers\Dashboard\ApiWishListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/wishlist', function (Request $request) {
-    return $request->user();
-});
+Route::post('add-remove/{place}', [ApiWishListController::class, 'add_and_remove'])->name('api.wishlists.add_and_remove');

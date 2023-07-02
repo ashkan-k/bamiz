@@ -30,7 +30,7 @@ class PlaceDetailPage extends Component
     public $work_days = [];
     public $times = [];
 
-    protected $listeners = ['triggerChangeStatusModal'];
+    protected $listeners = ['triggerWishlistAddRemoveEvent'];
 
     private function ValidateCommentData()
     {
@@ -62,6 +62,12 @@ class PlaceDetailPage extends Component
         session()->flash('comment_add', 'نظر شما کاربر عزیز با موفقیت ثبت شد و پس تایید مدیر در سایت قرار میگیرد.');
     }
 
+    // Change Wishlist status
+    public function triggerWishlistAddRemoveEvent($operate)
+    {
+        $this->AddRemoveWishList($operate);
+    }
+
     public function AddRemoveWishList($operate)
     {
         if ($operate == 'add') {
@@ -78,6 +84,8 @@ class PlaceDetailPage extends Component
 
         $this->dispatchBrowserEvent('wishlistStatusUpdated', ['type' => $operate]);
     }
+
+    //
 
     private function getTimes()
     {

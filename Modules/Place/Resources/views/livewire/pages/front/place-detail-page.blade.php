@@ -287,7 +287,7 @@
                                 <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                             @endauth
 
-                            <div class="box_detail">
+                            <div class="box_detail" wire:ignore>
                                 <div class="price">
                                     <span> {{ $price ? number_format($price) : '---' }} <small> تومان هزینه رزرو هر نفر</small></span>
                                     <div class="score"><strong>{{ $object->reserves()->where('status', 1)->count() }}
@@ -298,7 +298,7 @@
                                             فاکتور سفارش کسر می شود</strong></div>
                                 </div>
 
-                                <div class="form-group mt-2" wire:ignore>
+                                <div class="form-group mt-2">
                                     @if(in_array($object->type, ['restaurant', 'cafe']))
                                         <small style="color: red">تعداد صندلی های هر میز
                                             : {{ $object->chairs_people_count }}</small>
@@ -310,7 +310,7 @@
                                 </div>
 
                                 @if($object->type == 'hotel')
-                                    <div class="form-group mt-2" wire:ignore>
+                                    <div class="form-group mt-2">
                                         <input required class="form-control" type="text"
                                                value="{{ old('room_number') }}"
                                                name="room_number" id="quest_count"
@@ -318,14 +318,14 @@
                                     </div>
                                 @endif
 
-                                <div class="form-group" wire:ignore>
+                                <div class="form-group">
                                     <input required class="form-control" type="text" name="date"
                                            id="id_date" value="{{ old('date') }}"
                                            placeholder="تاریخ رزرو">
                                 </div>
 
                                 @if($object->type == 'hotel')
-                                    <div class="form-group mt-2" wire:ignore>
+                                    <div class="form-group mt-2">
                                         <input required class="form-control" type="text"
                                                value="{{ old('days_number') }}"
                                                name="days_number" id="quest_count"
@@ -333,7 +333,7 @@
                                     </div>
                                 @endif
 
-                                <div class="form-group clearfix mt-2" wire:ignore>
+                                <div class="form-group clearfix mt-2">
                                     <select required class="form-control" id="chain_no" name="start_time">
                                         <option value="">ساعت رزرو</option>
 
@@ -374,13 +374,15 @@
                                                 class="icon-calendar-outlilne"></i> تکمیل رزرو
                                         </button>
 
-                                        <button wire:click.prevent="AddRemoveWishList('add')"
+                                        <button ng-click="SubmitAddRemoveToWishlists('add')"
+                                                ng-disabled="is_submited"
                                                 @if($is_Added_To_WishList) style="display: none" @endif
                                                 id="id_add_to_wishlist"
                                                 class="btn_1 full-width outline wishlist mt-3"><i
                                                 class="icon_heart"></i> اضافه به علاقه مندی ها
                                         </button>
-                                        <button wire:click.prevent="AddRemoveWishList('remove')"
+                                        <button ng-click="SubmitAddRemoveToWishlists('remove')"
+                                                ng-disabled="is_submited"
                                                 @if(!$is_Added_To_WishList) style="display: none" @endif
                                                 id="id_remove_to_wishlist"
                                                 class="btn_1 full-width outline wishlist mt-3"><i
@@ -401,6 +403,7 @@
                                     @endif
 
                                 </div>
+                            </div>
                         </form>
                         <div class="resize-sensor"
                              style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
@@ -478,13 +481,33 @@
 
 @push('StackScript')
     <script>
-        window.addEventListener('wishlistStatusUpdated', event => {
-            if (event.detail['type'] == 'add') {
-                $('#id_add_to_wishlist').hide();
-                $('#id_remove_to_wishlist').show();
-            } else {
-                $('#id_add_to_wishlist').show();
-                $('#id_remove_to_wishlist').hide();
+        app.controller('myCtrl', function ($scope, $http) {
+            $scope.SubmitAddRemoveToWishlists = function (type) {
+                $scope.is_submited = true;
+                var data = {
+                    'type': type,
+                };
+
+                $('#id_add_to_wishlist').css("cursor", 'not-allowed');
+                $('#id_remove_to_wishlist').css("cursor", 'not-allowed');
+
+                var url = `{{ route('api.wishlists.add_and_remove', $object->id) }}`;
+
+                $http.post(url, data).then(res => {
+                    $scope.is_submited = false;
+                    if (type == 'add') {
+                        $('#id_add_to_wishlist').hide();
+                        $('#id_remove_to_wishlist').show();
+                    } else {
+                        $('#id_add_to_wishlist').show();
+                        $('#id_remove_to_wishlist').hide();
+                    }
+
+                    $('#id_add_to_wishlist').css("cursor", 'pointer');
+                    $('#id_remove_to_wishlist').css("cursor", 'pointer');
+                }).catch(err => {
+                    showToast('خطایی رخ داد.', 'error');
+                });
             }
         });
     </script>
