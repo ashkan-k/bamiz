@@ -63,9 +63,10 @@
 
             <aside class="col-lg-3">
                 <div class="widget">
-                    <form wire:submit.prevent="SearchAndFilter()">
+                    <form>
                         <div class="form-group">
-                            <input wire:model.defer="search" type="text" name="search" id="search" class="form-control"
+                            <input type="text" name="search" id="search" class="form-control"
+                                   value="{{ request('search') }}"
                                    style="margin-bottom: -32px !important;    padding-left: 109px !important;"
                                    placeholder="جستجو...">
                             <button type="submit" id="submit" class="btn_1 badge-pill "
