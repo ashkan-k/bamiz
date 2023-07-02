@@ -266,7 +266,7 @@
                     <div class="theiaStickySidebar"
                          style="padding-top: 0px; padding-bottom: 1px; position: fixed; transform: translateY(-51.4px); top: 0px; left: 204.6px; width: 350px;">
 
-                        @if($errors->any() && !($errors->has('body') || $errors->has('title') || $errors->has('star')))
+                        @if($errors->any() && (!$errors->has('body') && !$errors->has('title') && !$errors->has('star')))
 
                             <div class="alert alert-danger text-center">
 
@@ -278,10 +278,14 @@
 
                         @endif
 
-                        {{--                        <form action="{{ route('reserve' , $object->slug) }}" method="post">--}}
-                        <form action="" method="post">
+                        <form action="{{ route('reserve' , $object->slug) }}" method="post">
 
                             @csrf
+
+                            @auth
+                                <input type="hidden" name="place_id" value="{{ $object->id }}">
+                                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                            @endauth
 
                             <div class="box_detail">
                                 <div class="price">
@@ -294,25 +298,38 @@
                                 </div>
 
                                 <div class="form-group mt-2" wire:ignore>
-                                    <small style="color: red">تعداد صندلی های هر میز
-                                        : {{ $object->chairs_people_count }}</small>
+                                    @if($object->type == 'restaurant' || $object->type == 'cafe')
+                                        <small style="color: red">تعداد صندلی های هر میز
+                                            : {{ $object->chairs_people_count }}</small>
+                                    @endif
                                     <input required class="form-control" type="text"
+                                           value="{{ old('guest_count') }}"
                                            name="guest_count" id="quest_count"
                                            placeholder="تعداد مهمانان">
                                 </div>
 
+                               @if($object->type == 'hotel')
+                                    <div class="form-group mt-2" wire:ignore>
+                                        <input required class="form-control" type="text"
+                                               value="{{ old('room_number') }}"
+                                               name="room_number" id="quest_count"
+                                               placeholder="شماره اتاق">
+                                    </div>
+                                @endif
+
                                 <div class="form-group" wire:ignore>
                                     <input required class="form-control" type="text" name="date"
-                                           id="id_date"
+                                           id="id_date" value="{{ old('date') }}"
                                            placeholder="تاریخ رزرو">
                                 </div>
 
                                 <div class="form-group clearfix mt-2" wire:ignore>
-                                    <select required class="form-control" id="chain_no" name="time">
+                                    <select required class="form-control" id="chain_no" name="start_time">
                                         <option value="">ساعت رزرو</option>
 
                                         @foreach($times as $c)
-                                            <option value="{{ $c }}"> ساعت {{ $c }} </option>
+                                            <option @if(old('start_time') == $c) selected @endif value="{{ $c }}">
+                                                ساعت {{ $c }} </option>
                                         @endforeach
 
                                     </select>
@@ -323,7 +340,7 @@
                                     @endif
 
                                     <select required class="form-control mt-3" id="chain_no" name="type">
-                                        <option value="">مناسبت (موضوع رزرو)</option>
+                                        <option value="" disabled>مناسبت (موضوع رزرو) را انتخاب کنید</option>
                                         @foreach($reserve_types as $res_type)
                                             <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected
                                                     @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected

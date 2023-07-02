@@ -16,11 +16,11 @@ return new class extends Migration
     {
         Schema::create('reserves', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
+            $table->string('date');
             $table->string('start_time');
             $table->string('end_time')->nullable();
             $table->integer('guest_count')->default(1);
-            $table->integer('chair_number')->nullable();
+            $table->integer('room_number')->nullable();
             $table->string('amount')->default(0);
             $table->boolean('status')->default(false);
             $table->enum('type', EnumHelpers::$ReserveTypesEnum)->default('table_for_food');

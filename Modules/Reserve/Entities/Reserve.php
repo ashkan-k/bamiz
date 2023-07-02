@@ -20,6 +20,7 @@ class Reserve extends Model
         "start_time",
 //        "end_time",
         "guest_count",
+        "room_number",
         "amount",
         "status",
         "type",
