@@ -469,7 +469,8 @@
         kamaDatepicker('id_date', {
             placeholder: 'تاریخ رزرو',
             buttonsColor: 'blue',
-            markHolidays: true
+            markHolidays: true,
+            markToday:true,
         });
         $("#id_date").attr('autocomplete', 'off');
 
