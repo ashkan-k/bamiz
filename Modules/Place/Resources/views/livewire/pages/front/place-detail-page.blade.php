@@ -323,6 +323,15 @@
                                            placeholder="تاریخ رزرو">
                                 </div>
 
+                                @if($object->type == 'hotel')
+                                    <div class="form-group mt-2" wire:ignore>
+                                        <input required class="form-control" type="text"
+                                               value="{{ old('days_number') }}"
+                                               name="days_number" id="quest_count"
+                                               placeholder="تعداد روز">
+                                    </div>
+                                @endif
+
                                 <div class="form-group clearfix mt-2" wire:ignore>
                                     <select required class="form-control" id="chain_no" name="start_time">
                                         <option value="">ساعت رزرو</option>
@@ -340,7 +349,7 @@
                                     @endif
 
                                     <select required class="form-control mt-3" id="chain_no" name="type">
-                                        <option value="" disabled>مناسبت (موضوع رزرو) را انتخاب کنید</option>
+                                        <option value="">مناسبت (موضوع رزرو) را انتخاب کنید</option>
                                         @foreach($reserve_types as $res_type)
                                             <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected
                                                     @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected

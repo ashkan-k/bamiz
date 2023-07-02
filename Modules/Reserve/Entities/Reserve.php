@@ -20,6 +20,7 @@ class Reserve extends Model
         "start_time",
 //        "end_time",
         "guest_count",
+        "days_number",
         "room_number",
         "amount",
         "status",
@@ -87,6 +88,7 @@ class Reserve extends Model
     {
         return $this->belongsTo(Place::class);
     }
+
     public function user()
     {
         return $this->belongsTo(User::class);

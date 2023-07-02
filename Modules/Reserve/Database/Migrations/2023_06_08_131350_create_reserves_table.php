@@ -25,6 +25,8 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->enum('type', EnumHelpers::$ReserveTypesEnum)->default('table_for_food');
 
+            $table->integer('days_number')->nullable();
+
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 

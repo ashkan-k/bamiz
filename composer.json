@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
         "mhmiton/laravel-modules-livewire": "^1.6",
-        "nwidart/laravel-modules": "^10.0"
+        "nwidart/laravel-modules": "^10.0",
+      "ext-soap": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

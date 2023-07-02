@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\Article\Entities\Article;
 use Modules\Comment\Entities\Comment;
+use Modules\Payment\Entities\Payment;
 use Modules\Place\Entities\Place;
+use Modules\Reserve\Entities\Reserve;
 use Modules\Ticket\Entities\Ticket;
 use Modules\Ticket\Entities\TicketAnswer;
 use Modules\WishList\Entities\WishList;
@@ -143,13 +145,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(TicketAnswer::class);
     }
-//
-//    public function reserves()
-//    {
-//        return $this->hasMany(Reserve::class);
-//    }
-//    public function payments()
-//    {
-//        return $this->hasMany(Payment::class);
-//    }
+
+    public function reserves()
+    {
+        return $this->hasMany(Reserve::class);
+    }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

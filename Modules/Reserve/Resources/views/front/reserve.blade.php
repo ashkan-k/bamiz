@@ -9,5 +9,6 @@
     'titlePage' => $place->title,
     'data' => $data,
     'place' => $place,
+    'reserve' => $reserve,
     ])
 @endsection

@@ -22,6 +22,7 @@ class ReserveRequest extends FormRequest
             'guest_count' => 'required|numeric',
             'chair_number' => 'nullable|numeric',
             'room_number' => 'nullable|numeric',
+            'days_number' => 'nullable|numeric',
             'amount' => 'numeric|min:1',
             'user_id' => 'required|exists:users,id',
             'place_id' => 'required|exists:places,id',

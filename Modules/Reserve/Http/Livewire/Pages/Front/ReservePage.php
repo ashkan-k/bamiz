@@ -10,9 +10,11 @@ class ReservePage extends Component
 {
     public $data;
     public $place;
+    public $reserve;
     public $options = [];
 
     public $price;
+    public $total_price;
     public $options_price = 0;
 
     public function AddNewOption(Option $option)
@@ -20,8 +22,8 @@ class ReservePage extends Component
         array_push($this->options, $option->id);
         $this->options_price += $option->amount;
 
-        $final_price = ($this->price * $this->data['guest_count']) + $this->options_price;
-        $this->dispatchBrowserEvent('reserveOptionsUpdated', ['price' => $final_price, 'options_price' => $this->options_price]);
+        $this->total_price += $this->options_price;
+        $this->dispatchBrowserEvent('reserveOptionsUpdated', ['price' => $this->total_price, 'options_price' => $this->options_price]);
     }
 
     public function RemoveOption(Option $option)
@@ -32,13 +34,14 @@ class ReservePage extends Component
         }
         $this->options_price -= $option->amount;
 
-        $final_price = ($this->price * $this->data['guest_count']) + $this->options_price;
-        $this->dispatchBrowserEvent('reserveOptionsUpdated', ['price' => $final_price, 'options_price' => $this->options_price]);
+        $this->total_price += $this->options_price;
+        $this->dispatchBrowserEvent('reserveOptionsUpdated', ['price' => $this->total_price, 'options_price' => $this->options_price]);
     }
 
     public function mount()
     {
         $this->price = Setting::getPriceFromSettings();
+        $this->total_price = $this->price * $this->data['guest_count'];
     }
 
     public function render()

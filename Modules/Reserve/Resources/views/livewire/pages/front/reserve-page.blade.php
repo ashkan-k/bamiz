@@ -228,8 +228,7 @@
                     <div class="theiaStickySidebar"
                          style="padding-top: 0px; padding-bottom: 1px; position: absolute; transform: translateY(771.2px); top: 0px; width: 350px;">
                         <div class="box_detail">
-                            {{--                            <form action="{{ route('payment' , [$place->slug]) }}" method="post">--}}
-                            <form method="post">
+                            <form action="{{ route('payment' , $reserve->id) }}" method="post">
 
                                 @csrf
                                 <input type="hidden" name="options" wire:model='options'>
@@ -238,11 +237,11 @@
                                     <h5 style="text-align: center"> لیست سفارش رزرو میز</h5>
                                 </div>
                                 <ul class="cart_details" id="card_detail">
-                                    <li> مبلغ رزرو هر نفر <span>{{ $price }} تومان</span></li>
-                                    <li>خدمات تشریفات <span id="options_price">{{ $options_price }} تومان </span></li>
+                                    <li> مبلغ رزرو هر نفر <span>{{ number_format($price) }} تومان</span></li>
+                                    <li>خدمات تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span></li>
                                 </ul>
                                 <div id="total_cart">
-                                    جمع کل <span class="float-right" id="total_price">{{ number_format(($price * $data['guest_count']) + $options_price) }}  تومان </span>
+                                    جمع کل <span class="float-right" id="total_price">{{ number_format($total_price) }}  تومان </span>
                                 </div>
 
                                 <ul class="cart_details" id="card_detail">
@@ -301,8 +300,8 @@
 
     <script type="text/javascript">
         window.addEventListener('reserveOptionsUpdated', event => {
-            $('#total_price').html(numberWithCommas(event['detail']['price']));
-            $('#options_price').html(numberWithCommas(event['detail']['options_price']));
+            $('#total_price').html(`${numberWithCommas(event['detail']['price'])} تومان`);
+            $('#options_price').html(`${numberWithCommas(event['detail']['options_price'])} تومان`);
         });
     </script>
 @endpush
