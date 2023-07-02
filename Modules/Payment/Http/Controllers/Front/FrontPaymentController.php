@@ -21,15 +21,11 @@ class FrontPaymentController extends Controller
 
     private function ConvertOptionsToInt($options)
     {
-        $options = explode(',' , $options);
-        foreach ($options as $key => $op)
-        {
-            if ($op != null && $op != '')
-            {
+        $options = explode(',', $options);
+        foreach ($options as $key => $op) {
+            if ($op != null && $op != '') {
                 $options[$key] = intval($op);
-            }
-            else
-            {
+            } else {
                 unset($options[$key]);
             }
         }
@@ -43,7 +39,7 @@ class FrontPaymentController extends Controller
         return view('payment');
     }
 
-    public function pay(PaymentRequest $request , Reserve $reserve)
+    public function pay(PaymentRequest $request, Reserve $reserve)
     {
         abort_unless($reserve->user_id == auth()->id(), 404);
 
@@ -53,7 +49,7 @@ class FrontPaymentController extends Controller
         if ($options) $reserve->options()->sync($options);
 
         $options_price = $reserve->options()->sum('amount');
-        $this->totalPrice = round($reserve->amount +  round($options_price));
+        $this->totalPrice = round($reserve->amount + round($options_price));
 
         $reserve->update(['amount' => $this->totalPrice]);
 
@@ -81,7 +77,6 @@ class FrontPaymentController extends Controller
             ]
         );
 
-//Redirect to URL You can do it also by creating a form
         if ($result->Status == 100) {
 
             Payment::create([
@@ -93,16 +88,16 @@ class FrontPaymentController extends Controller
                 'status' => false
             ]);
 
-            return redirect('https://sandbox.zarinpal.com/pg/StartPay/'.$result->Authority);
+            return redirect('https://sandbox.zarinpal.com/pg/StartPay/' . $result->Authority);
 
         } else {
-            echo'ERR: '.$result->Status;
+            echo 'ERR: ' . $result->Status;
         }
     }
 
     public function call_back()
     {
-        $payment = Payment::query()->where('authority' , \request('Authority'))->first();
+        $payment = Payment::query()->where('authority', \request('Authority'))->first();
 
         $MerchantID = $this->merchant_id;
         $Amount = $payment->amount;
@@ -122,15 +117,16 @@ class FrontPaymentController extends Controller
 
             if ($result->Status == 100) {
 
-                $payment->update(['status' => true , 'refID' => $result->RefID]);
+                $payment->update(['status' => true, 'refID' => $result->RefID]);
                 $payment->reserve()->update(['status' => true]);
 
-                echo 'Transaction success. RefID:'.$result->RefID;
+                return view('payment::front.success', compact('payment'));
             } else {
-                echo 'Transaction failed. Status:'.$result->Status;
+                $error_code = $result->Status;
+                return view('payment::front.fail', compact('error_code'));
             }
         } else {
-            echo 'Transaction canceled by user';
+            return view('payment::front.fail');
         }
     }
 }
