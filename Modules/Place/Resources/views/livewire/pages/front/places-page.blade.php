@@ -78,7 +78,7 @@
                                         class="icon_star"></i><i class="icon_star"></i></div>
                                 <h3><a href="{{ route('place_detail', $place->slug) }}"> {{ \Illuminate\Support\Str::limit($place->name, 30) }} </a></h3>
 
-                                <p>{!! \Illuminate\Support\Str::limit($place->description, 80) !!}</p>
+                                <p>{!! \Illuminate\Support\Str::limit($place->description, 30) !!}</p>
 
                                 {{--                                <span class="price">From <strong>$54</strong> /per person</span>--}}
                             </div>
