@@ -27,7 +27,7 @@ class ReserveRequest extends FormRequest
             'user_id' => 'required|exists:users,id',
             'place_id' => 'required|exists:places,id',
             'option_id.*' => 'numeric|exists:options,id',
-            'type' => 'in:table_for_food,work_appointment,table_for_birth_day_with_food,table_for_birth_day_without_food',
+            'type' => 'nullable|in:table_for_food,work_appointment,table_for_birth_day_with_food,table_for_birth_day_without_food',
         ];
     }
 

@@ -289,8 +289,9 @@
 
                             <div class="box_detail">
                                 <div class="price">
-                                    <span> {{ $price ?: '---' }} <small> تومان هزینه رزرو هر نفر</small></span>
-                                    <div class="score"><strong>{{ $object->reserves->count() }} رزرو موفق</strong></div>
+                                    <span> {{ $price ? number_format($price) : '---' }} <small> تومان هزینه رزرو هر نفر</small></span>
+                                    <div class="score"><strong>{{ $object->reserves()->where('status', 1)->count() }}
+                                            رزرو موفق</strong></div>
                                     <br>
                                     <div class="text-center" style="margin-top: 10px;color: red"><strong>هزینه رزرو از
                                             مبلغ
@@ -298,7 +299,7 @@
                                 </div>
 
                                 <div class="form-group mt-2" wire:ignore>
-                                    @if($object->type == 'restaurant' || $object->type == 'cafe')
+                                    @if(in_array($object->type, ['restaurant', 'cafe']))
                                         <small style="color: red">تعداد صندلی های هر میز
                                             : {{ $object->chairs_people_count }}</small>
                                     @endif
@@ -308,7 +309,7 @@
                                            placeholder="تعداد مهمانان">
                                 </div>
 
-                               @if($object->type == 'hotel')
+                                @if($object->type == 'hotel')
                                     <div class="form-group mt-2" wire:ignore>
                                         <input required class="form-control" type="text"
                                                value="{{ old('room_number') }}"
@@ -348,16 +349,18 @@
                                             ساعت می باشد.</p>
                                     @endif
 
-                                    <select required class="form-control mt-3" id="chain_no" name="type">
-                                        <option value="">مناسبت (موضوع رزرو) را انتخاب کنید</option>
-                                        @foreach($reserve_types as $res_type)
-                                            <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected
-                                                    @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected
-                                                    @endif value="{{ $res_type['id'] }}"
-                                                    value="{{ $res_type['id'] }}">{{ $res_type['name'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    @if(in_array($object->type, ['restaurant', 'cafe']))
+                                        <select required class="form-control mt-3" id="chain_no" name="type">
+                                            <option value="">مناسبت (موضوع رزرو) را انتخاب کنید</option>
+                                            @foreach($reserve_types as $res_type)
+                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected
+                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected
+                                                        @endif value="{{ $res_type['id'] }}"
+                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    @endif
 
                                     <div class="text-center text-danger"><b>سفارش تشریفات در صورت
                                             تمایل در

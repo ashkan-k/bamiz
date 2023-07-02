@@ -35,7 +35,9 @@ class FrontPaymentController extends Controller
         }
         return $options;
     }
-    /////////////////////////////////////////////////////
+
+    //
+
     public function show()
     {
         return view('payment');
@@ -60,7 +62,7 @@ class FrontPaymentController extends Controller
 
         $MerchantID = $this->merchant_id; //Required
         $Amount = $this->totalPrice; //Amount will be based on Toman - Required
-        $Description = 'رزرو رستوران از سایت بامیز'; // Required
+        $Description = "رزرو {$reserve->place->get_type()} {$reserve->place->name} از سایت بامیز"; // Required
         $Email = Setting::where('key', 'email')->first()->email; // Optional
         $Mobile = Setting::where('key', 'phone')->first()->phone; // Optional
         $CallbackURL = env('APP_URL') . '/payment/callback'; // Required
