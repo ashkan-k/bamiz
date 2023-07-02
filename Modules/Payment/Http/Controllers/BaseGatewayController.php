@@ -1,15 +1,14 @@
 <?php
 
-namespace Modules\Payment\Http\Controllers\Front;
 
-use Illuminate\Routing\Controller;
+namespace Modules\Payment\Http\Controllers;
+
 use Modules\Payment\Entities\Payment;
-use Modules\Payment\Http\Requests\PaymentRequest;
-use Modules\Reserve\Entities\Reserve;
 use Modules\Setting\Entities\Setting;
 use SoapClient;
+use Illuminate\Routing\Controller;
 
-class FrontPaymentController extends Controller
+class BaseGatewayController extends Controller
 {
     protected $merchant_id;
     protected $totalPrice;
@@ -34,16 +33,11 @@ class FrontPaymentController extends Controller
 
     //
 
-    public function show()
-    {
-        return view('payment');
-    }
-
-    public function pay(PaymentRequest $request, Reserve $reserve)
+    protected function GetZarinPalClientStatus($reserve)
     {
         abort_unless($reserve->user_id == auth()->id(), 404);
 
-        $options = $request->get('options');
+        $options = request('options');
         $options = $this->ConvertOptionsToInt($options);
 
         if ($options) $reserve->options()->sync($options);
@@ -62,7 +56,6 @@ class FrontPaymentController extends Controller
         $Email = Setting::where('key', 'email')->first()->email; // Optional
         $Mobile = Setting::where('key', 'phone')->first()->phone; // Optional
         $CallbackURL = env('APP_URL') . '/payment/callback'; // Required
-
 
         $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
 
@@ -84,24 +77,29 @@ class FrontPaymentController extends Controller
                 'reserve_id' => $reserve->id,
                 'amount' => $this->totalPrice,
                 'authority' => $result->Authority,
-                'ip' => $request->ip(),
+                'ip' => request()->ip(),
                 'status' => false
             ]);
 
+            return [true, $result];
             return redirect('https://sandbox.zarinpal.com/pg/StartPay/' . $result->Authority);
 
         } else {
-            echo 'ERR: ' . $result->Status;
+            return [false, $result];
         }
     }
 
-    public function call_back()
+    protected function GetZarinPalClientCallBackStatus($authority)
     {
-        $payment = Payment::where('authority', \request('Authority'))->first();
+        $payment = Payment::where([
+            ['authority', '=', $authority],
+            ['user_id', '=', auth()->id()],
+            ['status', '=', false],
+        ])->firstOrFail();
 
         $MerchantID = $this->merchant_id;
         $Amount = $payment->amount;
-        $Authority = \request('Authority');
+        $Authority = $authority;
 
         if (\request('Status') == 'OK') {
 
@@ -116,17 +114,12 @@ class FrontPaymentController extends Controller
             );
 
             if ($result->Status == 100) {
-
                 $payment->update(['status' => true, 'refID' => $result->RefID]);
                 $payment->reserve()->update(['status' => true]);
-
-                return view('payment::front.success', compact('payment'));
-            } else {
-                $error_code = $result->Status;
-                return view('payment::front.fail', compact('error_code'));
+                return [true, $payment];
             }
-        } else {
-            return view('payment::front.fail');
         }
+
+        return [false, []];
     }
 }
