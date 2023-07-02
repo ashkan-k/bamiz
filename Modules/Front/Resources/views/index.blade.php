@@ -86,7 +86,7 @@
                         <div class="box_grid" style="border-radius: 10px">
                             <figure>
 
-                                <a href="/centers/{{ $place->slug }}"><img src="{{ $place->cover['images']['900'] }}"
+                                <a href="{{ route('place_detail', $place->slug) }}"><img src="{{ $place->cover['images']['900'] }}"
                                                                            class="img-fluid"
                                                                            alt="{{ $place->name }}"
                                                                            width="800" height="533">
@@ -104,9 +104,9 @@
                                 </div>
                                 <div class="text-center" style="padding: 10px ">
                                     <h3>
-                                        <a href="/centers/{{ $place->slug }}">{{ \Illuminate\Support\Str::limit($place->name, 30) }}</a>
+                                        <a href="{{ route('place_detail', $place->slug) }}">{{ \Illuminate\Support\Str::limit($place->name, 30) }}</a>
                                     </h3>
-                                    <span>{!! \Illuminate\Support\Str::limit($place->description, 50) !!}</span>
+                                    <span>{!! \Illuminate\Support\Str::limit($place->description, 30) !!}</span>
                                 </div>
                             </div>
                             <ul>
@@ -172,7 +172,7 @@
 
             </div>
             <!-- /carousel -->
-            <p class="btn_home_align" style="text-align: left !important;"><a href="/centers" class="btn_1 rounded">نمایش
+            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}" class="btn_1 rounded">نمایش
                     همه</a></p>
             <hr class="large">
         </section>
@@ -189,7 +189,7 @@
                 @foreach($latest_places as $place)
 
                     <div class="col-xl-3 col-lg-6 col-md-6">
-                        <a href="/centers/{{ $place->slug }}" class="grid_item">
+                        <a href="{{ route('place_detail', $place->slug) }}" class="grid_item">
                             <figure>
                                 <small
                                     style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
@@ -211,7 +211,7 @@
             <!-- /grid_item -->
             </div>
             <!-- /row -->
-            <p class="btn_home_align" style="text-align: left !important;"><a href="/centers" class="btn_1 rounded">نمایش
+            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}" class="btn_1 rounded">نمایش
                     همه</a></p>
         </section>
         <!-- /section -->
