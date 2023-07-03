@@ -96,7 +96,7 @@
             <li><a href="/front/wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
         </ul>
         <!-- /top_menu -->
-        <a href="/front/#menu" class="btn_mobile">
+        <a href="#menu" class="btn_mobile">
             <div class="hamburger hamburger--spin" id="hamburger">
                 <div class="hamburger-box">
                     <div class="hamburger-inner"></div>
