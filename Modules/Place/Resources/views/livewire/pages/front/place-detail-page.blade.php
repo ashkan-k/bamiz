@@ -8,6 +8,26 @@
             height: 100%;
         }
     </style>
+
+    <style>
+        #sign-in {
+            width: 170px !important;
+            right: inherit;
+            left: 25px;
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            z-index: 9999;
+        &:after {
+            position: relative;
+            display: block;
+            top: 50%;
+            -webkit-transform: translateY(-55%);
+            transform: translateY(-55%);
+        }
+
+        }
+    </style>
 @endsection
 
 <div>
@@ -31,12 +51,16 @@
                     <li><a href="#worktime">ساعت کاری</a></li>
                     <li><a href="#sidebar">رزرو</a></li>
                 </ul>
+
+
+                {{--                <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>--}}
+
             </div>
         </nav>
 
         <div class="container margin_60_35" style="transform: none;">
             <div class="row" style="transform: none;">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <section id="description" style="word-wrap: break-word !important;">
                         <h2>توضیحات</h2>
                         <p>{!! $object->description ?: '---' !!}</p>
@@ -92,58 +116,6 @@
                                         <small>مجموع {{ $comments->count() }} رای اخذ شده</small>
                                     </div>
                                 </div>
-                                {{--                                <div class="col-lg-9">--}}
-                                {{--                                    <div class="row">--}}
-                                {{--                                        <div class="col-lg-10 col-9">--}}
-                                {{--                                            <div class="progress">--}}
-                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 90%"--}}
-                                {{--                                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="col-lg-2 col-3"><small><strong>5 ستاره</strong></small></div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <!-- /row -->--}}
-                                {{--                                    <div class="row">--}}
-                                {{--                                        <div class="col-lg-10 col-9">--}}
-                                {{--                                            <div class="progress">--}}
-                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 95%"--}}
-                                {{--                                                     aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="col-lg-2 col-3"><small><strong>4 ستاره</strong></small></div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <!-- /row -->--}}
-                                {{--                                    <div class="row">--}}
-                                {{--                                        <div class="col-lg-10 col-9">--}}
-                                {{--                                            <div class="progress">--}}
-                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 60%"--}}
-                                {{--                                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="col-lg-2 col-3"><small><strong>3 ستاره</strong></small></div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <!-- /row -->--}}
-                                {{--                                    <div class="row">--}}
-                                {{--                                        <div class="col-lg-10 col-9">--}}
-                                {{--                                            <div class="progress">--}}
-                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 20%"--}}
-                                {{--                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="col-lg-2 col-3"><small><strong>2 ستاره</strong></small></div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <!-- /row -->--}}
-                                {{--                                    <div class="row">--}}
-                                {{--                                        <div class="col-lg-10 col-9">--}}
-                                {{--                                            <div class="progress">--}}
-                                {{--                                                <div class="progress-bar" role="progressbar" style="width: 0"--}}
-                                {{--                                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                        <div class="col-lg-2 col-3"><small><strong>1 ستاره</strong></small></div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <!-- /row -->--}}
-                                {{--                                </div>--}}
                             </div>
                             <!-- /row -->
                         </div>
@@ -278,180 +250,178 @@
                 </div>
                 <!-- /col -->
 
-                <aside class="col-lg-4" id="sidebar"
-                       style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1610.6px;">
+                {{--                <aside class="col-lg-4" id="sidebar"--}}
+                {{--                       style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1610.6px;">--}}
 
-                    <div class="theiaStickySidebar"
-                         style="padding-top: 0px; padding-bottom: 1px; position: fixed; transform: translateY(-51.4px); top: 0px; left: 204.6px; width: 350px;">
+                {{--                    <div class="theiaStickySidebar"--}}
+                {{--                         style="padding-top: 0px; padding-bottom: 1px; position: fixed; transform: translateY(-51.4px); top: 0px; left: 204.6px; width: 350px;">--}}
 
-                        @if($errors->any() && (!$errors->has('body') && !$errors->has('title') && !$errors->has('star')))
+                {{--                        @if($errors->any() && (!$errors->has('body') && !$errors->has('title') && !$errors->has('star')))--}}
 
-                            <div class="alert alert-danger text-center">
+                {{--                            <div class="alert alert-danger text-center">--}}
 
-                                @foreach($errors->all() as $e)
-                                    {{ $e }}<br>
-                                @endforeach
+                {{--                                @foreach($errors->all() as $e)--}}
+                {{--                                    {{ $e }}<br>--}}
+                {{--                                @endforeach--}}
 
-                            </div>
+                {{--                            </div>--}}
 
-                        @endif
+                {{--                        @endif--}}
 
-                        <form action="{{ route('reserve' , $object->slug) }}" method="post">
+                {{--                        <form action="{{ route('reserve' , $object->slug) }}" method="post">--}}
 
-                            @csrf
+                {{--                            @csrf--}}
 
-                            @auth
-                                <input type="hidden" name="place_id" value="{{ $object->id }}">
-                                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                            @endauth
+                {{--                            @auth--}}
+                {{--                                <input type="hidden" name="place_id" value="{{ $object->id }}">--}}
+                {{--                                <input type="hidden" name="user_id" value="{{ auth()->id() }}">--}}
+                {{--                            @endauth--}}
 
-                            <div class="box_detail" wire:ignore>
-                                <div class="price">
-                                    <span> {{ $price ? number_format($price) : '---' }} <small> تومان هزینه رزرو هر نفر</small></span>
-                                    <div class="score"><strong>{{ $object->reserves()->where('status', 1)->count() }}
-                                            رزرو موفق</strong></div>
-                                    <br>
-                                    <div class="text-center" style="margin-top: 10px;color: red"><strong>هزینه رزرو از
-                                            مبلغ
-                                            فاکتور سفارش کسر می شود</strong></div>
-                                </div>
+                {{--                            <div class="box_detail" wire:ignore>--}}
+                {{--                                <div class="price">--}}
+                {{--                                    <span> {{ $price ? number_format($price) : '---' }} <small> تومان هزینه رزرو هر نفر</small></span>--}}
+                {{--                                    <div class="score"><strong>{{ $object->reserves()->where('status', 1)->count() }}--}}
+                {{--                                            رزرو موفق</strong></div>--}}
+                {{--                                    <br>--}}
+                {{--                                    <div class="text-center" style="margin-top: 10px;color: red"><strong>هزینه رزرو از--}}
+                {{--                                            مبلغ--}}
+                {{--                                            فاکتور سفارش کسر می شود</strong></div>--}}
+                {{--                                </div>--}}
 
-                                <div class="form-group mt-2">
-                                    @if(in_array($object->type, ['restaurant', 'cafe']))
-                                        <small style="color: red">تعداد صندلی های هر میز
-                                            : {{ $object->chairs_people_count }}</small>
-                                    @endif
-                                    <input required class="form-control" type="text"
-                                           value="{{ old('guest_count') }}"
-                                           name="guest_count" id="quest_count"
-                                           placeholder="تعداد مهمانان">
-                                </div>
+                {{--                                <div class="form-group mt-2">--}}
+                {{--                                    @if(in_array($object->type, ['restaurant', 'cafe']))--}}
+                {{--                                        <small style="color: red">تعداد صندلی های هر میز--}}
+                {{--                                            : {{ $object->chairs_people_count }}</small>--}}
+                {{--                                    @endif--}}
+                {{--                                    <input required class="form-control" type="text"--}}
+                {{--                                           value="{{ old('guest_count') }}"--}}
+                {{--                                           name="guest_count" id="quest_count"--}}
+                {{--                                           placeholder="تعداد مهمانان">--}}
+                {{--                                </div>--}}
 
-                                <div class="form-group">
-                                    <input required class="form-control" type="text" name="date"
-                                           id="id_date" value="{{ old('date') }}"
-                                           placeholder="تاریخ رزرو">
-                                </div>
+                {{--                                <div class="form-group">--}}
+                {{--                                    <input required class="form-control" type="text" name="date"--}}
+                {{--                                           id="id_date" value="{{ old('date') }}"--}}
+                {{--                                           placeholder="تاریخ رزرو">--}}
+                {{--                                </div>--}}
 
-                                @if($object->type == 'hotel')
-                                    <div class="form-group mt-2">
-                                        <input required class="form-control" type="text"
-                                               value="{{ old('days_number') }}"
-                                               name="days_number" id="quest_count"
-                                               placeholder="تعداد روز">
-                                    </div>
-                                @endif
+                {{--                                @if($object->type == 'hotel')--}}
+                {{--                                    <div class="form-group mt-2">--}}
+                {{--                                        <input required class="form-control" type="text"--}}
+                {{--                                               value="{{ old('days_number') }}"--}}
+                {{--                                               name="days_number" id="quest_count"--}}
+                {{--                                               placeholder="تعداد روز">--}}
+                {{--                                    </div>--}}
+                {{--                                @endif--}}
 
-                                <div class="form-group clearfix mt-2">
-                                    <select required class="form-control" id="chain_no" name="start_time">
-                                        <option value="">ساعت رزرو</option>
+                {{--                                <div class="form-group clearfix mt-2">--}}
+                {{--                                    <select required class="form-control" id="chain_no" name="start_time">--}}
+                {{--                                        <option value="">ساعت رزرو</option>--}}
 
-                                        @foreach($times as $c)
-                                            <option @if(old('start_time') == $c) selected @endif value="{{ $c }}">
-                                                ساعت {{ $c }} </option>
-                                        @endforeach
+                {{--                                        @foreach($times as $c)--}}
+                {{--                                            <option @if(old('start_time') == $c) selected @endif value="{{ $c }}">--}}
+                {{--                                                ساعت {{ $c }} </option>--}}
+                {{--                                        @endforeach--}}
 
-                                    </select>
-                                    @if(in_array($object->type, ['restaurant', 'cafe']))
-                                        <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل
-                                            دو
-                                            ساعت می باشد.</p>
-                                    @endif
+                {{--                                    </select>--}}
+                {{--                                    @if(in_array($object->type, ['restaurant', 'cafe']))--}}
+                {{--                                        <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل--}}
+                {{--                                            دو--}}
+                {{--                                            ساعت می باشد.</p>--}}
+                {{--                                    @endif--}}
 
-                                    @if(in_array($object->type, ['restaurant', 'cafe']))
-                                        <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required
-                                                class="form-control mt-3" id="id_reserve_type" name="reserve_type_id">
-                                            <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید
-                                            </option>
+                {{--                                    @if(in_array($object->type, ['restaurant', 'cafe']))--}}
+                {{--                                        <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required--}}
+                {{--                                                class="form-control mt-3" id="id_reserve_type" name="reserve_type_id">--}}
+                {{--                                            <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید--}}
+                {{--                                            </option>--}}
 
-                                            @foreach($reserve_types as $res_type)
-                                                <option data-has-price="{{ $res_type->price }}"
-                                                        @if(old('reserve_type_id') == $res_type->id) selected
-                                                        @endif value="{{ $res_type->id }}">{{ $res_type->title }}
-                                                </option>
-                                            @endforeach
+                {{--                                            @foreach($reserve_types as $res_type)--}}
+                {{--                                                <option data-has-price="{{ $res_type->price }}"--}}
+                {{--                                                        @if(old('reserve_type_id') == $res_type->id) selected--}}
+                {{--                                                        @endif value="{{ $res_type->id }}">{{ $res_type->title }}--}}
+                {{--                                                </option>--}}
+                {{--                                            @endforeach--}}
 
-                                            {{--                                            @foreach($reserve_types as $res_type)--}}
-                                            {{--                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected--}}
-                                            {{--                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected--}}
-                                            {{--                                                        @endif value="{{ $res_type['id'] }}"--}}
-                                            {{--                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}--}}
-                                            {{--                                                </option>--}}
-                                            {{--                                            @endforeach--}}
-                                        </select>
-
-
-                                        <select ng-if="tables.length > 0" required class="form-control mt-3"
-                                                id="id_table_id" name="table_id">
-                                            <option value="">شماره میز مد نظر را انتخاب کنید</option>
-
-                                            <option ng-repeat="item in tables"
-                                                    ng-selected="item.id == {{ old('table_id', '-1') }}"
-                                                    value="[[ item.id ]]">[[ item.title ]]
-                                            </option>
-                                        </select>
-                                    @endif
-
-                                    <div class="text-center text-danger"><b>سفارش تشریفات در صورت
-                                            تمایل در
-                                            مرحله بعد
-                                            انجام می شود</b></div>
-
-                                    @if(auth()->check())
-                                        <button id="btn_check_reserve" type="submit"
-                                                class="btn_1 full-width outline mt-5">
-                                            <i
-                                                class="icon-calendar-outlilne"></i> تکمیل رزرو
-                                        </button>
-
-                                        <button ng-click="SubmitAddRemoveToWishlists('add')"
-                                                ng-disabled="is_submited"
-                                                @if($is_Added_To_WishList) style="display: none" @endif
-                                                id="id_add_to_wishlist"
-                                                class="btn_1 full-width outline wishlist mt-3"><i
-                                                class="icon_heart"></i> اضافه به علاقه مندی ها
-                                        </button>
-                                        <button ng-click="SubmitAddRemoveToWishlists('remove')"
-                                                ng-disabled="is_submited"
-                                                @if(!$is_Added_To_WishList) style="display: none" @endif
-                                                id="id_remove_to_wishlist"
-                                                class="btn_1 full-width outline wishlist mt-3"><i
-                                                class="icon_heart"></i> حذف از علاقه مندی ها
-                                        </button>
-                                    @else
-                                        <button
-                                            onclick="window.location.href = '{{ route('login') }}?next=/{{ request()->path() }}'"
-                                            id="btn_check_reserve" type="button" class="btn_1 full-width outline mt-5">
-                                            <i
-                                                class="icon-calendar-outlilne"></i> ورود به سایت برای رزرو
-                                        </button>
-
-                                        <hr>
-                                        <span class="alert alert-danger">برای افزدون به علاقه مندی ها ابتدا <a
-                                                class="text-info"
-                                                href="{{ route('login') }}"> وارد </a> شوید</span>
-                                    @endif
-
-                                </div>
-                            </div>
-                        </form>
-                        <div class="resize-sensor"
-                             style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
-                            <div class="resize-sensor-expand"
-                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
-                                <div
-                                    style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 360px; height: 536px;"></div>
-                            </div>
-                            <div class="resize-sensor-shrink"
-                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
-                                <div
-                                    style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
+                {{--                                            --}}{{--                                            @foreach($reserve_types as $res_type)--}}
+                {{--                                            --}}{{--                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected--}}
+                {{--                                            --}}{{--                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected--}}
+                {{--                                            --}}{{--                                                        @endif value="{{ $res_type['id'] }}"--}}
+                {{--                                            --}}{{--                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}--}}
+                {{--                                            --}}{{--                                                </option>--}}
+                {{--                                            --}}{{--                                            @endforeach--}}
+                {{--                                        </select>--}}
 
 
+                {{--                                        <select ng-if="tables.length > 0" required class="form-control mt-3"--}}
+                {{--                                                id="id_table_id" name="table_id">--}}
+                {{--                                            <option value="">شماره میز مد نظر را انتخاب کنید</option>--}}
+
+                {{--                                            <option ng-repeat="item in tables"--}}
+                {{--                                                    ng-selected="item.id == {{ old('table_id', '-1') }}"--}}
+                {{--                                                    value="[[ item.id ]]">[[ item.title ]]--}}
+                {{--                                            </option>--}}
+                {{--                                        </select>--}}
+                {{--                                    @endif--}}
+
+                {{--                                    <div class="text-center text-danger"><b>سفارش تشریفات در صورت--}}
+                {{--                                            تمایل در--}}
+                {{--                                            مرحله بعد--}}
+                {{--                                            انجام می شود</b></div>--}}
+
+                {{--                                    @if(auth()->check())--}}
+                {{--                                        <button id="btn_check_reserve" type="submit"--}}
+                {{--                                                class="btn_1 full-width outline mt-5">--}}
+                {{--                                            <i--}}
+                {{--                                                class="icon-calendar-outlilne"></i> تکمیل رزرو--}}
+                {{--                                        </button>--}}
+
+                {{--                                        <button ng-click="SubmitAddRemoveToWishlists('add')"--}}
+                {{--                                                ng-disabled="is_submited"--}}
+                {{--                                                @if($is_Added_To_WishList) style="display: none" @endif--}}
+                {{--                                                id="id_add_to_wishlist"--}}
+                {{--                                                class="btn_1 full-width outline wishlist mt-3"><i--}}
+                {{--                                                class="icon_heart"></i> اضافه به علاقه مندی ها--}}
+                {{--                                        </button>--}}
+                {{--                                        <button ng-click="SubmitAddRemoveToWishlists('remove')"--}}
+                {{--                                                ng-disabled="is_submited"--}}
+                {{--                                                @if(!$is_Added_To_WishList) style="display: none" @endif--}}
+                {{--                                                id="id_remove_to_wishlist"--}}
+                {{--                                                class="btn_1 full-width outline wishlist mt-3"><i--}}
+                {{--                                                class="icon_heart"></i> حذف از علاقه مندی ها--}}
+                {{--                                        </button>--}}
+                {{--                                    @else--}}
+                {{--                                        <button--}}
+                {{--                                            onclick="window.location.href = '{{ route('login') }}?next=/{{ request()->path() }}'"--}}
+                {{--                                            id="btn_check_reserve" type="button" class="btn_1 full-width outline mt-5">--}}
+                {{--                                            <i--}}
+                {{--                                                class="icon-calendar-outlilne"></i> ورود به سایت برای رزرو--}}
+                {{--                                        </button>--}}
+
+                {{--                                        <hr>--}}
+                {{--                                        <span class="alert alert-danger">برای افزدون به علاقه مندی ها ابتدا <a--}}
+                {{--                                                class="text-info"--}}
+                {{--                                                href="{{ route('login') }}"> وارد </a> شوید</span>--}}
+                {{--                                    @endif--}}
+
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                        </form>--}}
+                {{--                        <div class="resize-sensor"--}}
+                {{--                             style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">--}}
+                {{--                            <div class="resize-sensor-expand"--}}
+                {{--                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">--}}
+                {{--                                <div--}}
+                {{--                                    style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 360px; height: 536px;"></div>--}}
+                {{--                            </div>--}}
+                {{--                            <div class="resize-sensor-shrink"--}}
+                {{--                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">--}}
+                {{--                                <div--}}
+                {{--                                    style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </aside>--}}
             </div>
             <!-- /row -->
         </div>
@@ -459,7 +429,141 @@
     </div>
 </div>
 
+<!-- Sign In Popup -->
+<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+    <div class="small-dialog-header">
+        <h3>ثبت سفارش</h3>
+    </div>
+
+    <div class="form-group mb-5">
+        <div class="score pull-left "><strong>{{ $object->reserves()->where('status', 1)->count() }}
+                رزرو موفق</strong></div>
+    </div>
+
+
+    <form action="{{ route('reserve' , $object->slug) }}" method="post">
+
+        @csrf
+
+        @auth
+            <input type="hidden" name="place_id" value="{{ $object->id }}">
+            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+        @endauth
+
+        <div class="sign-in-wrapper">
+
+            <div class="form-group">
+
+                <label>تعداد مهمانان</label>
+                <input required class="form-control" type="text"
+                       value="{{ old('guest_count') }}"
+                       name="guest_count" id="quest_count"
+                       placeholder="تعداد مهمانان">
+                @if(in_array($object->type, ['restaurant', 'cafe']))
+                    <p class="text-danger" style="margin-bottom: 0 !important;">
+                        تعداد صندلی های هر میز
+                        : {{ $object->chairs_people_count }}
+                    </p>
+                    {{--                    <small style="color: red">تعداد صندلی های هر میز--}}
+                    {{--                        : {{ $object->chairs_people_count }}</small>--}}
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label>تاریخ رزرو</label>
+                <input required class="form-control" type="text" name="date"
+                       id="id_date" value="{{ old('date') }}"
+                       placeholder="تاریخ رزرو">
+            </div>
+
+            @if($object->type == 'hotel')
+                <div class="form-group mt-2">
+                    <label>تعداد روز</label>
+                    <input required class="form-control" type="text"
+                           value="{{ old('days_number') }}"
+                           name="days_number" id="quest_count"
+                           placeholder="تعداد روز">
+                </div>
+            @endif
+
+            <div class="form-group" style="margin-bottom: 0 !important;">
+                <label>ساعت رزرو</label>
+                <select required class="form-control" id="chain_no" name="start_time">
+                    <option value="">ساعت رزرو را انتخاب کنید</option>
+
+                    @foreach($times as $c)
+                        <option @if(old('start_time') == $c) selected @endif value="{{ $c }}">
+                            ساعت {{ $c }} </option>
+                    @endforeach
+
+                </select>
+            </div>
+            @if(in_array($object->type, ['restaurant', 'cafe']))
+                <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل
+                    دو
+                    ساعت می باشد.</p>
+            @endif
+
+            @if(in_array($object->type, ['restaurant', 'cafe']))
+                <div class="form-group" style="margin-top: 1rem !important;">
+                    <label>مناسبت (موضوع رزرو) را انتخاب کنید</label>
+                    <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required
+                            class="form-control" id="id_reserve_type" name="reserve_type_id">
+                        <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید
+                        </option>
+
+                        @foreach($reserve_types as $res_type)
+                            <option data-has-price="{{ $res_type->price }}"
+                                    @if(old('reserve_type_id') == $res_type->id) selected
+                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }}
+                            </option>
+                        @endforeach
+
+                        {{--                                            @foreach($reserve_types as $res_type)--}}
+                        {{--                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected--}}
+                        {{--                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected--}}
+                        {{--                                                        @endif value="{{ $res_type['id'] }}"--}}
+                        {{--                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}--}}
+                        {{--                                                </option>--}}
+                        {{--                                            @endforeach--}}
+                    </select>
+                </div>
+
+
+                <div ng-if="tables.length > 0" class="form-group">
+                    <label>شماره میز مد نظر</label>
+
+                    <select required class="form-control mt-3"
+                            id="id_table_id" name="table_id">
+                        <option value="">شماره میز مد نظر را انتخاب کنید</option>
+
+                        <option ng-repeat="item in tables"
+                                ng-selected="item.id == {{ old('table_id', '-1') }}"
+                                value="[[ item.id ]]">[[ item.title ]]
+                        </option>
+                    </select>
+                </div>
+            @endif
+
+            <div class="text-center text-danger mt-2 mb-2"><b>سفارش تشریفات در صورت
+                    تمایل در
+                    مرحله بعد
+                    انجام می شود</b></div>
+
+            <div class="text-center"><input type="submit" value="مرحله بعد" class="btn_1 full-width"></div>
+        </div>
+    </form>
+    <!--form -->
+</div>
+<!-- /Sign In Popup -->
+
 @section('Scripts')
+    <script>
+        $(document).ready(function () {
+            $("#sign-in").delay(1500).fadeIn(500);
+        });
+    </script>
+
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.env.js"></script>
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.min.js"></script>
 

@@ -52,10 +52,11 @@
     {!! SEOMeta::generate() !!}
 
     <style>
-        .select2-selection--single{
+        .select2-selection--single {
             height: 41px !important;
         }
-        #select2-id_city-container{
+
+        #select2-id_city-container {
             padding-top: 5px;
         }
     </style>
@@ -270,6 +271,12 @@
 <!-- /Sign In Popup -->
 
 <div id="toTop"></div><!-- Back to top button -->
+
+@if(\Illuminate\Support\Facades\Route::currentRouteName() == 'place_detail')
+    <p class="btn_home_align" style="text-align: center !important;">
+        <a style="display: none !important;" href="#sign-in-dialog" id="sign-in" class="btn_1 rounded">ثبت سفارش</a>
+    </p>
+@endif
 
 <!-- COMMON SCRIPTS -->
 <script src="/front/js/common_scripts.js"></script>
