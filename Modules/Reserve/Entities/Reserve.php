@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Option\Entities\Option;
 use Modules\Payment\Entities\Payment;
 use Modules\Place\Entities\Place;
+use Modules\Place\Entities\Table;
 use Modules\User\Entities\User;
 
 class Reserve extends Model
@@ -107,5 +108,15 @@ class Reserve extends Model
     public function payment()
     {
         return $this->hasOne(Payment::class);
+    }
+
+    public function reserve_type()
+    {
+        return $this->belongsTo(ReserveType::class);
+    }
+
+    public function table()
+    {
+        return $this->belongsTo(Table::class);
     }
 }

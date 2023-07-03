@@ -309,15 +309,6 @@
                                            placeholder="تعداد مهمانان">
                                 </div>
 
-                                @if($object->type == 'hotel')
-                                    <div class="form-group mt-2">
-                                        <input required class="form-control" type="text"
-                                               value="{{ old('room_number') }}"
-                                               name="room_number" id="quest_count"
-                                               placeholder="شماره اتاق">
-                                    </div>
-                                @endif
-
                                 <div class="form-group">
                                     <input required class="form-control" type="text" name="date"
                                            id="id_date" value="{{ old('date') }}"

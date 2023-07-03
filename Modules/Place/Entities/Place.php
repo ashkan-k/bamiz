@@ -144,6 +144,11 @@ class Place extends Model
         return $this->hasMany(Reserve::class);
     }
 
+    public function tables()
+    {
+        return $this->hasMany(Table::class);
+    }
+
     public function comments()
     {
         return $this->morphMany(Comment::class , 'commentable');

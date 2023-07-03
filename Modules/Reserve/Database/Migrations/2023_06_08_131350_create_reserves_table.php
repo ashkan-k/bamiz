@@ -23,12 +23,14 @@ return new class extends Migration
             $table->integer('room_number')->nullable();
             $table->string('amount')->default(0);
             $table->boolean('status')->default(false);
-            $table->enum('type', EnumHelpers::$ReserveTypesEnum)->default('table_for_food');
+//            $table->enum('type', EnumHelpers::$ReserveTypesEnum)->default('table_for_food');
 
             $table->integer('days_number')->nullable();
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('reserve_type_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('table_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

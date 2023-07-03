@@ -5,6 +5,7 @@ namespace Modules\Reserve\Database\factories;
 use App\Enums\EnumHelpers;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Place\Entities\Place;
+use Modules\Reserve\Entities\ReserveType;
 use Modules\User\Entities\User;
 
 class ReserveFactory extends Factory
@@ -31,7 +32,8 @@ class ReserveFactory extends Factory
             'status' => fake()->boolean(),
             'user_id' => User::factory(),
             'place_id' => Place::factory(),
-            'type' => fake()->randomElement(EnumHelpers::$ReserveTypesEnum),
+            'reserve_type_id' => ReserveType::factory(),
+//            'type' => fake()->randomElement(EnumHelpers::$ReserveTypesEnum),
         ];
     }
 }
