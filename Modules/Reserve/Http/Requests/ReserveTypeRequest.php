@@ -14,7 +14,8 @@ class ReserveTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string',
+            'price' => 'nullable|numeric',
         ];
     }
 

@@ -170,6 +170,15 @@
                 <li class="menu-title">رزرو ها</li>
 
                 <li class="submenu">
+                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> <span>مناسبت ها (انواع رزرو)</span> <span
+                            class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{ route('reserve-types.index') }}">لیست مناسبت ها</a></li>
+                        <li><a href="{{ route('reserve-types.create') }}">افزودن مناسبت</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
                     <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> <span>رزرو های بامیز</span> <span
                             class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">

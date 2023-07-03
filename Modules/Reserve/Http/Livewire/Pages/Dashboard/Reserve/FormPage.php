@@ -28,6 +28,6 @@ class FormPage extends Component
             'types' => $types,
         ];
 
-        return view('reserve::livewire.pages.dashboard.reserve.form-page', $data);
+        return view('reserve::livewire.pages.dashboard.reserve-type.form-page', $data);
     }
 }
