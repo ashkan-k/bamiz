@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Place\Http\Controllers\Dashboard\ApiTableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/place', function (Request $request) {
-    return $request->user();
-});
+Route::get('tables/{place}/{reserve_type}', [ApiTableController::class, 'list']);

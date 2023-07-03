@@ -6,6 +6,7 @@ use App\Http\Traits\CommentTrait;
 use Livewire\Component;
 use Modules\Comment\Entities\Comment;
 use Modules\Reserve\Entities\Reserve;
+use Modules\Reserve\Entities\ReserveType;
 use Modules\Setting\Entities\Setting;
 
 class PlaceDetailPage extends Component
@@ -118,7 +119,8 @@ class PlaceDetailPage extends Component
     public function render()
     {
         $this->getData();
-        $reserve_types = Reserve::GetTypes();
+//        $reserve_types = Reserve::GetTypes();
+        $reserve_types = ReserveType::all();
         return view('place::livewire.pages.front.place-detail-page', ['reserve_types' => $reserve_types]);
     }
 }

@@ -28,6 +28,8 @@ class Reserve extends Model
         "type",
         "user_id",
         "place_id",
+        "reserve_type_id",
+        "table_id",
     ];
 
     protected $search_fields = [

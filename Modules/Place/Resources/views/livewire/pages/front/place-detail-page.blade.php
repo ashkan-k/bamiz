@@ -341,15 +341,33 @@
                                     @endif
 
                                     @if(in_array($object->type, ['restaurant', 'cafe']))
-                                        <select required class="form-control mt-3" id="chain_no" name="type">
-                                            <option value="">مناسبت (موضوع رزرو) را انتخاب کنید</option>
+                                        <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required class="form-control mt-3" id="id_reserve_type" name="reserve_type_id">
+                                            <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید</option>
+
                                             @foreach($reserve_types as $res_type)
-                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected
-                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected
-                                                        @endif value="{{ $res_type['id'] }}"
-                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}
+                                                <option data-has-price="{{ $res_type->price }}"
+                                                    @if(old('reserve_type_id') == $res_type->id) selected
+                                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }}
                                                 </option>
                                             @endforeach
+
+{{--                                            @foreach($reserve_types as $res_type)--}}
+{{--                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected--}}
+{{--                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected--}}
+{{--                                                        @endif value="{{ $res_type['id'] }}"--}}
+{{--                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}--}}
+{{--                                                </option>--}}
+{{--                                            @endforeach--}}
+                                        </select>
+
+
+                                        <select ng-if="tables.length > 0" required class="form-control mt-3" id="id_table_id" name="table_id">
+                                            <option value="">شماره میز مد نظر را انتخاب کنید</option>
+
+                                            <option ng-repeat="item in tables"
+                                                    ng-selected="item.id == {{ old('table_id', '-1') }}"
+                                                    value="[[ item.id ]]">[[ item.title ]]
+                                            </option>
                                         </select>
                                     @endif
 
@@ -474,6 +492,25 @@
 @push('StackScript')
     <script>
         app.controller('myCtrl', function ($scope, $http) {
+            $scope.reserve_type_id = null;
+            $scope.tables = [];
+
+            $scope.GetReserveTypeTables = function () {
+                var selectedItem = $('#id_reserve_type').find(":selected");
+                if (!selectedItem.attr("data-has-price")){
+                    var url = `/api/places/tables/{{ $object->id }}/${$scope.reserve_type_id}`;
+
+                    $http.get(url).then(res => {
+                        $scope.is_submited = false;
+
+                        $scope.tables = res['data']['data'];
+
+                    }).catch(err => {
+                        showToast('خطایی رخ داد.', 'error');
+                    });
+                }
+            }
+
             $scope.SubmitAddRemoveToWishlists = function (type) {
                 $scope.is_submited = true;
                 var data = {
