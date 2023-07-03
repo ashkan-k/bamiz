@@ -28,6 +28,7 @@
                         <th>شهر</th>
                         <th>نوع</th>
                         <th>عکس</th>
+                        <th>منوی غذا</th>
                         <th>وضعیت</th>
                         <th>تاریخ ثبت</th>
                         <th>اعمال</th>
@@ -53,6 +54,11 @@
                             <td>
                                 <a href="{{ $item->get_cover(300) }}" target="-_blank"><img width="50"
                                                                                             src="{{ $item->get_cover(300) }}"
+                                                                                            alt="عکس کابر"></a>
+                            </td>
+                            <td>
+                                <a href="{{ $item->get_menu_image(300) }}" target="-_blank"><img width="50"
+                                                                                            src="{{ $item->get_menu_image(300) }}"
                                                                                             alt="عکس کابر"></a>
                             </td>
                             <td>

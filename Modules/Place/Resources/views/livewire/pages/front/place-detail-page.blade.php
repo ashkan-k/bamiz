@@ -24,7 +24,11 @@
             <div class="container">
                 <ul class="clearfix">
                     <li><a href="#description" class="active">اطلاعات</a></li>
+                    <li><a href="#menu_image">منوی غذا</a></li>
+                    <li><a href="#galley">گالری تصاویر</a></li>
+                    <li><a href="#map">موقعیت</a></li>
                     <li><a href="#comments">نظرات</a></li>
+                    <li><a href="#worktime">ساعت کاری</a></li>
                     <li><a href="#sidebar">رزرو</a></li>
                 </ul>
             </div>
@@ -38,10 +42,24 @@
                         <p>{!! $object->description ?: '---' !!}</p>
                         <hr>
 
-                        {{--                        <h3>گالری تصاویر</h3>--}}
-                        {{--                        <div id="instagram-feed" class="clearfix"></div>--}}
+                        <h3>منوی غذا</h3>
+                        <div id="instagram-feed" class="clearfix"></div>
+                        <div class="mt-3 mb-5" id="menu_image"
+                             style="width: 300px !important; height: 169px !important; !important; ;border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55);">
+                            <label class="control-label">
+                                <a href="{{ $object->get_menu_image('original') }}" target="_blank"><img
+                                        style="border-radius: 20px; margin-bottom: 8px;"
+                                        src="{{ $object->get_menu_image(300) }}"></a>
+                            </label>
+                        </div>
+                        {{--                        <img src="{{ $object->get_menu_image(300) }}" style="width: 200px !important; height: 200% !important;" alt="{{ $object->name }}">--}}
+                        <hr>
 
-                        {{--                        <hr>--}}
+
+                        <h3 id="galley">گالری تصاویر</h3>
+                        <div class="clearfix"></div>
+
+                        <hr>
 
                         <div class="row">
                             @foreach($object->options as $op)
@@ -54,34 +72,8 @@
                         </div>
 
                         <hr>
-
-                        <h3>ساعات کاری</h3>
-                        <p>ساعات کاری {{ $object->get_type() }} {{ $object->name ?: '---' }} به شرح ذیل می باشد</p>
-
-                        <ul class="cbp_tmtimeline">
-
-                            @foreach($work_days as $d)
-
-                                <li>
-                                    <time class="cbp_tmtime" datetime="09:30"><span>روز</span></time>
-                                    <div class="cbp_tmicon">
-                                        <small style="font-size: small">{{ $d }}</small>
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <p>
-                                            ساعت کاری از ساعت {{ $object->work_time->start_time }} صبح
-                                            الی {{ $object->work_time->end_time }} شب
-                                        </p>
-                                    </div>
-                                </li>
-
-                            @endforeach
-
-                        </ul>
-
-                        <hr>
-                        <h3>موقعیت جغرافیایی</h3>
-                        <div id="map" class="map map_single add_bottom_30 olMap" wire:ignore>
+                        <h3 id="map">موقعیت جغرافیایی</h3>
+                        <div class="map map_single add_bottom_30 olMap" wire:ignore>
                             <div id="app"></div>
                         </div>
                         <!-- End Map -->
@@ -257,6 +249,32 @@
                             </div>
                         @endif
                     </div>
+
+                    <hr>
+
+                    <h3 id="worktime">ساعات کاری</h3>
+                    <p>ساعات کاری {{ $object->get_type() }} {{ $object->name ?: '---' }} به شرح ذیل می باشد</p>
+
+                    <ul class="cbp_tmtimeline">
+
+                        @foreach($work_days as $d)
+
+                            <li>
+                                <time class="cbp_tmtime" datetime="09:30"><span>روز</span></time>
+                                <div class="cbp_tmicon">
+                                    <small style="font-size: small">{{ $d }}</small>
+                                </div>
+                                <div class="cbp_tmlabel">
+                                    <p>
+                                        ساعت کاری از ساعت {{ $object->work_time->start_time }} صبح
+                                        الی {{ $object->work_time->end_time }} شب
+                                    </p>
+                                </div>
+                            </li>
+
+                        @endforeach
+
+                    </ul>
                 </div>
                 <!-- /col -->
 
@@ -341,27 +359,30 @@
                                     @endif
 
                                     @if(in_array($object->type, ['restaurant', 'cafe']))
-                                        <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required class="form-control mt-3" id="id_reserve_type" name="reserve_type_id">
-                                            <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید</option>
+                                        <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required
+                                                class="form-control mt-3" id="id_reserve_type" name="reserve_type_id">
+                                            <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید
+                                            </option>
 
                                             @foreach($reserve_types as $res_type)
                                                 <option data-has-price="{{ $res_type->price }}"
-                                                    @if(old('reserve_type_id') == $res_type->id) selected
-                                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }}
+                                                        @if(old('reserve_type_id') == $res_type->id) selected
+                                                        @endif value="{{ $res_type->id }}">{{ $res_type->title }}
                                                 </option>
                                             @endforeach
 
-{{--                                            @foreach($reserve_types as $res_type)--}}
-{{--                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected--}}
-{{--                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected--}}
-{{--                                                        @endif value="{{ $res_type['id'] }}"--}}
-{{--                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}--}}
-{{--                                                </option>--}}
-{{--                                            @endforeach--}}
+                                            {{--                                            @foreach($reserve_types as $res_type)--}}
+                                            {{--                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected--}}
+                                            {{--                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected--}}
+                                            {{--                                                        @endif value="{{ $res_type['id'] }}"--}}
+                                            {{--                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}--}}
+                                            {{--                                                </option>--}}
+                                            {{--                                            @endforeach--}}
                                         </select>
 
 
-                                        <select ng-if="tables.length > 0" required class="form-control mt-3" id="id_table_id" name="table_id">
+                                        <select ng-if="tables.length > 0" required class="form-control mt-3"
+                                                id="id_table_id" name="table_id">
                                             <option value="">شماره میز مد نظر را انتخاب کنید</option>
 
                                             <option ng-repeat="item in tables"
@@ -479,7 +500,7 @@
             placeholder: 'تاریخ رزرو',
             buttonsColor: 'blue',
             markHolidays: true,
-            markToday:true,
+            markToday: true,
         });
         $("#id_date").attr('autocomplete', 'off');
 
@@ -497,7 +518,7 @@
 
             $scope.GetReserveTypeTables = function () {
                 var selectedItem = $('#id_reserve_type').find(":selected");
-                if (!selectedItem.attr("data-has-price")){
+                if (!selectedItem.attr("data-has-price")) {
                     var url = `/api/places/tables/{{ $object->id }}/${$scope.reserve_type_id}`;
 
                     $http.get(url).then(res => {

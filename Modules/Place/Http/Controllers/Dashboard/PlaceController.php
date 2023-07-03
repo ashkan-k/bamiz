@@ -28,8 +28,9 @@ class PlaceController extends Controller
     public function store(PlaceRequest $request)
     {
         $cover = $this->UploadImage($request->cover, 'places_covers', $request->name);
+        $menu_image = $this->UploadImage($request->menu_image, 'places_menu_images', $request->name);
 
-        Place::create(array_merge($request->validated(), ['cover' => $cover]));
+        Place::create(array_merge($request->validated(), ['cover' => $cover, 'menu_image' => $menu_image]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'places.index');
     }
 
@@ -41,7 +42,8 @@ class PlaceController extends Controller
     public function update(PlaceRequest $request, Place $place)
     {
         $cover = $request->cover ? $this->UploadImage($request->cover, 'places_covers', $request->name) : $place->cover;
-        $place->update(array_merge($request->validated(), ['cover' => $cover]));
+        $menu_image = $request->menu_image ? $this->UploadImage($request->menu_image, 'places_menu_images', $request->name) : $place->menu_image;
+        $place->update(array_merge($request->validated(), ['cover' => $cover, 'menu_image' => $menu_image]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'places.index');
     }
 }

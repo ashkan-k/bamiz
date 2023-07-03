@@ -29,7 +29,7 @@ return new class extends Migration
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('reserve_type_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('reserve_type_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('table_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();

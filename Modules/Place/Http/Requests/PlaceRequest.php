@@ -24,12 +24,14 @@ class PlaceRequest extends FormRequest
             'city_id' => 'required|exists:cities,id',
             'type' => 'required|in:restaurant,cafe,hotel',
             'cover' => 'mimes:jpeg,png,bmp,jpg',
+            'menu_image' => 'mimes:jpeg,png,bmp,jpg',
             'address_lat' => ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
             'address_long' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/']
         ];
 
         if (request()->method == 'POST') {
             $rules['cover'] .= '|required';
+            $rules['menu_image'] .= '|required';
         }
 
         return $rules;

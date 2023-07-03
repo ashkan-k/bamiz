@@ -33,6 +33,7 @@ class PlaceFactory extends Factory
             'address_lat' => fake()->latitude(),
             'address_long' => fake()->longitude(),
             'cover' => fake()->imageUrl(),
+            'menu_image' => fake()->imageUrl(),
             'is_active' => fake()->boolean(),
             'chairs_people_count' => fake()->randomNumber(),
             'viewCount' => fake()->randomNumber(),

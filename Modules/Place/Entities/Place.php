@@ -30,6 +30,7 @@ class Place extends Model
         'chairs_people_count',
         'viewCount',
         'cover',
+        'menu_image',
         'user_id',
         'category_id',
         'province_id',
@@ -40,7 +41,8 @@ class Place extends Model
     ];
 
     protected $casts = [
-        'cover' => 'array'
+        'cover' => 'array',
+        'menu_image' => 'array',
     ];
 
     protected $search_fields = [
@@ -83,6 +85,11 @@ class Place extends Model
     public function get_cover($size)
     {
         return $this->cover ? $this->cover['images'][$size] : 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+    }
+
+    public function get_menu_image($size)
+    {
+        return $this->menu_image ? $this->menu_image['images'][$size] : 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
     public static function GetTypes()
