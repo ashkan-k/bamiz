@@ -37,7 +37,7 @@
                                    placeholder=" قیمت را وارد کنید"
                                    value="@if(old('price')){{ old('price') }}@elseif(isset($item->price)){{ $item->price }}@endif">
 
-                            <p class="text-danger">اگر این طرح شامل زیر مجموعه است این فیلد را خالی بگذارید.</p>
+                            <p class="text-danger">* اگر این طرح شامل زیر مجموعه است این فیلد را خالی بگذارید.</p>
 
                             @error('price')
                             <span class="text-danger text-wrap">{{ $message }}</span>
