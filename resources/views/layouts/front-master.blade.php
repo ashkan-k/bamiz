@@ -272,11 +272,13 @@
 
 <div id="toTop"></div><!-- Back to top button -->
 
-@if(\Illuminate\Support\Facades\Route::currentRouteName() == 'place_detail')
-    <p class="btn_home_align" style="text-align: center !important;">
-        <a style="display: none !important;" href="#sign-in-dialog" id="sign-in" class="btn_1 rounded">ثبت سفارش</a>
-    </p>
-@endif
+@auth
+    @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'place_detail')
+        <p class="btn_home_align" style="text-align: center !important;">
+            <a style="display: none !important;" href="#sign-in-dialog" id="sign-in" class="btn_1 rounded">ثبت سفارش</a>
+        </p>
+    @endif
+@endauth
 
 <!-- COMMON SCRIPTS -->
 <script src="/front/js/common_scripts.js"></script>

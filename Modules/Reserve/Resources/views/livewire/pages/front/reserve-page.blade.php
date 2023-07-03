@@ -291,12 +291,6 @@
 @endsection
 
 @push('StackScript')
-    <script>
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-    </script>
-
     <script type="text/javascript">
         window.addEventListener('reserveOptionsUpdated', event => {
             $('#total_price').html(`${numberWithCommas(event['detail']['price'])} تومان`);

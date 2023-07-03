@@ -506,7 +506,7 @@
 
             @if(in_array($object->type, ['restaurant', 'cafe']))
                 <div class="form-group" style="margin-top: 1rem !important;">
-                    <label>مناسبت (موضوع رزرو) را انتخاب کنید</label>
+                    <label>مناسبت (موضوع رزرو)</label>
                     <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required
                             class="form-control" id="id_reserve_type" name="reserve_type_id">
                         <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید
@@ -515,7 +515,7 @@
                         @foreach($reserve_types as $res_type)
                             <option data-has-price="{{ $res_type->price }}"
                                     @if(old('reserve_type_id') == $res_type->id) selected
-                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }}
+                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }} @if($res_type->price)({{ $res_type->price }} تومان)@endif
                             </option>
                         @endforeach
 
@@ -533,13 +533,13 @@
                 <div ng-if="tables.length > 0" class="form-group">
                     <label>شماره میز مد نظر</label>
 
-                    <select required class="form-control mt-3"
+                    <select required class="form-control"
                             id="id_table_id" name="table_id">
                         <option value="">شماره میز مد نظر را انتخاب کنید</option>
 
                         <option ng-repeat="item in tables"
                                 ng-selected="item.id == {{ old('table_id', '-1') }}"
-                                value="[[ item.id ]]">[[ item.title ]]
+                                value="[[ item.id ]]">[[ item.title ]] ([[ GetPriceAsNumberHumanize(item.price) ]] تومان)
                         </option>
                     </select>
                 </div>
@@ -619,6 +619,10 @@
         app.controller('myCtrl', function ($scope, $http) {
             $scope.reserve_type_id = null;
             $scope.tables = [];
+
+            $scope.GetPriceAsNumberHumanize = function (price){
+                return numberWithCommas(price);
+            }
 
             $scope.GetReserveTypeTables = function () {
                 var selectedItem = $('#id_reserve_type').find(":selected");
