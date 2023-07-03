@@ -3,6 +3,9 @@
 namespace Modules\Dashboard\Http\Livewire\Pages;
 
 use Livewire\Component;
+use Modules\Payment\Entities\Payment;
+use Modules\Place\Entities\Place;
+use Modules\Reserve\Entities\Reserve;
 use Modules\User\Entities\User;
 
 class Dashboard extends Component
@@ -12,10 +15,10 @@ class Dashboard extends Component
     private function GetData()
     {
         $this->data = [
-          'income' => 0,
+          'income' => Payment::whereStatus(1)->sum('amount'),
           'users_count' => User::count(),
-          'restaurants' => 0,
-          'reserves' => 0,
+          'restaurants' => Place::count(),
+          'reserves' => Reserve::whereStatus(1)->count(),
         ];
     }
 
