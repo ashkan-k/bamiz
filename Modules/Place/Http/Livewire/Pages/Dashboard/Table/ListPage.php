@@ -16,10 +16,12 @@ class ListPage extends Component
     public $pagination;
     public $search = '';
     public $data;
+    public $place_id;
     protected $items;
 
     public function mount()
     {
+        $this->place_id = request('place_id');
         $this->pagination = env('PAGINATION', 10);
     }
 
@@ -37,16 +39,15 @@ class ListPage extends Component
     }
 
 
-    private function FilterByStatus()
+    private function FilterByPlace()
     {
-        $this->items = $this->is_active != null ? $this->items->where(['is_active' => $this->is_active]) : $this->items;
-        return $this->items;
+        $this->items = $this->place_id != null ? $this->items->where(['place_id' => $this->place_id]) : $this->items;
     }
 
     public function render()
     {
         $this->items = Table::Search($this->search)->with(['reserve_type', 'place'])->latest();
-//        $this->items = $this->FilterByStatus();
+        $this->FilterByPlace();
         return view('place::livewire.pages.dashboard.table.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }

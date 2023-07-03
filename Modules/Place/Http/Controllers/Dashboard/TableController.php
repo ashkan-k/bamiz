@@ -24,7 +24,9 @@ class TableController extends Controller
     public function store(TableRequest $request)
     {
         Table::create($request->validated());
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'tables.index');
+
+        $next_url = \request('next_url');
+        return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ثبت شد.', $next_url);
     }
 
     public function edit(Table $table)
@@ -35,6 +37,8 @@ class TableController extends Controller
     public function update(TableRequest $request, Table $table)
     {
         $table->update($request->validated());
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'tables.index');
+
+        $next_url = \request('next_url');
+        return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ویرایش شد.', $next_url);
     }
 }

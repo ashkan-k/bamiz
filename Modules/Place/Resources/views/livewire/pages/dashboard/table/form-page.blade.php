@@ -15,6 +15,11 @@
 
                     @csrf
 
+                        @if(request('place_id'))
+                            <input type="hidden" name="place_id" value="{{ request('place_id') }}">
+                            <input type="hidden" name="next_url" value="{{ route('tables.index') }}?place_id={{ request('place_id') }}">
+                        @endif
+
                     <div class="form-group">
                         <label class="control-label col-lg-2">نام</label>
                         <div class="col-md-10">
@@ -29,28 +34,30 @@
                         </div>
                     </div>
 
-                    <div class="form-group" wire:ignore>
-                        <label class="control-label col-lg-2">مرکز</label>
-                        <div class="col-md-10">
+                    @if(!request('place_id'))
+                        <div class="form-group" wire:ignore>
+                            <label class="control-label col-lg-2">مرکز</label>
+                            <div class="col-md-10">
 
-                            <select id="id_place" class="form-control" name="place_id" required>
-                                <option value="">مرکز را انتخاب کنید</option>
+                                <select id="id_place" class="form-control" name="place_id" required>
+                                    <option value="">مرکز را انتخاب کنید</option>
 
-                                @foreach($places as $place)
+                                    @foreach($places as $place)
 
-                                    <option @if(isset($item->place_id) && $item->place_id == $place->id) selected
-                                            @endif value="{{ $place->id }}">{{ $place->name }}
-                                    </option>
+                                        <option @if(isset($item->place_id) && $item->place_id == $place->id) selected
+                                                @endif value="{{ $place->id }}">{{ $place->name }}
+                                        </option>
 
-                                @endforeach
+                                    @endforeach
 
-                            </select>
+                                </select>
 
-                            @error('place_id')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
+                                @error('place_id')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">برای مناسبت</label>
@@ -91,7 +98,7 @@
                     <div class="col-lg-12">
                         <div class="m-1-25 m-b-20">
                             <div class="modal-footer">
-                                <a href="{{ route('tables.index') }}"
+                                <a href="{{ route('tables.index') }}?place_id={{ request('place_id') }}"
                                    class="btn btn-danger btn-border-radius waves-effect">
                                     بازگشت
                                 </a>

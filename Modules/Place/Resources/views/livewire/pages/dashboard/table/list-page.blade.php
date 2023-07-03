@@ -14,7 +14,7 @@
                     </div>
                 </form>
 
-                <a class="btn btn-primary pull-right" href="{{ route('tables.create') }}">افزودن میز مرکز جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('tables.create') }}?place_id={{ $place_id }}">افزودن میز مرکز جدید</a>
 
                 <table class="table table-hover">
                     <thead>
@@ -45,7 +45,7 @@
 
                             <td>
                                 <div class="buttons ">
-                                    <a href="{{ route('tables.edit' , $item->id) }}"
+                                    <a href="{{ route('tables.edit' , $item->id) }}?place_id={{ $place_id }}"
                                        class="btn btn-primary btn-action mr-1"
                                        data-toggle="tooltip" title=""
                                        data-original-title="ویرایش"><i
@@ -72,64 +72,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div wire:ignore.self class="modal fade bd-example-modal-lg" id="changeStatusModal" tabindex="-1" role="dialog"
-         aria-labelledby="changeStatusModalTitle" aria-hidden="true" dir="rtl"
-         style="text-align: right !important; margin-top: 250px">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-
-            <div class="modal-content">
-                <div class="modal-header" style="width: 100%!important;">
-                    <h5 class="modal-title"
-                        id="exampleModalLongTitle">تغییر وضعیت</h5>
-
-                    <button type="button" class="close ml-2" data-dismiss="modal"
-                            style="position: absolute!important;left: 0!important; top: 10px"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <form wire:submit.prevent="ChangeStatus">
-                    <div class="modal-body">
-                        <label class="form-label"
-                               for="id_is_active">وضعیت:</label>
-
-                        <div>
-                            <select wire:model="data.is_active" class="form-control" name="is_active">
-
-                                <option @if(isset($current_item_is_active) && $current_item_is_active == '1') selected
-                                        @endif value="1">فعال
-                                </option>
-                                <option @if(isset($current_item_is_active) && $current_item_is_active == '0') selected
-                                        @endif value="0">غیرفعال
-                                </option>
-
-                            </select>
-
-                            @error('is_active')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-disabled="is_submited">
-                            بستن
-                        </button>&nbsp;
-                        <button type="submit" class="btn btn-primary">ذخیره
-                        </button>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-    </div>
-
-
 </div>
 
 @push('StackScript')

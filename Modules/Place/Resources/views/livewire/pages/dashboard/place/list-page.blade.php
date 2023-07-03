@@ -94,6 +94,11 @@
                                        data-toggle="tooltip" title=""
                                        data-original-title="زمان کاری"><i
                                             class="fa fa-clock-o"> </i> </a>
+                                    <a href="{{ route('tables.index') }}?place_id={{ $item->id }}"
+                                       class="btn btn-success btn-action mr-1"
+                                       data-toggle="tooltip" title=""
+                                       data-original-title="میز ها"><i
+                                            class="fa fa-table"> </i> </a>
                                     <a href="{{ route('places.edit' , $item->id) }}"
                                        class="btn btn-primary btn-action mr-1"
                                        data-toggle="tooltip" title=""
