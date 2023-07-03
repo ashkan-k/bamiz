@@ -17,12 +17,12 @@ class PlaceController extends Controller
 
     public function index()
     {
-        return view('place::dashboard.list');
+        return view('place::dashboard.places.list');
     }
 
     public function create()
     {
-        return view('place::dashboard.form');
+        return view('place::dashboard.places.form');
     }
 
     public function store(PlaceRequest $request)
@@ -35,7 +35,7 @@ class PlaceController extends Controller
 
     public function edit(Place $place)
     {
-        return view('place::dashboard.form', compact('place'));
+        return view('place::dashboard.places.form', compact('place'));
     }
 
     public function update(PlaceRequest $request, Place $place)

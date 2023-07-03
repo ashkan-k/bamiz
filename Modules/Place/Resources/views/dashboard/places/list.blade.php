@@ -8,7 +8,7 @@
 @endsection
 @section('content')
 
-    @livewire('place::pages.dashboard.list-page' , [
+    @livewire('place::pages.dashboard.place.list-page' , [
 
     'titlePage' => 'مراکز',
 

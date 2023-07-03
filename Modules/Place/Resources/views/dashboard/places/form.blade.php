@@ -8,7 +8,7 @@
 
 @section('content')
     @if(isset($place))
-        @livewire("place::pages.dashboard.form-page" , [
+        @livewire("place::pages.dashboard.place.form-page" , [
 
         'titlePage' => 'ویرایش مرکز',
         'type' => 'edit',
@@ -17,7 +17,7 @@
         ])
     @else
 
-        @livewire("place::pages.dashboard.form-page" , [
+        @livewire("place::pages.dashboard.place.form-page" , [
 
         'titlePage' => 'افزودن مرکز جدید'
 

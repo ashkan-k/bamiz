@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Place\Http\Livewire\Pages\Dashboard;
+namespace Modules\Place\Http\Livewire\Pages\Dashboard\Place;
 
 use Livewire\Component;
 use Modules\Category\Entities\Category;
@@ -51,6 +51,6 @@ class FormPage extends Component
             'cities' => $this->province_id ? City::where('province_id', $this->province_id)->get() : [],
         ];
 
-        return view('place::livewire.pages.dashboard.form-page', $data);
+        return view('place::livewire.pages.dashboard.place.form-page', $data);
     }
 }

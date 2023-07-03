@@ -14,7 +14,10 @@ class TableRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string',
+            'price' => 'required|numeric',
+            'place_id' => 'required|exists:places,id',
+            'reserve_type_id' => 'required|exists:reserve_types,id',
         ];
     }
 

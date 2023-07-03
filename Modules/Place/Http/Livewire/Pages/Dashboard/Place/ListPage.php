@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Place\Http\Livewire\Pages\Dashboard;
+namespace Modules\Place\Http\Livewire\Pages\Dashboard\Place;
 
 use App\Http\Traits\BulkActions;
 use Livewire\Component;
@@ -68,6 +68,6 @@ class ListPage extends Component
     {
         $this->items = Place::Search($this->search)->with(['user', 'province', 'city', 'category'])->latest();
         $this->items = $this->FilterByStatus();
-        return view('place::livewire.pages.dashboard.list-page', ['items' => $this->items->paginate($this->pagination)]);
+        return view('place::livewire.pages.dashboard.place.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }
