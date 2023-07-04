@@ -582,10 +582,13 @@
                     انجام می شود</b></div>
 
             <div class="text-center">
-                {{--                <input ng-if="!reserve_form.$valid || is_submited" style="cursor: not-allowed;" type="button" value="مرحله بعد" class="btn_1 full-width">--}}
-                {{--                <input ng-if="reserve_form.$valid && !is_submited" ng-click="form=2" type="button" value="مرحله بعد" class="btn_1 full-width">--}}
-                <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
-                       class="btn_1 full-width">
+                @if($object->type != 'hotel')
+                    <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
+                           class="btn_1 full-width">
+                @else
+                    <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
+                           class="btn_1 full-width">
+                @endif
             </div>
         </div>
 
@@ -618,6 +621,9 @@
 
             <div class="text-center">
                 <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
+                       class="btn_1 full-width">
+
+                <input ng-click="form = 1" type="button" ng-disabled="is_submit" value="بازکشت"
                        class="btn_1 full-width">
             </div>
         </div>
@@ -688,6 +694,7 @@
     <script>
         app.controller('myCtrl', function ($scope, $http) {
             $scope.form = 1;
+            $scope.place_type = '{{ $object->type }}';
             $scope.reserve_type_id = null;
             $scope.has_reserve_type_options = false;
             $scope.tables = [];
@@ -699,8 +706,8 @@
             $scope.SubmitReserveForm = function () {
                 $scope.is_submited = true;
 
-                if ($scope.form == 1) {
-                    $('#id_submit_button_1').css('cursor', 'not-allowed');
+                if ($scope.form == 1 && $scope.place_type != 'hotel') {
+                    // $('#id_submit_button_1').css('cursor', 'not-allowed');
 
                     $scope.form = 2;
                     $scope.is_submited = false;
