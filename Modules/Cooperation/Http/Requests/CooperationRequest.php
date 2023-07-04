@@ -18,7 +18,7 @@ class CooperationRequest extends FormRequest
             'last_name' => 'required|string',
             'address' => 'required',
             'phone' => 'required|max:11',
-            'file' => 'mimes:jpeg,png,bmp,jpg,pdf,xls,xlsx,txt',
+            'file' => 'nullable|mimes:jpeg,png,bmp,jpg,pdf,xls,xlsx,txt',
         ];
     }
 

@@ -50,7 +50,7 @@
                                         دانلود فایل
                                     </span>
                                 @else
-                                    <span class="label_mouse_cursor label label-warning-border rounded">
+                                    <span class="label_mouse_cursor label label-danger-border rounded">
                                          بدون فایل
                                     </span>
                                 @endif

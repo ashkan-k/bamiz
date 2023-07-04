@@ -30,6 +30,12 @@ class FrontController extends Controller
         return view('front::index', compact('popular_places', 'categories', 'latest_articles', 'latest_galleries', 'latest_places'));
     }
 
+    public function about_us()
+    {
+        $places = Place::has('work_time')->latest()->get();
+        return view('front::about_us', compact('places'));
+    }
+
 //    public function mizbans($slug)
 //    {
 //        return view('Front.mizbans' , compact('slug'));
@@ -45,10 +51,7 @@ class FrontController extends Controller
 //        return view('Front.galleries');
 //    }
 //
-//    public function about_us()
-//    {
-//        return view('Front.about_us');
-//    }
+
 //
 //    public function contact_us_show()
 //    {
