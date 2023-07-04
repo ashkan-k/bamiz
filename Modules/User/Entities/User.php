@@ -33,7 +33,7 @@ class User extends Authenticatable
         'level',
         'phone',
         'avatar',
-        'email_verified_at'
+        'phone_verified_at'
     ];
 
     protected $search_fields = [
@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function is_active()
     {
-        return $this->email_verified_at ? 1 : 0;
+        return $this->phone_verified_at ? 1 : 0;
     }
 
     public function is_admin()

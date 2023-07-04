@@ -48,7 +48,7 @@ class CreateAdminUserCommand extends Command
                 'email' => 'as@gmail.com',
                 'phone' => '09396988720',
                 'password' => Hash::make('123'),
-                'email_verified_at' => Carbon::now(),
+                'phone_verified_at' => Carbon::now(),
             ]
         );
         $user->level = 'admin';

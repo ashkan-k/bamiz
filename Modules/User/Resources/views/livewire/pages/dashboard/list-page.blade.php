@@ -51,8 +51,8 @@
                             <td>
 
                                 <span wire:click="$emit('triggerChangeActiveModal' , {{ $item }})"
-                                    class="label_mouse_cursor label label-{{ $item->email_verified_at ? 'success' : 'danger' }}-border rounded">
-                                    @if($item->email_verified_at != null)
+                                    class="label_mouse_cursor label label-{{ $item->phone_verified_at ? 'success' : 'danger' }}-border rounded">
+                                    @if($item->phone_verified_at != null)
                                         فعال
                                     @else
 

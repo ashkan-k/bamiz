@@ -63,13 +63,13 @@ class ListPage extends Component
     public function triggerChangeActiveModal(User $user)
     {
         $this->item = $user;
-        $this->data['active_status'] = $user->email_verified_at ? 1 : 0;
+        $this->data['active_status'] = $user->phone_verified_at ? 1 : 0;
     }
 
     public function ChangeActive()
     {
         $status = $this->data['active_status'] ? now() : null;
-        $this->item->update(['email_verified_at' => $status]);
+        $this->item->update(['phone_verified_at' => $status]);
         $this->dispatchBrowserEvent('itemActiveUpdated');
     }
 
@@ -83,9 +83,9 @@ class ListPage extends Component
         $this->items = $this->level ? $this->items->where(['level' => $this->level]) : $this->items;
 
         if ($this->is_active) {
-            $this->items = $this->items->whereNotNull('email_verified_at');
+            $this->items = $this->items->whereNotNull('phone_verified_at');
         } elseif ($this->is_active != null) {
-            $this->items = $this->items->whereNull('email_verified_at');
+            $this->items = $this->items->whereNull('phone_verified_at');
         }
 
         return $this->items;

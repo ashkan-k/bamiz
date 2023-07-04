@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->enum('level', EnumHelpers::$UserLevelEnum)->default('user');
 
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
             $table->rememberToken();
             $table->text('avatar')->nullable();
 
