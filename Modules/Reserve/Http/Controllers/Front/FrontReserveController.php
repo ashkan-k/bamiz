@@ -20,9 +20,10 @@ class FrontReserveController extends Controller
     public function reserve(ReserveRequest $request, Place $place)
     {
         $data = $request->validated();
-        dd($request->all());
         $data['amount'] = Setting::getPriceFromSettings() * $data['guest_count'];
         $reserve = auth()->user()->reserves()->create($data);
+        if ($request->option_id)
+            $reserve->options()->sync($request->option_id);
         return view('reserve::front.reserve' , compact('data', 'place', 'reserve'));
     }
 }

@@ -4,6 +4,7 @@ namespace Modules\Reserve\Http\Livewire\Pages\Front;
 
 use Livewire\Component;
 use Modules\Option\Entities\Option;
+use Modules\Reserve\Entities\Reserve;
 use Modules\Setting\Entities\Setting;
 
 class ReservePage extends Component
@@ -17,13 +18,19 @@ class ReservePage extends Component
     public $total_price;
     public $options_price = 0;
 
+    private function DispatchOptionEvent()
+    {
+//        $this->total_price += $this->options_price;
+        $this->dispatchBrowserEvent('reserveOptionsUpdated', ['price' => $this->total_price, 'options_price' => $this->options_price]);
+    }
+
     public function AddNewOption(Option $option)
     {
         array_push($this->options, $option->id);
         $this->options_price += $option->amount;
+        $this->total_price += $option->amount;
 
-        $this->total_price += $this->options_price;
-        $this->dispatchBrowserEvent('reserveOptionsUpdated', ['price' => $this->total_price, 'options_price' => $this->options_price]);
+        $this->DispatchOptionEvent();
     }
 
     public function RemoveOption(Option $option)
@@ -33,8 +40,7 @@ class ReservePage extends Component
             $this->options[$key] = null;
         }
         $this->options_price -= $option->amount;
-
-        $this->total_price += $this->options_price;
+        $this->total_price -= $option->amount;
         $this->dispatchBrowserEvent('reserveOptionsUpdated', ['price' => $this->total_price, 'options_price' => $this->options_price]);
     }
 
@@ -42,6 +48,14 @@ class ReservePage extends Component
     {
         $this->price = Setting::getPriceFromSettings();
         $this->total_price = $this->price * $this->data['guest_count'];
+
+        $options = $this->reserve->options()->get();
+        if ($options){
+            $this->options = $options->pluck('id')->toArray();
+            $this->options_price += $options->sum('amount');
+            $this->total_price += $options->sum('amount');
+            $this->DispatchOptionEvent();
+        }
     }
 
     public function render()
