@@ -46,12 +46,14 @@
             <div class="container">
                 <ul class="clearfix">
                     <li><a href="#description" class="active">اطلاعات</a></li>
-                    <li><a href="#menu_image">منوی غذا</a></li>
+                    @if($object->type != 'hotel')
+                        <li><a href="#menu_image">منوی غذا</a></li>
+                    @endif
                     <li><a href="#galley">گالری تصاویر</a></li>
                     <li><a href="#map">موقعیت</a></li>
                     <li><a href="#comments">نظرات</a></li>
                     <li><a href="#worktime">ساعت کاری</a></li>
-                    <li><a href="#sidebar">رزرو</a></li>
+                    {{--                    <li><a href="#sidebar">رزرو</a></li>--}}
                 </ul>
 
 
@@ -68,18 +70,20 @@
                         <p>{!! $object->description ?: '---' !!}</p>
                         <hr>
 
-                        <h3>منوی غذا</h3>
-                        <div id="instagram-feed" class="clearfix"></div>
-                        <div class="mt-3 mb-5" id="menu_image"
-                             style="width: 300px !important; height: 169px !important; !important; ;border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55);">
-                            <label class="control-label">
-                                <a href="{{ $object->get_menu_image('original') }}" target="_blank"><img
-                                        style="border-radius: 20px; margin-bottom: 8px;"
-                                        src="{{ $object->get_menu_image(300) }}"></a>
-                            </label>
-                        </div>
-                        {{--                        <img src="{{ $object->get_menu_image(300) }}" style="width: 200px !important; height: 200% !important;" alt="{{ $object->name }}">--}}
-                        <hr>
+                        @if($object->type != 'hotel')
+                            <h3>منوی غذا</h3>
+                            <div id="instagram-feed" class="clearfix"></div>
+                            <div class="mt-3 mb-5" id="menu_image"
+                                 style="width: 300px !important; height: 169px !important; !important; ;border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55);">
+                                <label class="control-label">
+                                    <a href="{{ $object->get_menu_image('original') }}" target="_blank"><img
+                                            style="border-radius: 20px; margin-bottom: 8px;"
+                                            src="{{ $object->get_menu_image(300) }}"></a>
+                                </label>
+                            </div>
+                            {{--                        <img src="{{ $object->get_menu_image(300) }}" style="width: 200px !important; height: 200% !important;" alt="{{ $object->name }}">--}}
+                            <hr>
+                        @endif
 
 
                         <h3 id="galley">گالری تصاویر</h3>
@@ -580,7 +584,8 @@
             <div class="text-center">
                 {{--                <input ng-if="!reserve_form.$valid || is_submited" style="cursor: not-allowed;" type="button" value="مرحله بعد" class="btn_1 full-width">--}}
                 {{--                <input ng-if="reserve_form.$valid && !is_submited" ng-click="form=2" type="button" value="مرحله بعد" class="btn_1 full-width">--}}
-                <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد" class="btn_1 full-width">
+                <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
+                       class="btn_1 full-width">
             </div>
         </div>
 
@@ -612,7 +617,8 @@
                     (اختیاری)</b></div>
 
             <div class="text-center">
-                <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو" class="btn_1 full-width">
+                <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
+                       class="btn_1 full-width">
             </div>
         </div>
 
@@ -693,12 +699,12 @@
             $scope.SubmitReserveForm = function () {
                 $scope.is_submited = true;
 
-                if ($scope.form == 1){
+                if ($scope.form == 1) {
                     $('#id_submit_button_1').css('cursor', 'not-allowed');
 
                     $scope.form = 2;
                     $scope.is_submited = false;
-                }else {
+                } else {
                     $('#id_submit_button_2').css('cursor', 'not-allowed');
 
                     $("#id_reserve_form").attr('action', '{{ route('reserve', $object->slug) }}');

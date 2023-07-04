@@ -25,6 +25,7 @@ class PlacesPage extends Component
 
     public function mount()
     {
+        $this->search = request('search');
         $this->pagination = env('PAGINATION', 10);
     }
 
