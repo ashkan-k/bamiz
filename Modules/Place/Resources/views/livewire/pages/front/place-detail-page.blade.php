@@ -552,7 +552,7 @@
                 </div>
 
 
-                <div ng-if="tables.length > 0" class="form-group">
+                <div ng-if="tables.length > 0 && has_reserve_type_options" class="form-group">
                     <label>شماره میز مد نظر</label>
 
                     <select required class="form-control"
@@ -683,6 +683,7 @@
         app.controller('myCtrl', function ($scope, $http) {
             $scope.form = 1;
             $scope.reserve_type_id = null;
+            $scope.has_reserve_type_options = false;
             $scope.tables = [];
 
             $scope.GetPriceAsNumberHumanize = function (price) {
@@ -709,6 +710,7 @@
 
             $scope.GetReserveTypeTables = function () {
                 $scope.is_submited = true;
+                $scope.has_reserve_type_options = false;
 
                 var selectedItem = $('#id_reserve_type').find(":selected");
                 if (!selectedItem.attr("data-has-price")) {
@@ -721,6 +723,7 @@
                         $scope.is_submited = false;
 
                         $scope.tables = res['data']['data'];
+                        $scope.has_reserve_type_options = true;
 
                     }).catch(err => {
                         showToast('خطایی رخ داد.', 'error');
