@@ -18,7 +18,9 @@
             right: 25px;
             bottom: 25px;
             z-index: 9999;
-        &:after {
+
+        &
+        :after {
             position: relative;
             display: block;
             top: 50%;
@@ -441,7 +443,7 @@
     </div>
 
 
-    <form action="{{ route('reserve' , $object->slug) }}" method="post">
+    <form ng-submit="SubmitReserveForm()" id="id_reserve_form" name="reserve_form" method="post">
 
         @csrf
 
@@ -450,7 +452,7 @@
             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
         @endauth
 
-        <div class="sign-in-wrapper">
+        <div class="sign-in-wrapper" ng-show="form == 1">
 
             <div class="form-group">
 
@@ -467,6 +469,9 @@
                     {{--                    <small style="color: red">تعداد صندلی های هر میز--}}
                     {{--                        : {{ $object->chairs_people_count }}</small>--}}
                 @endif
+                @error('guest_count')
+                <span class="text-danger text-wrap">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -474,6 +479,10 @@
                 <input required class="form-control" type="text" name="date"
                        id="id_date" value="{{ old('date') }}"
                        placeholder="تاریخ رزرو">
+
+                @error('date')
+                <span class="text-danger text-wrap">{{ $message }}</span>
+                @enderror
             </div>
 
             @if($object->type == 'hotel')
@@ -483,6 +492,10 @@
                            value="{{ old('days_number') }}"
                            name="days_number" id="quest_count"
                            placeholder="تعداد روز">
+
+                    @error('days_number')
+                    <span class="text-danger text-wrap">{{ $message }}</span>
+                    @enderror
                 </div>
             @endif
 
@@ -497,6 +510,10 @@
                     @endforeach
 
                 </select>
+
+                @error('start_time')
+                <span class="text-danger text-wrap">{{ $message }}</span>
+                @enderror
             </div>
             @if(in_array($object->type, ['restaurant', 'cafe']))
                 <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل
@@ -515,7 +532,8 @@
                         @foreach($reserve_types as $res_type)
                             <option data-has-price="{{ $res_type->price }}"
                                     @if(old('reserve_type_id') == $res_type->id) selected
-                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }} @if($res_type->price)({{ $res_type->price }} تومان)@endif
+                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }} @if($res_type->price)
+                                    ({{ $res_type->price }} تومان)@endif
                             </option>
                         @endforeach
 
@@ -527,6 +545,10 @@
                         {{--                                                </option>--}}
                         {{--                                            @endforeach--}}
                     </select>
+
+                    @error('reserve_type_id')
+                    <span class="text-danger text-wrap">{{ $message }}</span>
+                    @enderror
                 </div>
 
 
@@ -539,9 +561,14 @@
 
                         <option ng-repeat="item in tables"
                                 ng-selected="item.id == {{ old('table_id', '-1') }}"
-                                value="[[ item.id ]]">[[ item.title ]] ([[ GetPriceAsNumberHumanize(item.price) ]] تومان)
+                                value="[[ item.id ]]">[[ item.title ]] ([[ GetPriceAsNumberHumanize(item.price) ]]
+                            تومان)
                         </option>
                     </select>
+
+                    @error('table_id')
+                    <span class="text-danger text-wrap">{{ $message }}</span>
+                    @enderror
                 </div>
             @endif
 
@@ -550,8 +577,46 @@
                     مرحله بعد
                     انجام می شود</b></div>
 
-            <div class="text-center"><input type="submit" value="مرحله بعد" class="btn_1 full-width"></div>
+            <div class="text-center">
+                {{--                <input ng-if="!reserve_form.$valid || is_submited" style="cursor: not-allowed;" type="button" value="مرحله بعد" class="btn_1 full-width">--}}
+                {{--                <input ng-if="reserve_form.$valid && !is_submited" ng-click="form=2" type="button" value="مرحله بعد" class="btn_1 full-width">--}}
+                <input type="submit" value="مرحله بعد" class="btn_1 full-width">
+            </div>
         </div>
+
+        <div class="sign-in-wrapper" ng-show="form == 2">
+
+            <div class="text-center mt-2 mb-2"><b>تشریفات</b></div>
+            <hr>
+
+            <div class="row">
+                @foreach($object->options as $op)
+                    <div class="form-group col-12">
+                        <label for="id_option_{{ $op->id }}">{{ $op->title }}</label>
+                        <input id="id_option_{{ $op->id }}" type="checkbox" name="option_id[]" value="{{ $op->id }}">
+
+                        <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
+
+                        {{--                        <span>{!! \Illuminate\Support\Str::limit($op->description, 50) !!}</span>--}}
+                        <a href="{{ $op->get_image() }}"><img class="pull-left mb-3"
+                                                              style="clear: both !important;"
+                                                              src="{{ $op->get_image() }}" width="50"
+                                                              alt="{{ $op->title }}"></a>
+                        <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
+                    </div>
+
+
+                @endforeach
+            </div>
+
+            <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
+                    (اختیاری)</b></div>
+
+            <div class="text-center">
+                <input type="submit" value="تکمیل رزرو" class="btn_1 full-width">
+            </div>
+        </div>
+
     </form>
     <!--form -->
 </div>
@@ -617,11 +682,26 @@
 @push('StackScript')
     <script>
         app.controller('myCtrl', function ($scope, $http) {
+            $scope.form = 1;
             $scope.reserve_type_id = null;
             $scope.tables = [];
 
-            $scope.GetPriceAsNumberHumanize = function (price){
+            $scope.GetPriceAsNumberHumanize = function (price) {
                 return numberWithCommas(price);
+            }
+
+            // $scope.SubmitReserveForm = function (new_number) {
+            //     $scope.ChangeForm(2);
+            // }
+
+            $scope.SubmitReserveForm = function () {
+                if ($scope.form == 1){
+                    $scope.form = 2;
+                }else {
+                    $("#id_reserve_form").attr('action', '{{ route('reserve', $object->slug) }}');
+                    $("#id_reserve_form").submit();
+                    console.log( $("#id_reserve_form"))
+                }
             }
 
             $scope.GetReserveTypeTables = function () {
