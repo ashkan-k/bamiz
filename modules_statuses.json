@@ -17,5 +17,6 @@
     "Reserve": true,
     "Front": true,
     "WorkTime": true,
-    "ContactUs": true
+    "ContactUs": true,
+    "Sms": true
 }
