@@ -112,15 +112,18 @@ class PlaceDetailPage extends Component
         if (auth()->check() && $this->object->wish_lists->where('user_id', auth()->id())->isEmpty()) {
             $this->is_Added_To_WishList = false;
         }
-
-        $this->price = Setting::getPriceFromSettings();
     }
 
     public function render()
     {
         $this->getData();
+
 //        $reserve_types = Reserve::GetTypes();
-        $reserve_types = ReserveType::all();
+        if ($this->object->type != 'hotel')
+            $reserve_types = ReserveType::all();
+        else
+            $reserve_types = [];
+
         return view('place::livewire.pages.front.place-detail-page', ['reserve_types' => $reserve_types]);
     }
 }

@@ -57,9 +57,13 @@
                                                                                             alt="عکس کابر"></a>
                             </td>
                             <td>
-                                <a href="{{ $item->get_menu_image(300) }}" target="-_blank"><img width="50"
-                                                                                            src="{{ $item->get_menu_image(300) }}"
-                                                                                            alt="عکس کابر"></a>
+                                @if($item->get_menu_image(300))
+                                    <a href="{{ $item->get_menu_image(300) }}" target="-_blank"><img width="50"
+                                                                                                     src="{{ $item->get_menu_image(300) }}"
+                                                                                                     alt="عکس کابر"></a>
+                                @else
+                                    ندارد
+                                @endif
                             </td>
                             <td>
 
@@ -77,12 +81,12 @@
                             <td>{{ \Hekmatinasser\Verta\Verta:: instance($item->created_at)->format('%B %d، %Y') }}</td>
                             <td>
                                 <div class="buttons ">
-                                    <a href="{{ route('foods.index') }}?place_id={{ $item->id }}"
-                                       class="btn btn-info btn-action mr-1"
-                                       data-toggle="tooltip" title=""
-                                       data-original-title="منوی غذا"><i
-                                            class="fas fa-birthday-cake"></i><i
-                                            class="fa fa-birthday-cake"> </i> </a>
+{{--                                    <a href="{{ route('foods.index') }}?place_id={{ $item->id }}"--}}
+{{--                                       class="btn btn-info btn-action mr-1"--}}
+{{--                                       data-toggle="tooltip" title=""--}}
+{{--                                       data-original-title="منوی غذا"><i--}}
+{{--                                            class="fas fa-birthday-cake"></i><i--}}
+{{--                                            class="fa fa-birthday-cake"> </i> </a>--}}
                                     <a href="{{ route('option_places.index') }}?place_id={{ $item->id }}"
                                        class="btn btn-success btn-action mr-1"
                                        data-toggle="tooltip" title=""

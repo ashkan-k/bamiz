@@ -27,7 +27,7 @@ class FrontReserveController extends Controller
         if (isset($data['table_id'])) {
             $table = Table::find($data['table_id']);
             $data['amount'] = $table->price;
-        } else {
+        } elseif (isset($data['reserve_type_id'])) {
             $reserve_type = ReserveType::find($data['reserve_type_id']);
             $data['amount'] = $reserve_type->price;
         }
