@@ -174,6 +174,7 @@
                                 <th>عملیات</th>
                                 </thead>
                                 <tbody>
+                                <p>ff {{ $is_submitted }}</p>
                                 @foreach($place->options as $op)
                                     <tr>
                                         <td> {{ $op->title }} </td>
@@ -183,11 +184,15 @@
                                         <td> {!! \Illuminate\Support\Str::limit($op->description , 20) !!} </td>
                                         <td>
                                             @if(array_search($op->id , $options) !== false)
-                                                <button wire:click="RemoveOption('{{ $op->id }}')"
+                                                <button wire:click="RemoveOption('{{ $op->id }}', {{ $op->amount }})"
+                                                        id="id_button_{{ $op->id }}"
+                                                        onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
                                                         class="btn btn-danger"> حذف
                                                 </button>
                                             @else
-                                                <button wire:click="AddNewOption('{{ $op->id }}')"
+                                                <button wire:click="AddNewOption('{{ $op->id }}', {{ $op->amount }})"
+                                                        id="id_button_{{ $op->id }}"
+                                                        onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
                                                         class="btn btn-success"> افزودن
                                                 </button>
                                             @endif
@@ -293,6 +298,8 @@
 @push('StackScript')
     <script type="text/javascript">
         window.addEventListener('reserveOptionsUpdated', event => {
+            $('#id_button_' + event['detail']['option_id']).prop('disabled', false)
+
             $('#total_price').html(`${numberWithCommas(event['detail']['price'])} تومان`);
             $('#options_price').html(`${numberWithCommas(event['detail']['options_price'])} تومان`);
         });

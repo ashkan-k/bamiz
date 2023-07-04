@@ -43,7 +43,7 @@ class BaseGatewayController extends Controller
         if ($options)
             $reserve->options()->sync($options);
 
-        $this->totalPrice = round($reserve->amount);
+        $this->totalPrice = $reserve->amount;
 
 //        $options_price = $reserve->options()->sum('amount');
 //        $this->totalPrice = round($reserve->amount + round($options_price));
