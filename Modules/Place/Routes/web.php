@@ -16,4 +16,4 @@ use Modules\Place\Http\Controllers\Dashboard\PlaceController;
 use Modules\Place\Http\Controllers\Dashboard\TableController;
 
 Route::resource('places', PlaceController::class);
-Route::resource('tables', TableController::class);
+Route::resource('tables', TableController::class)->middleware('check_admin');
