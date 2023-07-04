@@ -87,13 +87,12 @@
                     @csrf
                 </form>
                 <li><a onclick="$('#frm_logout').submit()" class="login" title="خروج">خروج</a></li>
+                <li><a href="{{ route('wishlists') }}" class="wishlist_bt_top" title="محبوب های من">محبوب های من</a></li>
             @else
                 <li><span> <a href="{{ route('login') }}">ورود</a> </span></li>
 
                 <li><span> <a href="{{ route('register') }}">عضویت</a> </span></li>
             @endif
-
-            <li><a href="/front/wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
         </ul>
         <!-- /top_menu -->
         <a href="#menu" class="btn_mobile">
@@ -124,7 +123,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><span><a href="/cooperation">درخواست همکاری</a></span></li>
+                <li><span><a href="{{ route('cooperation') }}">درخواست همکاری</a></span></li>
                 <li><span><a href="{{ route('articles') }}">بلاگ</a></span></li>
                 <li><span><a href="{{ route('about_us') }}">درباره بامیز </a></span></li>
                 <li><span><a href="{{ route('contact_us') }}">تماس با بامیز </a></span></li>

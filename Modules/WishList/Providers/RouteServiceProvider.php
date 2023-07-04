@@ -51,6 +51,10 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->moduleNamespace)
             ->prefix('dashboard')
             ->group(module_path('WishList', '/Routes/web.php'));
+
+        Route::middleware(['web'])
+            ->namespace($this->moduleNamespace)
+            ->group(module_path('WishList', '/Routes/front.php'));
     }
 
     /**
