@@ -95,56 +95,56 @@
                             <h3><strong>1</strong>مشخصات رزرو</h3>
                             <br>
                             <table class="table table-striped cart-list">
-                                <tbody>
+                                <tbody class="text-left">
                                 <tr>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         نام محل
                                     </td>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         <strong> {{ $place->name }} </strong>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         تاریخ رزرو
                                     </td>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         <strong> {{ $data['date'] }} </strong>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         ساعت رزرو
                                     </td>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         <strong> ساعت {{ $data['start_time'] }} </strong>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         مدت رزرو
                                     </td>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         <strong>2 ساعت </strong>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         تعداد مهمان
                                     </td>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         <strong> {{ $data['guest_count'] }} مهمان </strong>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         @if($place->type == 'hotel')
                                             شماره اتاق
                                         @else
                                             شماره میز
                                         @endif
                                     </td>
-                                    <td>
+                                    <td style="padding-right: 0 !important; text-align: center !important;">
                                         <strong>
                                             @if(isset($data['room_number']))
                                                 {{ $data['room_number'] }}
@@ -168,21 +168,20 @@
                             <table class="table table-striped cart-list">
                                 <thead>
                                 <th>عنوان</th>
-                                <th>مبلغ</th>
+                                <th style="content: 'مبلغ' !important;">مبلغ</th>
                                 <th>تصویر نمونه</th>
                                 <th>توضیحات</th>
                                 <th>عملیات</th>
                                 </thead>
                                 <tbody>
-                                <p>ff {{ $is_submitted }}</p>
                                 @foreach($place->options as $op)
                                     <tr>
-                                        <td> {{ $op->title }} </td>
-                                        <td> {{ number_format($op->amount) }} تومان</td>
-                                        <td><img width="50" src="{{ $op->get_image() }}"
+                                        <td style="padding-right: 0 !important; text-align: center !important;"> {{ $op->title }} </td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;"> {{ number_format($op->amount) }} تومان</td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;"><img width="50" src="{{ $op->get_image() }}"
                                                  alt="{{ $op->title }}"></td>
-                                        <td> {!! \Illuminate\Support\Str::limit($op->description , 20) !!} </td>
-                                        <td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;"> {!! \Illuminate\Support\Str::limit($op->description , 20) !!} </td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
                                             @if(array_search($op->id , $options) !== false)
                                                 <button wire:click="RemoveOption('{{ $op->id }}', {{ $op->amount }})"
                                                         id="id_button_{{ $op->id }}"
