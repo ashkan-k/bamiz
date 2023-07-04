@@ -580,7 +580,7 @@
             <div class="text-center">
                 {{--                <input ng-if="!reserve_form.$valid || is_submited" style="cursor: not-allowed;" type="button" value="مرحله بعد" class="btn_1 full-width">--}}
                 {{--                <input ng-if="reserve_form.$valid && !is_submited" ng-click="form=2" type="button" value="مرحله بعد" class="btn_1 full-width">--}}
-                <input type="submit" value="مرحله بعد" class="btn_1 full-width">
+                <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد" class="btn_1 full-width">
             </div>
         </div>
 
@@ -597,7 +597,6 @@
 
                         <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
 
-                        {{--                        <span>{!! \Illuminate\Support\Str::limit($op->description, 50) !!}</span>--}}
                         <a href="{{ $op->get_image() }}"><img class="pull-left mb-3"
                                                               style="clear: both !important;"
                                                               src="{{ $op->get_image() }}" width="50"
@@ -613,7 +612,7 @@
                     (اختیاری)</b></div>
 
             <div class="text-center">
-                <input type="submit" value="تکمیل رزرو" class="btn_1 full-width">
+                <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو" class="btn_1 full-width">
             </div>
         </div>
 
@@ -690,26 +689,35 @@
                 return numberWithCommas(price);
             }
 
-            // $scope.SubmitReserveForm = function (new_number) {
-            //     $scope.ChangeForm(2);
-            // }
-
             $scope.SubmitReserveForm = function () {
+                $scope.is_submited = true;
+
                 if ($scope.form == 1){
+                    $('#id_submit_button_1').css('cursor', 'not-allowed');
+
                     $scope.form = 2;
+                    $scope.is_submited = false;
                 }else {
+                    $('#id_submit_button_2').css('cursor', 'not-allowed');
+
                     $("#id_reserve_form").attr('action', '{{ route('reserve', $object->slug) }}');
                     $("#id_reserve_form").submit();
-                    console.log( $("#id_reserve_form"))
+
+                    $scope.is_submited = false;
                 }
             }
 
             $scope.GetReserveTypeTables = function () {
+                $scope.is_submited = true;
+
                 var selectedItem = $('#id_reserve_type').find(":selected");
                 if (!selectedItem.attr("data-has-price")) {
+                    $('#id_submit_button_1').css('cursor', 'not-allowed');
+
                     var url = `/api/places/tables/{{ $object->id }}/${$scope.reserve_type_id}`;
 
                     $http.get(url).then(res => {
+                        $('#id_submit_button_1').css('cursor', 'pointer');
                         $scope.is_submited = false;
 
                         $scope.tables = res['data']['data'];
