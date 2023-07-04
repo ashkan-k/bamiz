@@ -68,27 +68,29 @@
                         </div>
                     </div>
 
-                    <div class="form-group" wire:ignore>
-                        <label class="control-label col-lg-2">مدیر مرکز</label>
-                        <div class="col-md-10">
+                    @if(auth()->user()->is_staff())
+                        <div class="form-group" wire:ignore>
+                            <label class="control-label col-lg-2">مدیر مرکز</label>
+                            <div class="col-md-10">
 
-                            <select id="id_user" class="form-control" name="user_id" required>
+                                <select id="id_user" class="form-control" name="user_id" required>
 
-                                @foreach($users as $user)
+                                    @foreach($users as $user)
 
-                                    <option @if(isset($item->user_id) && $item->user_id == $user->id) selected
-                                            @endif value="{{ $user->id }}">{{ $user->fullname() }}
-                                    </option>
+                                        <option @if(isset($item->user_id) && $item->user_id == $user->id) selected
+                                                @endif value="{{ $user->id }}">{{ $user->fullname() }}
+                                        </option>
 
-                                @endforeach
+                                    @endforeach
 
-                            </select>
+                                </select>
 
-                            @error('user_id')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
+                                @error('user_id')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">نوع مرکز</label>
@@ -113,28 +115,30 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-lg-2">دسته بندی</label>
-                        <div class="col-md-10">
+                    @if(auth()->user()->is_staff())
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">دسته بندی</label>
+                            <div class="col-md-10">
 
-                            <select class="form-control" name="category_id" required>
+                                <select class="form-control" name="category_id" required>
 
-                                @foreach($categories as $category)
+                                    @foreach($categories as $category)
 
-                                    <option
-                                        @if(isset($item->category_id) && $item->category_id == $category->id) selected
-                                        @endif value="{{ $category->id }}">{{ $category->title }}
-                                    </option>
+                                        <option
+                                            @if(isset($item->category_id) && $item->category_id == $category->id) selected
+                                            @endif value="{{ $category->id }}">{{ $category->title }}
+                                        </option>
 
-                                @endforeach
+                                    @endforeach
 
-                            </select>
+                                </select>
 
-                            @error('category_id')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
+                                @error('category_id')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <div class="form-group" wire:ignore>
                         <label class="control-label col-lg-2">استان</label>
@@ -198,40 +202,42 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-lg-2">عکس منوی غذا</label>
-                        <div class="col-sm-10">
+                    @if(auth()->user()->is_staff())
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">عکس منوی غذا</label>
+                            <div class="col-sm-10">
 
-                            <input type="file" name="menu_image"
-                                   class="form-control"
-                                   placeholder="عکس منوی غذا را وارد کنید"
-                                   value="{{ old('menu_image') }}">
+                                <input type="file" name="menu_image"
+                                       class="form-control"
+                                       placeholder="عکس منوی غذا را وارد کنید"
+                                       value="{{ old('menu_image') }}">
 
-                            @error('menu_image')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
+                                @error('menu_image')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
 
-                            @if(isset($item) && $item->menu_image)
-                                <div class="row">
-                                    <br>
-                                    @foreach( $item->menu_image['images'] as $key => $image)
-                                        <div class="col-sm-2 col-xs-10 "
-                                             style="border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55); margin-right: 30px ; margin-top: 30px">
-                                            <label class="control-label">
-                                                {{ $key }}
-                                                <input required type="radio" name="imagesThumb"
-                                                       value="{{ $image }}" {{ $item->menu_image['thumb'] == $image ? 'checked' : '' }} />
-                                                <a href="{{ $image }}" target="_blank"><img
-                                                        style="border-radius: 20px; margin-bottom: 8px;"
-                                                        src="{{ $image }}" width="100%"></a>
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endif
+                                @if(isset($item) && $item->menu_image)
+                                    <div class="row">
+                                        <br>
+                                        @foreach( $item->menu_image['images'] as $key => $image)
+                                            <div class="col-sm-2 col-xs-10 "
+                                                 style="border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55); margin-right: 30px ; margin-top: 30px">
+                                                <label class="control-label">
+                                                    {{ $key }}
+                                                    <input required type="radio" name="imagesThumb"
+                                                           value="{{ $image }}" {{ $item->menu_image['thumb'] == $image ? 'checked' : '' }} />
+                                                    <a href="{{ $image }}" target="_blank"><img
+                                                            style="border-radius: 20px; margin-bottom: 8px;"
+                                                            src="{{ $image }}" width="100%"></a>
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+
                         </div>
-
-                    </div>
+                    @endif
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">عکس</label>

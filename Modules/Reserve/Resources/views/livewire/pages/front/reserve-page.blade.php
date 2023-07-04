@@ -178,8 +178,12 @@
                                     <tr>
                                         <td style="padding-right: 0 !important; text-align: center !important;"> {{ $op->title }} </td>
                                         <td style="padding-right: 0 !important; text-align: center !important;"> {{ number_format($op->amount) }} تومان</td>
-                                        <td style="padding-right: 0 !important; text-align: center !important;"><img width="50" src="{{ $op->get_image() }}"
-                                                 alt="{{ $op->title }}"></td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            <a href="{{ $op->get_image() }}" target="_blank">
+                                                <img width="50" src="{{ $op->get_image() }}"
+                                                     alt="{{ $op->title }}">
+                                            </a>
+                                        </td>
                                         <td style="padding-right: 0 !important; text-align: center !important;"> {!! \Illuminate\Support\Str::limit($op->description , 20) !!} </td>
                                         <td style="padding-right: 0 !important; text-align: center !important;">
                                             @if(array_search($op->id , $options) !== false)
