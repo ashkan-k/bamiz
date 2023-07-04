@@ -40,12 +40,14 @@ class BaseGatewayController extends Controller
         $options = request('options');
         $options = $this->ConvertOptionsToInt($options);
 
-        if ($options) $reserve->options()->sync($options);
+        if ($options)
+            $reserve->options()->sync($options);
 
-        $options_price = $reserve->options()->sum('amount');
-        $this->totalPrice = round($reserve->amount + round($options_price));
+        $this->totalPrice = round($reserve->amount);
 
-        $reserve->update(['amount' => $this->totalPrice]);
+//        $options_price = $reserve->options()->sum('amount');
+//        $this->totalPrice = round($reserve->amount + round($options_price));
+//        $reserve->update(['amount' => $this->totalPrice]);
 
         ////////////////////////////////////////////////////////////
         /// در گاه پرداخت

@@ -20,7 +20,7 @@ class ReservePage extends Component
 
     private function DispatchOptionEvent()
     {
-//        $this->total_price += $this->options_price;
+        $this->reserve->update(['amount' => $this->total_price]);
         $this->dispatchBrowserEvent('reserveOptionsUpdated', ['price' => $this->total_price, 'options_price' => $this->options_price]);
     }
 
@@ -46,14 +46,14 @@ class ReservePage extends Component
 
     public function mount()
     {
-        $this->price = Setting::getPriceFromSettings();
-        $this->total_price = $this->price * $this->data['guest_count'];
+//        $this->price = Setting::getPriceFromSettings();
+//        $this->total_price = $this->price * $this->data['guest_count'];
+        $this->total_price = $this->reserve->amount;
 
         $options = $this->reserve->options()->get();
         if ($options){
             $this->options = $options->pluck('id')->toArray();
-            $this->options_price += $options->sum('amount');
-            $this->total_price += $options->sum('amount');
+            $this->options_price = $options->sum('amount');
             $this->DispatchOptionEvent();
         }
     }

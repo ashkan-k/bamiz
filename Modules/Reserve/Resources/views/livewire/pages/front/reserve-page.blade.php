@@ -236,8 +236,8 @@
                                     <h5 style="text-align: center"> لیست سفارش رزرو میز</h5>
                                 </div>
                                 <ul class="cart_details" id="card_detail">
-                                    <li> مبلغ رزرو هر نفر <span>{{ number_format($price) }} تومان</span></li>
-                                    <li>خدمات تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span></li>
+                                    <li> مبلغ رزرو مرکز <span>{{ number_format($total_price - $options_price) }} تومان</span></li>
+                                    <li>مبلغ رزرو خدمات تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span></li>
                                 </ul>
                                 <div id="total_cart">
                                     جمع کل <span class="float-right" id="total_price">{{ number_format($total_price) }}  تومان </span>
