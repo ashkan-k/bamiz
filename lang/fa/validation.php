@@ -266,5 +266,6 @@ return [
         'parent_id' => 'والد',
         'place_id' => 'مرکز',
         'menu_image' => 'تصویر منو',
+        'amount' => 'مبلغ',
     ],
 ];

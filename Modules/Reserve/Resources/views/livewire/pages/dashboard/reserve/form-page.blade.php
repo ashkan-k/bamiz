@@ -66,7 +66,7 @@
                         <label class="control-label col-lg-2">مناسبت (موضوع رزرو)</label>
                         <div class="col-md-10">
 
-                            <select id="id_type" required class="form-control" name="type">
+                            <select id="id_type" class="form-control" name="type">
 
                                 <option value="">مناسبت را انتخاب کنید</option>
 
@@ -185,6 +185,19 @@
                                    value="@if(old('amount')){{ old('amount') }}@elseif(isset($item->amount)){{ $item->amount }}@endif">
 
                             @error('amount')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">توضیحات کاربر برای مرکز</label>
+                        <div class="col-md-10">
+                                <textarea id="id_user_description" type="text" name="user_description"
+                                          class="form-control" rows="8"
+                                          placeholder="توضیحات را وارد کنید">@if(old('user_description')){{ old('user_description') }}@elseif(isset($item->user_description)){{ $item->user_description }}@endif</textarea>
+
+                            @error('user_description')
                             <span class="text-danger text-wrap">{{ $message }}</span>
                             @enderror
                         </div>

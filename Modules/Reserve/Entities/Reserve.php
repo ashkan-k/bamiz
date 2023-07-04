@@ -19,7 +19,7 @@ class Reserve extends Model
     protected $fillable = [
         "date",
         "start_time",
-//        "end_time",
+        "user_description",
         "guest_count",
         "days_number",
         "room_number",

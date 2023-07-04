@@ -576,6 +576,16 @@
                 </div>
             @endif
 
+            <div class="form-group mt-2">
+                <label>توضیحات شما برای مرکز (اختیاری)</label>
+                <textarea name="user_description" class="form-control"
+                          rows="3">{{ old('user_description') }}</textarea>
+
+                @error('user_description')
+                <span class="text-danger text-wrap">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="text-center text-danger mt-2 mb-2"><b>سفارش تشریفات در صورت
                     تمایل در
                     مرحله بعد

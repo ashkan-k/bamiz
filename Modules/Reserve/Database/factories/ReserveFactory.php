@@ -30,6 +30,7 @@ class ReserveFactory extends Factory
             'end_time' => fake()->time(),
             'guest_count' => fake()->randomNumber(),
             'status' => fake()->boolean(),
+            'user_description' => fake()->realText(),
             'user_id' => User::factory(),
             'place_id' => Place::factory(),
             'reserve_type_id' => ReserveType::factory(),

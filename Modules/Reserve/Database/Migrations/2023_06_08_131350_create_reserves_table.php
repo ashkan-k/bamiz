@@ -27,6 +27,7 @@ return new class extends Migration
 
             $table->integer('days_number')->nullable();
 
+            $table->text('user_description')->nullable();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('reserve_type_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
