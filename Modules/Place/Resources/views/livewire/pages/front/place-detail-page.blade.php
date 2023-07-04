@@ -577,7 +577,7 @@
             @endif
 
             <div class="form-group mt-2">
-                <label>توضیحات شما برای مرکز (اختیاری)</label>
+                <label>توضیحات</label>
                 <textarea name="user_description" class="form-control"
                           rows="3">{{ old('user_description') }}</textarea>
 
