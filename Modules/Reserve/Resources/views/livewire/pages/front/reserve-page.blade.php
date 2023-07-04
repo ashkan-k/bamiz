@@ -298,7 +298,7 @@
 @push('StackScript')
     <script type="text/javascript">
         window.addEventListener('reserveOptionsUpdated', event => {
-            $('#id_button_' + event['detail']['option_id']).prop('disabled', false)
+            $('#id_button_' + event['detail']['option_id']).prop('disabled', false);
 
             $('#total_price').html(`${numberWithCommas(event['detail']['price'])} تومان`);
             $('#options_price').html(`${numberWithCommas(event['detail']['options_price'])} تومان`);
