@@ -117,18 +117,17 @@
                         @endforeach
                     </ul>
                 </li>
-                <li><span><a href="/map">نقشه میزبان</a></span></li>
                 <li><span><a>رزرو سریع</a></span>
                     <ul>
                         <li>
-                            <a href="{{ route('places') }}">رزرو میز</a>
+                            <a href="{{ route('places') }}">رزرو مکان</a>
                         </li>
                     </ul>
                 </li>
                 <li><span><a href="/cooperation">درخواست همکاری</a></span></li>
                 <li><span><a href="{{ route('articles') }}">بلاگ</a></span></li>
                 <li><span><a href="/about_us">درباره بامیز </a></span></li>
-                <li><span><a href="/contact_us">تماس با بامیز </a></span></li>
+                <li><span><a href="{{ route('contact_us') }}">تماس با بامیز </a></span></li>
             </ul>
         </nav>
     </header>
