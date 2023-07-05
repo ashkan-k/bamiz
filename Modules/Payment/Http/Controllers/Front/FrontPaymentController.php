@@ -64,7 +64,11 @@ class FrontPaymentController extends Controller
         $CallbackURL = env('APP_URL') . '/payment/callback'; // Required
 
 
-        $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+        try {
+            $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+        }catch (\Exception $exception){
+            abort(503, 'متاسفانه مشکلی در ارتباط پیش آمد. لطفا اینترنت خود را چک کنید و دوباره امتحان کنید.');
+        }
 
         $result = $client->PaymentRequest(
             [
