@@ -51,7 +51,8 @@
                             <figure>
                                 <small
                                     style="background-color: #09b052e6;right: 0;color: white;width: 150px; padding-left: 0px !important;">
-                                    <h6 style="color: white"><i style="font-family: FontAwesome !important;" class="fa fa-coffee"
+                                    <h6 style="color: white"><i style="font-family: FontAwesome !important;"
+                                                                class="fa fa-coffee"
                                                                 aria-hidden="true"></i>&nbsp;{{ $ca->title }}</h6>
                                 </small>
                                 <img src="{{ $ca->get_image() }}" class="img-fluid"
@@ -64,7 +65,18 @@
 
             </div>
 
-            <div class="main_title_2">
+            <div class="banner mt-5" style='background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat !important;'>
+                <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+                    <div>
+                        <h3>{{ $settings['advertise_banner_title'] }}</h3>
+                        <p>{{ $settings['advertise_banner_text'] }}</p>
+                        <a href="{{ $settings['advertise_banner_link'] }}" class="btn_1">برای اطلاعات بیشتر کلیک کنید</a>
+                    </div>
+                </div>
+                <!-- /wrapper -->
+            </div>
+
+            <div class="main_title_2 mt-5">
                 <span><em></em></span>
                 <h2>کافه رستوران های محبوب</h2>
                 <p>کافه و رستوران هایی که بیشترین رزرو آنلاین را دارند</p>
@@ -86,10 +98,11 @@
                         <div class="box_grid" style="border-radius: 10px">
                             <figure>
 
-                                <a href="{{ route('place_detail', $place->slug) }}"><img src="{{ $place->cover['images']['900'] }}"
-                                                                           class="img-fluid"
-                                                                           alt="{{ $place->name }}"
-                                                                           width="800" height="533">
+                                <a href="{{ route('place_detail', $place->slug) }}"><img
+                                        src="{{ $place->cover['images']['900'] }}"
+                                        class="img-fluid"
+                                        alt="{{ $place->name }}"
+                                        width="800" height="533">
                                     <div class="read_more"><span>مشاهده</span></div>
                                 </a>
 
@@ -172,7 +185,8 @@
 
             </div>
             <!-- /carousel -->
-            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}" class="btn_1 rounded">نمایش
+            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"
+                                                                              class="btn_1 rounded">نمایش
                     همه</a></p>
             <hr class="large">
         </section>
@@ -211,7 +225,8 @@
             <!-- /grid_item -->
             </div>
             <!-- /row -->
-            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}" class="btn_1 rounded">نمایش
+            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"
+                                                                              class="btn_1 rounded">نمایش
                     همه</a></p>
         </section>
         <!-- /section -->
@@ -221,14 +236,14 @@
             <div class="main_title_3">
                 <span><em></em></span>
                 <h2>جدیدترین تصاویر</h2>
-                <p>جدیدترین تصاویری ارسالی از طرف کاربران </p>
+                <p>جدیدترین تصاویر رستوران، کافه و هتل های بامیز </p>
             </div>
             <div class="row">
 
                 @foreach($latest_galleries as $lg)
 
                     <div class="col-xl-3 col-lg-6 col-md-6">
-                        <a href="/galleries/{{ $lg->id }}" class="grid_item">
+                        <a href="{{ $lg->get_image() }}" class="grid_item">
                             <figure>
                                 <div class="score"><strong>5</strong></div>
                                 <img src="{{ $lg->get_image() }}" class="img-fluid"
@@ -245,22 +260,23 @@
 
             </div>
             <!-- /row -->
-            <p class="btn_home_align" style="text-align: left !important;"><a href="/galleries" class="btn_1 rounded">نمایش
+            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('galleries') }}"
+                                                                              class="btn_1 rounded">نمایش
                     همه</a></p>
         </section>
         <!-- /section -->
 
-        <div class="banner mb-0">
-            <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
-                <div>
-                    <small>تورمجازی</small>
-                    <h3>آشنایی با تورمجازی</h3>
-                    <p>معرفی و نحوره استفاده از تورمجازی برای رزرو آنلای میز</p>
-                    <a href="/Tor_Guide" class="btn_1">برای اطلاعات بیشتر کلیک کنید</a>
-                </div>
-            </div>
-            <!-- /wrapper -->
-        </div>
+        {{--        <div class="banner mb-0">--}}
+        {{--            <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">--}}
+        {{--                <div>--}}
+        {{--                    <small>تورمجازی</small>--}}
+        {{--                    <h3>آشنایی با تورمجازی</h3>--}}
+        {{--                    <p>معرفی و نحوره استفاده از تورمجازی برای رزرو آنلای میز</p>--}}
+        {{--                    <a href="/Tor_Guide" class="btn_1">برای اطلاعات بیشتر کلیک کنید</a>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <!-- /wrapper -->--}}
+        {{--        </div>--}}
 
         <div class="bg_color_1">
             <div class="container margin_80_55">
@@ -302,15 +318,15 @@
             <!-- /container -->
         </div>
 
-        <div class="call_section">
+        <div class="call_section" style='background: url({{ $settings['work_with_us_image'] }}) center center no-repeat !important;'>
             <div class="container clearfix">
                 <div class="col-lg-5 col-md-6 float-right wow" data-wow-offset="250">
                     <div class="block-reveal">
                         <div class="block-vertical"></div>
                         <div class="box_1">
                             <h3>همکاری با ما</h3>
-                            <p> {{ $settings['workwithus'] }} </p>
-                            <a href="/workwithus" class="btn_1 rounded">اطلاعات بیشتر</a>
+                            <p> {{ $settings['work_with_us_text'] }} </p>
+                            <a href="{{ route('cooperation') }}" class="btn_1 rounded">اطلاعات بیشتر</a>
                         </div>
                     </div>
                 </div>

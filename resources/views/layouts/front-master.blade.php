@@ -159,11 +159,11 @@
                 <div class="col-lg-3 col-md-6 ml-lg-auto">
                     <h5>دسترسی سریع</h5>
                     <ul class="links">
-                        <li><a href="/about_us">درباره ما</a></li>
-                        <li><a href="/login">ورود</a></li>
-                        <li><a href="/register">ثبت نام</a></li>
-                        <li><a href="/blog">اخبار و رویداد ها</a></li>
-                        <li><a href="/contact_us">تماس با ما</a></li>
+                        <li><a href="{{ route('about_us') }}">درباره ما</a></li>
+                        <li><a href="{{ route('login') }}">ورود</a></li>
+                        <li><a href="{{ route('register') }}">ثبت نام</a></li>
+                        <li><a href="{{ route('articles') }}">اخبار و رویداد ها</a></li>
+                        <li><a href="{{ route('contact_us') }}">تماس با ما</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -177,7 +177,7 @@
                     <div id="newsletter">
                         <h6>خبر نامه</h6>
                         <div id="message-newsletter"></div>
-                        <form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
+                        <form method="post" action="" name="newsletter_form" id="newsletter_form">
                             <div class="form-group">
                                 <input type="email" name="email_newsletter" id="email_newsletter" class="form-control"
                                        placeholder="ایمیل خود را وارد نمایید">
@@ -192,23 +192,14 @@
             <div class="row">
                 <div class="col-lg-6">
                     <ul id="footer-selector">
-                        <li>
-                            <div class="styled-select" id="lang-selector">
-                                <select>
-                                    <option value="English" selected>ترکی</option>
-                                    <option value="French">کوردی</option>
-                                    <option value="Spanish">فارسی</option>
-                                </select>
-                            </div>
-                        </li>
                         <li><img src="/front/img/cards_all.svg" alt=""></li>
                     </ul>
                 </div>
                 <div class="col-lg-6">
                     <ul id="additional_links">
-                        <li><a href="/front/#0">قوانین و مقررات</a></li>
-                        <li><a href="/front/#0">حریم خصوصی</a></li>
-                        <li><a href="/front/#0">همکاری با ما</a></li>
+                        <li><a href="{{ route('about_us') }}">قوانین و مقررات</a></li>
+                        <li><a href="{{ route('contact_us') }}">تماس با ما</a></li>
+                        <li><a href="{{ route('cooperation') }}">همکاری با ما</a></li>
                     </ul>
                 </div>
             </div>

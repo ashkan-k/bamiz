@@ -8,29 +8,6 @@
             </div>
         </section>
         <!--/hero_in-->
-
-        <div class="filters_listing sticky_horizontal" style="">
-            <div class="container">
-                <ul class="clearfix">
-                    <li>
-                        <div class="switch-field">
-                            <input type="radio" id="all" name="listing_filter" value="all" checked="">
-                            <label for="all">All</label>
-                            <input type="radio" id="popular" name="listing_filter" value="popular">
-                            <label for="popular">Popular</label>
-                            <input type="radio" id="latest" name="listing_filter" value="latest">
-                            <label for="latest">Latest</label>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /filters -->
-
-        <div class="collapse" id="collapseMap">
-            <div id="map" class="map"></div>
-        </div>
         <!-- End Map -->
 
         <div class="margin_60_35"  style="margin: 20px 20px !important;">
@@ -55,14 +32,11 @@
                 @endforeach
 
             </div>
-            <!-- /row -->
+
+            {{ $galleries->onEachSide(3)->links('livewire.front_pagination') }}
+
         </div>
 
-        <div class="text-center" style="margin:  0 auto">
-            {!! $galleries->links() !!}
-        </div>
-
-        <p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">اینجا باید پیجینیت قرار بگیرد</a></p>
 
         <!-- /container -->
     </main>

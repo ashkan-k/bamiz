@@ -15,7 +15,7 @@ class FrontGalleryController extends Controller
 {
     use Responses, Uploader;
 
-    public function index()
+    public function galleries()
     {
         return view('gallery::front.galleries');
     }

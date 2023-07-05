@@ -34,7 +34,15 @@ class InitSettingsCommand extends Command
         'postal_code' => "۴۸۳۱۱-۱۹۹۷۷",
         'footer_phone' => "۰۹۹۲۰۴۴۳۵۰۷ - ۰۹۹۲۰۴۴۳۵۰۷",
         'footer_working_time' => "هفت روز هفته (حتی روزهای تعطیل) ، ساعت ۹-۲۴ پاسخگوی شما هستیم.",
-        'workwithus' => "کافه یا رستوران هایی که تمایل دارند از امکان رزرو آنلاین میز با استفاده از تورمجازی بهره مند شوند بر روی دکمه زیر کلیک کنید تا از شرایط و مفاد همکاری مطلع شوید",
+
+        'work_with_us_text' => "کافه یا رستوران هایی که تمایل دارند از امکان رزرو آنلاین میز با استفاده از تورمجازی بهره مند شوند بر روی دکمه زیر کلیک کنید تا از شرایط و مفاد همکاری مطلع شوید",
+        'work_with_us_image' => "/front/img/bg_call_section.jpg",
+
+        #Banner
+        'advertise_banner_title' => "عنوان بنر تبلیغاتی",
+        'advertise_banner_text' => "توضیخاتی بنر تبلیغاتی قرار گرفته در صفحه اصلی",
+        'advertise_banner_link' => "http://google.com",
+        'advertise_banner_image' => "/front/img/banner_bg_desktop.jpg",
 
         # Social
         'email' => "bamiz.ir@gmail.com",
