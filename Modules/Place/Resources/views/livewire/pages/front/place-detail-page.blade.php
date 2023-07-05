@@ -44,7 +44,7 @@
         #owl-demo .item img{
             display: block;
             width: 100%;
-            height: auto;
+            height: 210px !important;
         }
     </style>
 @endsection
@@ -109,18 +109,11 @@
                         <div dir="ltr">
                             <div id="owl-demo" class="owl-carousel owl-theme">
 
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
-                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                @foreach($object->images()->get() as $image)
+                                    <div class="item">
+                                        <a href="{{ $image->get_image() }}" target="_blank"><img src="{{ $image->get_image() }}" alt="{{ $object->name }}"></a>
+                                    </div>
+                                @endforeach
 
                             </div>
                         </div>
