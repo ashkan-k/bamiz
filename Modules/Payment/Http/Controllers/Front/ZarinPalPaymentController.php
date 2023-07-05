@@ -30,12 +30,15 @@ class ZarinPalPaymentController extends BaseGatewayController
         if ($result[0]) {
             $payment = $result[1];
 
+            // Send Sms for restaurant/cafe/hotel manager
             $restaurant_manager_text = sprintf(sms_helper::$SMS_PATTERNS['reserve_success_restaurant_manager'], $payment->reserve->place->name, $payment->reserve->user->fullname(), str_replace('-', '/', $payment->reserve->date));
             dispatch(new SendSmsJob($payment->reserve->place->user->phone, $restaurant_manager_text));
 
+            // Send Sms for user who were reserved
             $user_text = sprintf(sms_helper::$SMS_PATTERNS['reserve_success_restaurant_manager'], $payment->reserve->place->name, $payment->reserve->user->fullname(), str_replace('-', '/', $payment->reserve->date));
             dispatch(new SendSmsJob($payment->reserve->place->user->phone, $user_text));
 
+            // Send Sms for website,s manager
             $manager_phone = Setting::where('key', 'manager_phone_1')->first()->value;
             $manager_text = sprintf(sms_helper::$SMS_PATTERNS['reserve_success_manager'], $payment->reserve->place->get_type(), $payment->reserve->place->name, $payment->reserve->user->fullname(), str_replace('-', '/', $payment->reserve->date));
             dispatch(new SendSmsJob($manager_phone, $manager_text));

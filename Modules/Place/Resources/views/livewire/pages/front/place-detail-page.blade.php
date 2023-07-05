@@ -1,4 +1,12 @@
 @section('Styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+          integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+          integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
     <link rel="stylesheet" href="https://cdn.map.ir/web-sdk/1.4.2/css/mapp.min.css">
     <link rel="stylesheet" href="https://cdn.map.ir/web-sdk/1.4.2/css/fa/style.css">
 
@@ -28,6 +36,15 @@
             transform: translateY(-55%);
         }
 
+        }
+
+        #owl-demo .item{
+            margin: 3px;
+        }
+        #owl-demo .item img{
+            display: block;
+            width: 100%;
+            height: auto;
         }
     </style>
 @endsection
@@ -88,6 +105,25 @@
 
                         <h3 id="galley">گالری تصاویر</h3>
                         <div class="clearfix"></div>
+
+                        <div dir="ltr">
+                            <div id="owl-demo" class="owl-carousel owl-theme">
+
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+                                <div class="item"><img src="{{ $object->get_cover(600) }}" alt="Owl Image"></div>
+
+                            </div>
+                        </div>
 
                         <hr>
 
@@ -540,14 +576,6 @@
                                     ({{ $res_type->price }} تومان)@endif
                             </option>
                         @endforeach
-
-                        {{--                                            @foreach($reserve_types as $res_type)--}}
-                        {{--                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected--}}
-                        {{--                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected--}}
-                        {{--                                                        @endif value="{{ $res_type['id'] }}"--}}
-                        {{--                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}--}}
-                        {{--                                                </option>--}}
-                        {{--                                            @endforeach--}}
                     </select>
 
                     @error('reserve_type_id')
@@ -650,6 +678,12 @@
         });
     </script>
 
+    <script type="text/javascript" src="/admin/assets/js/jquery-3.2.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+            integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.env.js"></script>
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.min.js"></script>
 
@@ -696,6 +730,20 @@
 
         $('#id_date').on('change', function () {
             $('#id_date').val($('#id_date').val().replaceAll('/', '-'))
+        });
+
+        $(document).ready(function() {
+
+            $("#owl-demo").owlCarousel({
+
+                loop:true,
+                autoPlay: 3000,
+                // items : 4,
+                itemsDesktop : [1199,3],
+                itemsDesktopSmall : [979,3]
+
+            });
+
         });
     </script>
 @endsection
