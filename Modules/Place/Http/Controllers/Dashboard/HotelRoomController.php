@@ -29,14 +29,14 @@ class HotelRoomController extends Controller
         return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ثبت شد.', $next_url);
     }
 
-    public function edit(HotelRoom $hotelRoom)
+    public function edit(HotelRoom $hotel_room)
     {
-        return view('place::dashboard.hotel_rooms.form', compact('table'));
+        return view('place::dashboard.hotel_rooms.form', compact('hotel_room'));
     }
 
-    public function update(HotelRoomRequest $request, HotelRoom $table)
+    public function update(HotelRoomRequest $request, HotelRoom $hotel_room)
     {
-        $table->update($request->validated());
+        $hotel_room->update($request->validated());
 
         $next_url = \request('next_url');
         return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ویرایش شد.', $next_url);

@@ -111,6 +111,15 @@
                                        data-toggle="tooltip" title=""
                                        data-original-title="میز ها"><i
                                             class="fa fa-table"> </i> </a>
+
+                                    @if($item->type == 'hotel')
+                                        <a href="{{ route('hotel-rooms.index') }}?place_id={{ $item->id }}"
+                                           class="btn btn-warning btn-action mr-1"
+                                           data-toggle="tooltip" title=""
+                                           data-original-title="اتاق های هتل"><i
+                                                class="fa fa-hotel"> </i> </a>
+                                    @endif
+
                                     <a href="{{ route('places.edit' , $item->id) }}"
                                        class="btn btn-primary btn-action mr-1"
                                        data-toggle="tooltip" title=""

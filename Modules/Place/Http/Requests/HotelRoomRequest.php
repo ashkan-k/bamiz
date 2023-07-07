@@ -14,7 +14,10 @@ class HotelRoomRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'place_id' => 'required|exists:places,id',
         ];
     }
 
