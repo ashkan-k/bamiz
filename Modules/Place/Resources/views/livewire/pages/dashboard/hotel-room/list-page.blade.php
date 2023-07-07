@@ -24,6 +24,7 @@
                         <th>توضیحات</th>
                         <th>مرکز</th>
                         <th>قیمت</th>
+                        <th>عکس</th>
                         <th>اعمال</th>
                     </tr>
                     </thead>
@@ -42,6 +43,11 @@
                             <td>{{ $item->description ?: '---' }}</td>
                             <td>{{ $item->place ? $item->place->name : '---' }}</td>
                             <td>{{ number_format($item->price) ?: '---' }} تومان</td>
+                            <td>
+                                <a href="{{ $item->get_image() }}" target="-_blank"><img width="50"
+                                                                                         src="{{ $item->get_image() }}"
+                                                                                         alt="عکس کابر"></a>
+                            </td>
 
                             <td>
                                 <div class="buttons ">

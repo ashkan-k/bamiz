@@ -315,179 +315,6 @@
                     </ul>
                 </div>
                 <!-- /col -->
-
-                {{--                <aside class="col-lg-4" id="sidebar"--}}
-                {{--                       style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1610.6px;">--}}
-
-                {{--                    <div class="theiaStickySidebar"--}}
-                {{--                         style="padding-top: 0px; padding-bottom: 1px; position: fixed; transform: translateY(-51.4px); top: 0px; left: 204.6px; width: 350px;">--}}
-
-                {{--                        @if($errors->any() && (!$errors->has('body') && !$errors->has('title') && !$errors->has('star')))--}}
-
-                {{--                            <div class="alert alert-danger text-center">--}}
-
-                {{--                                @foreach($errors->all() as $e)--}}
-                {{--                                    {{ $e }}<br>--}}
-                {{--                                @endforeach--}}
-
-                {{--                            </div>--}}
-
-                {{--                        @endif--}}
-
-                {{--                        <form action="{{ route('reserve' , $object->slug) }}" method="post">--}}
-
-                {{--                            @csrf--}}
-
-                {{--                            @auth--}}
-                {{--                                <input type="hidden" name="place_id" value="{{ $object->id }}">--}}
-                {{--                                <input type="hidden" name="user_id" value="{{ auth()->id() }}">--}}
-                {{--                            @endauth--}}
-
-                {{--                            <div class="box_detail" wire:ignore>--}}
-                {{--                                <div class="price">--}}
-                {{--                                    <span> {{ $price ? number_format($price) : '---' }} <small> تومان هزینه رزرو هر نفر</small></span>--}}
-                {{--                                    <div class="score"><strong>{{ $object->reserves()->where('status', 1)->count() }}--}}
-                {{--                                            رزرو موفق</strong></div>--}}
-                {{--                                    <br>--}}
-                {{--                                    <div class="text-center" style="margin-top: 10px;color: red"><strong>هزینه رزرو از--}}
-                {{--                                            مبلغ--}}
-                {{--                                            فاکتور سفارش کسر می شود</strong></div>--}}
-                {{--                                </div>--}}
-
-                {{--                                <div class="form-group mt-2">--}}
-                {{--                                    @if(in_array($object->type, ['restaurant', 'cafe']))--}}
-                {{--                                        <small style="color: red">تعداد صندلی های هر میز--}}
-                {{--                                            : {{ $object->chairs_people_count }}</small>--}}
-                {{--                                    @endif--}}
-                {{--                                    <input required class="form-control" type="text"--}}
-                {{--                                           value="{{ old('guest_count') }}"--}}
-                {{--                                           name="guest_count" id="quest_count"--}}
-                {{--                                           placeholder="تعداد مهمانان">--}}
-                {{--                                </div>--}}
-
-                {{--                                <div class="form-group">--}}
-                {{--                                    <input required class="form-control" type="text" name="date"--}}
-                {{--                                           id="id_date" value="{{ old('date') }}"--}}
-                {{--                                           placeholder="تاریخ رزرو">--}}
-                {{--                                </div>--}}
-
-                {{--                                @if($object->type == 'hotel')--}}
-                {{--                                    <div class="form-group mt-2">--}}
-                {{--                                        <input required class="form-control" type="text"--}}
-                {{--                                               value="{{ old('days_number') }}"--}}
-                {{--                                               name="days_number" id="quest_count"--}}
-                {{--                                               placeholder="تعداد روز">--}}
-                {{--                                    </div>--}}
-                {{--                                @endif--}}
-
-                {{--                                <div class="form-group clearfix mt-2">--}}
-                {{--                                    <select required class="form-control" id="chain_no" name="start_time">--}}
-                {{--                                        <option value="">ساعت رزرو</option>--}}
-
-                {{--                                        @foreach($times as $c)--}}
-                {{--                                            <option @if(old('start_time') == $c) selected @endif value="{{ $c }}">--}}
-                {{--                                                ساعت {{ $c }} </option>--}}
-                {{--                                        @endforeach--}}
-
-                {{--                                    </select>--}}
-                {{--                                    @if(in_array($object->type, ['restaurant', 'cafe']))--}}
-                {{--                                        <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل--}}
-                {{--                                            دو--}}
-                {{--                                            ساعت می باشد.</p>--}}
-                {{--                                    @endif--}}
-
-                {{--                                    @if(in_array($object->type, ['restaurant', 'cafe']))--}}
-                {{--                                        <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required--}}
-                {{--                                                class="form-control mt-3" id="id_reserve_type" name="reserve_type_id">--}}
-                {{--                                            <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید--}}
-                {{--                                            </option>--}}
-
-                {{--                                            @foreach($reserve_types as $res_type)--}}
-                {{--                                                <option data-has-price="{{ $res_type->price }}"--}}
-                {{--                                                        @if(old('reserve_type_id') == $res_type->id) selected--}}
-                {{--                                                        @endif value="{{ $res_type->id }}">{{ $res_type->title }}--}}
-                {{--                                                </option>--}}
-                {{--                                            @endforeach--}}
-
-                {{--                                            --}}{{--                                            @foreach($reserve_types as $res_type)--}}
-                {{--                                            --}}{{--                                                <option @if(old('type')) @if(old('type') == $res_type['id'] ) selected--}}
-                {{--                                            --}}{{--                                                        @endif @elseif(isset($item->type) && $item->type == $res_type['id']) selected--}}
-                {{--                                            --}}{{--                                                        @endif value="{{ $res_type['id'] }}"--}}
-                {{--                                            --}}{{--                                                        value="{{ $res_type['id'] }}">{{ $res_type['name'] }}--}}
-                {{--                                            --}}{{--                                                </option>--}}
-                {{--                                            --}}{{--                                            @endforeach--}}
-                {{--                                        </select>--}}
-
-
-                {{--                                        <select ng-if="tables.length > 0" required class="form-control mt-3"--}}
-                {{--                                                id="id_table_id" name="table_id">--}}
-                {{--                                            <option value="">شماره میز مد نظر را انتخاب کنید</option>--}}
-
-                {{--                                            <option ng-repeat="item in tables"--}}
-                {{--                                                    ng-selected="item.id == {{ old('table_id', '-1') }}"--}}
-                {{--                                                    value="[[ item.id ]]">[[ item.title ]]--}}
-                {{--                                            </option>--}}
-                {{--                                        </select>--}}
-                {{--                                    @endif--}}
-
-                {{--                                    <div class="text-center text-danger"><b>سفارش تشریفات در صورت--}}
-                {{--                                            تمایل در--}}
-                {{--                                            مرحله بعد--}}
-                {{--                                            انجام می شود</b></div>--}}
-
-                {{--                                    @if(auth()->check())--}}
-                {{--                                        <button id="btn_check_reserve" type="submit"--}}
-                {{--                                                class="btn_1 full-width outline mt-5">--}}
-                {{--                                            <i--}}
-                {{--                                                class="icon-calendar-outlilne"></i> تکمیل رزرو--}}
-                {{--                                        </button>--}}
-
-                {{--                                        <button ng-click="SubmitAddRemoveToWishlists('add')"--}}
-                {{--                                                ng-disabled="is_submited"--}}
-                {{--                                                @if($is_Added_To_WishList) style="display: none" @endif--}}
-                {{--                                                id="id_add_to_wishlist"--}}
-                {{--                                                class="btn_1 full-width outline wishlist mt-3"><i--}}
-                {{--                                                class="icon_heart"></i> اضافه به علاقه مندی ها--}}
-                {{--                                        </button>--}}
-                {{--                                        <button ng-click="SubmitAddRemoveToWishlists('remove')"--}}
-                {{--                                                ng-disabled="is_submited"--}}
-                {{--                                                @if(!$is_Added_To_WishList) style="display: none" @endif--}}
-                {{--                                                id="id_remove_to_wishlist"--}}
-                {{--                                                class="btn_1 full-width outline wishlist mt-3"><i--}}
-                {{--                                                class="icon_heart"></i> حذف از علاقه مندی ها--}}
-                {{--                                        </button>--}}
-                {{--                                    @else--}}
-                {{--                                        <button--}}
-                {{--                                            onclick="window.location.href = '{{ route('login') }}?next=/{{ request()->path() }}'"--}}
-                {{--                                            id="btn_check_reserve" type="button" class="btn_1 full-width outline mt-5">--}}
-                {{--                                            <i--}}
-                {{--                                                class="icon-calendar-outlilne"></i> ورود به سایت برای رزرو--}}
-                {{--                                        </button>--}}
-
-                {{--                                        <hr>--}}
-                {{--                                        <span class="alert alert-danger">برای افزدون به علاقه مندی ها ابتدا <a--}}
-                {{--                                                class="text-info"--}}
-                {{--                                                href="{{ route('login') }}"> وارد </a> شوید</span>--}}
-                {{--                                    @endif--}}
-
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </form>--}}
-                {{--                        <div class="resize-sensor"--}}
-                {{--                             style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">--}}
-                {{--                            <div class="resize-sensor-expand"--}}
-                {{--                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">--}}
-                {{--                                <div--}}
-                {{--                                    style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 360px; height: 536px;"></div>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="resize-sensor-shrink"--}}
-                {{--                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">--}}
-                {{--                                <div--}}
-                {{--                                    style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </aside>--}}
             </div>
             <!-- /row -->
         </div>
@@ -671,6 +498,47 @@
                                                               style="clear: both !important;"
                                                               src="{{ $op->get_image() }}" width="50"
                                                               alt="{{ $op->title }}"></a>
+                        <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
+                    </div>
+
+
+                @endforeach
+            </div>
+
+            <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
+                    (اختیاری)</b></div>
+
+            <div class="text-center">
+                <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
+                       class="btn_1 full-width">
+
+                <input ng-click="form = 1" type="button" ng-disabled="is_submit" value="بازکشت"
+                       class="btn_1 full-width">
+            </div>
+        </div>
+
+
+
+
+        <div class="sign-in-wrapper" ng-show="form == 2">
+
+            <div class="text-center mt-2 mb-2"><b>انتخاب اتاق</b></div>
+            <hr>
+
+            <div class="row">
+                @foreach($object->hotel_rooms as $room)
+                    <div class="form-group col-12">
+                        <label for="id_hotel_room_id_{{ $room->id }}">{{ $room->title }}</label>
+                        <input id="id_hotel_room_id_{{ $room->id }}" type="checkbox" name="hotel_room_id" value="{{ $room->id }}">
+
+                        <p>{{ $room->description ?: '---' }}</p>
+
+                        <p class="pull-left">{{ number_format($room->amount) ?: '---' }} تومان</p>
+
+                        <a href="{{ $room->get_image() }}"><img class="pull-left mb-3"
+                                                              style="clear: both !important;"
+                                                              src="{{ $room->get_image() }}" width="50"
+                                                              alt="{{ $room->title }}"></a>
                         <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
                     </div>
 

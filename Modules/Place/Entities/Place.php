@@ -158,6 +158,11 @@ class Place extends Model
         return $this->hasMany(Table::class);
     }
 
+    public function hotel_rooms()
+    {
+        return $this->hasMany(HotelRoom::class);
+    }
+
     public function comments()
     {
         return $this->morphMany(Comment::class , 'commentable');

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('price');
+            $table->text('image');
             $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();

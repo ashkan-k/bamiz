@@ -232,42 +232,40 @@
 
                     @endif
 
-                    @if(auth()->user()->is_staff())
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">عکس منوی غذا</label>
-                            <div class="col-sm-10">
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">عکس منوی غذا</label>
+                        <div class="col-sm-10">
 
-                                <input type="file" name="menu_image"
-                                       class="form-control"
-                                       placeholder="عکس منوی غذا را وارد کنید"
-                                       value="{{ old('menu_image') }}">
+                            <input type="file" name="menu_image"
+                                   class="form-control"
+                                   placeholder="عکس منوی غذا را وارد کنید"
+                                   value="{{ old('menu_image') }}">
 
-                                @error('menu_image')
-                                <span class="text-danger text-wrap">{{ $message }}</span>
-                                @enderror
+                            @error('menu_image')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
 
-                                @if(isset($item) && $item->menu_image)
-                                    <div class="row">
-                                        <br>
-                                        @foreach( $item->menu_image['images'] as $key => $image)
-                                            <div class="col-sm-2 col-xs-10 "
-                                                 style="border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55); margin-right: 30px ; margin-top: 30px">
-                                                <label class="control-label">
-                                                    {{ $key }}
-                                                    <input required type="radio" name="imagesThumb"
-                                                           value="{{ $image }}" {{ $item->menu_image['thumb'] == $image ? 'checked' : '' }} />
-                                                    <a href="{{ $image }}" target="_blank"><img
-                                                            style="border-radius: 20px; margin-bottom: 8px;"
-                                                            src="{{ $image }}" width="100%"></a>
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endif
-                            </div>
-
+                            @if(isset($item) && $item->menu_image)
+                                <div class="row">
+                                    <br>
+                                    @foreach( $item->menu_image['images'] as $key => $image)
+                                        <div class="col-sm-2 col-xs-10 "
+                                             style="border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55); margin-right: 30px ; margin-top: 30px">
+                                            <label class="control-label">
+                                                {{ $key }}
+                                                <input required type="radio" name="imagesThumb"
+                                                       value="{{ $image }}" {{ $item->menu_image['thumb'] == $image ? 'checked' : '' }} />
+                                                <a href="{{ $image }}" target="_blank"><img
+                                                        style="border-radius: 20px; margin-bottom: 8px;"
+                                                        src="{{ $image }}" width="100%"></a>
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
-                    @endif
+
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">عکس</label>
