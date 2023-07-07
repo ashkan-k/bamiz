@@ -139,17 +139,21 @@
                                 <tr>
                                     <td style="padding-right: 0 !important; text-align: center !important;">
                                         @if($place->type == 'hotel')
-                                            شماره اتاق
+                                            اتاق انتخابی
                                         @else
                                             شماره میز
                                         @endif
                                     </td>
                                     <td style="padding-right: 0 !important; text-align: center !important;">
                                         <strong>
-                                            @if(isset($data['room_number']))
-                                                {{ $data['room_number'] }}
+                                            @if($place->type == 'hotel')
+                                                {{ $reserve->hotel_room ? $reserve->hotel_room->title : '---' }}
                                             @else
-                                                به انتخاب مرکز
+                                                @if(isset($data['room_number']))
+                                                    {{ $data['room_number'] }}
+                                                @else
+                                                    به انتخاب مرکز
+                                                @endif
                                             @endif
                                         </strong>
                                     </td>
@@ -177,7 +181,9 @@
                                 @foreach($place->options as $op)
                                     <tr>
                                         <td style="padding-right: 0 !important; text-align: center !important;"> {{ $op->title }} </td>
-                                        <td style="padding-right: 0 !important; text-align: center !important;"> {{ number_format($op->amount) }} تومان</td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;"> {{ number_format($op->amount) }}
+                                            تومان
+                                        </td>
                                         <td style="padding-right: 0 !important; text-align: center !important;">
                                             <a href="{{ $op->get_image() }}" target="_blank">
                                                 <img width="50" src="{{ $op->get_image() }}"
@@ -244,8 +250,10 @@
                                     <h5 style="text-align: center"> لیست سفارش رزرو میز</h5>
                                 </div>
                                 <ul class="cart_details" id="card_detail">
-                                    <li> مبلغ رزرو مرکز <span>{{ number_format($total_price - $options_price) }} تومان</span></li>
-                                    <li>مبلغ رزرو خدمات تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span></li>
+                                    <li> مبلغ رزرو مرکز
+                                        <span>{{ number_format($total_price - $options_price) }} تومان</span></li>
+                                    <li>مبلغ رزرو خدمات تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span>
+                                    </li>
                                 </ul>
                                 <div id="total_cart">
                                     جمع کل <span class="float-right" id="total_price">{{ number_format($total_price) }}  تومان </span>
