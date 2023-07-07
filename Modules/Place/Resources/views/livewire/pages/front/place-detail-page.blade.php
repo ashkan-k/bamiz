@@ -57,11 +57,15 @@
 
                     <h3 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h3>
 
-                    <div class="row no-gutters custom-search-input-2 custom_search_box mt-3">
+                    <div class="row text-center no-gutters mt-5">
                         <div class="col-lg-12">
-                            <input onclick="window.location.href = '{{ $object->tour_link }}'" role="button" type="submit" class="btn_search" value="تور مجازی">
+                            <input onclick="window.location.href = '{{ $object->tour_link }}'" style="font-size: 22px !important; ;width: 350px !important;" role="button" type="submit" class="btn_search btn_1 rounded" value="تور مجازی">
                         </div>
                     </div>
+
+{{--                    <p class="btn_home_align" style="text-align: center !important;">--}}
+{{--                        <a style="display: none !important;" href="#sign-in-dialog" id="dsadsa" class="btn_1 rounded">ثبت سفارش</a>--}}
+{{--                    </p>--}}
 
                 </div>
             </div>
