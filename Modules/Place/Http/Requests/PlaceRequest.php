@@ -23,6 +23,7 @@ class PlaceRequest extends FormRequest
             'type' => 'required|in:restaurant,cafe,hotel',
             'cover' => 'mimes:jpeg,png,bmp,jpg',
             'menu_image' => 'mimes:jpeg,png,bmp,jpg',
+            'tour_gif' => 'nullable',
             'address_lat' => ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
             'address_long' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/']
         ];
@@ -36,6 +37,7 @@ class PlaceRequest extends FormRequest
 
         if (request()->method == 'POST') {
             $rules['cover'] .= '|required';
+            $rules['tour_gif'] .= '|required';
         }
 
         return $rules;

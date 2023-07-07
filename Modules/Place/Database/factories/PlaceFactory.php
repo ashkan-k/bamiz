@@ -30,6 +30,7 @@ class PlaceFactory extends Factory
             'slug' => fake()->unique(),
             'description' => fake()->text(),
             'tour_link' => fake()->realText(),
+            'tour_gif' => fake()->realText(),
             'address_lat' => fake()->latitude(),
             'address_long' => fake()->longitude(),
             'cover' => fake()->imageUrl(),

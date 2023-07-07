@@ -189,18 +189,48 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-lg-2">لینک تور مجازی</label>
-                        <div class="col-md-10">
+
+                    @if(auth()->user()->is_staff())
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">آدرس پوشه تور مجازی</label>
+                            <div class="col-md-10">
                                 <textarea id="id_tour_link" type="text" name="tour_link"
                                           class="form-control" required rows="4"
-                                          placeholder="توضیحات را وارد کنید">@if(old('tour_link')){{ old('tour_link') }}@elseif(isset($item->tour_link)){{ $item->tour_link }}@endif</textarea>
+                                          placeholder="آدرس پوشه تور مجازی را وارد کنید">@if(old('tour_link')){{ old('tour_link') }}@elseif(isset($item->tour_link)){{ $item->tour_link }}@endif</textarea>
 
-                            @error('tour_link')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
+                                @error('tour_link')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">فایل گیف تور مجازی</label>
+                            <div class="col-sm-10">
+
+                                <input type="file" name="tour_gif"
+                                       class="form-control"
+                                       placeholder="فایل گیف تور مجازی را وارد کنید"
+                                       value="{{ old('tour_gif') }}">
+
+                                @error('tour_gif')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+
+                                @if(isset($item) && $item->tour_gif)
+                                    <div class="row">
+                                        <br>
+                                        <a href="{{ $item->tour_gif }}" target="_blank" class="btn btn-warning">
+                                            مشاهده فایل
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
+
+                        </div>
+
+                    @endif
 
                     @if(auth()->user()->is_staff())
                         <div class="form-group">

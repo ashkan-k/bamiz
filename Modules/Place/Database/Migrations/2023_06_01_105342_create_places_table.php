@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('cover');
             $table->text('menu_image')->nullable();
             $table->text('tour_link')->nullable();
+            $table->text('tour_gif')->nullable();
 
             $table->double('address_lat')->nullable();
             $table->double('address_long')->nullable();

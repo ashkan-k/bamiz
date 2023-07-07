@@ -50,13 +50,40 @@
 @endsection
 
 <div>
-    <section class="hero_in tours_detail start_bg_zoom">
-        <div class="wrapper">
-            <div class="container">
-                <h1 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h1>
+    <section class="header-video">
+        <div id="hero_video">
+            <div class="wrapper">
+                <div class="container">
+
+                    <h3 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h3>
+
+                    <div class="row no-gutters custom-search-input-2 custom_search_box mt-3">
+                        <div class="col-lg-12">
+                            <input onclick="window.location.href = '{{ $object->tour_link }}'" role="button" type="submit" class="btn_search" value="تور مجازی">
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
+        <img src="{{ $object->cover['images']['original'] }}" alt="" class="header-video--media" data-video-src="video/adventure"
+             data-teaser-source="video/adventure" data-provider="" data-video-width="1920" data-video-height="960"
+             style="display: none;">
+
+        <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
+            <source src="{{ $object->tour_gif }}" type="video/mp4">
+{{--            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">--}}
+        </video>
     </section>
+
+{{--    <section class="hero_in tours_detail start_bg_zoom" style='background: url("{{ $object->tour_gif }}") center center no-repeat !important;'>--}}
+{{--        <div class="wrapper">--}}
+{{--            <div class="container">--}}
+{{--                <h1 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h1>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+
     <div class="bg_color_1" style="transform: none;">
 
         <nav class="secondary_nav sticky_horizontal" style="">
