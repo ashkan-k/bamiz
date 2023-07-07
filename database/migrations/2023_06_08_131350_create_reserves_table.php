@@ -32,6 +32,7 @@ return new class extends Migration
             $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('reserve_type_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('table_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('hotel_room_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });
