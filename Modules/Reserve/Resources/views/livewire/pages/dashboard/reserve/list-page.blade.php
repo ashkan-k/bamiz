@@ -29,6 +29,8 @@
                         <th>تعداد نفرات</th>
                         <th>مبلغ</th>
                         <th>نوع</th>
+                        <th>میز</th>
+                        <th>اتاق هتل</th>
                         <th>تشریفات</th>
                         <th>وضعیت</th>
                         <th>تاریخ ثبت</th>
@@ -56,6 +58,8 @@
                             <td>
                                 {{  $item->get_type() }}
                             </td>
+                            <td>{{ $item->table ? $item->table->title : 'ندارد' }}</td>
+                            <td>{{ $item->hotel_room ? $item->hotel_room->title : 'ندارد' }}</td>
                             <td>
                                 {{  $item->get_option_names() }}
                             </td>

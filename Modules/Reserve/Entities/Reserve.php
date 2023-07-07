@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Option\Entities\Option;
 use Modules\Payment\Entities\Payment;
+use Modules\Place\Entities\HotelRoom;
 use Modules\Place\Entities\Place;
 use Modules\Place\Entities\Table;
 use Modules\User\Entities\User;
@@ -120,5 +121,10 @@ class Reserve extends Model
     public function table()
     {
         return $this->belongsTo(Table::class);
+    }
+
+    public function hotel_room()
+    {
+        return $this->belongsTo(HotelRoom::class);
     }
 }
