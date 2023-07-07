@@ -31,6 +31,7 @@ class Reserve extends Model
         "place_id",
         "reserve_type_id",
         "table_id",
+        "hotel_room_id",
     ];
 
     protected $search_fields = [

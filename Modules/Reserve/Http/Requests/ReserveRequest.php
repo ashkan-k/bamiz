@@ -29,6 +29,7 @@ class ReserveRequest extends FormRequest
             'option_id.*' => 'numeric|exists:options,id',
             'reserve_type_id' => 'nullable|exists:reserve_types,id',
             'table_id' => 'nullable|exists:tables,id',
+            'hotel_room_id' => 'nullable|exists:hotel_rooms,id',
             'user_description' => 'nullable',
 //            'type' => 'nullable|in:table_for_food,work_appointment,table_for_birth_day_with_food,table_for_birth_day_without_food',
         ];

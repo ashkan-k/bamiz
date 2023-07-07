@@ -38,10 +38,11 @@
 
         }
 
-        #owl-demo .item{
+        #owl-demo .item {
             margin: 3px;
         }
-        #owl-demo .item img{
+
+        #owl-demo .item img {
             display: block;
             width: 100%;
             height: 210px !important;
@@ -59,34 +60,37 @@
 
                     <div class="row text-center no-gutters mt-5">
                         <div class="col-lg-12">
-                            <input onclick="window.location.href = '{{ $object->tour_link }}'" style="font-size: 22px !important; ;width: 350px !important;" role="button" type="submit" class="btn_search btn_1 rounded" value="تور مجازی">
+                            <input onclick="window.location.href = '{{ $object->tour_link }}'"
+                                   style="font-size: 22px !important; ;width: 350px !important;" role="button"
+                                   type="submit" class="btn_search btn_1 rounded" value="تور مجازی">
                         </div>
                     </div>
 
-{{--                    <p class="btn_home_align" style="text-align: center !important;">--}}
-{{--                        <a style="display: none !important;" href="#sign-in-dialog" id="dsadsa" class="btn_1 rounded">ثبت سفارش</a>--}}
-{{--                    </p>--}}
+                    {{--                    <p class="btn_home_align" style="text-align: center !important;">--}}
+                    {{--                        <a style="display: none !important;" href="#sign-in-dialog" id="dsadsa" class="btn_1 rounded">ثبت سفارش</a>--}}
+                    {{--                    </p>--}}
 
                 </div>
             </div>
         </div>
-        <img src="{{ $object->cover['images']['original'] }}" alt="" class="header-video--media" data-video-src="video/adventure"
+        <img src="{{ $object->cover['images']['original'] }}" alt="" class="header-video--media"
+             data-video-src="video/adventure"
              data-teaser-source="video/adventure" data-provider="" data-video-width="1920" data-video-height="960"
              style="display: none;">
 
         <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
             <source src="{{ $object->tour_gif }}" type="video/mp4">
-{{--            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">--}}
+            {{--            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">--}}
         </video>
     </section>
 
-{{--    <section class="hero_in tours_detail start_bg_zoom" style='background: url("{{ $object->tour_gif }}") center center no-repeat !important;'>--}}
-{{--        <div class="wrapper">--}}
-{{--            <div class="container">--}}
-{{--                <h1 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h1>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    {{--    <section class="hero_in tours_detail start_bg_zoom" style='background: url("{{ $object->tour_gif }}") center center no-repeat !important;'>--}}
+    {{--        <div class="wrapper">--}}
+    {{--            <div class="container">--}}
+    {{--                <h1 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h1>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
 
     <div class="bg_color_1" style="transform: none;">
 
@@ -142,7 +146,8 @@
 
                                 @foreach($object->images()->get() as $image)
                                     <div class="item">
-                                        <a href="{{ $image->get_image() }}" target="_blank"><img src="{{ $image->get_image() }}" alt="{{ $object->name }}"></a>
+                                        <a href="{{ $image->get_image() }}" target="_blank"><img
+                                                src="{{ $image->get_image() }}" alt="{{ $object->name }}"></a>
                                     </div>
                                 @endforeach
 
@@ -465,98 +470,102 @@
                 @enderror
             </div>
 
-            <div class="text-center text-danger mt-2 mb-2"><b>سفارش تشریفات در صورت
-                    تمایل در
-                    مرحله بعد
-                    انجام می شود</b></div>
+            @if($object->type == 'hotel')
+                <div class="text-center text-danger mt-2 mb-2"><b>انتخاب اتاق مد نظر در
+                        مرحله بعد
+                        انجام می شود</b></div>
+            @else
+                <div class="text-center text-danger mt-2 mb-2"><b>سفارش تشریفات در صورت
+                        تمایل در
+                        مرحله بعد
+                        انجام می شود</b></div>
+            @endif
 
             <div class="text-center">
-                @if($object->type != 'hotel')
-                    <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
-                           class="btn_1 full-width">
-                @else
+                <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
+                       class="btn_1 full-width">
+            </div>
+        </div>
+
+
+        @if($object->type == 'hotel')
+            <div class="sign-in-wrapper" ng-show="form == 2">
+
+                <div class="text-center mt-2 mb-2"><b>انتخاب اتاق</b></div>
+                <hr>
+
+                <div class="row">
+                    @foreach($object->hotel_rooms as $room)
+                        <div class="form-group col-12">
+                            <label for="id_hotel_room_id_{{ $room->id }}">{{ $room->title }}</label>
+                            <input id="id_hotel_room_id_{{ $room->id }}" type="radio" name="hotel_room_id"
+                                   value="{{ $room->id }}">
+
+                            <p style="margin-bottom: 0px !important;">{{ $room->description ?: '---' }}</p>
+
+                            <p class="pull-left">{{ number_format($room->price) ?: '---' }} تومان</p>
+
+                            <a href="{{ $room->get_image() }}"><img class="pull-left mb-3"
+                                                                    style="clear: both !important;"
+                                                                    src="{{ $room->get_image() }}" width="50"
+                                                                    alt="{{ $room->title }}"></a>
+                            <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
+                        </div>
+
+
+                    @endforeach
+                </div>
+
+                <div class="text-center text-danger mt-2 mb-2"><b>لطفا اتاق مد نظر خودتان را از لیست بالا انتخاب
+                        کنید.</b></div>
+
+                <div class="text-center">
                     <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
                            class="btn_1 full-width">
-                @endif
+
+                    <input ng-click="form = 1" type="button" ng-disabled="is_submit" value="بازکشت"
+                           class="btn_1 full-width">
+                </div>
             </div>
-        </div>
+        @else
+            <div class="sign-in-wrapper" ng-show="form == 2">
 
-        <div class="sign-in-wrapper" ng-show="form == 2">
+                <div class="text-center mt-2 mb-2"><b>تشریفات</b></div>
+                <hr>
 
-            <div class="text-center mt-2 mb-2"><b>تشریفات</b></div>
-            <hr>
+                <div class="row">
+                    @foreach($object->options as $op)
+                        <div class="form-group col-12">
+                            <label for="id_option_{{ $op->id }}">{{ $op->title }}</label>
+                            <input id="id_option_{{ $op->id }}" type="checkbox" name="option_id[]"
+                                   value="{{ $op->id }}">
 
-            <div class="row">
-                @foreach($object->options as $op)
-                    <div class="form-group col-12">
-                        <label for="id_option_{{ $op->id }}">{{ $op->title }}</label>
-                        <input id="id_option_{{ $op->id }}" type="checkbox" name="option_id[]" value="{{ $op->id }}">
+                            <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
 
-                        <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
-
-                        <a href="{{ $op->get_image() }}"><img class="pull-left mb-3"
-                                                              style="clear: both !important;"
-                                                              src="{{ $op->get_image() }}" width="50"
-                                                              alt="{{ $op->title }}"></a>
-                        <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
-                    </div>
+                            <a href="{{ $op->get_image() }}"><img class="pull-left mb-3"
+                                                                  style="clear: both !important;"
+                                                                  src="{{ $op->get_image() }}" width="50"
+                                                                  alt="{{ $op->title }}"></a>
+                            <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
+                        </div>
 
 
-                @endforeach
+                    @endforeach
+                </div>
+
+                <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
+                        (اختیاری)</b></div>
+
+                <div class="text-center">
+                    <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
+                           class="btn_1 full-width">
+
+                    <input ng-click="form = 1" type="button" ng-disabled="is_submit" value="بازکشت"
+                           class="btn_1 full-width">
+                </div>
             </div>
+        @endif
 
-            <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
-                    (اختیاری)</b></div>
-
-            <div class="text-center">
-                <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
-                       class="btn_1 full-width">
-
-                <input ng-click="form = 1" type="button" ng-disabled="is_submit" value="بازکشت"
-                       class="btn_1 full-width">
-            </div>
-        </div>
-
-
-
-
-        <div class="sign-in-wrapper" ng-show="form == 2">
-
-            <div class="text-center mt-2 mb-2"><b>انتخاب اتاق</b></div>
-            <hr>
-
-            <div class="row">
-                @foreach($object->hotel_rooms as $room)
-                    <div class="form-group col-12">
-                        <label for="id_hotel_room_id_{{ $room->id }}">{{ $room->title }}</label>
-                        <input id="id_hotel_room_id_{{ $room->id }}" type="checkbox" name="hotel_room_id" value="{{ $room->id }}">
-
-                        <p>{{ $room->description ?: '---' }}</p>
-
-                        <p class="pull-left">{{ number_format($room->amount) ?: '---' }} تومان</p>
-
-                        <a href="{{ $room->get_image() }}"><img class="pull-left mb-3"
-                                                              style="clear: both !important;"
-                                                              src="{{ $room->get_image() }}" width="50"
-                                                              alt="{{ $room->title }}"></a>
-                        <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
-                    </div>
-
-
-                @endforeach
-            </div>
-
-            <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
-                    (اختیاری)</b></div>
-
-            <div class="text-center">
-                <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
-                       class="btn_1 full-width">
-
-                <input ng-click="form = 1" type="button" ng-disabled="is_submit" value="بازکشت"
-                       class="btn_1 full-width">
-            </div>
-        </div>
 
     </form>
     <!--form -->
@@ -624,15 +633,15 @@
             $('#id_date').val($('#id_date').val().replaceAll('/', '-'))
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             $("#owl-demo").owlCarousel({
 
-                loop:true,
+                loop: true,
                 autoPlay: 3000,
                 // items : 4,
-                itemsDesktop : [1199,3],
-                itemsDesktopSmall : [979,3]
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3]
 
             });
 
@@ -656,12 +665,19 @@
             $scope.SubmitReserveForm = function () {
                 $scope.is_submited = true;
 
-                if ($scope.form == 1 && $scope.place_type != 'hotel') {
+                if ($scope.form == 1) {
                     // $('#id_submit_button_1').css('cursor', 'not-allowed');
 
                     $scope.form = 2;
                     $scope.is_submited = false;
                 } else {
+                    @if($object->type == 'hotel')
+                        if (!$('input[name="hotel_room_id"]:checked').val()) {
+                            showToast('لطفا اتاق مد نظر خودتان را انتخاب کنید!', 'error');
+                            return;
+                        }
+                    @endif
+
                     $('#id_submit_button_2').css('cursor', 'not-allowed');
 
                     $("#id_reserve_form").attr('action', '{{ route('reserve', $object->slug) }}');
