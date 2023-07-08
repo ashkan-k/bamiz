@@ -75,7 +75,7 @@ class Reserve extends Model
             return 'موفق';
         }
         elseif ($this->status == 'cancel'){
-            return 'کنسل شده';
+            return 'لغو شده';
         }
         return 'انجام شده';
     }

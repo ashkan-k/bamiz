@@ -84,7 +84,8 @@ class ProfilePage extends Component
 
     public function cancel(Reserve $reserve)
     {
-        $reserve->delete();
+        $reserve->update(['status' => 'cancel']);
+        $this->dispatchBrowserEvent('reserveStatusUpdated');
     }
 
     private function Filter()
@@ -97,6 +98,6 @@ class ProfilePage extends Component
     {
         $this->items = auth()->user()->reserves()->latest();
         $this->items = $this->Filter();
-        return view('front::livewire.pages.front.profile-page', ['items' => $this->items->paginate($this->pagination)]);
+        return view('front::livewire.pages.front.profile-page', ['items' => $this->items->get()]);
     }
 }

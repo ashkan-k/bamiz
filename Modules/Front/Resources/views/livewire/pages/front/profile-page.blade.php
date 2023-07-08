@@ -15,12 +15,13 @@
                             </div>
                             <div class="step">
                                 <form wire:submit.prevent="SubmitProfile"
-                                        method="post" enctype="multipart/form-data">
+                                      method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>نام</label>
-                                                <input wire:model.defer="first_name" type="text" class="form-control" id="first_name" name="first_name" value="">
+                                                <input wire:model.defer="first_name" type="text" class="form-control"
+                                                       id="first_name" name="first_name" value="">
 
                                                 @error('first_name')
                                                 <span class="text-danger text-wrap">{{ $message }}</span>
@@ -31,7 +32,8 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>نام خانوادگی</label>
-                                                <input wire:model.defer="last_name" type="text" class="form-control" id="last_name" name="last_name" value="">
+                                                <input wire:model.defer="last_name" type="text" class="form-control"
+                                                       id="last_name" name="last_name" value="">
 
                                                 @error('avatar')
                                                 <span class="text-danger text-wrap">{{ $message }}</span>
@@ -42,7 +44,8 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>شماره تلفن</label>
-                                                <input wire:model.defer="phone" type="number" class="form-control" id="phone" placeholder=""
+                                                <input wire:model.defer="phone" type="number" class="form-control"
+                                                       id="phone" placeholder=""
                                                        name="phone">
 
                                                 @error('phone')
@@ -54,7 +57,8 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>ایمیل</label>
-                                                <input wire:model.defer="email" type="text" class="form-control" id="email" name="email" value="">
+                                                <input wire:model.defer="email" type="text" class="form-control"
+                                                       id="email" name="email" value="">
 
                                                 @error('email')
                                                 <span class="text-danger text-wrap">{{ $message }}</span>
@@ -117,7 +121,6 @@
                         <div class="form_title">
                             <h3><strong>2</strong>لیست رزرو ها</h3>
                             <br>
-                            {{--                            <h6>در صورت تمایل می توانید میز خود را با انتخاب هر کدام از موارد زیر تزئین نمائید</h6>--}}
                             <h6>در صورت تمایل می توانید هر یک از رزرو های خود را تا پیش از زمان موعد لغو نمائید.</h6>
                             <br>
                             <table class="table table-striped cart-list">
@@ -151,22 +154,26 @@
                                         </td>
                                         <td>
 
-                                <span wire:click="$emit('triggerChangeStatusModal' , {{ $item }})"
-                                      class="label_mouse_cursor label label-{{ $item->status ? 'success' : 'danger' }}-border rounded">
-                                    @if($item->status)
-                                        فعال
-                                    @else
-                                        غیر فعال
-                                    @endif
-                                </span>
+                                            <span wire:click="$emit('triggerChangeStatusModal' , {{ $item }})"
+                                                  class="label_mouse_cursor label label-{{ $item->get_status_class() }}-border rounded">
+                                                {{ $item->get_status() }}
+                                            </span>
 
                                         </td>
 
                                         <td style="padding-right: 0 !important; text-align: center !important;">
-                                            <button
-                                                id="id_button_"
-                                                class="btn btn-danger"> کنسل
-                                            </button>
+                                            @if($item->status == 'cancel')
+                                                <button type="button"
+                                                        id="id_button_{{ $item->id }}"
+                                                        class="btn btn-sm btn-danger"> لغو شده
+                                                </button>
+                                            @else
+                                                <button type="button"
+                                                        wire:click="$emit('triggerCancel' , {{ $item->id }})"
+                                                        id="id_button_{{ $item->id }}"
+                                                        class="btn btn-sm btn-warning"> لغو
+                                                </button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -191,6 +198,38 @@
         window.addEventListener('profileStatusUpdated', event => {
             showToast('اطلاعات پروفایل شما با موفقیت ویرایش شد.', 'success');
             $('#id_avatar').val('');
+        });
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+        @this.on('triggerCancel', orderId => {
+            Swal.fire({
+                title: "هشدار ! ",
+                icon: 'warning',
+                text: "آیا از لغو این رزرو اطمینان دارید ؟ 🤔",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#00aced',
+                cancelButtonColor: '#e6294b',
+                confirmButtonText: 'تایید',
+                cancelButtonText: 'انصراف'
+            }).then((result) => {
+                //if user clicks on delete
+                if (result.value) {
+                    // calling destroy method to delete
+                @this.call('cancel', orderId)
+                    // success response
+                }
+            });
+        });
+        })
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener('reserveStatusUpdated', event => {
+            showToast('رزرو مورد نظر با موفقیت لغو شد.', 'success');
         });
     </script>
 @endpush
