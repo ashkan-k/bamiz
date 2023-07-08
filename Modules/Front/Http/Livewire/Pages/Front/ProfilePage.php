@@ -4,6 +4,7 @@ namespace Modules\Front\Http\Livewire\Pages\Front;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Modules\Dashboard\Http\Requests\ProfileRequest;
 use Modules\Reserve\Entities\Reserve;
 
 class ProfilePage extends Component
@@ -17,10 +18,55 @@ class ProfilePage extends Component
     public $status;
     protected $items;
 
+    public $first_name;
+    public $last_name;
+    public $username;
+    public $password;
+    public $password_confirmation;
+    public $email;
+    public $phone;
+    public $avatar;
+
+    protected function rules()
+    {
+        return (new ProfileRequest())->rules();
+    }
+
+    public function SubmitProfile()
+    {
+        $data = $this->validate();
+
+        $data['avatar'] = $this->avatar ? $this->UploadRealTime($this->avatar , 'avatars', $this->username) : $this->item->avatar;
+        $password = $data['password'];
+        unset($data['password']);
+
+        $this->item->update($data);
+        if ($password){
+            $this->item->set_password($password);
+            auth()->loginUsingId($this->item->id);
+        }
+
+        $this->avatar = null;
+
+        $this->dispatchBrowserEvent('profileStatusUpdated');
+    }
+
+    private function get_data_from_instance()
+    {
+        $this->user = auth()->user();
+        $this->first_name = $this->item->first_name;
+        $this->last_name = $this->item->last_name;
+        $this->username = $this->item->username;
+        $this->email = $this->item->email;
+        $this->phone = $this->item->phone;
+    }
+
     public function mount()
     {
         $this->status = request('status');
         $this->pagination = env('PAGINATION', 10);
+
+        $this->get_data_from_instance();
     }
 
     public function updated($propertyName)

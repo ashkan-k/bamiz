@@ -17,26 +17,83 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>نام و نام خانوادگی</label>
-                                            <input type="text" class="form-control" id="name" name="name" value="">
+                                            <label>نام</label>
+                                            <input wire:model.defer="first_name" type="text" class="form-control" id="first_name" name="first_name" value="">
+
+                                            @error('first_name')
+                                            <span class="text-danger text-wrap">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>نام خانوادگی</label>
+                                            <input wire:model.defer="last_name" type="text" class="form-control" id="last_name" name="last_name" value="">
+
+                                            @error('avatar')
+                                            <span class="text-danger text-wrap">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>شماره تلفن</label>
-                                            <input type="number" class="form-control" id="phoneNumber" placeholder=""
-                                                   name="phoneNumber">
+                                            <input wire:model.defer="phone" type="number" class="form-control" id="phone" placeholder=""
+                                                   name="phone">
+
+                                            @error('phone')
+                                            <span class="text-danger text-wrap">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>ایمیل</label>
+                                            <input wire:model.defer="email" type="text" class="form-control" id="email" name="email" value="">
+
+                                            @error('email')
+                                            <span class="text-danger text-wrap">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>آواتار</label>
+                                            <input type="file" name="avatar" id="id_avatar"
+                                                   wire:model.defer="avatar"
+                                                   class="form-control"
+                                                   placeholder="آواتار را وارد کنید">
+
+                                            @error('avatar')
+                                            <span class="text-danger text-wrap">{{ $message }}</span>
+                                            @enderror
+
+                                            @if(isset($user->avatar))
+                                                <div class="input-field col s12 mt-3">
+                                                    <p>تصویر قبلی:</p>
+                                                    <a href="{{ $user->avatar }}" target="_blank"><img
+                                                            src="{{ $user->avatar }}"
+                                                            width="70"
+                                                            alt="{{ $user->fullname() }}"></a>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <br>
                                             <button id="btn_fast_register" type="button"
                                                     class="btn_1 full-width outline"><i
-                                                    class="icon-user-add"></i>ثبت نام فوری
+                                                    class="icon-user"></i>ذخیره
                                             </button>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="row" id="verify_div" style="display: none;">
                                     <div class="col-sm-4">
