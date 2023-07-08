@@ -2,7 +2,10 @@
 
 namespace Modules\Front\Http\Livewire\Pages\Front;
 
+use App\Http\Traits\ImageUploader;
+use App\Http\Traits\Uploader;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use Modules\Dashboard\Http\Requests\ProfileRequest;
 use Modules\Reserve\Entities\Reserve;
@@ -10,6 +13,8 @@ use Modules\Reserve\Entities\Reserve;
 class ProfilePage extends Component
 {
     use WithPagination;
+    use WithFileUploads;
+    use Uploader;
 
     public $titlePage = '';
     public $pagination;
@@ -18,6 +23,7 @@ class ProfilePage extends Component
     public $status;
     protected $items;
 
+    public $user;
     public $first_name;
     public $last_name;
     public $username;
@@ -36,14 +42,14 @@ class ProfilePage extends Component
     {
         $data = $this->validate();
 
-        $data['avatar'] = $this->avatar ? $this->UploadRealTime($this->avatar , 'avatars', $this->username) : $this->item->avatar;
+        $data['avatar'] = $this->avatar ? $this->UploadRealTime($this->avatar , 'avatars', $this->phone) : $this->user->avatar;
         $password = $data['password'];
         unset($data['password']);
 
-        $this->item->update($data);
+        $this->user->update($data);
         if ($password){
-            $this->item->set_password($password);
-            auth()->loginUsingId($this->item->id);
+            $this->user->set_password($password);
+            auth()->loginUsingId($this->user->id);
         }
 
         $this->avatar = null;
@@ -54,11 +60,10 @@ class ProfilePage extends Component
     private function get_data_from_instance()
     {
         $this->user = auth()->user();
-        $this->first_name = $this->item->first_name;
-        $this->last_name = $this->item->last_name;
-        $this->username = $this->item->username;
-        $this->email = $this->item->email;
-        $this->phone = $this->item->phone;
+        $this->first_name = $this->user->first_name;
+        $this->last_name = $this->user->last_name;
+        $this->email = $this->user->email;
+        $this->phone = $this->user->phone;
     }
 
     public function mount()

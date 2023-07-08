@@ -35,7 +35,7 @@ class ProfilePage extends Component
     {
         $data = $this->validate();
 
-        $data['avatar'] = $this->avatar ? $this->UploadRealTime($this->avatar , 'avatars', $this->username) : $this->item->avatar;
+        $data['avatar'] = $this->avatar ? $this->UploadRealTime($this->avatar , 'avatars', $this->phone) : $this->item->avatar;
         $password = $data['password'];
         unset($data['password']);
 

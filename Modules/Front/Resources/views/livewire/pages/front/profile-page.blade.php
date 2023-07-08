@@ -14,105 +14,98 @@
                                 <h3><strong>1</strong>مشخصات کاربری</h3>
                             </div>
                             <div class="step">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>نام</label>
-                                            <input wire:model.defer="first_name" type="text" class="form-control" id="first_name" name="first_name" value="">
+                                <form wire:submit.prevent="SubmitProfile"
+                                        method="post" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>نام</label>
+                                                <input wire:model.defer="first_name" type="text" class="form-control" id="first_name" name="first_name" value="">
 
-                                            @error('first_name')
-                                            <span class="text-danger text-wrap">{{ $message }}</span>
-                                            @enderror
+                                                @error('first_name')
+                                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>نام خانوادگی</label>
-                                            <input wire:model.defer="last_name" type="text" class="form-control" id="last_name" name="last_name" value="">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>نام خانوادگی</label>
+                                                <input wire:model.defer="last_name" type="text" class="form-control" id="last_name" name="last_name" value="">
 
-                                            @error('avatar')
-                                            <span class="text-danger text-wrap">{{ $message }}</span>
-                                            @enderror
+                                                @error('avatar')
+                                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>شماره تلفن</label>
-                                            <input wire:model.defer="phone" type="number" class="form-control" id="phone" placeholder=""
-                                                   name="phone">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>شماره تلفن</label>
+                                                <input wire:model.defer="phone" type="number" class="form-control" id="phone" placeholder=""
+                                                       name="phone">
 
-                                            @error('phone')
-                                            <span class="text-danger text-wrap">{{ $message }}</span>
-                                            @enderror
+                                                @error('phone')
+                                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>ایمیل</label>
-                                            <input wire:model.defer="email" type="text" class="form-control" id="email" name="email" value="">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>ایمیل</label>
+                                                <input wire:model.defer="email" type="text" class="form-control" id="email" name="email" value="">
 
-                                            @error('email')
-                                            <span class="text-danger text-wrap">{{ $message }}</span>
-                                            @enderror
+                                                @error('email')
+                                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>آواتار</label>
-                                            <input type="file" name="avatar" id="id_avatar"
-                                                   wire:model.defer="avatar"
-                                                   class="form-control"
-                                                   placeholder="آواتار را وارد کنید">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>آواتار</label>
+                                                <input type="file" name="avatar" id="id_avatar"
+                                                       wire:model.defer="avatar"
+                                                       class="form-control"
+                                                       placeholder="آواتار را وارد کنید">
 
-                                            @error('avatar')
-                                            <span class="text-danger text-wrap">{{ $message }}</span>
-                                            @enderror
+                                                @error('avatar')
+                                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                                @enderror
 
-                                            @if(isset($user->avatar))
-                                                <div class="input-field col s12 mt-3">
-                                                    <p>تصویر قبلی:</p>
-                                                    <a href="{{ $user->avatar }}" target="_blank"><img
-                                                            src="{{ $user->avatar }}"
-                                                            width="70"
-                                                            alt="{{ $user->fullname() }}"></a>
-                                                </div>
-                                            @endif
+                                                @if(isset($user->avatar))
+                                                    <div class="input-field col s12 mt-3">
+                                                        <p style="margin-bottom: 0 !important;">تصویر قبلی:</p>
+                                                        <a href="{{ $user->avatar }}" target="_blank"><img
+                                                                src="{{ $user->avatar }}"
+                                                                width="70"
+                                                                alt="{{ $user->fullname() }}"></a>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <br>
-                                            <button id="btn_fast_register" type="button"
-                                                    class="btn_1 full-width outline"><i
-                                                    class="icon-user"></i>ذخیره
-                                            </button>
-                                        </div>
-                                    </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <br>
+                                                <button id="btn_fast_register" type="submit"
+                                                        wire:loading.remove wire:target="avatar"
+                                                        class="btn_1 full-width outline"><i
+                                                        class="icon-user"></i>ذخیره
+                                                </button>
 
-                                </div>
-                                <div class="row" id="verify_div" style="display: none;">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>کد تایید ثبت نام</label>
-                                            <input type="number" class="form-control" id="verify_code" placeholder=""
-                                                   name="verify_code">
+                                                <button wire:loading.class="d-block" wire:target="avatar" type="button"
+                                                        style="cursor: not-allowed !important;"
+                                                        disabled
+                                                        class="btn_1 full-width outline d-none"><i
+                                                        class="icon-user"></i>درحال آپلود...
+                                                </button>
+                                            </div>
                                         </div>
+
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <br>
-                                            <button id="btn_fast_register_verify" type="button"
-                                                    class="btn_1 full-width purchase"><i class="icon-check"></i>تاید ثبت
-                                                نام
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <hr>
@@ -193,4 +186,11 @@
     </div>
 </div>
 
-
+@push('StackScript')
+    <script type="text/javascript">
+        window.addEventListener('profileStatusUpdated', event => {
+            showToast('اطلاعات پروفایل شما با موفقیت ویرایش شد.', 'success');
+            $('#id_avatar').val('');
+        });
+    </script>
+@endpush

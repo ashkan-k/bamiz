@@ -18,17 +18,17 @@ class ProfileRequest extends FormRequest
             return [
                 'email' => [
                     'email',
-                    'required',
+                    'nullable',
                     Rule::unique('users', 'email')->ignore(auth()->user())
                 ],
                 'password' => 'nullable|confirmed',
                 'username' => [
-                    'required',
+                    'nullable',
                     Rule::unique('users', 'username')->ignore(auth()->user())
                 ],
                 'avatar' => 'nullable|image|mimes:jpeg,png,bmp,jpg',
                 'phone' => [
-                    'nullable',
+                    'required',
                     'min:11',
                     'max:11',
                     'regex:/(^\+?(09|98|0)?(9([0-9]{9}))$)/',
