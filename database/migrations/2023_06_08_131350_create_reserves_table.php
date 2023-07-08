@@ -22,7 +22,8 @@ return new class extends Migration
             $table->integer('guest_count')->default(1);
             $table->integer('room_number')->nullable();
             $table->string('amount')->default(0);
-            $table->boolean('status')->default(false);
+//            $table->boolean('status')->default(false);
+            $table->enum('status', EnumHelpers::$ReserveStatusEnum)->default('pending');
 //            $table->enum('type', EnumHelpers::$ReserveTypesEnum)->default('table_for_food');
 
             $table->integer('days_number')->nullable();

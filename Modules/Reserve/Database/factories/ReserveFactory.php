@@ -29,11 +29,12 @@ class ReserveFactory extends Factory
             'start_time' => fake()->time(),
             'end_time' => fake()->time(),
             'guest_count' => fake()->randomNumber(),
-            'status' => fake()->boolean(),
+//            'status' => fake()->boolean(),
             'user_description' => fake()->realText(),
             'user_id' => User::factory(),
             'place_id' => Place::factory(),
             'reserve_type_id' => ReserveType::factory(),
+            'status' => fake()->randomElement(EnumHelpers::$ReserveStatusEnum),
 //            'type' => fake()->randomElement(EnumHelpers::$ReserveTypesEnum),
         ];
     }

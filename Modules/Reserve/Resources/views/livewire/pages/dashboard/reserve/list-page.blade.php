@@ -65,13 +65,18 @@
                             </td>
                             <td>
 
+                                {{--                                <span wire:click="$emit('triggerChangeStatusModal' , {{ $item }})"--}}
+                                {{--                                      class="label_mouse_cursor label label-{{ $item->status ? 'success' : 'danger' }}-border rounded">--}}
+                                {{--                                    @if($item->status)--}}
+                                {{--                                        فعال--}}
+                                {{--                                    @else--}}
+                                {{--                                        غیر فعال--}}
+                                {{--                                    @endif--}}
+                                {{--                                </span>--}}
+
                                 <span wire:click="$emit('triggerChangeStatusModal' , {{ $item }})"
-                                      class="label_mouse_cursor label label-{{ $item->status ? 'success' : 'danger' }}-border rounded">
-                                    @if($item->status)
-                                        فعال
-                                    @else
-                                        غیر فعال
-                                    @endif
+                                      class="label_mouse_cursor label label-{{ $item->get_status_class() }}-border rounded">
+                                    {{ $item->get_status() }}
                                 </span>
 
                             </td>
@@ -143,11 +148,17 @@
                         <div>
                             <select wire:model="data.status" class="form-control" name="status">
 
-                                <option @if(isset($current_item_status) && $current_item_status == '1') selected
-                                        @endif value="1">فعال
+                                <option @if(isset($current_item_status) && $current_item_status == 'pending') selected
+                                        @endif value="pending">ناموفق
                                 </option>
-                                <option @if(isset($current_item_status) && $current_item_status == '0') selected
-                                        @endif value="0">غیرفعال
+                                <option @if(isset($current_item_status) && $current_item_status == 'success') selected
+                                        @endif value="success">موفق
+                                </option>
+                                <option @if(isset($current_item_status) && $current_item_status == 'cancel') selected
+                                        @endif value="cancel">کنسل شده
+                                </option>
+                                <option @if(isset($current_item_status) && $current_item_status == 'done') selected
+                                        @endif value="done">انجام شده
                                 </option>
 
                             </select>

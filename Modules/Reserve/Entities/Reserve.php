@@ -67,6 +67,32 @@ class Reserve extends Model
         return  'danger';
     }
 
+    public function get_status(){
+        if ($this->status == 'pending'){
+            return 'ناموفق';
+        }
+        elseif ($this->status == 'success'){
+            return 'موفق';
+        }
+        elseif ($this->status == 'cancel'){
+            return 'کنسل شده';
+        }
+        return 'انجام شده';
+    }
+
+    public function get_status_class(){
+        if ($this->status == 'pending'){
+            return 'warning';
+        }
+        elseif ($this->status == 'success'){
+            return 'info';
+        }
+        elseif ($this->status == 'cancel'){
+            return 'danger';
+        }
+        return  'success';
+    }
+
     public function get_option_names()
     {
         return implode(', ', $this->options()->get()->pluck('title')->toArray());

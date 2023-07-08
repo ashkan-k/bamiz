@@ -171,8 +171,8 @@
                                 class="menu-arrow"></span></a>
                         <ul class="list-unstyled" style="display: none;">
                             <li><a href="{{ route('reserves.index') }}">لیست رزرو ها</a></li>
-                            <li><a href="{{ route('reserves.index') }}?status=1">لیست رزرو ها موفق</a></li>
-                            <li><a href="{{ route('reserves.index') }}?status=0">لیست رزرو ها ناموفق</a></li>
+                            <li><a href="{{ route('reserves.index') }}?status=success">لیست رزرو ها در انتظار</a></li>
+                            <li><a href="{{ route('reserves.index') }}?status=done">لیست رزرو ها انجام شده</a></li>
                             <li><a href="{{ route('reserves.create') }}">افزودن رزرو</a></li>
                         </ul>
                     </li>
