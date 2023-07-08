@@ -28,7 +28,7 @@
                     @enderror
                 </div>
 
-                <a ng-style="counter > 0 && {'cursor': 'not-allowed'}" ng-click="SendNewCode()" ng-disabled="counter > 0 || is_submited" class="btn_1 rounded full-width">
+                <a ng-style="counter > 0 && {'cursor': 'not-allowed'}" ng-click="SendNewCode()" ng-disabled="counter > 0 || is_submited" class="btn_1 rounded outline full-width">
                     <span ng-show="counter > 0">دریافت مجدد کد تایید ([[counter]] ثانیه)</span>
                     <span ng-show="counter <= 0">دریافت مجدد کد تایید</span>
                 </a>
