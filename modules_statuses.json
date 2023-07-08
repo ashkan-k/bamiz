@@ -18,5 +18,6 @@
     "Front": true,
     "WorkTime": true,
     "ContactUs": true,
-    "Sms": true
+    "Sms": true,
+    "Auth": true
 }
