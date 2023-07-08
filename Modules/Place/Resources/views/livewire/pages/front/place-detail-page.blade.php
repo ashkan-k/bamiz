@@ -344,6 +344,7 @@
         @csrf
 
         @auth
+            <input type="hidden" name="place_type" value="{{ $object->type }}">
             <input type="hidden" name="place_id" value="{{ $object->id }}">
             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
         @endauth
@@ -672,10 +673,10 @@
                     $scope.is_submited = false;
                 } else {
                     @if($object->type == 'hotel')
-                        if (!$('input[name="hotel_room_id"]:checked').val()) {
-                            showToast('لطفا اتاق مد نظر خودتان را انتخاب کنید!', 'error');
-                            return;
-                        }
+                    if (!$('input[name="hotel_room_id"]:checked').val()) {
+                        showToast('لطفا اتاق مد نظر خودتان را انتخاب کنید!', 'error');
+                        return;
+                    }
                     @endif
 
                     $('#id_submit_button_2').css('cursor', 'not-allowed');
@@ -738,6 +739,12 @@
                 });
             }
         });
+    </script>
+
+    <script>
+        @if($errors->any() && (!$errors->has('body') && !$errors->has('title') && !$errors->has('star')))
+            $('<a href="#sign-in-dialog"></a>').click();
+        @endif
     </script>
 @endpush
 

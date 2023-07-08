@@ -14,8 +14,16 @@ class ReserveRequest extends FormRequest
      */
     public function rules()
     {
+        $after_date = \verta()->formatDate();
+        if (request('place_type') == 'hotel') {
+            $before_date = \verta()->addMonth();
+        } else {
+            $before_date = \verta()->addWeek();
+        }
+        $date_rules = "required|jdate:Y-m-d|after:{$after_date}|before:{$before_date}";
+
         return [
-            'date' => 'required|jdate:Y-m-d|after:' . \verta()->formatDate(),
+            'date' => $date_rules,
 //            'start_time' => 'required|date_format:H:i',
             'start_time' => 'required|numeric',
 //            'end_time' => 'date_format:H:i|after:start_time',
