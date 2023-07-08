@@ -47,8 +47,6 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-//            'name' => $request->name,
-//            'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
@@ -57,6 +55,6 @@ class RegisteredUserController extends Controller
 
         $this->SendVerifyCode($user);
 
-        return redirect('/');
+        return redirect(route('verify'));
     }
 }
