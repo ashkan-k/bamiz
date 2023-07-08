@@ -70,9 +70,16 @@
                 {{--            </div>--}}
                 {{--            <div class="divider"><span>Or</span></div>--}}
 
+
+                @if (session()->has('message'))
+                    <div class="mt-3 mb-3 text-success">
+                        <span>{{ session('message') }}</span>
+                    </div>
+                @endif
+
                 <div class="form-group">
                     <label for="id_phone">شماره موبایل</label>
-                    <input type="text" class="form-control" name="phone" id="id_phone">
+                    <input type="text" class="form-control" required name="phone" id="id_phone">
                     <i class="icon_phone"></i>
                     @error('phone')
                     <span class="text-danger text-wrap">{{ $message }}</span>
@@ -81,7 +88,7 @@
 
                 <div class="form-group">
                     <label for="id_password">رمز عبور</label>
-                    <input type="password" class="form-control" name="password" id="id_password">
+                    <input type="password" class="form-control" required name="password" id="id_password">
                     <i class="icon_lock_alt"></i>
                     @error('password')
                     <span class="text-danger text-wrap">{{ $message }}</span>
@@ -95,7 +102,7 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                    <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">رمز عبور خود را فراموش کرده
+                    <div class="float-right mt-1"><a id="forgot" href="{{ route('reset_password') }}">رمز عبور خود را فراموش کرده
                             اید؟</a></div>
                 </div>
 

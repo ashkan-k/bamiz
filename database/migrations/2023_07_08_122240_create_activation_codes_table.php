@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hotel_rooms', function (Blueprint $table) {
+        Schema::create('activation_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('price');
-            $table->text('image')->nullable();
-            $table->foreignId('place_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-
+            $table->string('code', 6);
+            $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('is_used')->default(false);
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotel_rooms');
+        Schema::dropIfExists('activation_codes');
     }
 };

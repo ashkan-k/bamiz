@@ -5,6 +5,7 @@ namespace App\Http\Traits;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
+use Modules\Auth\Entities\ActivationCode;
 use Modules\Sms\Helpers\sms_helper;
 use Modules\Sms\Jobs\SendSmsJob;
 

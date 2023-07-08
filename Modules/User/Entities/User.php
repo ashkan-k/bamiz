@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\Article\Entities\Article;
+use Modules\Auth\Entities\ActivationCode;
 use Modules\Comment\Entities\Comment;
 use Modules\Payment\Entities\Payment;
 use Modules\Place\Entities\Place;
@@ -115,6 +116,11 @@ class User extends Authenticatable
     }
 
     //
+
+    public function activation_codes()
+    {
+        return $this->hasMany(ActivationCode::class);
+    }
 
     public function articles()
     {
