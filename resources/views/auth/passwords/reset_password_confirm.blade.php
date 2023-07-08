@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div id="login">
+    <div id="login" ng-init="init()">
         <aside>
             <figure>
                 <a href="/"><img src="/front/img/logo_sticky.png" width="155" height="36" data-retina="true" alt=""
@@ -28,8 +28,14 @@
                     @enderror
                 </div>
 
+                <a ng-style="counter > 0 && {'cursor': 'not-allowed'}" ng-click="SendNewCode()" ng-disabled="counter > 0 || is_submited" class="btn_1 rounded full-width">
+                    <span ng-show="counter > 0">دریافت مجدد کد تایید ([[counter]] ثانیه)</span>
+                    <span ng-show="counter <= 0">دریافت مجدد کد تایید</span>
+                </a>
+
                 <a onclick="$('#id_frm').submit()" class="btn_1 rounded full-width">تأیید</a>
-                <div class="text-center add_top_10">رمز عبور خود را به یاد می آورید؟! <strong><a href="{{ route('login') }}">وارد شوید</a></strong></div>
+                <div class="text-center add_top_10">رمز عبور خود را به یاد می آورید؟! <strong><a
+                            href="{{ route('login') }}">وارد شوید</a></strong></div>
             </form>
             <div class="copy">{{ $settings['copyright'] }}</div>
         </aside>
@@ -47,12 +53,16 @@
 
             @include('auth.auth_js')
 
-                $scope.init = function () {
+            $scope.init = function () {
                 $scope.phone = '{{ session('user_phone') }}';
                 countDown();
             }
 
             $scope.SendNewCode = function () {
+                if ($scope.counter > 0){
+                    return;
+                }
+
                 $scope.is_submited = true;
 
                 var url = '{{ route('send_verify_code') }}';

@@ -32,11 +32,19 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="/front/css/custom.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css"
+          id="theme-styles">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+          crossorigin="anonymous"/>
+
     @yield('Styles')
 
 </head>
 
-<body id="login_bg" class="rtl">
+<body id="login_bg" class="rtl" ng-app="myApp" ng-controller="myCtrl">
 
 <nav id="menu" class="fake_menu"></nav>
 
@@ -46,10 +54,27 @@
 
 @yield('content')
 
-{{--<script src="/front/js/jquery-2.2.4.min.js"></script>--}}
+<script type="text/javascript" src="/admin/assets/js/jquery-3.2.1.min.js"></script>
 <script src="/front/js/common_scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous"></script>
+<script src="/helpers/js/angular.min.js"></script>
+<script src="/helpers/js/helpers.js"></script>
 <script src="/front/js/main_rtl.js"></script>
 <script src="/front/assets/validate.js"></script>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.config(function ($interpolateProvider, $httpProvider) {
+        $interpolateProvider.startSymbol('[[');
+        $interpolateProvider.endSymbol(']]');
+
+        // $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+        // $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+        $httpProvider.defaults.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+    });
+</script>
 
 </body>
 
