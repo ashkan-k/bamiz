@@ -16,3 +16,4 @@ use Modules\Front\Http\Controllers\FrontController;
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('about-us', [FrontController::class, 'about_us'])->name('about_us');
+Route::get('profile', [FrontController::class, 'profile'])->name('profile');

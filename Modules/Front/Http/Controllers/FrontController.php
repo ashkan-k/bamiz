@@ -36,6 +36,11 @@ class FrontController extends Controller
         return view('front::about_us', compact('places'));
     }
 
+    public function profile()
+    {
+        return view('front::profile');
+    }
+
 //    public function mizbans($slug)
 //    {
 //        return view('Front.mizbans' , compact('slug'));
