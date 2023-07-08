@@ -1,5 +1,14 @@
 <div>
-    <div class="bg_color_1" style="transform: none; margin-top: 100px !important;">
+{{--    <div class="bg_color_1" style="transform: none; margin-top: 100px !important;">--}}
+    <div>
+        <section class="hero_in general">
+            <div class="wrapper">
+                <div class="container">
+                    <h1 class="fadeInUp"><span></span>پروفایل کاربری و رزرو های من</h1>
+                </div>
+            </div>
+        </section>
+
         <div class="container margin_60_35" style="transform: none;">
             <div class="row" style="transform: none;">
                 <div class="col-lg-12">

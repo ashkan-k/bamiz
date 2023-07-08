@@ -88,6 +88,7 @@
                 </form>
                 <li><a onclick="$('#frm_logout').submit()" class="login" title="خروج">خروج</a></li>
                 <li><a href="{{ route('wishlists') }}" class="wishlist_bt_top" title="محبوب های من">محبوب های من</a></li>
+                <li><span> <a href="{{ route('user_profile') }}">پروفایل کاربری</a> </span></li>
             @else
                 <li><span> <a href="{{ route('login') }}">ورود</a> </span></li>
 
