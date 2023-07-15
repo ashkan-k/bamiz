@@ -593,8 +593,6 @@
 @section('Scripts')
     <script>
         $(document).ready(function () {
-            // showToast('سلام', 'success')
-
             $("#sign-in").delay(1500).fadeIn(500);
         });
     </script>
