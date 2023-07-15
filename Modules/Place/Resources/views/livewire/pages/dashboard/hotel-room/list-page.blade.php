@@ -14,7 +14,7 @@
                     </div>
                 </form>
 
-                <a class="btn btn-primary pull-right" href="{{ route('hotel-rooms.create') }}?place_id={{ $place_id }}">افزودن میز مرکز جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('hotel-rooms.create') }}?place_id={{ $place_id }}">افزودن اتاق هتل جدید</a>
 
                 <table class="table table-hover">
                     <thead>

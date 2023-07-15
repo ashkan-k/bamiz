@@ -28,6 +28,7 @@ class ReserveRequest extends FormRequest
             'start_time' => 'required|numeric',
 //            'end_time' => 'date_format:H:i|after:start_time',
             'guest_count' => 'required|numeric',
+            'children_guest_count' => 'nullable|numeric',
             'chair_number' => 'nullable|numeric',
             'room_number' => 'nullable|numeric',
             'days_number' => 'nullable|numeric',

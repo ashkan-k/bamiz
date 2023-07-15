@@ -363,13 +363,30 @@
                         تعداد صندلی های هر میز
                         : {{ $object->chairs_people_count }}
                     </p>
-                    {{--                    <small style="color: red">تعداد صندلی های هر میز--}}
-                    {{--                        : {{ $object->chairs_people_count }}</small>--}}
                 @endif
                 @error('guest_count')
                 <span class="text-danger text-wrap">{{ $message }}</span>
                 @enderror
             </div>
+
+            @if($object->type == 'hotel')
+                <div class="form-group">
+
+                    <label>تعداد خردسالان <small style="color: red">(کمتر از دو سال)</small></label>
+                    <input class="form-control" type="text"
+                           value="{{ old('children_guest_count') }}"
+                           name="children_guest_count" id="quest_count"
+                           placeholder="تعداد خردسالان">
+
+                    <p class="text-danger" style="margin-bottom: 0 !important;">
+                        نفر اضافه یا فرزند بالای دوسال در محل هتل حساب میشود.
+                    </p>
+
+                    @error('children_guest_count')
+                    <span class="text-danger text-wrap">{{ $message }}</span>
+                    @enderror
+                </div>
+            @endif
 
             <div class="form-group">
                 <label>تاریخ رزرو</label>
@@ -576,6 +593,8 @@
 @section('Scripts')
     <script>
         $(document).ready(function () {
+            // showToast('سلام', 'success')
+
             $("#sign-in").delay(1500).fadeIn(500);
         });
     </script>
@@ -743,7 +762,7 @@
 
     <script>
         @if($errors->any() && (!$errors->has('body') && !$errors->has('title') && !$errors->has('star')))
-            $('<a href="#sign-in-dialog"></a>').click();
+        $('<a href="#sign-in-dialog"></a>').click();
         @endif
     </script>
 @endpush

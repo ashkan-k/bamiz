@@ -53,7 +53,7 @@
                             <td>{{ \Hekmatinasser\Verta\Verta:: instance($item->date)->format('%B %d، %Y') }}</td>
                             <td>{{ $item->start_time }}</td>
                             <td>{{ $item->end_time }}</td>
-                            <td>{{ $item->guest_count }}</td>
+                            <td>{{ $item->guest_count + $item->children_guest_count }}</td>
                             <td>{{ number_format($item->amount) }}</td>
                             <td>
                                 {{  $item->get_type() }}

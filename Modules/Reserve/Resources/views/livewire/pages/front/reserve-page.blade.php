@@ -136,6 +136,18 @@
                                         <strong> {{ $data['guest_count'] }} مهمان </strong>
                                     </td>
                                 </tr>
+
+                                @if(isset($data['children_guest_count']) && $place->type == 'hotel')
+                                    <tr>
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            تعداد خردسالان
+                                        </td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            <strong> {{ $data['children_guest_count'] ?? 0 }} مهمان </strong>
+                                        </td>
+                                    </tr>
+                                @endif
+
                                 <tr>
                                     <td style="padding-right: 0 !important; text-align: center !important;">
                                         @if($place->type == 'hotel')

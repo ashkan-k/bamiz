@@ -24,7 +24,8 @@ class FrontReserveController extends Controller
     public function reserve(ReserveRequest $request, Place $place)
     {
         $data = $request->validated();
-//        $data['amount'] = Setting::getPriceFromSettings() * $data['guest_count']
+
+        $data['children_guest_count'] = $data['children_guest_count'] ?? 0;
 
         if (isset($data['table_id'])) {
             $table = Table::find($data['table_id']);
