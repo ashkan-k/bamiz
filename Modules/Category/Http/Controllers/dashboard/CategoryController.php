@@ -14,6 +14,7 @@ class CategoryController extends Controller
 {
     use Responses, Uploader;
 
+
     public function index()
     {
         return view('category::dashboard.list');
