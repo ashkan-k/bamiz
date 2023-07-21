@@ -15,6 +15,10 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+if (!env('APP_DEBUG')) {
+    $app->usePublicPath($app->basePath('public_html'));
+}
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
