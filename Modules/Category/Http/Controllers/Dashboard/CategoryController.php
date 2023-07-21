@@ -1,7 +1,6 @@
 <?php
 
 namespace Modules\Category\Http\Controllers\Dashboard;
-
 use App\Http\Traits\Responses;
 use App\Http\Traits\Uploader;
 use Illuminate\Contracts\Support\Renderable;
