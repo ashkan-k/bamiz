@@ -69,8 +69,8 @@
                         <a href="#"><i class="fa fa-list-alt" aria-hidden="true"></i> <span>دسته بندی بامیز</span> <span
                                 class="menu-arrow"></span></a>
                         <ul class="list-unstyled" style="display: none;">
-                            <li><a href="{{ route('place-categories.index') }}">لیست دسته بندی</a></li>
-                            <li><a href="{{ route('place-categories.create') }}">افزودن دسته بندی</a></li>
+                            <li><a href="{{ route('categories.index') }}">لیست دسته بندی</a></li>
+                            <li><a href="{{ route('categories.create') }}">افزودن دسته بندی</a></li>
                         </ul>
                     </li>
 

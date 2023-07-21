@@ -12,7 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Category\Http\Controllers\Dashboard\PlaceCategoryController;
+use Modules\Category\Http\Controllers\Dashboard\CategoryController;
 
-Route::resource('place-categories', PlaceCategoryController::class);
+Route::resource('categories', CategoryController::class);
 

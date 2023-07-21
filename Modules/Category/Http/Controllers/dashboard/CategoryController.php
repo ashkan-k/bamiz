@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller;
 use Modules\Category\Entities\Category;
 use Modules\Category\Http\Requests\CategoryRequest;
 
-class PlaceCategoryController extends Controller
+class CategoryController extends Controller
 {
     use Responses, Uploader;
 
@@ -30,19 +30,19 @@ class PlaceCategoryController extends Controller
         $image = $this->UploadFile($request, 'image', 'category_images', $request->title);
 
         Category::create(array_merge($request->all(), ['image' => $image]));
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'place-categories.index');
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'categories.index');
     }
 
-    public function edit(Category $place_category)
+    public function edit(Category $category)
     {
-        return view('category::dashboard.form', compact('place_category'));
+        return view('category::dashboard.form', compact('category'));
     }
 
-    public function update(CategoryRequest $request, Category $place_category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $image = $this->UploadFile($request, 'image', 'category_images', $place_category->title, $place_category->image);
+        $image = $this->UploadFile($request, 'image', 'category_images', $category->title, $category->image);
 
-        $place_category->update(array_merge($request->all(), ['image' => $image]));
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'place-categories.index');
+        $category->update(array_merge($request->all(), ['image' => $image]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'categories.index');
     }
 }
