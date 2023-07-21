@@ -10,6 +10,9 @@ trait ImageUploader
 {
     protected function UploadImage($file , $base_folder , $folder)
     {
+        if (!$file){
+            return null;
+        }
         $year = Carbon::now()->year;
         $mouth = Carbon::now()->month;
         $day = Carbon::now()->day;
