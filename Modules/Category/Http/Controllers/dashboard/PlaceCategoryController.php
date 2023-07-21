@@ -30,19 +30,19 @@ class PlaceCategoryController extends Controller
         $image = $this->UploadFile($request, 'image', 'category_images', $request->title);
 
         Category::create(array_merge($request->all(), ['image' => $image]));
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'categories.index');
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'place-categories.index');
     }
 
-    public function edit(Category $category)
+    public function edit(Category $place_category)
     {
-        return view('category::dashboard.form', compact('category'));
+        return view('category::dashboard.form', compact('place_category'));
     }
 
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CategoryRequest $request, Category $place_category)
     {
-        $image = $this->UploadFile($request, 'image', 'category_images', $category->title, $category->image);
+        $image = $this->UploadFile($request, 'image', 'category_images', $place_category->title, $place_category->image);
 
-        $category->update(array_merge($request->all(), ['image' => $image]));
-        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'categories.index');
+        $place_category->update(array_merge($request->all(), ['image' => $image]));
+        return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'place-categories.index');
     }
 }

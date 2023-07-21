@@ -5,7 +5,7 @@
                 <h2 class="card-title"><b>{{ $titlePage }}</b></h2>
 
                 <form class="form-horizontal"
-                      action="{{ $type == 'edit' ? route('categories.update' , $item->id) : route('categories.store') }}"
+                      action="{{ $type == 'edit' ? route('place-categories.update' , $item->id) : route('place-categories.store') }}"
                       method="post"
                       enctype="multipart/form-data">
 
@@ -83,7 +83,7 @@
                     <div class="col-lg-12">
                         <div class="m-1-25 m-b-20">
                             <div class="modal-footer">
-                                <a href="{{ route('categories.index') }}"
+                                <a href="{{ route('place-categories.index') }}"
                                    class="btn btn-danger btn-border-radius waves-effect">
                                     بازگشت
                                 </a>

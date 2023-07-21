@@ -14,7 +14,7 @@
                     </div>
                 </form>
 
-                <a class="btn btn-primary pull-right" href="{{ route('categories.create') }}">افزودن دسته بندی جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('place-categories.create') }}">افزودن دسته بندی جدید</a>
 
                 <table class="table table-hover">
                     <thead>
@@ -49,7 +49,7 @@
 
                             <td>
                                 <div class="buttons ">
-                                    <a href="{{ route('categories.edit' , $item->id) }}"
+                                    <a href="{{ route('place-categories.edit' , $item->id) }}"
                                        class="btn btn-primary btn-action mr-1"
                                        data-toggle="tooltip" title=""
                                        data-original-title="ویرایش"><i

@@ -14,5 +14,5 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Category\Http\Controllers\Dashboard\PlaceCategoryController;
 
-Route::resource('categories', PlaceCategoryController::class);
+Route::resource('place-categories', PlaceCategoryController::class);
 
