@@ -8,7 +8,7 @@
 @endsection
 @section('content')
 
-    @livewire('option::pages.dashboard.option_place.list-page' , [
+    @livewire('option::pages.dashboard.option-place.list-page' , [
 
     'titlePage' => 'تشریفات',
 
