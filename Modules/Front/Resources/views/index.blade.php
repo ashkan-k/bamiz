@@ -232,38 +232,38 @@
         <!-- /section -->
 
         <!-- section -->
-        <section class="add_bottom_45">
-            <div class="main_title_3">
-                <span><em></em></span>
-                <h2>جدیدترین تصاویر</h2>
-                <p>جدیدترین تصاویر رستوران، کافه و هتل های بامیز </p>
-            </div>
-            <div class="row">
+{{--        <section class="add_bottom_45">--}}
+{{--            <div class="main_title_3">--}}
+{{--                <span><em></em></span>--}}
+{{--                <h2>جدیدترین تصاویر</h2>--}}
+{{--                <p>جدیدترین تصاویر رستوران، کافه و هتل های بامیز </p>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
 
-                @foreach($latest_galleries as $lg)
+{{--                @foreach($latest_galleries as $lg)--}}
 
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <a href="{{ $lg->get_image() }}" class="grid_item">
-                            <figure>
-                                <div class="score"><strong>5</strong></div>
-                                <img src="{{ $lg->get_image() }}" class="img-fluid"
-                                     alt="{{ $lg->place ? $lg->place->name : '---' }}"
-                                     style="height:200px;width:400px">
-                                <div class="info">
-                                    <h3> مرکز {{ $lg->place ? $lg->place->name : '---' }} </h3>
-                                </div>
-                            </figure>
-                        </a>
-                    </div>
+{{--                    <div class="col-xl-3 col-lg-6 col-md-6">--}}
+{{--                        <a href="{{ $lg->get_image() }}" class="grid_item">--}}
+{{--                            <figure>--}}
+{{--                                <div class="score"><strong>5</strong></div>--}}
+{{--                                <img src="{{ $lg->get_image() }}" class="img-fluid"--}}
+{{--                                     alt="{{ $lg->place ? $lg->place->name : '---' }}"--}}
+{{--                                     style="height:200px;width:400px">--}}
+{{--                                <div class="info">--}}
+{{--                                    <h3> مرکز {{ $lg->place ? $lg->place->name : '---' }} </h3>--}}
+{{--                                </div>--}}
+{{--                            </figure>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
-                @endforeach
+{{--                @endforeach--}}
 
-            </div>
-            <!-- /row -->
-            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('galleries') }}"
-                                                                              class="btn_1 rounded">نمایش
-                    همه</a></p>
-        </section>
+{{--            </div>--}}
+{{--            <!-- /row -->--}}
+{{--            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('galleries') }}"--}}
+{{--                                                                              class="btn_1 rounded">نمایش--}}
+{{--                    همه</a></p>--}}
+{{--        </section>--}}
         <!-- /section -->
 
         {{--        <div class="banner mb-0">--}}
