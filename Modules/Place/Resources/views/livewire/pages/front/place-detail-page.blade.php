@@ -147,6 +147,7 @@
                                 @foreach($object->images()->get() as $image)
                                     <div class="item">
                                         <a href="{{ $image->get_image() }}" target="_blank"><img
+                                                style="width: 300px!important; height: 169px !important;"
                                                 src="{{ $image->get_image() }}" alt="{{ $object->name }}"></a>
                                     </div>
                                 @endforeach
