@@ -129,7 +129,7 @@
                                  style="width: 300px !important; height: 169px !important; !important; ;border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55);">
                                 <label class="control-label">
                                     <a href="{{ $object->get_menu_image('original') }}" target="_blank"><img
-                                            style="border-radius: 20px; margin-bottom: 8px;"
+                                            style="border-radius: 20px; margin-bottom: 8px; width: 300px!important; height: 169px !important;"
                                             src="{{ $object->get_menu_image(300) }}"></a>
                                 </label>
                             </div>
@@ -147,7 +147,6 @@
                                 @foreach($object->images()->get() as $image)
                                     <div class="item">
                                         <a href="{{ $image->get_image() }}" target="_blank"><img
-                                                style="width: 300px!important; height: 169px !important;"
                                                 src="{{ $image->get_image() }}" alt="{{ $object->name }}"></a>
                                     </div>
                                 @endforeach
