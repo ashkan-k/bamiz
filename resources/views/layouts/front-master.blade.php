@@ -87,12 +87,13 @@
                     @csrf
                 </form>
                 <li><a onclick="$('#frm_logout').submit()" class="login" title="خروج">خروج</a></li>
-                <li><a href="{{ route('wishlists') }}" class="wishlist_bt_top" title="محبوب های من">محبوب های من</a></li>
+                <li><a href="{{ route('wishlists') }}" class="wishlist_bt_top" title="محبوب های من">محبوب های من</a>
+                </li>
                 <li><span> <a href="{{ route('user_profile') }}">پروفایل کاربری</a> </span></li>
             @else
-                <li><span> <a href="{{ route('login') }}">ورود</a> </span></li>
+                <li><span>  </span></li>
 
-                <li><span> <a href="{{ route('register') }}">عضویت</a> </span></li>
+                <li><span> <a href="{{ route('register') }}">عضویت / ورود</a> </span></li>
             @endif
         </ul>
         <!-- /top_menu -->
@@ -262,13 +263,15 @@
 
 <div id="toTop"></div><!-- Back to top button -->
 
-@auth
-    @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'place_detail')
-        <p class="btn_home_align" style="text-align: center !important;">
-            <a style="display: none !important;" href="#sign-in-dialog" id="sign-in" class="btn_1 rounded">ثبت سفارش</a>
-        </p>
-    @endif
-@endauth
+@if(\Illuminate\Support\Facades\Route::currentRouteName() == 'place_detail')
+    <p class="btn_home_align" style="text-align: center !important;">
+        @auth
+            <a style="display: none !important;" href="#sign-in-dialog" id="sign-in" class="btn_1 rounded">رزرو</a>
+        @else
+            <a style="display: none !important;" onclick="window.location.href='{{ route('register') }}'" id="sign-in" class="btn_1 rounded">رزرو</a>
+        @endif
+    </p>
+@endif
 
 <!-- COMMON SCRIPTS -->
 <script src="/front/js/common_scripts.js"></script>

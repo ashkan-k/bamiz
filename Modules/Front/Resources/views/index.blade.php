@@ -17,7 +17,7 @@
                             <div class="col-lg-9">
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="search"
-                                           placeholder="بخشی از نام مرکز میزبان و یا دسته بندی و... را وارد نمائید">
+                                           placeholder="بخشی از نام مرکز میزبان و... را وارد نمائید">
                                 </div>
                             </div>
                             <div class="col-lg-3">
