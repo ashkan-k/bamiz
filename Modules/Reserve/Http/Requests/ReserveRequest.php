@@ -22,10 +22,15 @@ class ReserveRequest extends FormRequest
         }
         $date_rules = "required|jdate:Y-m-d|after:{$after_date}|before:{$before_date}";
 
+        $start_time_rules = 'numeric';
+        if (request('place_type') != 'hotel') {
+            $start_time_rules .= '|required';
+        }
+
         return [
             'date' => $date_rules,
 //            'start_time' => 'required|date_format:H:i',
-            'start_time' => 'required|numeric',
+            'start_time' => $start_time_rules,
 //            'end_time' => 'date_format:H:i|after:start_time',
             'guest_count' => 'required|numeric',
             'children_guest_count' => 'nullable|numeric',

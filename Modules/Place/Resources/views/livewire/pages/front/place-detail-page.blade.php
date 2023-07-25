@@ -358,12 +358,19 @@
                        value="{{ old('guest_count') }}"
                        name="guest_count" id="quest_count"
                        placeholder="تعداد مهمانان">
+                {{--                @if(in_array($object->type, ['restaurant', 'cafe']))--}}
+                {{--                    <p class="text-danger" style="margin-bottom: 0 !important;">--}}
+                {{--                        تعداد صندلی های هر میز--}}
+                {{--                        : {{ $object->chairs_people_count }}--}}
+                {{--                    </p>--}}
+                {{--                @endif--}}
+
                 @if(in_array($object->type, ['restaurant', 'cafe']))
                     <p class="text-danger" style="margin-bottom: 0 !important;">
-                        تعداد صندلی های هر میز
-                        : {{ $object->chairs_people_count }}
+                        در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ کنید.
                     </p>
                 @endif
+
                 @error('guest_count')
                 <span class="text-danger text-wrap">{{ $message }}</span>
                 @enderror
@@ -413,22 +420,25 @@
                 </div>
             @endif
 
-            <div class="form-group" style="margin-bottom: 0 !important;">
-                <label>ساعت رزرو</label>
-                <select required class="form-control" id="chain_no" name="start_time">
-                    <option value="">ساعت رزرو را انتخاب کنید</option>
+            @if($object->type != 'hotel')
+                <div class="form-group" style="margin-bottom: 0 !important;">
+                    <label>ساعت رزرو</label>
+                    <select required class="form-control" id="chain_no" name="start_time">
+                        <option value="">ساعت رزرو را انتخاب کنید</option>
 
-                    @foreach($times as $c)
-                        <option @if(old('start_time') == $c) selected @endif value="{{ $c }}">
-                            ساعت {{ $c }} </option>
-                    @endforeach
+                        @foreach($times as $c)
+                            <option @if(old('start_time') == $c) selected @endif value="{{ $c }}">
+                                ساعت {{ $c }} </option>
+                        @endforeach
 
-                </select>
+                    </select>
 
-                @error('start_time')
-                <span class="text-danger text-wrap">{{ $message }}</span>
-                @enderror
-            </div>
+                    @error('start_time')
+                    <span class="text-danger text-wrap">{{ $message }}</span>
+                    @enderror
+                </div>
+            @endif
+
             @if(in_array($object->type, ['restaurant', 'cafe']))
                 <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل
                     دو

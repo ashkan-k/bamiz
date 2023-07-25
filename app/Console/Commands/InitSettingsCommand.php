@@ -42,7 +42,7 @@ class InitSettingsCommand extends Command
         'advertise_banner_title' => "عنوان بنر تبلیغاتی",
         'advertise_banner_text' => "توضیخاتی بنر تبلیغاتی قرار گرفته در صفحه اصلی",
         'advertise_banner_link' => "http://google.com",
-        'advertise_banner_image' => "/front/img/banner_bg_desktop.jpg",
+        'advertise_banner_image' => "/front/img/banner_1.jpg",
 
         # Social
         'email' => "bamiz.ir@gmail.com",
