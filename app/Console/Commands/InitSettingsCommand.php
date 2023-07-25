@@ -15,7 +15,7 @@ class InitSettingsCommand extends Command
         'website_terms_text' => "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.",
         'app_terms_text' => "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.",
         'introduction' => 'سامانه رزرو میز ، امکانی را در اختیار کاربران قرار می دهد که با استفاده از تورمجازی (تصاویر 360 درجه) در کافه ها و رستوران ها گشت و گذار داشته باشند تا هم با محیط کافه و رستوران ها آشنا شوند و هم بتوانند میز مورد نظر خود را با استفاده از تورمجازی انتخاب و برای تاریخی مشخص رزرو نمایند.',
-        'banner_title' => "رزرو میز کافه رستوران و هتل با تورمجازی",
+        'banner_title' => "سامانه خدمات رزرواسیون بامیز",
         'banner_description' => "کافه و رستوران یا هتل خود را جهت مشاهده تورمجازی و رزرو آنلاین جستجو نمائید",
         'banner_image' => "/front/img/banner_sample.jpg",
         'banner_video_mp4' => "/front/video/adventure.mp4",
@@ -41,18 +41,18 @@ class InitSettingsCommand extends Command
         #Banner
         'advertise_banner_title' => "عنوان بنر تبلیغاتی",
         'advertise_banner_text' => "توضیخاتی بنر تبلیغاتی قرار گرفته در صفحه اصلی",
-        'advertise_banner_link' => "http://google.com",
-        'advertise_banner_image' => "/front/img/banner_1.jpg",
+        'advertise_banner_link' => '/about-us',
+        'advertise_banner_image' => "/front/img/banner_2.jpg",
 
         # Social
         'email' => "bamiz.ir@gmail.com",
-        'telegram' => "bamiz",
-        'whatsapp' => "https=>//wa.me/qr/bamiz_watsapp",
-        'twitter' => "bamiz",
-        'youtube' => "bamiz",
-        'instagram' => "bamiz",
-        'aparat' => "bamiz",
-        'facebook' => "bamiz",
+        'telegram' => "bamiz.ir",
+        'whatsapp' => "https=>//wa.me/qr/bamiz.ir_watsapp",
+        'twitter' => "bamiz.ir",
+        'youtube' => "bamiz.ir",
+        'instagram' => "bamiz.ir",
+        'aparat' => "bamiz.ir",
+        'facebook' => "bamiz.ir",
     ];
 
     /**

@@ -8559,6 +8559,12 @@ a.social_bt.google:before {
     }
 }
 
+@media screen and (max-width: 990px) {
+    .map_single{
+       height: 265px !important;
+    }
+}
+
 .wish_bt:hover{
     cursor: pointer !important;
 }

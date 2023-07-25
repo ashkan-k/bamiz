@@ -65,7 +65,19 @@
 
             </div>
 
-            <div class="banner mt-5" style='background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat !important;'>
+            <div class="banner mt-5"
+                 style='    background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 60px;
+    position: relative;
+}'
+{{--                 style='background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat !important;'--}}
+            >
                 <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
                     <div>
                         <h3>{{ $settings['advertise_banner_title'] }}</h3>

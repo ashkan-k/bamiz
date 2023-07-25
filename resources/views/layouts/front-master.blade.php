@@ -149,11 +149,11 @@
                     <div class="follow_us">
                         <ul>
                             <li>ما را دنبال کنید</li>
-                            <li><a href="{{ $settings['facebook'] }}"><i style="font-family: FontAwesome !important;"
+                            <li><a href="{{ $settings['facebook'] }}"><i style="font-family: themify!important;"
                                                                          class="ti-facebook"></i></a></li>
-                            <li><a href="{{ $settings['twitter'] }}"><i style="font-family: FontAwesome !important;"
+                            <li><a href="{{ $settings['twitter'] }}"><i style="font-family: themify!important;"
                                                                         class="ti-twitter-alt"></i></a></li>
-                            <li><a href="{{ $settings['instagram'] }}"><i style="font-family: FontAwesome !important;"
+                            <li><a href="{{ $settings['instagram'] }}"><i style="font-family: themify!important;"
                                                                           class="ti-instagram"></i></a></li>
                         </ul>
                     </div>
