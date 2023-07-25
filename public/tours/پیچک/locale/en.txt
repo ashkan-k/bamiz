@@ -1,0 +1,68 @@
+#: locale=en
+
+## E-Learning
+
+### Question Screen
+quizQuestion_1EEE11B4_10B3_0A48_41A0_2492D3DDA893.ok = OK
+
+### Report Screen
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.title = - SCORE -
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.completion = Completed
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.questionsCorrect = Correct
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.downloadCSV = Download .csv
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.questionsIncorrect = Incorrect
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.items = Items Found
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.questions = Questions
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.repeat = Repeat
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.submitToLMS = Submit
+quizScore_1EEC61B4_10B3_0A48_41AF_B237EF1500FB.elapsedTime = Time
+
+### Score Name
+score1.label = Score 1
+
+### Timeout Screen
+quizTimeout_1EE921B4_10B3_0A48_41A0_05EDC9CFACFE.title = - TIMEOUT -
+quizTimeout_1EE921B4_10B3_0A48_41A0_05EDC9CFACFE.repeat = Repeat
+quizTimeout_1EE921B4_10B3_0A48_41A0_05EDC9CFACFE.score = View Score
+
+## Hotspot
+
+### Tooltip
+HotspotPanoramaOverlayArea_01DDC5C2_10B1_75CB_4198_A8D1260618CE.toolTip = خروجی
+HotspotPanoramaOverlayArea_026BC58C_10D1_0A5F_4174_341AF2CD5B32.toolTip = طبقه اول
+HotspotPanoramaOverlayArea_0221C6B3_10D0_F649_41A0_18BA45A8BC12.toolTip = طبقه بالا
+HotspotPanoramaOverlayArea_01C0EB26_10BF_3E48_41A8_D4AA60A3B4F2.toolTip = ورودی
+
+## Media
+
+### Audio
+audio_017F343E_10B3_0ABB_41A8_DC39F001A184.path = null
+audio_1E3E4083_10B1_0A48_419F_C337A8177392.path = null
+audio_0261E1F3_10D3_0DC9_41AC_61F595B0D205.path = null
+audio_1F63882D_10B1_FA59_4161_8922D86F0484.path = null
+audiores_00EFCBC5_10B1_3DC8_417F_3983DB0E86A4.mp3Url = media/audio_0261E1F3_10D3_0DC9_41AC_61F595B0D205_en.mp3
+audiores_00EFCBC5_10B1_3DC8_417F_3983DB0E86A4.mp3Url = media/audio_0261E1F3_10D3_0DC9_41AC_61F595B0D205_en.mp3
+audiores_00EFCBC5_10B1_3DC8_417F_3983DB0E86A4.mp3Url = media/audio_0261E1F3_10D3_0DC9_41AC_61F595B0D205_en.mp3
+audiores_00EFCBC5_10B1_3DC8_417F_3983DB0E86A4.oggUrl = media/audio_0261E1F3_10D3_0DC9_41AC_61F595B0D205_en.ogg
+audiores_00EFCBC5_10B1_3DC8_417F_3983DB0E86A4.oggUrl = media/audio_0261E1F3_10D3_0DC9_41AC_61F595B0D205_en.ogg
+audiores_00EFCBC5_10B1_3DC8_417F_3983DB0E86A4.oggUrl = media/audio_0261E1F3_10D3_0DC9_41AC_61F595B0D205_en.ogg
+audiores_06798C06_10F1_1A4B_419B_E944C167E36F.mp3Url = media/audio_1E3E4083_10B1_0A48_419F_C337A8177392_en.mp3
+audiores_06798C06_10F1_1A4B_419B_E944C167E36F.oggUrl = media/audio_1E3E4083_10B1_0A48_419F_C337A8177392_en.ogg
+
+### Title
+panorama_1B8BFFFC_10B1_15BF_4199_E80A4427F4F3.label = 360_1636_Stitch_XHC
+panorama_1A8ADEDA_10B1_17FB_41AC_4A539E821AA3.label = 360_1639_Stitch_XHC
+panorama_1A8063A3_10B1_0E49_419F_B62852B39864.label = 360_1641_Stitch_XHC
+
+## Skin
+
+### Tooltip
+IconButton_138AC8EB_1C81_A718_41B9_C0E861AF42F4.toolTip = Fullscreen
+IconButton_138AC8EB_1C81_A718_41B9_C0E861AF42F4_mobile.toolTip = Fullscreen
+
+## Tour
+
+### Description
+
+### Title
+tour.name = Untitled 3
