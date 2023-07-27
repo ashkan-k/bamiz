@@ -117,6 +117,11 @@ class Place extends Model
         return $saved;
     }
 
+    public function scopeActivePlaces($query)
+    {
+        return $query->where('is_active', 1);
+    }
+
     //
 
     public function user()

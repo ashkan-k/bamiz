@@ -18,6 +18,7 @@ class PlacesPage extends Component
 
     public $search = '';
     public $category;
+    public $category_object;
 
     protected $places;
     protected $categories;
@@ -68,9 +69,13 @@ class PlacesPage extends Component
 
     public function render()
     {
-        $this->places = Place::with(['province', 'category'])->Search($this->search)->with(['wish_lists'])->latest();
+        $this->places = Place::ActivePlaces()->with(['province', 'category'])->Search($this->search)->with(['wish_lists'])->latest();
         $this->FilterByCategory();
         $this->FilterByCity();
+
+        if ($this->category){
+            $this->category_object = Category::where('id', $this->category)->first();
+        }
 
         $data = [
             'places' => $this->places->paginate($this->pagination),

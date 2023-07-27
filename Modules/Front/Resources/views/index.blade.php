@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="header-video">
-        <div id="hero_video" style="background: url({{ $settings['banner_video_mp4'] }})">
+        <div id="hero_video" style="background: url({{ $settings['banner_image'] }})">
             <div class="wrapper">
                 <div class="container">
                     <h3>{{ $settings['banner_title'] }}</h3>

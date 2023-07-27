@@ -1,6 +1,6 @@
 <div>
     <section class="hero_in restaurants start_bg_zoom">
-        <div class="wrapper">
+        <div class="wrapper" style="background: url(@if(isset($category_object)) {{ $category_object->get_image() }} @else {{ $settings['banner_image'] }} @endif">
             <div class="container">
                 <h1 class="fadeInUp animated"><span></span>{{ $titlePage }}</h1>
             </div>

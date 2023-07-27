@@ -26,6 +26,7 @@ class FrontPlaceController extends Controller
 
     public function place_detail(Place $place)
     {
+        abort_unless($place->is_active, 404);
         return view('place::front.place-detail', compact('place'));
     }
 }
