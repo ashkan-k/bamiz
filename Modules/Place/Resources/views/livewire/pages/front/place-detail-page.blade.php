@@ -568,7 +568,16 @@
                             <input id="id_option_{{ $op->id }}" type="checkbox" name="option_id[]"
                                    value="{{ $op->id }}">
 
-                            <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
+                            @if($op->discount_amount)
+                                <p class="pull-left">
+                                        <del>{{ number_format($op->amount) ?: '---' }}</del> تومان
+                                        <br>
+                                        {{ number_format($op->discount_amount) ?: '---' }} تومان
+                                </p>
+                            @else
+                                <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
+                            @endif
+
 
                             <a href="{{ $op->get_image() }}"><img class="pull-left mb-3"
                                                                   style="clear: both !important;"

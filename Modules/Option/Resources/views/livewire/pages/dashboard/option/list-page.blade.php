@@ -22,6 +22,7 @@
                         <th>ردیف</th>
                         <th>عنوان</th>
                         <th>قیمت</th>
+                        <th>قیمت تخفیفی</th>
                         <th>عکس</th>
                         <th>تاریخ ثبت</th>
                         <th>اعمال</th>
@@ -39,6 +40,8 @@
                             </td>
                             <td>{{ $item->title }}</td>
                             <td>{{ number_format($item->amount) }} تومان</td>
+
+                            <td>{{ number_format($item->discount_amount) ?: '---' }} تومان</td>
                             <td>
                                 <a href="{{ $item->get_image() }}" target="-_blank"><img width="50"
                                                                                          src="{{ $item->get_image() }}"

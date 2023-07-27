@@ -57,6 +57,20 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label col-lg-2">ملبغ تخفیفی (تومان)</label>
+                        <div class="col-md-10">
+                            <input id="discount_amount" type="number" name="discount_amount"
+                                   class="form-control"
+                                   placeholder="ملبغ تخفیفی (تومان) را وارد کنید"
+                                   value="@if(old('discount_amount')){{ old('discount_amount') }}@elseif(isset($item->discount_amount)){{ $item->discount_amount }}@else 1 @endif">
+
+                            @error('discount_amount')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label col-lg-2">عکس</label>
                         <div class="col-sm-10">
 

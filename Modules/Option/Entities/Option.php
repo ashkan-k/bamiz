@@ -14,7 +14,7 @@ class Option extends Model
     use Searchable;
 
     protected $fillable = [
-        "title", "amount", "description", "image", "discount"
+        "title", "amount", "description", "image", "discount_amount"
     ];
 
     protected $search_fields = [

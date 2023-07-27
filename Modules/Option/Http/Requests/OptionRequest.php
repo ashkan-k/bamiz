@@ -17,6 +17,7 @@ class OptionRequest extends FormRequest
             'title' => 'required|string',
             'description' => 'required',
             'amount' => 'required|numeric',
+            'discount_amount' => 'nullable|numeric',
             'image' => 'mimes:jpeg,png,bmp,jpg',
         ];
 
