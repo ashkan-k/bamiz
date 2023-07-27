@@ -203,19 +203,21 @@
             <hr class="large">
 
 
+            {{--//////////////////////////////////////--}}
+
 
             <div class="main_title_2 mt-5">
                 <span><em></em></span>
-                <h2>کافه رستوران های محبوب</h2>
-                <p>کافه و رستوران هایی که بیشترین رزرو آنلاین را دارند</p>
+                <h2>کافه رستوران های تخفیف دار</h2>
+                <p>کافه و رستوران هایی که تخفیف رزرو غذ دارند</p>
             </div>
             <div id="discount_products" class="owl-carousel owl-theme">
 
             @php $options = []; @endphp
-            @foreach($discount_places as $place)
+            @foreach($discount_places as $dis_place)
 
                 @php
-                    foreach ($place->options as $o)
+                    foreach ($dis_place->options as $o)
                      {
                             $options[] = $o['title'];
                      }
@@ -226,28 +228,28 @@
                         <div class="box_grid" style="border-radius: 10px">
                             <figure>
 
-                                <a href="{{ route('place_detail', $place->slug) }}"><img
-                                        src="{{ $place->cover['images']['900'] }}"
+                                <a href="{{ route('place_detail', $dis_place->slug) }}"><img
+                                        src="{{ $dis_place->cover['images']['900'] }}"
                                         class="img-fluid"
-                                        alt="{{ $place->name }}"
+                                        alt="{{ $dis_place->name }}"
                                         width="800" height="533">
                                     <div class="read_more"><span>مشاهده</span></div>
                                 </a>
 
                                 <small style="background-color: #09b052e6;right: 0;color: white;font-size: medium;">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    {{ $place->province ? $place->province->title : '---' }}
+                                    {{ $dis_place->province ? $dis_place->province->title : '---' }}
                                 </small>
                             </figure>
                             <div class="wrapper row" style="height: 115px !important;">
                                 <div class="">
-                                    <img src="{{ $place->cover['images']['300'] }}" style="width: 50px; height: 50px">
+                                    <img src="{{ $dis_place->cover['images']['300'] }}" style="width: 50px; height: 50px">
                                 </div>
                                 <div class="text-center" style="padding: 10px ">
                                     <h3>
-                                        <a href="{{ route('place_detail', $place->slug) }}">{{ \Illuminate\Support\Str::limit($place->name, 30) }}</a>
+                                        <a href="{{ route('place_detail', $dis_place->slug) }}">{{ \Illuminate\Support\Str::limit($dis_place->name, 30) }}</a>
                                     </h3>
-                                    <span>{!! \Illuminate\Support\Str::limit($place->description, 30) !!}</span>
+                                    <span>{!! \Illuminate\Support\Str::limit($dis_place->description, 30) !!}</span>
                                 </div>
                             </div>
                             <ul>
@@ -301,7 +303,7 @@
                                 <li class="text-left" title="بازدید">
                                     <i class="fa fa-eye"></i>
 
-                                    {{ $place->viewCount }} بازدید
+                                    {{ $dis_place->viewCount }} بازدید
 
                                 </li>
                             </ul>

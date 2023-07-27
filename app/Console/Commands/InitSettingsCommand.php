@@ -23,7 +23,7 @@ class InitSettingsCommand extends Command
         'copyright' => "کپی رایت بامیز",
         'logo' => "/front/img/logo_sticky.svg",
         'address' => "تهران - بزرگراه امام رضا(ع) - پاکدشت - مامازند - دفتر مرکزی خرید و فروش کالا",
-        'phone' => "09396988720\n09031770113",
+        'phone' => "09031770113",
         'manager_phone_1' => "09031770113",
         'manager_phone_2' => "09396988720",
         'contact_us_phone' => "+989396988720",
