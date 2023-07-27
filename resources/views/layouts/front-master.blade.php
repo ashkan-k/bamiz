@@ -268,7 +268,7 @@
         @auth
             <a style="display: none !important;" href="#sign-in-dialog" id="sign-in" class="btn_1 rounded">رزرو</a>
         @else
-            <a style="display: none !important;" onclick="window.location.href='{{ route('register') }}'" id="sign-in" class="btn_1 rounded">رزرو</a>
+            <a style="display: none !important;" onclick="window.location.href='{{ route('register') }}?next={{ request()->path() }}'" id="sign-in" class="btn_1 rounded">رزرو</a>
         @endif
     </p>
 @endif

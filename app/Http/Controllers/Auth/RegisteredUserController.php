@@ -55,6 +55,11 @@ class RegisteredUserController extends Controller
 
         $this->SendVerifyCode($user);
 
-        return redirect(route('verify'));
+        $next_url = '/';
+        if (\request('next')){
+            $next_url = \request('next');
+        }
+
+        return redirect(route('verify') . '?next=' . $next_url);
     }
 }

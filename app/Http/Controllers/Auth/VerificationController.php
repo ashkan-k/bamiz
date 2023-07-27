@@ -32,6 +32,10 @@ class VerificationController extends Controller
         $user->update(['phone_verified_at' => Carbon::now()]);
         $this->change_is_used($user);
 
+        if (\request('next')){
+            $next_route = route('login') . '?next=' . \request('next');
+            return $this->SuccessRedirectUrl('تایید حساب کاربری شما باموفقیت انجام شد.', $next_route);
+        }
         return $this->SuccessRedirect('تایید حساب کاربری شما باموفقیت انجام شد.', 'login');
     }
 }

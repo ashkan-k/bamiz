@@ -10,7 +10,7 @@
                 <a href="/"><img src="/front/img/logo_sticky.png" width="155" height="36" data-retina="true" alt=""
                                  class="logo_sticky"></a>
             </figure>
-            <form method="POST" action="{{ route('verify_store') }}" id="id_frm">
+            <form method="POST" action="{{ route('verify_store') }}?next={{ request('next') }}" id="id_frm">
                 @csrf
 
                 @if (session()->has('message'))
