@@ -26,6 +26,7 @@ class FrontReserveController extends Controller
         $data = $request->validated();
 
         $data['children_guest_count'] = $data['children_guest_count'] ?? 0;
+        $options_price = 0;
 
         if (isset($data['table_id'])) {
             $table = Table::find($data['table_id']);
@@ -46,10 +47,15 @@ class FrontReserveController extends Controller
         if ($request->option_id) {
             $reserve->options()->sync($request->option_id);
 
-            $reserve->amount += $reserve->options()->sum('amount');
+            $discount_options_amount = $reserve->options()->whereNotNull('discount_amount')->sum('discount_amount');
+            $amount = $reserve->options()->whereNull('discount_amount')->sum('amount');
+
+            $options_price = round($discount_options_amount + $amount);
+
+            $reserve->amount += $options_price;
             $reserve->save();
         }
 
-        return view('reserve::front.reserve', compact('data', 'place', 'reserve'));
+        return view('reserve::front.reserve', compact('data', 'place', 'reserve', 'options_price'));
     }
 }

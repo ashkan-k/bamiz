@@ -117,7 +117,7 @@ class BaseGatewayController extends Controller
 
             if ($result->Status == 100) {
                 $payment->update(['status' => true, 'refID' => $result->RefID]);
-                $payment->reserve()->update(['status' => true]);
+                $payment->reserve()->update(['status' => 'success']);
                 return [true, $payment];
             }
         }

@@ -49,14 +49,11 @@ class ReservePage extends Component
 
     public function mount()
     {
-//        $this->price = Setting::getPriceFromSettings();
-//        $this->total_price = $this->price * $this->data['guest_count'];
         $this->total_price = $this->reserve->amount;
 
         $options = $this->reserve->options()->get();
         if ($options){
             $this->options = $options->pluck('id')->toArray();
-            $this->options_price = $options->sum('amount');
             $this->DispatchOptionEvent();
         }
     }

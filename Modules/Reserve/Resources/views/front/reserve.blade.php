@@ -10,5 +10,6 @@
     'data' => $data,
     'place' => $place,
     'reserve' => $reserve,
+    'options_price' => $options_price,
     ])
 @endsection

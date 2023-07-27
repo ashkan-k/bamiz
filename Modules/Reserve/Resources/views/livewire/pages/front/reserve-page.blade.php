@@ -193,7 +193,7 @@
                                 @foreach($place->options as $op)
                                     <tr>
                                         <td style="padding-right: 0 !important; text-align: center !important;"> {{ $op->title }} </td>
-                                        <td style="padding-right: 0 !important; text-align: center !important;"> {{ number_format($op->amount) }}
+                                        <td style="padding-right: 0 !important; text-align: center !important;"> @if($op->discount_amount) {{ number_format($op->discount_amount) }} @else {{ number_format($op->amount) }} @endif
                                             تومان
                                         </td>
                                         <td style="padding-right: 0 !important; text-align: center !important;">
@@ -205,13 +205,13 @@
                                         <td style="padding-right: 0 !important; text-align: center !important;"> {!! \Illuminate\Support\Str::limit($op->description , 20) !!} </td>
                                         <td style="padding-right: 0 !important; text-align: center !important;">
                                             @if(array_search($op->id , $options) !== false)
-                                                <button wire:click="RemoveOption('{{ $op->id }}', {{ $op->amount }})"
+                                                <button wire:click="RemoveOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"
                                                         id="id_button_{{ $op->id }}"
                                                         onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
                                                         class="btn btn-danger"> حذف
                                                 </button>
                                             @else
-                                                <button wire:click="AddNewOption('{{ $op->id }}', {{ $op->amount }})"
+                                                <button wire:click="AddNewOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"
                                                         id="id_button_{{ $op->id }}"
                                                         onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
                                                         class="btn btn-success"> افزودن
