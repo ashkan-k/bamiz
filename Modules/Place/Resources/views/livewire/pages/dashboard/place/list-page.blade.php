@@ -29,6 +29,7 @@
                         <th>استان</th>
                         <th>شهر</th>
                         <th>نوع</th>
+                        <th>تخفیف غذا</th>
                         <th>عکس</th>
                         <th>منوی غذا</th>
                         <th>وضعیت</th>
@@ -53,6 +54,7 @@
                             <td>{{ $item->province ? $item->province->title : '---' }}</td>
                             <td>{{ $item->city ? $item->city->title : '---' }}</td>
                             <td>{{ $item->get_type() }}</td>
+                            <td>{{ $item->food_discount ?: '0' }} %</td>
                             <td>
                                 <a href="{{ $item->get_cover(300) }}" target="-_blank"><img width="50"
                                                                                             src="{{ $item->get_cover(300) }}"

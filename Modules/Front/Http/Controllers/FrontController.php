@@ -20,14 +20,15 @@ class FrontController extends Controller
             'reserves as reserves_count' => function ($query) {
                 $query->where('status', 1);
             },
-        ])->with($this->place_relations)->orderByDesc('reserves_count')->limit(5)->get();
+        ])->with($this->place_relations)->orderByDesc('reserves_count')->limit(10)->get();
 
-        $latest_places = Place::with('province')->latest()->limit(4)->get();
+//        $latest_places = Place::with('province')->latest()->limit(4)->get();
+        $discount_places = Place::where('food_discount', '>', 0)->with('province')->latest()->limit(10)->get();
         $categories = Category::whereDoesntHave('children')->get();
         $latest_galleries = Gallery::with('place')->latest()->limit(20)->get();
         $latest_articles = Article::where('status', 'publish')->latest()->limit(4)->get();
 
-        return view('front::index', compact('popular_places', 'categories', 'latest_articles', 'latest_galleries', 'latest_places'));
+        return view('front::index', compact('popular_places', 'categories', 'latest_articles', 'latest_galleries', 'discount_places'));
     }
 
     public function about_us()

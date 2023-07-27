@@ -257,6 +257,29 @@
 		}
 	});
 
+    $('#discount_products').owlCarousel({
+        center: true,
+        items: 2,
+        loop: true,
+        rtl: true,
+        margin: 0,
+        responsive: {
+            0: {
+                items: 1
+            },
+            767: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            },
+            1400: {
+                items: 4
+            }
+        }
+    });
+
+
 	$('#reccomended_adventure').owlCarousel({
 		center: false,
 		items: 2,

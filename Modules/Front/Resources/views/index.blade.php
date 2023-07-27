@@ -201,46 +201,163 @@
                                                                               class="btn_1 rounded">نمایش
                     همه</a></p>
             <hr class="large">
-        </section>
-    </div>
-    <div class="container container-custom margin_30_95">
-        <section class="add_bottom_45">
-            <div class="main_title_3">
+
+
+
+            <div class="main_title_2 mt-5">
                 <span><em></em></span>
-                <h2>جدیدترین ها</h2>
-                <p>کافه رستوران هایی که جدیداً امکان رزور آنلاین میز را فراهم نموده اند</p>
+                <h2>کافه رستوران های محبوب</h2>
+                <p>کافه و رستوران هایی که بیشترین رزرو آنلاین را دارند</p>
             </div>
-            <div class="row">
+            <div id="discount_products" class="owl-carousel owl-theme">
 
-                @foreach($latest_places as $place)
+            @php $options = []; @endphp
+            @foreach($discount_places as $place)
 
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <a href="{{ route('place_detail', $place->slug) }}" class="grid_item">
+                @php
+                    foreach ($place->options as $o)
+                     {
+                            $options[] = $o['title'];
+                     }
+                @endphp
+
+                <!-- item -->
+                    <div class="item">
+                        <div class="box_grid" style="border-radius: 10px">
                             <figure>
-                                <small
-                                    style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">
-                                    <h6 style="color: white"><i class="fa fa-map-marker"
-                                                                aria-hidden="true"></i>&nbsp;{{ $place->province ? $place->province->title : '---' }}
-                                    </h6>
+
+                                <a href="{{ route('place_detail', $place->slug) }}"><img
+                                        src="{{ $place->cover['images']['900'] }}"
+                                        class="img-fluid"
+                                        alt="{{ $place->name }}"
+                                        width="800" height="533">
+                                    <div class="read_more"><span>مشاهده</span></div>
+                                </a>
+
+                                <small style="background-color: #09b052e6;right: 0;color: white;font-size: medium;">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    {{ $place->province ? $place->province->title : '---' }}
                                 </small>
-                                <img src="{{ $place->cover['images']['original'] }}" class="img-fluid"
-                                     style="height:200px;width:400px" alt="{{ $place->name }}">
-                                <div class="info">
-                                    <h3>{{ $place->name }}</h3>
-                                </div>
                             </figure>
-                        </a>
+                            <div class="wrapper row" style="height: 115px !important;">
+                                <div class="">
+                                    <img src="{{ $place->cover['images']['300'] }}" style="width: 50px; height: 50px">
+                                </div>
+                                <div class="text-center" style="padding: 10px ">
+                                    <h3>
+                                        <a href="{{ route('place_detail', $place->slug) }}">{{ \Illuminate\Support\Str::limit($place->name, 30) }}</a>
+                                    </h3>
+                                    <span>{!! \Illuminate\Support\Str::limit($place->description, 30) !!}</span>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-wifi" title="اینترنت رایگان"
+
+                                       @if(in_array('اینترنت رایگان' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
+                                        @endif
+
+                                    ></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-music" title="موسیقی زنده"
+
+                                       @if(in_array('موسیقی زنده' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
+                                        @endif
+
+                                    ></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-tree" title="فضای سبز"
+
+                                       @if(in_array('فضای سبز' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
+                                        @endif
+
+                                    ></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star" title="فضای vip"
+
+                                       @if(in_array('فضای vip' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
+                                        @endif
+
+                                    ></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-child" title="فضای بازی"
+
+                                       @if(in_array('فضای بازی' , $options))
+                                       style="color: green; font-family: FontAwesome !important;"
+                                        @endif
+
+                                    ></i>
+                                </li>
+
+
+                                <li class="text-left" title="بازدید">
+                                    <i class="fa fa-eye"></i>
+
+                                    {{ $place->viewCount }} بازدید
+
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+                    <!-- /item -->
 
-            @endforeach
+                @endforeach
 
-            <!-- /grid_item -->
             </div>
-            <!-- /row -->
+            <!-- /carousel -->
             <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"
                                                                               class="btn_1 rounded">نمایش
                     همه</a></p>
+            <hr class="large">
+
         </section>
+    </div>
+    <div class="container container-custom margin_30_95">
+{{--        <section class="add_bottom_45">--}}
+{{--            <div class="main_title_3">--}}
+{{--                <span><em></em></span>--}}
+{{--                <h2>جدیدترین ها</h2>--}}
+{{--                <p>کافه رستوران هایی که جدیداً امکان رزور آنلاین میز را فراهم نموده اند</p>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+
+{{--                @foreach($latest_places as $place)--}}
+
+{{--                    <div class="col-xl-3 col-lg-6 col-md-6">--}}
+{{--                        <a href="{{ route('place_detail', $place->slug) }}" class="grid_item">--}}
+{{--                            <figure>--}}
+{{--                                <small--}}
+{{--                                    style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">--}}
+{{--                                    <h6 style="color: white"><i class="fa fa-map-marker"--}}
+{{--                                                                aria-hidden="true"></i>&nbsp;{{ $place->province ? $place->province->title : '---' }}--}}
+{{--                                    </h6>--}}
+{{--                                </small>--}}
+{{--                                <img src="{{ $place->cover['images']['original'] }}" class="img-fluid"--}}
+{{--                                     style="height:200px;width:400px" alt="{{ $place->name }}">--}}
+{{--                                <div class="info">--}}
+{{--                                    <h3>{{ $place->name }}</h3>--}}
+{{--                                </div>--}}
+{{--                            </figure>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+
+{{--            @endforeach--}}
+
+{{--            <!-- /grid_item -->--}}
+{{--            </div>--}}
+{{--            <!-- /row -->--}}
+{{--            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"--}}
+{{--                                                                              class="btn_1 rounded">نمایش--}}
+{{--                    همه</a></p>--}}
+{{--        </section>--}}
         <!-- /section -->
 
         <!-- section -->

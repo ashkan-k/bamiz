@@ -17,6 +17,7 @@ class PlaceRequest extends FormRequest
             'name' => 'required|string',
             'description' => 'required',
             'tour_link' => 'required',
+            'food_discount' => 'nullable|numeric',
             'chairs_people_count' => 'required|numeric',
             'province_id' => 'required|exists:provinces,id',
             'city_id' => 'required|exists:cities,id',

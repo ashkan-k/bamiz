@@ -68,6 +68,20 @@
                         </div>
                     </div>
 
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">تخفیف غذا (درصد)</label>
+                            <div class="col-md-10">
+                                <input id="food_discount" type="number" name="food_discount"
+                                       class="form-control" required
+                                       placeholder="تخفیف غذا را وارد کنید"
+                                       value="@if(old('food_discount')){{ old('food_discount') }}@elseif(isset($item->food_discount)){{ $item->food_discount }}@endif">
+
+                                @error('food_discount')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
                     @if(auth()->user()->is_staff())
                         <div class="form-group" wire:ignore>
                             <label class="control-label col-lg-2">مدیر مرکز</label>

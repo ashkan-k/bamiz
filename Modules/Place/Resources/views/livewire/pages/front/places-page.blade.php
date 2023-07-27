@@ -55,7 +55,9 @@
                 @if(!$places->isEmpty())
                     @foreach($places as $place)
                         <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="box_grid" style="height: 504px !important;">
+                            <div class="box_grid"
+{{--                                 style="height: 504px !important;"--}}
+                            >
                                 <figure>
                                     @if(auth()->check())
                                         @if($place->wish_lists->where('user_id' , auth()->user()->id)->isEmpty())
@@ -74,7 +76,7 @@
 
                                     <small>{{ $place->category ? $place->category->title : '---' }}</small>
                                 </figure>
-                                <div class="wrapper" style="height: 170px !important;">
+                                <div class="wrapper" style="height: 140px !important;">
                                     <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
                                             class="icon_star"></i><i class="icon_star"></i></div>
                                     <h3>
