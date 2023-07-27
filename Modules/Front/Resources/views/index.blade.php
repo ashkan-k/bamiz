@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="header-video">
-        <div id="hero_video">
+        <div id="hero_video" style="background: url({{ $settings['banner_video_mp4'] }})">
             <div class="wrapper">
                 <div class="container">
                     <h3>{{ $settings['banner_title'] }}</h3>
@@ -123,7 +123,7 @@
                                     {{ $place->province ? $place->province->title : '---' }}
                                 </small>
                             </figure>
-                            <div class="wrapper row" style="height: 175px !important;">
+                            <div class="wrapper row" style="height: 115px !important;">
                                 <div class="">
                                     <img src="{{ $place->cover['images']['300'] }}" style="width: 50px; height: 50px">
                                 </div>
