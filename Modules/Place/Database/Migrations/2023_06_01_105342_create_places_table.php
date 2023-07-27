@@ -30,6 +30,8 @@ return new class extends Migration
             $table->double('address_lat')->nullable();
             $table->double('address_long')->nullable();
 
+            $table->integer('food_discount')->nullable();
+
             $table->enum('type', EnumHelpers::$PlaceTypesEnum)->default('restaurant');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

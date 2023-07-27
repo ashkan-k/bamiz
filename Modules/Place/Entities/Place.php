@@ -39,6 +39,7 @@ class Place extends Model
         'address_lat',
         'address_long',
         'type',
+        'food_discount',
     ];
 
     protected $casts = [
