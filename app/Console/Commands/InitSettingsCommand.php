@@ -36,7 +36,8 @@ class InitSettingsCommand extends Command
         'footer_working_time' => "هفت روز هفته (حتی روزهای تعطیل) ، ساعت ۹-۲۴ پاسخگوی شما هستیم.",
 
         'work_with_us_text' => "کافه یا رستوران هایی که تمایل دارند از امکان رزرو آنلاین میز با استفاده از تورمجازی بهره مند شوند بر روی دکمه زیر کلیک کنید تا از شرایط و مفاد همکاری مطلع شوید",
-        'work_with_us_image' => "/front/img/bg_call_section.jpg",
+//        'work_with_us_image' => "/front/img/bg_call_section.jpg",
+        'work_with_us_image' => "/front/img/contact_us_2.jpg",
 
         #Banner
         'advertise_banner_title' => "عنوان بنر تبلیغاتی",
