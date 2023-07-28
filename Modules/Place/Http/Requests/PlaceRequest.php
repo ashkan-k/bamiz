@@ -38,7 +38,7 @@ class PlaceRequest extends FormRequest
 
         if (request()->method == 'POST') {
             $rules['cover'] .= '|required';
-            $rules['tour_gif'] .= '|required';
+//            $rules['tour_gif'] .= '|required';
         }
 
         return $rules;
