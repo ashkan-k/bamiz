@@ -68,19 +68,19 @@
                         </div>
                     </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-lg-2">تخفیف غذا (درصد)</label>
-                            <div class="col-md-10">
-                                <input id="food_discount" type="number" name="food_discount"
-                                       class="form-control" required
-                                       placeholder="تخفیف غذا را وارد کنید"
-                                       value="@if(old('food_discount')){{ old('food_discount') }}@elseif(isset($item->food_discount)){{ $item->food_discount }}@endif">
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">تخفیف (درصد)</label>
+                        <div class="col-md-10">
+                            <input id="food_discount" type="number" name="food_discount"
+                                   class="form-control"
+                                   placeholder="تخفیف را وارد کنید"
+                                   value="@if(old('food_discount')){{ old('food_discount') }}@elseif(isset($item->food_discount)){{ $item->food_discount }}@endif">
 
-                                @error('food_discount')
-                                <span class="text-danger text-wrap">{{ $message }}</span>
-                                @enderror
-                            </div>
+                            @error('food_discount')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
                         </div>
+                    </div>
 
                     @if(auth()->user()->is_staff())
                         <div class="form-group" wire:ignore>
@@ -310,6 +310,36 @@
                                             </label>
                                         </div>
                                     @endforeach
+                                </div>
+                            @endif
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">بنر</label>
+                        <div class="col-sm-10">
+
+                            <input type="file" name="banner"
+                                   class="form-control"
+                                   placeholder="بنر را وارد کنید"
+                                   value="{{ old('banner') }}">
+
+                            @error('banner')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+
+                            @if(isset($item) && $item->banner)
+                                <div class="row">
+                                    <br>
+                                    <div class="col-sm-2 col-xs-10 "
+                                         style="border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55); margin-right: 30px ; margin-top: 30px">
+                                        <label class="control-label">
+                                            <a href="{{ $item->banner }}" target="_blank"><img
+                                                    style="border-radius: 20px; margin-bottom: 8px;"
+                                                    src="{{ $item->banner }}" width="100%"></a>
+                                        </label>
+                                    </div>
                                 </div>
                             @endif
                         </div>

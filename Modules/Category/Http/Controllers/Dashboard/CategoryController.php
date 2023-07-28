@@ -27,8 +27,9 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $image = $this->UploadFile($request, 'image', 'category_images', $request->title);
+        $banner = $this->UploadFile($request, 'banner', 'places_banners', $request->title);
 
-        Category::create(array_merge($request->all(), ['image' => $image]));
+        Category::create(array_merge($request->all(), ['image' => $image, 'banner' => $banner]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'categories.index');
     }
 
@@ -40,8 +41,9 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $image = $this->UploadFile($request, 'image', 'category_images', $category->title, $category->image);
+        $banner = $this->UploadFile($request, 'banner', 'category_banners', $category->title, $category->banner);
 
-        $category->update(array_merge($request->all(), ['image' => $image]));
+        $category->update(array_merge($request->all(), ['image' => $image, 'banner' => $banner]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'categories.index');
     }
 }

@@ -7,19 +7,20 @@ use Illuminate\Support\Str;
 
 trait Uploader
 {
-    private function Upload($file , $base_folder , $folder)
+    private function Upload($file, $base_folder, $folder)
     {
         $year = Carbon::now()->year;
         $mouth = Carbon::now()->month;
         $day = Carbon::now()->day;
 
-        $base_folder = str_contains($base_folder, '.') ? str_replace('.', '-', $base_folder) : $base_folder;
-        $folder = str_contains($folder, '.') ? str_replace('.', '-', $folder) : $folder;
+        $base_folder = str_replace('.', '-', $base_folder);
+        $folder = str_replace('.', '-', $folder);
+        $original_name = str_replace('+', '-', $file->getClientOriginalName());
 
         $imagePath = "/uploads/{$base_folder}/{$year}-{$mouth}-{$day}/{$folder}/";
-        $filename = Str::random(20) . '-' . time() . '.' . $file->getClientOriginalName();
+        $filename = Str::random(20) . '-' . time() . '.' . $original_name;
 
-        $file->move(public_path($imagePath) ,$filename);
+        $file->move(public_path($imagePath), $filename);
         return $imagePath . $filename;
     }
 

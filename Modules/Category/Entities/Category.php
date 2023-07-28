@@ -16,6 +16,7 @@ class Category extends Model
         'title',
         'slug',
         'image',
+        'banner',
         'parent_id',
     ];
 
@@ -41,6 +42,11 @@ class Category extends Model
     public function get_image()
     {
         return $this->image ?? 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+    }
+
+    public function get_banner()
+    {
+        return $this->banner ?: 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
     protected static function newFactory()

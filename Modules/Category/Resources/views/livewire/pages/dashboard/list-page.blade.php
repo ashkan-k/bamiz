@@ -24,6 +24,7 @@
                         <th>اسلاگ</th>
                         <th>والد</th>
                         <th>عکس</th>
+                        <th>بنر</th>
                         <th>اعمال</th>
                     </tr>
                     </thead>
@@ -45,6 +46,12 @@
                                 <a href="{{ $item->get_image() }}" target="-_blank"><img width="50"
                                                                                           src="{{ $item->get_image() }}"
                                                                                           alt="عکس کابر"></a>
+                            </td>
+
+                            <td>
+                                <a href="{{ $item->get_banner() }}" target="-_blank"><img width="50"
+                                                                                          src="{{ $item->get_banner() }}"
+                                                                                          alt="عکس بنر"></a>
                             </td>
 
                             <td>

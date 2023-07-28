@@ -52,7 +52,7 @@
 
 <div>
     <section class="header-video">
-        <div id="hero_video">
+        <div id="hero_video" style="background: url('{{ $object->get_banner() }}'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
             <div class="wrapper">
                 <div class="container">
 

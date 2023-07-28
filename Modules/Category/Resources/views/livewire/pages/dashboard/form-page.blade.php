@@ -80,6 +80,36 @@
 
                     </div>
 
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">بنر</label>
+                        <div class="col-sm-10">
+
+                            <input type="file" name="banner"
+                                   class="form-control"
+                                   placeholder="بنر را وارد کنید"
+                                   value="{{ old('banner') }}">
+
+                            @error('banner')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+
+                            @if(isset($item) && $item->banner)
+                                <div class="row">
+                                    <br>
+                                    <div class="col-sm-2 col-xs-10 "
+                                         style="border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55); margin-right: 30px ; margin-top: 30px">
+                                        <label class="control-label">
+                                            <a href="{{ $item->banner }}" target="_blank"><img
+                                                    style="border-radius: 20px; margin-bottom: 8px;"
+                                                    src="{{ $item->banner }}" width="100%"></a>
+                                        </label>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
+                    </div>
+
                     <div class="col-lg-12">
                         <div class="m-1-25 m-b-20">
                             <div class="modal-footer">

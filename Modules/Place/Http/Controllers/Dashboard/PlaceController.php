@@ -29,9 +29,10 @@ class PlaceController extends Controller
     {
         $cover = $this->UploadImage($request->cover, 'places_covers', $request->name);
         $menu_image = $this->UploadImage($request->menu_image, 'places_menu_images', $request->name);
+        $banner = $this->UploadFile($request, 'banner', 'places_banners', $request->name);
         $tour_gif = $this->UploadFile($request, 'tour_gif', 'places_tour_gifs', $request->name);
 
-        Place::create(array_merge($request->validated(), ['cover' => $cover, 'menu_image' => $menu_image, 'tour_gif' => $tour_gif]));
+        Place::create(array_merge($request->validated(), ['cover' => $cover, 'menu_image' => $menu_image, 'tour_gif' => $tour_gif, 'banner' => $banner]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'places.index');
     }
 
@@ -44,9 +45,10 @@ class PlaceController extends Controller
     {
         $cover = $request->cover ? $this->UploadImage($request->cover, 'places_covers', $request->name) : $place->cover;
         $menu_image = $request->menu_image ? $this->UploadImage($request->menu_image, 'places_menu_images', $request->name) : $place->menu_image;
+        $banner = $this->UploadFile($request, 'banner', 'places_banners', $request->name, $place->banner);
         $tour_gif = $this->UploadFile($request, 'tour_gif', 'places_tour_gifs', $request->name, $place->tour_gif);
 
-        $place->update(array_merge($request->validated(), ['cover' => $cover, 'menu_image' => $menu_image, 'tour_gif' => $tour_gif]));
+        $place->update(array_merge($request->validated(), ['cover' => $cover, 'menu_image' => $menu_image, 'tour_gif' => $tour_gif, 'banner' => $banner]));
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ویرایش شد.', 'places.index');
     }
 }

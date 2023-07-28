@@ -31,6 +31,7 @@ class Place extends Model
         'chairs_people_count',
         'viewCount',
         'cover',
+        'banner',
         'menu_image',
         'user_id',
         'category_id',
@@ -88,6 +89,11 @@ class Place extends Model
     public function get_cover($size)
     {
         return $this->cover ? $this->cover['images'][$size] : 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
+    }
+
+    public function get_banner()
+    {
+        return $this->banner ?: 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg';
     }
 
     public function get_menu_image($size)

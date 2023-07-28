@@ -29,8 +29,9 @@
                         <th>استان</th>
                         <th>شهر</th>
                         <th>نوع</th>
-                        <th>تخفیف غذا</th>
+                        <th>تخفیف</th>
                         <th>عکس</th>
+                        <th>بنر</th>
                         <th>منوی غذا</th>
                         <th>وضعیت</th>
                         <th>تاریخ ثبت</th>
@@ -58,7 +59,12 @@
                             <td>
                                 <a href="{{ $item->get_cover(300) }}" target="-_blank"><img width="50"
                                                                                             src="{{ $item->get_cover(300) }}"
-                                                                                            alt="عکس کابر"></a>
+                                                                                            alt="عکس کاور"></a>
+                            </td>
+                            <td>
+                                <a href="{{ $item->get_banner() }}" target="-_blank"><img width="50"
+                                                                                            src="{{ $item->get_banner() }}"
+                                                                                            alt="عکس بنر"></a>
                             </td>
                             <td>
                                 @if($item->get_menu_image(300))
