@@ -75,10 +75,10 @@
             <div data-loader="circle-side"></div>
         </div><!-- /Page Preload -->
         <div id="logo">
-            <a href="/">
-                <img src="{{ $settings['logo'] }}" width="150" height="36" alt="" class="logo_normal">
-                <img src="{{ $settings['logo'] }}" width="150" height="36" alt="" class="logo_sticky">
-            </a>
+{{--            <a href="/">--}}
+{{--                <img src="{{ $settings['logo'] }}" width="150" height="36" alt="" class="logo_normal">--}}
+{{--                <img src="{{ $settings['logo'] }}" width="150" height="36" alt="" class="logo_sticky">--}}
+{{--            </a>--}}
         </div>
         <ul id="top_menu">
 

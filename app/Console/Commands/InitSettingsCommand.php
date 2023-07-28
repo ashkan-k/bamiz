@@ -22,7 +22,7 @@ class InitSettingsCommand extends Command
         'banner_video_ogv' => "/front/video/intro_gif.mp4",
         'copyright' => "کپی رایت بامیز",
         'logo' => "/front/img/logo_sticky.svg",
-        'address' => "تهران - بزرگراه امام رضا(ع) - پاکدشت - مامازند - دفتر مرکزی خرید و فروش کالا",
+        'address' => "قزوین - باراجین - پارک علم و فناوری",
         'phone' => "09031770113",
         'manager_phone_1' => "09031770113",
         'manager_phone_2' => "09396988720",
@@ -49,6 +49,7 @@ class InitSettingsCommand extends Command
         'work_with_us_text' => "کافه یا رستوران هایی که تمایل دارند از امکان رزرو آنلاین میز با استفاده از تورمجازی بهره مند شوند بر روی دکمه زیر کلیک کنید تا از شرایط و مفاد همکاری مطلع شوید",
 //        'work_with_us_image' => "/front/img/bg_call_section.jpg",
         'work_with_us_image' => "/front/img/contact_us_2.jpg",
+        'work_with_us_banner_image' => "/front/img/contact_us_banner.jpeg",
 
         #Banner
         'advertise_banner_title' => "عنوان بنر تبلیغاتی",
