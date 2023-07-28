@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('options', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('amount');
-            $table->integer('discount_amount')->nullable();
-            $table->text('description')->nullable();
-            $table->text('image');
-            $table->timestamps();
+        Schema::table('categories', function (Blueprint $table) {
+            $table->text('banner')->nullable();
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('options');
+        Schema::table('', function (Blueprint $table) {
+
+        });
     }
 };
