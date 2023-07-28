@@ -17,7 +17,7 @@ class InitSettingsCommand extends Command
         'introduction' => 'سامانه رزرو میز ، امکانی را در اختیار کاربران قرار می دهد که با استفاده از تورمجازی (تصاویر 360 درجه) در کافه ها و رستوران ها گشت و گذار داشته باشند تا هم با محیط کافه و رستوران ها آشنا شوند و هم بتوانند میز مورد نظر خود را با استفاده از تورمجازی انتخاب و برای تاریخی مشخص رزرو نمایند.',
         'banner_title' => "سامانه خدمات رزرواسیون بامیز",
         'banner_description' => "کافه و رستوران یا هتل خود را جهت مشاهده تورمجازی و رزرو آنلاین جستجو نمائید",
-        'banner_image' => "/front/img/banner_sample.jpg",
+        'banner_image' => "/front/img/intro_banner.jpeg",
         'banner_video_mp4' => "/front/video/intro_gif.mp4",
         'banner_video_ogv' => "/front/video/intro_gif.mp4",
         'copyright' => "کپی رایت بامیز",

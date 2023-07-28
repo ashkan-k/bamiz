@@ -22,7 +22,6 @@ class FrontController extends Controller
             },
         ])->with($this->place_relations)->orderByDesc('reserves_count')->limit(10)->get();
 
-//        $latest_places = Place::with('province')->latest()->limit(4)->get();
         $discount_places = Place::where('food_discount', '>', 0)->OrWhereHas('options', function ($query){
             return $query->whereNotNull('discount_amount');
         })->with('province')->latest()->limit(10)->get();
