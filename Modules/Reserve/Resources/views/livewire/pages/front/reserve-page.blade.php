@@ -126,9 +126,15 @@
                                     <td style="padding-right: 0 !important; text-align: center !important;">
                                         مدت رزرو
                                     </td>
-                                    <td style="padding-right: 0 !important; text-align: center !important;">
-                                        <strong>2 ساعت </strong>
-                                    </td>
+                                    @if($place->type == 'hotel')
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            <strong>{{ $data['days_number'] }} روز </strong>
+                                        </td>
+                                    @else
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            <strong>2 ساعت </strong>
+                                        </td>
+                                    @endif
                                 </tr>
                                 <tr>
                                     <td style="padding-right: 0 !important; text-align: center !important;">
@@ -232,18 +238,22 @@
                         <div class="step">
                         </div>
                         <hr>
-                        <div id="policy">
-                            <h5>شرایط لغو رزرو</h5>
-                            <p class="nomargin"> با توجه به سیاست های {{ $place->name }} لغو رزرو <strong
-                                    style="color: red"> شامل
-                                    20 درصد کل هزینه رزرو می باشد </strong> و الباقی مبلغ رزرو به حساب کاربری در بامیز
-                                عودت داده می شود</p>
-                        </div>
-                        <hr>
+{{--                        <div id="policy">--}}
+{{--                            <h5>شرایط لغو رزرو</h5>--}}
+{{--                            <p class="nomargin"> با توجه به سیاست های {{ $place->name }} لغو رزرو <strong--}}
+{{--                                    style="color: red"> شامل--}}
+{{--                                    20 درصد کل هزینه رزرو می باشد </strong> و الباقی مبلغ رزرو به حساب کاربری در بامیز--}}
+{{--                                عودت داده می شود</p>--}}
+{{--                        </div>--}}
+{{--                        <hr>--}}
 
                         <div id="policy">
                             <h5>قوانین و مقررارت</h5>
-                            <p class="nomargin">متن قوانین و مقررات باید قرار بگیرد.</p>
+                            @if($place->type == 'hotel')
+                                <p class="nomargin">{!! $settings['reserve_hotel_terms'] !!}</p>
+                            @else
+                                <p class="nomargin">{!! $settings['reserve_restaurant_terms'] !!}</p>
+                            @endif
                         </div>
 
                         {{--                        <div id="policy">--}}
