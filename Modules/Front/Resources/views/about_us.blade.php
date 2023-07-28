@@ -7,7 +7,7 @@
 @section('content')
     <div>
 
-        <section class="hero_in tours_detail start_bg_zoom">
+        <section class="hero_in tours_detail start_bg_zoom" style="height: 650px !important;">
             <div class="wrapper" style="background: url('{{ $settings['about_us_image'] }}'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
                 <div class="container">
                 </div>
