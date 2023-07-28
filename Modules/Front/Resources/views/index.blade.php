@@ -137,7 +137,7 @@
                             <ul>
                                 <li>
                                     <i class="fa fa-wifi" title="اینترنت رایگان"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('اینترنت رایگان' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -146,7 +146,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-music" title="موسیقی زنده"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('موسیقی زنده' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -155,7 +155,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-tree" title="فضای سبز"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('فضای سبز' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -164,7 +164,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-star" title="فضای vip"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('فضای vip' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -173,7 +173,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-child" title="فضای بازی"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('فضای بازی' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -183,7 +183,7 @@
 
 
                                 <li class="text-left" title="بازدید">
-                                    <i class="fa fa-eye"></i>
+                                    <i class="fa fa-eye" style="font-family: FontAwesome !important;"></i>
 
                                     {{ $place->viewCount }} بازدید
 
@@ -255,7 +255,7 @@
                             <ul>
                                 <li>
                                     <i class="fa fa-wifi" title="اینترنت رایگان"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('اینترنت رایگان' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -264,7 +264,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-music" title="موسیقی زنده"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('موسیقی زنده' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -273,7 +273,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-tree" title="فضای سبز"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('فضای سبز' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -282,7 +282,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-star" title="فضای vip"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('فضای vip' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -291,7 +291,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-child" title="فضای بازی"
-
+                                       style="font-family: FontAwesome !important;"
                                        @if(in_array('فضای بازی' , $options))
                                        style="color: green; font-family: FontAwesome !important;"
                                         @endif
@@ -301,7 +301,7 @@
 
 
                                 <li class="text-left" title="بازدید">
-                                    <i class="fa fa-eye"></i>
+                                    <i class="fa fa-eye" style="font-family: FontAwesome !important;"></i>
 
                                     {{ $dis_place->viewCount }} بازدید
 

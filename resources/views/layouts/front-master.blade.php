@@ -171,9 +171,9 @@
                 <div class="col-lg-3 col-md-6">
                     <h5>تماس با ما</h5>
                     <ul class="contacts">
-                        <li><a href="tel://{{ $settings['phone'] }}"><i class="ti-mobile"></i>{{ $settings['phone'] }}
+                        <li><a href="tel://{{ $settings['phone'] }}"><i class="ti-mobile" style="font-family: themify!important;"></i>{{ $settings['phone'] }}
                             </a></li>
-                        <li><a href='mailto:{{ $settings['email'] }}'><i
+                        <li><a href='mailto:{{ $settings['email'] }}'><i style="font-family: themify!important;"
                                     class="ti-email"></i>{{ $settings['email'] }}</a></li>
                     </ul>
                     <div id="newsletter">
