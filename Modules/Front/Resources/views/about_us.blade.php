@@ -8,7 +8,7 @@
     <div>
 
         <section class="hero_in tours_detail start_bg_zoom">
-            <div class="wrapper">
+            <div class="wrapper" style="background: url('{{ $settings['about_us_image'] }}'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
                 <div class="container">
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         </figure>
                     </div>
                     <div class="col-lg-5">
-                        <p>{{ $settings['about_us_text'] }}</p>
+                        <p>{!! $settings['about_us_text'] !!}</p>
                         <p><em>{{ $settings['default_site_admin'] }}</em></p>
                     </div>
                 </div>
