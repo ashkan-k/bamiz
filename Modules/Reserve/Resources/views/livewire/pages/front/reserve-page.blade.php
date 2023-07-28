@@ -112,14 +112,16 @@
                                         <strong> {{ $data['date'] }} </strong>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td style="padding-right: 0 !important; text-align: center !important;">
-                                        ساعت رزرو
-                                    </td>
-                                    <td style="padding-right: 0 !important; text-align: center !important;">
-                                        <strong> ساعت {{ $data['start_time'] }} </strong>
-                                    </td>
-                                </tr>
+                                @if(isset($data['start_time']))
+                                    <tr>
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            ساعت رزرو
+                                        </td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            <strong> ساعت {{ $data['start_time'] }} </strong>
+                                        </td>
+                                    </tr>
+                                @endif
                                 <tr>
                                     <td style="padding-right: 0 !important; text-align: center !important;">
                                         مدت رزرو
@@ -205,16 +207,18 @@
                                         <td style="padding-right: 0 !important; text-align: center !important;"> {!! \Illuminate\Support\Str::limit($op->description , 20) !!} </td>
                                         <td style="padding-right: 0 !important; text-align: center !important;">
                                             @if(array_search($op->id , $options) !== false)
-                                                <button wire:click="RemoveOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"
-                                                        id="id_button_{{ $op->id }}"
-                                                        onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
-                                                        class="btn btn-danger"> حذف
+                                                <button
+                                                    wire:click="RemoveOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"
+                                                    id="id_button_{{ $op->id }}"
+                                                    onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
+                                                    class="btn btn-danger"> حذف
                                                 </button>
                                             @else
-                                                <button wire:click="AddNewOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"
-                                                        id="id_button_{{ $op->id }}"
-                                                        onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
-                                                        class="btn btn-success"> افزودن
+                                                <button
+                                                    wire:click="AddNewOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"
+                                                    id="id_button_{{ $op->id }}"
+                                                    onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
+                                                    class="btn btn-success"> افزودن
                                                 </button>
                                             @endif
                                         </td>
@@ -236,13 +240,19 @@
                                 عودت داده می شود</p>
                         </div>
                         <hr>
+
                         <div id="policy">
-                            <h5>کسر از فیش</h5>
-                            <p class="nomargin"> {{ $place->name }} در راستای رفاه حال مشتریان هزینه رزرو را از مبلغ
-                                سفارش در محل
-                                کسر می کند و شما فقط هزینه سفارش خود را در محل پرداخت می کنید و هزینه رزرو برای شما
-                                کاملا رایگان می باشد. </p>
+                            <h5>قوانین و مقررارت</h5>
+                            <p class="nomargin">متن قوانین و مقررات باید قرار بگیرد.</p>
                         </div>
+
+                        {{--                        <div id="policy">--}}
+                        {{--                            <h5>کسر از فیش</h5>--}}
+                        {{--                            <p class="nomargin"> {{ $place->name }} در راستای رفاه حال مشتریان هزینه رزرو را از مبلغ--}}
+                        {{--                                سفارش در محل--}}
+                        {{--                                کسر می کند و شما فقط هزینه سفارش خود را در محل پرداخت می کنید و هزینه رزرو برای شما--}}
+                        {{--                                کاملا رایگان می باشد. </p>--}}
+                        {{--                        </div>--}}
                     </div>
                 </div>
                 <!-- /col -->

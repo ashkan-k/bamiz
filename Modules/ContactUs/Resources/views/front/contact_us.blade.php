@@ -7,9 +7,9 @@
 @section('content')
     <div>
         <section class="hero_in contacts start_bg_zoom">
-            <div class="wrapper">
+            <div class="wrapper" style="background: url('{{ $settings['about_us_image'] }}'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
                 <div class="container">
-                    <h1 class="fadeInUp animated"><span></span>تماس با ما</h1>
+{{--                    <h1 class="fadeInUp animated"><span></span>تماس با ما</h1>--}}
                 </div>
             </div>
         </section>

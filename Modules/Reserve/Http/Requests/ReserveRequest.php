@@ -25,6 +25,8 @@ class ReserveRequest extends FormRequest
         $start_time_rules = 'numeric';
         if (request('place_type') != 'hotel') {
             $start_time_rules .= '|required';
+        }else{
+            $start_time_rules .= '|nullable';
         }
 
         return [

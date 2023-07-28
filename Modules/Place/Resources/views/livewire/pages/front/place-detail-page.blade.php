@@ -533,7 +533,7 @@
 
                             <p class="pull-left">{{ number_format($room->price) ?: '---' }} تومان</p>
 
-                            <a href="{{ $room->get_image() }}"><img class="pull-left mb-3"
+                            <a href="{{ $room->get_image() }}" target="_blank"><img class="pull-left mb-3"
                                                                     style="clear: both !important;"
                                                                     src="{{ $room->get_image() }}" width="50"
                                                                     alt="{{ $room->title }}"></a>
@@ -579,7 +579,7 @@
                             @endif
 
 
-                            <a href="{{ $op->get_image() }}"><img class="pull-left mb-3"
+                            <a href="{{ $op->get_image() }}" target="_blank"><img class="pull-left mb-3"
                                                                   style="clear: both !important;"
                                                                   src="{{ $op->get_image() }}" width="50"
                                                                   alt="{{ $op->title }}"></a>
