@@ -25,7 +25,7 @@ class InitSettingsCommand extends Command
 </ul>",
         'banner_title' => "سامانه خدمات رزرواسیون بامیز",
         'banner_description' => "کافه و رستوران یا هتل خود را جهت مشاهده تورمجازی و رزرو آنلاین جستجو نمائید",
-        'banner_image' => "/front/img/intro_gif.gif",
+        'banner_image' => "/front/img/intro_banner.jpg",
         'banner_video_mp4' => "/front/video/intro_gif.mp4",
         'banner_video_ogv' => "/front/video/intro_gif.mp4",
         'copyright' => "کپی رایت بامیز",
