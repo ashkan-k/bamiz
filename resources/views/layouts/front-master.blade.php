@@ -194,7 +194,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <ul id="footer-selector">
-                        <li><img src="/front/img/cards_all.svg" alt=""></li>
+                        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=362075&amp;Code=tcAhskKvbrIvXzK2x2cH"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=362075&amp;Code=tcAhskKvbrIvXzK2x2cH" alt="" style="cursor:pointer" id="tcAhskKvbrIvXzK2x2cH"></a>
                     </ul>
                 </div>
                 <div class="col-lg-6">
