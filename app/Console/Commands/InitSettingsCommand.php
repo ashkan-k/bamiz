@@ -60,10 +60,10 @@ class InitSettingsCommand extends Command
         'work_with_us_banner_image' => "/front/img/contact_us_banner.jpeg",
 
         #Banner
-        'advertise_banner_title' => "عنوان بنر تبلیغاتی",
+        'advertise_banner_title' => "سامانه خدمات رزرواسیون بامیز",
         'advertise_banner_text' => "توضیخاتی بنر تبلیغاتی قرار گرفته در صفحه اصلی",
         'advertise_banner_link' => '/about-us',
-        'advertise_banner_image' => "/front/img/banner_3.jpg",
+        'advertise_banner_image' => "/front/img/banner_3.webp",
 
         # Social
         'email' => "bamiz.ir@gmail.com",

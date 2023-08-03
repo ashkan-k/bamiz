@@ -6,7 +6,8 @@
 
 @section('content')
     <section class="header-video">
-        <div id="hero_video" style="background: url({{ $settings['banner_image'] }}); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
+        <div id="hero_video"
+             style="background: url({{ $settings['banner_image'] }}); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
             <div class="wrapper">
                 <div class="container">
                     <h3>{{ $settings['banner_title'] }}</h3>
@@ -67,22 +68,23 @@
 
             <div class="banner mt-5"
                  style='    background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 100%;
-    height: 500px;
-    margin-bottom: 60px;
-    position: relative;
-}'
-{{--                 style='background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat !important;'--}}
+                     -webkit-background-size: cover;
+                     -moz-background-size: cover;
+                     -o-background-size: cover;
+                     background-size: cover;
+                     width: 100%;
+                     height: 500px;
+                     margin-bottom: 60px;
+                     position: relative;
+                     }'
+                {{--                 style='background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat !important;'--}}
             >
                 <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
                     <div>
                         <h3>{{ $settings['advertise_banner_title'] }}</h3>
-                        <p>{{ $settings['advertise_banner_text'] }}</p>
-                        <a href="{{ $settings['advertise_banner_link'] }}" class="btn_1">برای اطلاعات بیشتر کلیک کنید</a>
+                        {{--                        <p>{{ $settings['advertise_banner_text'] }}</p>--}}
+                        <a href="{{ $settings['advertise_banner_link'] }}" class="btn_1 mt-3">برای اطلاعات بیشتر کلیک
+                            کنید</a>
                     </div>
                 </div>
                 <!-- /wrapper -->
@@ -240,10 +242,51 @@
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                     {{ $dis_place->province ? $dis_place->province->title : '---' }}
                                 </small>
+
+                                @if($dis_place->food_discount && $dis_place->options()->where('discount_amount', '>', 0)->exists())
+
+                                    @if($dis_place->type == 'hotel')
+                                        <small
+                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            تخفیف اتاق ({{$dis_place->food_discount}}%) و خدمات
+                                        </small>
+                                    @else
+                                        <small
+                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            تخفیف منو غذا ({{$dis_place->food_discount}}%) و خدمات
+                                        </small>
+                                    @endif
+
+                                @elseif($dis_place->food_discount)
+
+                                    @if($dis_place->type == 'hotel')
+                                        <small
+                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            تخفیف اتاق ({{$dis_place->food_discount}}%)
+                                        </small>
+                                    @else
+                                        <small
+                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            تخفیف منو غذا ({{$dis_place->food_discount}}%)
+                                        </small>
+                                    @endif
+
+                                @else
+                                    <small
+                                        style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        تخفیف خدمات
+                                    </small>
+                                @endif
                             </figure>
                             <div class="wrapper row" style="height: 115px !important;">
                                 <div class="">
-                                    <img src="{{ $dis_place->cover['images']['300'] }}" style="width: 50px; height: 50px">
+                                    <img src="{{ $dis_place->cover['images']['300'] }}"
+                                         style="width: 50px; height: 50px">
                                 </div>
                                 <div class="text-center" style="padding: 10px ">
                                     <h3>
@@ -323,79 +366,79 @@
         </section>
     </div>
     <div class="container container-custom margin_30_95">
-{{--        <section class="add_bottom_45">--}}
-{{--            <div class="main_title_3">--}}
-{{--                <span><em></em></span>--}}
-{{--                <h2>جدیدترین ها</h2>--}}
-{{--                <p>کافه رستوران هایی که جدیداً امکان رزور آنلاین میز را فراهم نموده اند</p>--}}
-{{--            </div>--}}
-{{--            <div class="row">--}}
+    {{--        <section class="add_bottom_45">--}}
+    {{--            <div class="main_title_3">--}}
+    {{--                <span><em></em></span>--}}
+    {{--                <h2>جدیدترین ها</h2>--}}
+    {{--                <p>کافه رستوران هایی که جدیداً امکان رزور آنلاین میز را فراهم نموده اند</p>--}}
+    {{--            </div>--}}
+    {{--            <div class="row">--}}
 
-{{--                @foreach($latest_places as $place)--}}
+    {{--                @foreach($latest_places as $place)--}}
 
-{{--                    <div class="col-xl-3 col-lg-6 col-md-6">--}}
-{{--                        <a href="{{ route('place_detail', $place->slug) }}" class="grid_item">--}}
-{{--                            <figure>--}}
-{{--                                <small--}}
-{{--                                    style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">--}}
-{{--                                    <h6 style="color: white"><i class="fa fa-map-marker"--}}
-{{--                                                                aria-hidden="true"></i>&nbsp;{{ $place->province ? $place->province->title : '---' }}--}}
-{{--                                    </h6>--}}
-{{--                                </small>--}}
-{{--                                <img src="{{ $place->cover['images']['original'] }}" class="img-fluid"--}}
-{{--                                     style="height:200px;width:400px" alt="{{ $place->name }}">--}}
-{{--                                <div class="info">--}}
-{{--                                    <h3>{{ $place->name }}</h3>--}}
-{{--                                </div>--}}
-{{--                            </figure>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
+    {{--                    <div class="col-xl-3 col-lg-6 col-md-6">--}}
+    {{--                        <a href="{{ route('place_detail', $place->slug) }}" class="grid_item">--}}
+    {{--                            <figure>--}}
+    {{--                                <small--}}
+    {{--                                    style="background-color: #09b052e6;right: 0;color: white;width: 100px;padding: 5px">--}}
+    {{--                                    <h6 style="color: white"><i class="fa fa-map-marker"--}}
+    {{--                                                                aria-hidden="true"></i>&nbsp;{{ $place->province ? $place->province->title : '---' }}--}}
+    {{--                                    </h6>--}}
+    {{--                                </small>--}}
+    {{--                                <img src="{{ $place->cover['images']['original'] }}" class="img-fluid"--}}
+    {{--                                     style="height:200px;width:400px" alt="{{ $place->name }}">--}}
+    {{--                                <div class="info">--}}
+    {{--                                    <h3>{{ $place->name }}</h3>--}}
+    {{--                                </div>--}}
+    {{--                            </figure>--}}
+    {{--                        </a>--}}
+    {{--                    </div>--}}
 
-{{--            @endforeach--}}
+    {{--            @endforeach--}}
 
-{{--            <!-- /grid_item -->--}}
-{{--            </div>--}}
-{{--            <!-- /row -->--}}
-{{--            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"--}}
-{{--                                                                              class="btn_1 rounded">نمایش--}}
-{{--                    همه</a></p>--}}
-{{--        </section>--}}
-        <!-- /section -->
+    {{--            <!-- /grid_item -->--}}
+    {{--            </div>--}}
+    {{--            <!-- /row -->--}}
+    {{--            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"--}}
+    {{--                                                                              class="btn_1 rounded">نمایش--}}
+    {{--                    همه</a></p>--}}
+    {{--        </section>--}}
+    <!-- /section -->
 
         <!-- section -->
-{{--        <section class="add_bottom_45">--}}
-{{--            <div class="main_title_3">--}}
-{{--                <span><em></em></span>--}}
-{{--                <h2>جدیدترین تصاویر</h2>--}}
-{{--                <p>جدیدترین تصاویر رستوران، کافه و هتل های بامیز </p>--}}
-{{--            </div>--}}
-{{--            <div class="row">--}}
+    {{--        <section class="add_bottom_45">--}}
+    {{--            <div class="main_title_3">--}}
+    {{--                <span><em></em></span>--}}
+    {{--                <h2>جدیدترین تصاویر</h2>--}}
+    {{--                <p>جدیدترین تصاویر رستوران، کافه و هتل های بامیز </p>--}}
+    {{--            </div>--}}
+    {{--            <div class="row">--}}
 
-{{--                @foreach($latest_galleries as $lg)--}}
+    {{--                @foreach($latest_galleries as $lg)--}}
 
-{{--                    <div class="col-xl-3 col-lg-6 col-md-6">--}}
-{{--                        <a href="{{ $lg->get_image() }}" class="grid_item">--}}
-{{--                            <figure>--}}
-{{--                                <div class="score"><strong>5</strong></div>--}}
-{{--                                <img src="{{ $lg->get_image() }}" class="img-fluid"--}}
-{{--                                     alt="{{ $lg->place ? $lg->place->name : '---' }}"--}}
-{{--                                     style="height:200px;width:400px">--}}
-{{--                                <div class="info">--}}
-{{--                                    <h3> مرکز {{ $lg->place ? $lg->place->name : '---' }} </h3>--}}
-{{--                                </div>--}}
-{{--                            </figure>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
+    {{--                    <div class="col-xl-3 col-lg-6 col-md-6">--}}
+    {{--                        <a href="{{ $lg->get_image() }}" class="grid_item">--}}
+    {{--                            <figure>--}}
+    {{--                                <div class="score"><strong>5</strong></div>--}}
+    {{--                                <img src="{{ $lg->get_image() }}" class="img-fluid"--}}
+    {{--                                     alt="{{ $lg->place ? $lg->place->name : '---' }}"--}}
+    {{--                                     style="height:200px;width:400px">--}}
+    {{--                                <div class="info">--}}
+    {{--                                    <h3> مرکز {{ $lg->place ? $lg->place->name : '---' }} </h3>--}}
+    {{--                                </div>--}}
+    {{--                            </figure>--}}
+    {{--                        </a>--}}
+    {{--                    </div>--}}
 
-{{--                @endforeach--}}
+    {{--                @endforeach--}}
 
-{{--            </div>--}}
-{{--            <!-- /row -->--}}
-{{--            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('galleries') }}"--}}
-{{--                                                                              class="btn_1 rounded">نمایش--}}
-{{--                    همه</a></p>--}}
-{{--        </section>--}}
-        <!-- /section -->
+    {{--            </div>--}}
+    {{--            <!-- /row -->--}}
+    {{--            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('galleries') }}"--}}
+    {{--                                                                              class="btn_1 rounded">نمایش--}}
+    {{--                    همه</a></p>--}}
+    {{--        </section>--}}
+    <!-- /section -->
 
         {{--        <div class="banner mb-0">--}}
         {{--            <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">--}}
@@ -449,7 +492,8 @@
             <!-- /container -->
         </div>
 
-        <div class="call_section" style='background: url({{ $settings['work_with_us_image'] }}) center center no-repeat !important;'>
+        <div class="call_section"
+             style='background: url({{ $settings['work_with_us_image'] }}) center center no-repeat !important;'>
             <div class="container clearfix">
                 <div class="col-lg-5 col-md-6 float-right wow" data-wow-offset="250">
                     <div class="block-reveal">
