@@ -6,8 +6,7 @@
 
 @section('content')
     <section class="header-video">
-        <div id="hero_video"
-             style="background: url({{ $settings['banner_image'] }}); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
+        <div id="hero_video" class="main_banner_background">
             <div class="wrapper">
                 <div class="container">
                     <h3>{{ $settings['banner_title'] }}</h3>
