@@ -249,13 +249,13 @@
                                         <small
                                             style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف اتاق ({{$dis_place->food_discount}}%) و خدمات
+                                           تخفیف خدمات و اتاق ({{$dis_place->food_discount}}%)
                                         </small>
                                     @else
                                         <small
                                             style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف منو غذا ({{$dis_place->food_discount}}%) و خدمات
+                                            تخفیف خدمات و غذا ({{$dis_place->food_discount}}%)
                                         </small>
                                     @endif
 
@@ -271,16 +271,18 @@
                                         <small
                                             style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف منو غذا ({{$dis_place->food_discount}}%)
+                                            تخفیف غذا ({{$dis_place->food_discount}}%)
                                         </small>
                                     @endif
 
                                 @else
+
                                     <small
                                         style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                                         تخفیف خدمات
                                     </small>
+
                                 @endif
                             </figure>
                             <div class="wrapper row" style="height: 115px !important;">
