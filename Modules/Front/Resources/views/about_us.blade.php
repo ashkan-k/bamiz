@@ -55,7 +55,7 @@
                             <div class="title">
                                 <h4>{{ $c->name ?: '---' }}</h4>
                             </div>
-                            <img src="{{ $c->cover['images']['original'] }}" alt="{{ $c->name }}">
+                            <img style="width: 270px !important; height: 270px !important;" src="{{ $c->cover['images']['original'] }}" alt="{{ $c->name }}">
                         </a>
                     </div>
                 @endforeach
