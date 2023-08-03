@@ -652,6 +652,16 @@
                     zoom: 16,
                 },
             });
+
+            app.addMarker({
+                name: 'advanced-marker',
+                latlng: {
+                    lat: '{{ $object->address_lat }}',
+                    lng: '{{ $object->address_long }}',
+                },
+                icon: app.icons.red,
+                popup: false
+            });
         });
         @endif
 

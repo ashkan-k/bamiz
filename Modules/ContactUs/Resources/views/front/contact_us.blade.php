@@ -139,6 +139,6 @@
 
 @push('StackScript')
     <script>
-        CKEDITOR.replace('id_text');
+        // CKEDITOR.replace('id_text');
     </script>
 @endpush
