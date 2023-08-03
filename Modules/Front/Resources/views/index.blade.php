@@ -4,6 +4,19 @@
     رزرو میز کافه و رستوران و هتل با تورمجازی
 @endsection
 
+@section('Styles')
+    <style>
+        @media screen and (max-width: 1023px) {
+            .main_banner_background{
+                background: url({{ $settings['banner_image'] }}) !important;
+                width: 100% !important;
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
+            }
+        }
+    </style>
+@endsection
+
 @section('content')
     <section class="header-video">
         <div id="hero_video" class="main_banner_background">

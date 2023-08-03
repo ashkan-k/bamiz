@@ -8602,12 +8602,9 @@ a.social_bt.google:before {
     }
 }
 
-@media screen and (max-width: 1023px) {
-    .main_banner_background{
-        background: url(/front/img/intro_banner.jpg) !important;
-        width: 100% !important;
-        background-size: cover !important;
-        background-repeat: no-repeat !important;
+@media screen and (max-width: 990px) {
+    .map_single{
+       height: 265px !important;
     }
 }
 
