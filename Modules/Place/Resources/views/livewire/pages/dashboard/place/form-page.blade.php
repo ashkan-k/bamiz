@@ -8,6 +8,114 @@
             height: 100%;
         }
     </style>
+
+    <style>
+        @charset "utf-8";
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Vazir, serif;
+        }
+        html {
+            font-size: 10px;
+        }
+
+        #app {
+            width: 100%;
+            height: 100%;
+        }
+
+        input {
+            text-align: right;
+            direction: rtl;
+            border: 0;
+            margin: 10px;
+        }
+        textarea:focus,
+        input:focus {
+            outline: none;
+        }
+
+        .map_container {
+            color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(255, 255, 255, 0);
+            direction: rtl;
+            text-align: right;
+            font-size: 1.4rem;
+        }
+
+        .search-box {
+            position: absolute;
+            /*top: 5px;*/
+            /*right: 5px;*/
+            z-index: 1000;
+            min-width: 250px;
+            max-width: 300px;
+            margin-top: 0 !important;
+        }
+
+        .search-box__item {
+            background-color: white;
+            margin-top: 3px;
+            border-top: none;
+            border: 1px solid #a8a7a7;
+            border-radius: 5px;
+        }
+
+        .search-results {
+            overflow: auto;
+            max-height: 40vh;
+            display: none;
+        }
+
+        .search-result-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .search-result-item img {
+            width: 20px;
+            margin-left: 5px;
+        }
+        .search-result-item-title {
+            font-weight: bolder;
+        }
+        .search-result-item-address {
+            font-size: 1rem;
+        }
+
+        .clear-seach {
+            cursor: pointer;
+            position: absolute;
+            left: 40px;
+            padding: 10px;
+            display: none;
+        }
+
+        .btn-seach {
+            background-color: #ff0871;
+            height: 41px;
+            width: 35px;
+            text-align: center;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            left: 1px;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border-right: 1px solid #a8a7a7;
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
 @endsection
 
 <div class="row">
@@ -350,6 +458,17 @@
                          style="width: 100% !important; height: 500px !important; @if(isset($item)) margin-top: 80px @else margin-top: 50px @endif !important; overflow: hidden !important;">
                         <label class="control-label col-lg-2">آدرس روی نقشه</label>
                         <div class="col-md-10" style="margin-top: 30px !important;">
+                            <div class="map_container search-box">
+                                <div class="map_container search-box__item  flex-row">
+                                    <input autocomplete="off" type="text" id="search" placeholder="دنبال کجا می&zwnj;گردید..." /><span class="clear-seach">&#10006;</span>
+                                    <div class="btn-seach">
+                                        <span>برو</span>
+                                    </div>
+                                </div>
+                                <div class="map_container search-box__item search-results">
+                                    <div class="search-result-item"></div>
+                                </div>
+                            </div>
                             <div id="app" style="width: 100% !important; height: 500px !important;"></div>
                         </div>
 
@@ -410,9 +529,11 @@
         });
     </script>
 
-    <script>
+    <script type="module">
+        $(document).ready(function() {
+            var API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjkxODM2YTc4YjQ1MWY1ODk5NmE1NTM2MmNiYmFjZmFiZGRmYTY5MzQzN2YxNDUzOTNmN2Q2MWE1MjI3ZmViNTRmYmI2OTM4ZmM5YWMyYTkyIn0.eyJhdWQiOiIyMjk0MSIsImp0aSI6IjkxODM2YTc4YjQ1MWY1ODk5NmE1NTM2MmNiYmFjZmFiZGRmYTY5MzQzN2YxNDUzOTNmN2Q2MWE1MjI3ZmViNTRmYmI2OTM4ZmM5YWMyYTkyIiwiaWF0IjoxNjg4MTQ1NzA4LCJuYmYiOjE2ODgxNDU3MDgsImV4cCI6MTY5MDczNzcwOCwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.lA2hR9BeYbGBvk0APHQR2goL78g40sNGIuRICJumxLY2J33UQzamiHQaAk_DJNYaHLZjfDqG8toL3sg7ayWaeOlmkB-WnqS2iAaepdAwG_JX98-ciY6kn8amIwpUGHD8q7DYMfZvTZojjIGXOKTjjQhJDVwl53G86vJEpelC4_Zy-Lobydel2IDvW39MPifL3tkNIMnA-cwAlXz83HyGTMDYN987cqI7FXtaFsgo6Qf6KjDNERKE3br67sTifkZTPagM30CUQZebLTWDK1aDWuBa2L3HvnC_ux4V1SPVlrWaM-hx7peKcieHXgOJEfSA2Bvf3XlAXYE-tM8LeJLW0A';
 
-        $(document).ready(function () {
+            //create map and layers
             var app = new Mapp({
                 element: '#app',
                 presets: {
@@ -436,14 +557,125 @@
                     zoom: 7
                     @endif
                 },
-                apiKey: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjkxODM2YTc4YjQ1MWY1ODk5NmE1NTM2MmNiYmFjZmFiZGRmYTY5MzQzN2YxNDUzOTNmN2Q2MWE1MjI3ZmViNTRmYmI2OTM4ZmM5YWMyYTkyIn0.eyJhdWQiOiIyMjk0MSIsImp0aSI6IjkxODM2YTc4YjQ1MWY1ODk5NmE1NTM2MmNiYmFjZmFiZGRmYTY5MzQzN2YxNDUzOTNmN2Q2MWE1MjI3ZmViNTRmYmI2OTM4ZmM5YWMyYTkyIiwiaWF0IjoxNjg4MTQ1NzA4LCJuYmYiOjE2ODgxNDU3MDgsImV4cCI6MTY5MDczNzcwOCwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.lA2hR9BeYbGBvk0APHQR2goL78g40sNGIuRICJumxLY2J33UQzamiHQaAk_DJNYaHLZjfDqG8toL3sg7ayWaeOlmkB-WnqS2iAaepdAwG_JX98-ciY6kn8amIwpUGHD8q7DYMfZvTZojjIGXOKTjjQhJDVwl53G86vJEpelC4_Zy-Lobydel2IDvW39MPifL3tkNIMnA-cwAlXz83HyGTMDYN987cqI7FXtaFsgo6Qf6KjDNERKE3br67sTifkZTPagM30CUQZebLTWDK1aDWuBa2L3HvnC_ux4V1SPVlrWaM-hx7peKcieHXgOJEfSA2Bvf3XlAXYE-tM8LeJLW0A'
+                apiKey: API_KEY
             });
-            app.addLayers();
+
+            app.addVectorLayers();
+
+            var drawnMarker = new L.LayerGroup();
+
+            app.map.addLayer(drawnMarker);
 
             // Show selected location as a marker
             @if(isset($item->address_lat) && isset($item->address_long))
-            ShowMarker(app, '{{ $item->address_lat }}', '{{ $item->address_long }}');
+                ShowMarker(app, '{{ $item->address_lat }}', '{{ $item->address_long }}');
             @endif
+
+            //search object
+            const search = {
+                params: {
+                    text: null
+                },
+                search: function(options, calback) {
+                    if (options.text === null || options.text === '') {
+                        return null;
+                    }
+                    //prepare data
+                    const data = {};
+                    for (let key in options) {
+                        if (options[key] !== null && options[key] !== '') {
+                            data[key] = options[key];
+                        }
+                    }
+                    calback(null); ///show results
+                    $.ajax({
+                        url: `https://map.ir/search/v2/`,
+                        data: JSON.stringify(data),
+                        method: 'POST',
+                        beforeSend: function(request) {
+                            request.setRequestHeader('x-api-key', API_KEY);
+                            request.setRequestHeader('content-type', 'application/json');
+                        },
+                        success: function(data, status) {
+                            calback(data); ///show results
+                        },
+                        error: function(error) {
+                            calback({ 'odata.count': 0, value: [] }); /// show results
+                        }
+                    });
+                },
+                setParams: function(key, value, onUpdate, calback) {
+                    this.params[key] = value;
+                    if (onUpdate) {
+                        this.search(this.params, calback);
+                    }
+                }
+            };
+
+            function showResults(results) {
+                if (results === null) {
+                    $('.search-results').text('در حال جستجو...');
+                    $('.search-results').show();
+                } else {
+                    let count = results['odata.count'];
+                    if (count > 0) {
+                        $('.clear-seach').show();
+                        let html = '';
+                        results['value'].forEach(function(item, index) {
+                            html += `<div data-title="${item.title}" data-address="${
+                                item.address
+                            }" data-lat="${item.geom.coordinates[1]}" data-lon="${
+                                item.geom.coordinates[0]
+                            }" class="search-result-item">`;
+                            html += `<p class="search-result-item-title"><img src="https://map.ir/css/images/marker-default-white.svg"/>${
+                                item.title
+                            }</p>`;
+                            html += `<p class="search-result-item-address">${item.address}</p>`;
+                            html += `</div>`;
+                        });
+                        //show results
+                        $('.search-results').html(html);
+                        $('.search-result-item').on('click', function(e) {
+                            let lat = e.currentTarget.getAttribute('data-lat');
+                            let lng = e.currentTarget.getAttribute('data-lon');
+                            let title = e.currentTarget.getAttribute('data-title');
+                            let address = e.currentTarget.getAttribute('data-address');
+
+                            ShowMarker(app, parseFloat(lat), parseFloat(lng));
+
+                            app.map.flyTo({
+                                lat,
+                                lng
+                            });
+
+                            // app.addMarker({
+                            //     name: 'basic-marker',
+                            //     latlng: {
+                            //         lat,
+                            //         lng
+                            //     },
+                            //     popup: {
+                            //         title: {
+                            //             html: title
+                            //         },
+                            //         description: {
+                            //             html: address
+                            //         },
+                            //         open: true
+                            //     }
+                            // });
+                            // app.map.flyTo({
+                            //     lat,
+                            //     lng
+                            // });
+                        });
+                        $('.search-results').show();
+                    } else {
+                        $('.clear-seach').show();
+                        $('.search-results').html('<p>نتیجه ای یافت نشد</p>');
+                    }
+                }
+            }
 
             // Implement location picker
             app.map.on('click', function (e) {
@@ -482,33 +714,65 @@
                 //   }
                 // });
             });
-        });
 
-        function ShowMarker(app, lat, long) {
-            $('#id_address_lat').val(lat);
-            $('#id_address_long').val(long);
+            function ShowMarker(app, lat, long) {
+                $('#id_address_lat').val(lat);
+                $('#id_address_long').val(long);
 
-            app.showReverseGeocode({
-                state: {
+                console.log('sssssssssssssss')
+                console.log(app)
+                console.log(lat)
+                console.log(long)
+
+                app.addMarker({
+                    name: 'advanced-marker',
                     latlng: {
                         lat: lat,
                         lng: long,
                     },
-                    zoom: 16
+                    icon: app.icons.red,
+                    popup: false
+                });
+
+                app.showReverseGeocode({
+                    state: {
+                        latlng: {
+                            lat: lat,
+                            lng: long,
+                        },
+                        zoom: 16
+                    }
+                });
+            }
+
+            //clear search
+            $('.clear-seach').click(function() {
+                search.params = {
+                    text: null
+                };
+
+                $('.search-results').html('');
+                $('.search-results').hide();
+                $('.clear-seach').hide();
+                $('input#search').val('');
+                $('.leaflet-container').css('cursor', '');
+
+                if (app.groups.features !== undefined) {
+                    app.removeMarkers({
+                        group: app.groups.features.markers
+                    });
+                }
+                drawnMarker.clearLayers();
+            });
+
+            //text change event handling
+            $('#search').on('keyup paste', function(e) {
+                let text = $('input#search').val();
+                if (text.length > 1) {
+                    search.setParams('text', text, true, showResults);
                 }
             });
-
-            app.addMarker({
-                name: 'advanced-marker',
-                latlng: {
-                    lat: lat,
-                    lng: long,
-                },
-                icon: app.icons.red,
-                popup: false
-            });
-        }
-
+        });
     </script>
 @endsection
 
