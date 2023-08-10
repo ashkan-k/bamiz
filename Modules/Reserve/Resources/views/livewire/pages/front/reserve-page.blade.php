@@ -273,7 +273,7 @@
                     <div class="theiaStickySidebar"
                          style="padding-top: 0px; padding-bottom: 1px; position: absolute; transform: translateY(771.2px); top: 0px; width: 350px;">
                         <div class="box_detail">
-                            <form action="{{ route('zarinpal.payment' , $reserve->id) }}" method="post">
+                            <form action="{{ $payment_url }}" method="post">
 
                                 @csrf
                                 <input type="hidden" name="options" wire:model='options'>

@@ -3,7 +3,9 @@
 namespace Modules\Payment\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\Helpers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Modules\Payment\Entities\Payment;
 use Modules\Payment\Http\Controllers\BaseGatewayController;
 use Modules\Reserve\Entities\Reserve;
@@ -12,29 +14,31 @@ use Modules\Sms\Helpers\sms_helper;
 use Modules\Sms\Jobs\SendSmsJob;
 use SoapClient;
 
-class ZarinPalPaymentController extends BaseGatewayController
+class IdPayPaymentController extends BaseGatewayController
 {
+    use Helpers;
+
     public function __construct()
     {
-        $this->merchant_id = env('MERCHANT_CODE');
+        $this->merchant_id = env('ID_PAY_API_KEY');
     }
 
     //
 
     public function pay(Reserve $reserve)
     {
-        $result = $this->GetZarinPalClientStatus($reserve);
+        $result = $this->GetIdPayClientStatus($reserve);
         if ($result[0]) {
-            return redirect('https://sandbox.zarinpal.com/pg/StartPay/' . $result[1]->Authority);
+            return redirect($result[1]);
         }
 
-        $error_code = $result[1]->Status;
+        $error_code = $result[1];
         return view('payment::front.fail', compact('error_code'));
     }
 
     public function call_back()
     {
-        $result = $this->GetZarinPalClientCallBackStatus(\request('Authority'));
+        $result = $this->GetIdPayClientCallBackStatus();
         if ($result[0]) {
             $payment = $result[1];
 
@@ -58,7 +62,7 @@ class ZarinPalPaymentController extends BaseGatewayController
 
     //
 
-    protected function GetZarinPalClientStatus($reserve)
+    protected function GetIdPayClientStatus($reserve)
     {
         abort_unless($reserve->user_id == auth()->id(), 404);
 
@@ -70,10 +74,6 @@ class ZarinPalPaymentController extends BaseGatewayController
 
         $this->totalPrice = $reserve->amount;
 
-//        $options_price = $reserve->options()->sum('amount');
-//        $this->totalPrice = round($reserve->amount + round($options_price));
-//        $reserve->update(['amount' => $this->totalPrice]);
-
         ////////////////////////////////////////////////////////////
         /// در گاه پرداخت
 
@@ -81,70 +81,70 @@ class ZarinPalPaymentController extends BaseGatewayController
         $Amount = $this->totalPrice; //Amount will be based on Toman - Required
         $Description = "رزرو {$reserve->place->get_type()} {$reserve->place->name} از سایت بامیز"; // Required
         $Email = Setting::where('key', 'email')->first()->email; // Optional
-        $Mobile = Setting::where('key', 'phone')->first()->phone; // Optional
-        $CallbackURL = route('zarinpal.callback'); // Required
+        $Mobile = $reserve->user ? $reserve->user->phone : '---'; // Optional
+        $UserName = $reserve->user ? $reserve->user->fullname() : '---'; // Optional
+        $CallbackURL = route('id-pay.callback'); // Required
 
-        $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+        $data = [
+            'order_id' => $this->RandomNumber(5),
+            'amount' => $Amount,
+            'name' => $UserName,
+            'phone' => $Mobile,
+            'mail' => $Email,
+            'desc' => $Description,
+            'callback' => $CallbackURL,
+        ];
 
-        $result = $client->PaymentRequest(
-            [
-                'MerchantID' => $MerchantID,
-                'Amount' => $Amount,
-                'Description' => $Description,
-                'Email' => $Email,
-                'Mobile' => $Mobile,
-                'CallbackURL' => $CallbackURL,
-            ]
-        );
+        $result = Http::withHeaders([
+            'X-API-KEY' => $MerchantID,
+            'X-SANDBOX' => 1,
+            'Content-Type' => 'application/json'
+        ])->post('https://api.idpay.ir/v1.1/payment', $data);
 
-        if ($result->Status == 100) {
+        if ($result->status() == 201) {
 
             Payment::create([
                 'user_id' => auth()->user()->id,
                 'reserve_id' => $reserve->id,
                 'amount' => $this->totalPrice,
-                'authority' => $result->Authority,
+                'authority' => $result->json('id'),
                 'ip' => request()->ip(),
                 'status' => false
             ]);
 
-            return [true, $result];
-            return redirect('https://sandbox.zarinpal.com/pg/StartPay/' . $result->Authority);
-
+            return [true, $result->json('link')];
         } else {
-            return [false, $result];
+            return [false, $result->json('error_code')];
         }
     }
 
-    protected function GetZarinPalClientCallBackStatus($authority)
+    protected function GetIdPayClientCallBackStatus()
     {
+        if (\request('status') != 10) {
+            return [false, []];
+        }
+
         $payment = Payment::where([
-            ['authority', '=', $authority],
+            ['authority', '=', \request('id')],
             ['user_id', '=', auth()->id()],
             ['status', '=', false],
         ])->firstOrFail();
 
-        $MerchantID = $this->merchant_id;
-        $Amount = $payment->amount;
-        $Authority = $authority;
+        $data = [
+            'id' => \request('id'),
+            'order_id' => \request('order_id'),
+        ];
 
-        if (\request('Status') == 'OK') {
+        $result = Http::withHeaders([
+            'X-API-KEY' => $this->merchant_id,
+            'X-SANDBOX' => 1,
+            'Content-Type' => 'application/json'
+        ])->post('https://api.idpay.ir/v1.1/payment/verify', $data);
 
-            $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
-
-            $result = $client->PaymentVerification(
-                [
-                    'MerchantID' => $MerchantID,
-                    'Authority' => $Authority,
-                    'Amount' => $Amount,
-                ]
-            );
-
-            if ($result->Status == 100) {
-                $payment->update(['status' => true, 'refID' => $result->RefID]);
-                $payment->reserve()->update(['status' => 'success']);
-                return [true, $payment];
-            }
+        if ($result->status() == 200) {
+            $payment->update(['status' => true, 'refID' => $result->json('payment')['track_id']]);
+            $payment->reserve()->update(['status' => 'success']);
+            return [true, $payment];
         }
 
         return [false, []];

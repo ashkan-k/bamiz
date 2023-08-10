@@ -21,8 +21,9 @@ class ReservePage extends Component
     public $is_submitted = 0;
 
     public $gateway = 'zarinpal';
+    public $payment_url;
 
-    private function DispatchOptionEvent($option_id=null)
+    private function DispatchOptionEvent($option_id = null)
     {
         $this->reserve->update(['amount' => $this->total_price]);
         $this->dispatchBrowserEvent('reserveOptionsUpdated', ['option_id' => $option_id, 'price' => $this->total_price, 'options_price' => $this->options_price]);
@@ -51,12 +52,26 @@ class ReservePage extends Component
 
     public function mount()
     {
+        $this->payment_url = route('id-pay.payment', $this->reserve->id);
         $this->total_price = $this->reserve->amount;
 
         $options = $this->reserve->options()->get();
-        if ($options){
+        if ($options) {
             $this->options = $options->pluck('id')->toArray();
             $this->DispatchOptionEvent();
+        }
+    }
+
+    public function updated($propertyName)
+    {
+        if ($propertyName == 'gateway') {
+            switch ($this->gateway) {
+                case 'id_pay':
+                    $this->payment_url = route('id-pay.payment', $this->reserve->id);
+                    break;
+                default:
+                    $this->payment_url = route('zarinpal.payment', $this->reserve->id);
+            }
         }
     }
 

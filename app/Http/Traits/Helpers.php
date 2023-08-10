@@ -57,4 +57,32 @@ trait Helpers
         $string = str_replace($english, $unicode, $string);
         return $string;
     }
+
+    public function RandomNumber($length) {
+        $result = '';
+
+        for($i = 0; $i < $length; $i++) {
+            $result .= mt_rand(0, 9);
+        }
+
+        return $result;
+    }
+
+    public function RandomName($length) {
+        return Str::random($length) . '-' . time();
+    }
+
+    public function CreateFolder($folder)
+    {
+        if (!is_dir($folder)) {
+            File::makeDirectory($folder, 0777, true, true);
+        }
+    }
+
+    public function DeleteFile($file)
+    {
+        if (File::exists(public_path($file))) {
+            File::delete(public_path($file));
+        }
+    }
 }
