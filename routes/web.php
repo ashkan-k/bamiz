@@ -18,10 +18,6 @@ Route::get('/fddsfdsf', function () {
     return view('test_map');
 });
 
-Route::get('/aaa', function () {
-    return view('aaa');
-});
-
 Route::get('/', function () {
     return view('welcome');
 });
