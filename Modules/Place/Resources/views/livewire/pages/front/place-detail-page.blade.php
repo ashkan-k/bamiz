@@ -48,6 +48,26 @@
             height: 210px !important;
         }
     </style>
+
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #fc5b62;
+            color: #fff !important;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .button img {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+    </style>
 @endsection
 
 <div>
@@ -169,6 +189,9 @@
                         <hr>
                         <h3 id="map">موقعیت جغرافیایی</h3>
                         <div class="map map_single add_bottom_30 olMap" wire:ignore>
+                            <a class="button mb-3 mt-3" onclick="openMap('google_map')">
+                                مسریابی موقعیت<img src="/location.png" class="ml-3" alt="Google Maps Logo" width="24" height="24">
+                            </a>
                             <div id="app"></div>
                         </div>
                         <!-- End Map -->
@@ -663,6 +686,31 @@
                 popup: false
             });
         });
+
+        function openMap(app) {
+            var latitude = '{{ $object->address_lat }}'; // عرض جغرافیایی
+            var longitude = '{{ $object->address_long }}'; // طول جغرافیایی
+
+            var uri;
+            if (app === 'snapp') {
+                uri = "snapp://map?lat=" + latitude + "&lng=" + longitude;
+            } else if (app === 'waze') {
+                uri = "waze://?ll=" + latitude + "," + longitude + "&navigate=yes";
+            } else if (app === 'neshan') {
+                uri = "neshan://navigate?lat=" + latitude + "&lon=" + longitude;
+            } else if (app === 'balad') {
+                uri = "balad://?q=" + latitude + "," + longitude;
+            } else if (app === 'google_map') {
+                uri = "google.navigation:q=" + latitude + "," + longitude;
+            }
+
+            if (uri) {
+                window.location.href = uri;
+            } else {
+                alert("برنامه ناوبری معتبری انتخاب نشده است.");
+            }
+        }
+
         @endif
 
     </script>
