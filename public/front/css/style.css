@@ -8608,6 +8608,12 @@ a.social_bt.google:before {
     }
 }
 
+@media screen and (min-width: 1025px) {
+    .map_router_button{
+        display: none !important;
+    }
+}
+
 .wish_bt:hover{
     cursor: pointer !important;
 }
