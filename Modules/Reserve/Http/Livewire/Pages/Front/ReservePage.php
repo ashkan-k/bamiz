@@ -20,6 +20,8 @@ class ReservePage extends Component
 
     public $is_submitted = 0;
 
+    public $gateway = 'zarinpal';
+
     private function DispatchOptionEvent($option_id=null)
     {
         $this->reserve->update(['amount' => $this->total_price]);

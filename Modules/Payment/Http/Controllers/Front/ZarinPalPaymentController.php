@@ -4,6 +4,7 @@ namespace Modules\Payment\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Payment\Entities\Payment;
 use Modules\Payment\Http\Controllers\BaseGatewayController;
 use Modules\Reserve\Entities\Reserve;
 use Modules\Setting\Entities\Setting;
@@ -46,5 +47,99 @@ class ZarinPalPaymentController extends BaseGatewayController
             return view('payment::front.success', compact('payment'));
         }
         return view('payment::front.fail');
+    }
+
+    //
+
+    protected function GetZarinPalClientStatus($reserve)
+    {
+        abort_unless($reserve->user_id == auth()->id(), 404);
+
+        $options = request('options');
+        $options = $this->ConvertOptionsToInt($options);
+
+        if ($options)
+            $reserve->options()->sync($options);
+
+        $this->totalPrice = $reserve->amount;
+
+//        $options_price = $reserve->options()->sum('amount');
+//        $this->totalPrice = round($reserve->amount + round($options_price));
+//        $reserve->update(['amount' => $this->totalPrice]);
+
+        ////////////////////////////////////////////////////////////
+        /// در گاه پرداخت
+
+        $MerchantID = $this->merchant_id; //Required
+        $Amount = $this->totalPrice; //Amount will be based on Toman - Required
+        $Description = "رزرو {$reserve->place->get_type()} {$reserve->place->name} از سایت بامیز"; // Required
+        $Email = Setting::where('key', 'email')->first()->email; // Optional
+        $Mobile = Setting::where('key', 'phone')->first()->phone; // Optional
+        $CallbackURL = route('zarinpal.callback'); // Required
+
+        $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+
+        $result = $client->PaymentRequest(
+            [
+                'MerchantID' => $MerchantID,
+                'Amount' => $Amount,
+                'Description' => $Description,
+                'Email' => $Email,
+                'Mobile' => $Mobile,
+                'CallbackURL' => $CallbackURL,
+            ]
+        );
+
+        if ($result->Status == 100) {
+
+            Payment::create([
+                'user_id' => auth()->user()->id,
+                'reserve_id' => $reserve->id,
+                'amount' => $this->totalPrice,
+                'authority' => $result->Authority,
+                'ip' => request()->ip(),
+                'status' => false
+            ]);
+
+            return [true, $result];
+            return redirect('https://sandbox.zarinpal.com/pg/StartPay/' . $result->Authority);
+
+        } else {
+            return [false, $result];
+        }
+    }
+
+    protected function GetZarinPalClientCallBackStatus($authority)
+    {
+        $payment = Payment::where([
+            ['authority', '=', $authority],
+            ['user_id', '=', auth()->id()],
+            ['status', '=', false],
+        ])->firstOrFail();
+
+        $MerchantID = $this->merchant_id;
+        $Amount = $payment->amount;
+        $Authority = $authority;
+
+        if (\request('Status') == 'OK') {
+
+            $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+
+            $result = $client->PaymentVerification(
+                [
+                    'MerchantID' => $MerchantID,
+                    'Authority' => $Authority,
+                    'Amount' => $Amount,
+                ]
+            );
+
+            if ($result->Status == 100) {
+                $payment->update(['status' => true, 'refID' => $result->RefID]);
+                $payment->reserve()->update(['status' => 'success']);
+                return [true, $payment];
+            }
+        }
+
+        return [false, []];
     }
 }

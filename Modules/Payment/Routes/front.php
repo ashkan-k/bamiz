@@ -4,6 +4,9 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Payment\Http\Controllers\Front\ZarinPalPaymentController;
 
-// پرداخت و درگاه پرداخت
-Route::post('payment/{reserve}', [ZarinPalPaymentController::class, 'pay'])->name('payment')->middleware('auth');
-Route::get('payment/callback', [ZarinPalPaymentController::class, 'call_back'])->name('callback')->middleware('auth');
+Route::group(['middleware' => 'auth', 'prefix' => 'payment'], function () {
+    // زرین پال
+    Route::post('zarinpal/{reserve}', [ZarinPalPaymentController::class, 'pay'])->name('zarinpal.payment');
+    Route::get('zarinpal/callback', [ZarinPalPaymentController::class, 'call_back'])->name('zarinpal.callback');
+});
+
