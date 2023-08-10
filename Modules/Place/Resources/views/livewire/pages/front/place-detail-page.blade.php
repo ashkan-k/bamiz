@@ -189,7 +189,7 @@
                         <hr>
                         <h3 id="map">موقعیت جغرافیایی</h3>
                         <div class="map map_single add_bottom_30 olMap" wire:ignore>
-                            <a class="button mb-3 mt-3" onclick="openMap('google_map')">
+                            <a class="button mb-3 mt-2" onclick="openMap('google_map')">
                                 مسریابی موقعیت<img src="/location.png" class="ml-3" alt="Google Maps Logo" width="24" height="24">
                             </a>
                             <div id="app"></div>
