@@ -87,7 +87,7 @@ class IdPayPaymentController extends BaseGatewayController
 
         $data = [
             'order_id' => $this->RandomNumber(5),
-            'amount' => $Amount,
+            'amount' => $Amount * 10,
             'name' => $UserName,
             'phone' => $Mobile,
             'mail' => $Email,
@@ -97,7 +97,7 @@ class IdPayPaymentController extends BaseGatewayController
 
         $result = Http::withHeaders([
             'X-API-KEY' => $MerchantID,
-            'X-SANDBOX' => 1,
+//            'X-SANDBOX' => 1,
             'Content-Type' => 'application/json'
         ])->post('https://api.idpay.ir/v1.1/payment', $data);
 
