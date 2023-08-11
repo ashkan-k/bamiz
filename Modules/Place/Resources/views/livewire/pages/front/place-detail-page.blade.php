@@ -390,7 +390,7 @@
 
                 @if(in_array($object->type, ['restaurant', 'cafe']))
                     <p class="text-danger" style="margin-bottom: 0 !important;">
-                        در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ کنید.
+                        مدت زمان حضور در محل دو ساعت می باشد. در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ کنید.
                     </p>
                 @endif
 
@@ -462,11 +462,11 @@
                 </div>
             @endif
 
-            @if(in_array($object->type, ['restaurant', 'cafe']))
-                <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل
-                    دو
-                    ساعت می باشد.</p>
-            @endif
+{{--            @if(in_array($object->type, ['restaurant', 'cafe']))--}}
+{{--                <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل--}}
+{{--                    دو--}}
+{{--                    ساعت می باشد.</p>--}}
+{{--            @endif--}}
 
             @if(in_array($object->type, ['restaurant', 'cafe']))
                 <div class="form-group" style="margin-top: 1rem !important;">

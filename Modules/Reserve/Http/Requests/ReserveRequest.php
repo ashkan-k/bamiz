@@ -7,6 +7,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ReserveRequest extends FormRequest
 {
+    private $before_date_message;
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -17,8 +19,10 @@ class ReserveRequest extends FormRequest
         $after_date = \verta()->formatDate();
         if (request('place_type') == 'hotel') {
             $before_date = \verta()->addMonth();
+            $this->before_date_message = 'یک ماه';
         } else {
             $before_date = \verta()->addWeek();
+            $this->before_date_message = 'یک هفته';
         }
         $date_rules = "required|jdate:Y-m-d|after:{$after_date}|before:{$before_date}";
 
@@ -48,6 +52,13 @@ class ReserveRequest extends FormRequest
             'hotel_room_id' => 'nullable|exists:hotel_rooms,id',
             'user_description' => 'nullable',
 //            'type' => 'nullable|in:table_for_food,work_appointment,table_for_birth_day_with_food,table_for_birth_day_without_food',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'date.before' => sprintf('تاریخ انتخابی می تواند تا %s آینده باشد.', $this->before_date_message)
         ];
     }
 
