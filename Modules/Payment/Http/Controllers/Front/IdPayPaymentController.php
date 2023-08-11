@@ -137,7 +137,7 @@ class IdPayPaymentController extends BaseGatewayController
 
         $result = Http::withHeaders([
             'X-API-KEY' => $this->merchant_id,
-            'X-SANDBOX' => 1,
+//            'X-SANDBOX' => 1,
             'Content-Type' => 'application/json'
         ])->post('https://api.idpay.ir/v1.1/payment/verify', $data);
 
