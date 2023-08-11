@@ -14,6 +14,12 @@ use SoapClient;
 
 class ZarinPalPaymentController extends BaseGatewayController
 {
+//    private $start_pay_url  = 'https://sandbox.zarinpal.com/pg/StartPay/';
+    private $start_pay_url  = 'https://www.zarinpal.com/pg/StartPay/';
+
+//    private $wsdl_url = 'https://sandbox.zarinpal.com/pg/services/WebGate/wsdl';
+    private $wsdl_url = 'https://zarinpal.com/pg/services/WebGate/wsdl';
+
     public function __construct()
     {
         $this->merchant_id = env('MERCHANT_CODE');
@@ -25,7 +31,7 @@ class ZarinPalPaymentController extends BaseGatewayController
     {
         $result = $this->GetZarinPalClientStatus($reserve);
         if ($result[0]) {
-            return redirect('https://sandbox.zarinpal.com/pg/StartPay/' . $result[1]->Authority);
+            return redirect($this->start_pay_url . $result[1]->Authority);
         }
 
         $error_code = $result[1]->Status;
@@ -84,7 +90,7 @@ class ZarinPalPaymentController extends BaseGatewayController
         $Mobile = Setting::where('key', 'phone')->first()->phone; // Optional
         $CallbackURL = route('zarinpal.callback'); // Required
 
-        $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+        $client = new SoapClient($this->wsdl_url, ['encoding' => 'UTF-8']);
 
         $result = $client->PaymentRequest(
             [
@@ -109,7 +115,7 @@ class ZarinPalPaymentController extends BaseGatewayController
             ]);
 
             return [true, $result];
-            return redirect('https://sandbox.zarinpal.com/pg/StartPay/' . $result->Authority);
+            return redirect($this->start_pay_url . $result->Authority);
 
         } else {
             return [false, $result];
@@ -130,7 +136,7 @@ class ZarinPalPaymentController extends BaseGatewayController
 
         if (\request('Status') == 'OK') {
 
-            $client = new SoapClient('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+            $client = new SoapClient($this->wsdl_url, ['encoding' => 'UTF-8']);
 
             $result = $client->PaymentVerification(
                 [
