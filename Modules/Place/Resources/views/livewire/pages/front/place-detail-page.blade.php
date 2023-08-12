@@ -541,9 +541,15 @@
                         انجام می شود</b></div>
             @endif
 
+            <p>ss [[is_submited]]</p>
+
             <div class="text-center">
                 <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
+                       ng-show="!is_submited"
                        class="btn_1 full-width">
+                <input type="button" disabled id="aaaaa" ng-disabled="is_submit" value="مرحله بعد"
+                       ng-show="is_submited" style="cursor: not-allowed !important;"
+                       class="btn_1 full-width disabled">
             </div>
         </div>
 
@@ -644,19 +650,7 @@
 </div>
 <!-- /Sign In Popup -->
 
-@section('Scripts')
-    <script>
-        $(document).ready(function () {
-            $("#sign-in").delay(1500).fadeIn(500);
-        });
-    </script>
-
-    <script type="text/javascript" src="/admin/assets/js/jquery-3.2.1.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-            integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+@section('MapScripts')
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.env.js"></script>
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.min.js"></script>
 
@@ -726,6 +720,20 @@
         @endif
 
     </script>
+@endsection
+
+@section('Scripts')
+    <script>
+        $(document).ready(function () {
+            $("#sign-in").delay(1500).fadeIn(500);
+        });
+    </script>
+
+    <script type="text/javascript" src="/admin/assets/js/jquery-3.2.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+            integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
         kamaDatepicker('id_date', {
@@ -764,6 +772,7 @@
             $scope.reserve_type_id = null;
             $scope.has_reserve_type_options = false;
             $scope.tables = [];
+            $scope.is_submited = false;
 
             $scope.GetPriceAsNumberHumanize = function (price) {
                 return numberWithCommas(price);
@@ -814,7 +823,11 @@
                     }).catch(err => {
                         showToast('خطایی رخ داد.', 'error');
                     });
+                }else{
+                    $scope.is_submited = false;
                 }
+
+
             }
 
             $scope.SubmitAddRemoveToWishlists = function (type) {
@@ -849,7 +862,7 @@
 
     <script>
         @if($errors->any() && (!$errors->has('body') && !$errors->has('title') && !$errors->has('star')))
-        $('<a href="#sign-in-dialog"></a>').click();
+            showToast('{{ $errors->first() }}', 'error');
         @endif
     </script>
 @endpush
