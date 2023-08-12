@@ -86,8 +86,8 @@ class ZarinPalPaymentController extends BaseGatewayController
         $MerchantID = $this->merchant_id; //Required
         $Amount = $this->totalPrice; //Amount will be based on Toman - Required
         $Description = "رزرو {$reserve->place->get_type()} {$reserve->place->name} از سایت بامیز"; // Required
-        $Email = Setting::where('key', 'email')->first()->email; // Optional
-        $Mobile = Setting::where('key', 'phone')->first()->phone; // Optional
+        $Email = $reserve->user && $reserve->user->email ? $reserve->user->email : Setting::where('key', 'email')->first()->email; // Optional
+        $Mobile = $reserve->user ? $reserve->user->phone : '---'; // Optional
         $CallbackURL = route('zarinpal.callback'); // Required
 
         $client = new SoapClient($this->wsdl_url, ['encoding' => 'UTF-8']);

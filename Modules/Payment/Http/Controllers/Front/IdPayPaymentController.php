@@ -80,7 +80,7 @@ class IdPayPaymentController extends BaseGatewayController
         $MerchantID = $this->merchant_id; //Required
         $Amount = $this->totalPrice; //Amount will be based on Toman - Required
         $Description = "رزرو {$reserve->place->get_type()} {$reserve->place->name} از سایت بامیز"; // Required
-        $Email = Setting::where('key', 'email')->first()->email; // Optional
+        $Email = $reserve->user && $reserve->user->email ? $reserve->user->email : Setting::where('key', 'email')->first()->email; // Optional
         $Mobile = $reserve->user ? $reserve->user->phone : '---'; // Optional
         $UserName = $reserve->user ? $reserve->user->fullname() : '---'; // Optional
         $CallbackURL = route('id-pay.callback'); // Required
