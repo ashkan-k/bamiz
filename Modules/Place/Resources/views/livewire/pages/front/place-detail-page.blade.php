@@ -788,6 +788,7 @@
                     @if($object->type == 'hotel')
                     if (!$('input[name="hotel_room_id"]:checked').val()) {
                         showToast('لطفا اتاق مد نظر خودتان را انتخاب کنید!', 'error');
+                        $scope.is_submited = false;
                         return;
                     }
                     @endif
