@@ -7,7 +7,7 @@
 @section('Styles')
     <style>
         @media screen and (max-width: 1023px) {
-            .main_banner_background{
+            .main_banner_background {
                 background: url({{ $settings['banner_image'] }}) !important;
                 width: 100% !important;
                 background-size: cover !important;
@@ -22,15 +22,8 @@
         <div id="hero_video" class="main_banner_background">
             <div class="wrapper">
                 <div class="container">
-                    <!-- <h3>{{ $settings['banner_title'] }}</h3> -->
-                    <!-- <p>{{ $settings['banner_description'] }}</p> -->
-
-                    <div style="color: red !important; background-color: black !important">
-                        <h1 style="color: red !important">نام : اشکان</h1>
-                        <h1 style="color: red !important">نام خانوادگی : کریمی</h1>
-                        <h1 style="color: red !important">کد ملی : 5380123041</h1>
-                        <h1 style="color: red !important">شماره زرین پال : ZP.901726</h1>
-                    </div>
+                    <h3>{{ $settings['banner_title'] }}</h3>
+                    <p>{{ $settings['banner_description'] }}</p>
 
                     <form action="{{ route('places') }}">
                         <div class="row no-gutters custom-search-input-2 custom_search_box">
@@ -268,7 +261,7 @@
                                         <small
                                             style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                           تخفیف خدمات و اتاق ({{$dis_place->food_discount}}%)
+                                            تخفیف خدمات و اتاق ({{$dis_place->food_discount}}%)
                                         </small>
                                     @else
                                         <small

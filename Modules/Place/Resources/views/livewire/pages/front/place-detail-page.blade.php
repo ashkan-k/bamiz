@@ -72,7 +72,8 @@
 
 <div>
     <section class="header-video">
-        <div id="hero_video" style="background: url('{{ $object->get_banner() }}'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
+        <div id="hero_video"
+             style="background: url('{{ $object->get_banner() }}'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
             <div class="wrapper">
                 <div class="container">
 
@@ -190,7 +191,8 @@
                         <h3 id="map">موقعیت جغرافیایی</h3>
                         <div class="map map_single add_bottom_30 olMap" wire:ignore>
                             <a class="button mb-3 mt-2 map_router_button" onclick="openMap('google_map')">
-                                مسیریابی موقعیت<img src="/location.png" class="ml-3" alt="Google Maps Logo" width="24" height="24">
+                                مسیریابی موقعیت<img src="/location.png" class="ml-3" alt="Google Maps Logo" width="24"
+                                                    height="24">
                             </a>
                             <div id="app"></div>
                         </div>
@@ -390,7 +392,8 @@
 
                 @if(in_array($object->type, ['restaurant', 'cafe']))
                     <p class="text-danger" style="margin-bottom: 0 !important;">
-                        مدت زمان حضور در محل دو ساعت می باشد. در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ کنید.
+                        مدت زمان حضور در محل دو ساعت می باشد. در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ
+                        کنید.
                     </p>
                 @endif
 
@@ -424,9 +427,15 @@
                        id="id_date" value="{{ old('date') }}"
                        placeholder="تاریخ رزرو">
 
-                @error('date')
-                <span class="text-danger text-wrap">{{ $message }}</span>
-                @enderror
+                @if($object->type == 'hotel')
+                    <span class="text-danger text-wrap">تاریخ انتخابی می تواند تا یک ماه آینده باشد.</span>
+                @else
+                    <span class="text-danger text-wrap">تاریخ انتخابی می تواند تا یک هفته آینده باشد.</span>
+                @endif
+
+                {{--                @error('date')--}}
+                {{--                <span class="text-danger text-wrap">{{ $message }}</span>--}}
+                {{--                @enderror--}}
             </div>
 
             @if($object->type == 'hotel')
@@ -462,11 +471,11 @@
                 </div>
             @endif
 
-{{--            @if(in_array($object->type, ['restaurant', 'cafe']))--}}
-{{--                <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل--}}
-{{--                    دو--}}
-{{--                    ساعت می باشد.</p>--}}
-{{--            @endif--}}
+            {{--            @if(in_array($object->type, ['restaurant', 'cafe']))--}}
+            {{--                <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل--}}
+            {{--                    دو--}}
+            {{--                    ساعت می باشد.</p>--}}
+            {{--            @endif--}}
 
             @if(in_array($object->type, ['restaurant', 'cafe']))
                 <div class="form-group" style="margin-top: 1rem !important;">
@@ -557,9 +566,10 @@
                             <p class="pull-left">{{ number_format($room->price) ?: '---' }} تومان</p>
 
                             <a href="{{ $room->get_image() }}" target="_blank"><img class="pull-left mb-3"
-                                                                    style="clear: both !important;"
-                                                                    src="{{ $room->get_image() }}" width="50"
-                                                                    alt="{{ $room->title }}"></a>
+                                                                                    style="clear: both !important;"
+                                                                                    src="{{ $room->get_image() }}"
+                                                                                    width="50"
+                                                                                    alt="{{ $room->title }}"></a>
                             <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
                         </div>
 
@@ -593,9 +603,10 @@
 
                             @if($op->discount_amount)
                                 <p class="pull-left">
-                                        <del>{{ number_format($op->amount) ?: '---' }}</del> تومان
-                                        <br>
-                                        {{ number_format($op->discount_amount) ?: '---' }} تومان
+                                    <del>{{ number_format($op->amount) ?: '---' }}</del>
+                                    تومان
+                                    <br>
+                                    {{ number_format($op->discount_amount) ?: '---' }} تومان
                                 </p>
                             @else
                                 <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
@@ -603,9 +614,10 @@
 
 
                             <a href="{{ $op->get_image() }}" target="_blank"><img class="pull-left mb-3"
-                                                                  style="clear: both !important;"
-                                                                  src="{{ $op->get_image() }}" width="50"
-                                                                  alt="{{ $op->title }}"></a>
+                                                                                  style="clear: both !important;"
+                                                                                  src="{{ $op->get_image() }}"
+                                                                                  width="50"
+                                                                                  alt="{{ $op->title }}"></a>
                             <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
                         </div>
 
