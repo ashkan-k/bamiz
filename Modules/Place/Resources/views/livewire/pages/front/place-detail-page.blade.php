@@ -541,8 +541,6 @@
                         انجام می شود</b></div>
             @endif
 
-            <p>ss [[is_submited]]</p>
-
             <div class="text-center">
                 <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
                        ng-show="!is_submited"
