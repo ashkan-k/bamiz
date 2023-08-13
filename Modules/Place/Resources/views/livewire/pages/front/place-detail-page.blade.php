@@ -471,55 +471,6 @@
                 </div>
             @endif
 
-            {{--            @if(in_array($object->type, ['restaurant', 'cafe']))--}}
-            {{--                <p class="text-danger" style="margin-bottom: 0 !important;">مدت زمان حضور در محل--}}
-            {{--                    دو--}}
-            {{--                    ساعت می باشد.</p>--}}
-            {{--            @endif--}}
-
-            @if(in_array($object->type, ['restaurant', 'cafe']))
-                <div class="form-group" style="margin-top: 1rem !important;">
-                    <label>مناسبت (موضوع رزرو)</label>
-                    <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" required
-                            class="form-control" id="id_reserve_type" name="reserve_type_id">
-                        <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید
-                        </option>
-
-                        @foreach($reserve_types as $res_type)
-                            <option data-has-price="{{ $res_type->price }}"
-                                    @if(old('reserve_type_id') == $res_type->id) selected
-                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }} @if($res_type->price)
-                                    ({{ $res_type->price }} تومان)@endif
-                            </option>
-                        @endforeach
-                    </select>
-
-                    @error('reserve_type_id')
-                    <span class="text-danger text-wrap">{{ $message }}</span>
-                    @enderror
-                </div>
-
-
-                <div ng-if="tables.length > 0 && has_reserve_type_options" class="form-group">
-                    <label>شماره میز مد نظر</label>
-
-                    <select required class="form-control"
-                            id="id_table_id" name="table_id">
-                        <option value="">شماره میز مد نظر را انتخاب کنید</option>
-
-                        <option ng-repeat="item in tables"
-                                ng-selected="item.id == {{ old('table_id', '-1') }}"
-                                value="[[ item.id ]]">[[ item.title ]] ([[ GetPriceAsNumberHumanize(item.price) ]]
-                            تومان)
-                        </option>
-                    </select>
-
-                    @error('table_id')
-                    <span class="text-danger text-wrap">{{ $message }}</span>
-                    @enderror
-                </div>
-            @endif
-
             <div class="form-group mt-2">
                 <label>توضیحات</label>
                 <textarea name="user_description" class="form-control"
@@ -553,10 +504,12 @@
 
 
         @if($object->type == 'hotel')
-            <div class="sign-in-wrapper" ng-show="form == 2">
+            <div class="sign-in-wrapper" ng-show="form == 3">
 
                 <div class="text-center mt-2 mb-2"><b>انتخاب اتاق</b></div>
                 <hr>
+
+                <div id="id_hotel_room_id_required_error" style="display: none" class="text-center text-danger mt-2 mb-2"><b>فیلد اتاق الزامی است. لطفا اتاق مد نظر خود را انتخاب کنید.</b></div>
 
                 <div class="row">
                     @foreach($object->hotel_rooms as $room)
@@ -594,6 +547,66 @@
             </div>
         @else
             <div class="sign-in-wrapper" ng-show="form == 2">
+
+                <div class="form-group" style="margin-top: 1rem !important;">
+                    <label>مناسبت (موضوع رزرو)</label>
+                    <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" ng-required="form == 2"
+                            class="form-control" id="id_reserve_type" name="reserve_type_id">
+                        <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید
+                        </option>
+
+                        @foreach($reserve_types as $res_type)
+                            <option data-has-price="{{ $res_type->price }}"
+                                    @if(old('reserve_type_id') == $res_type->id) selected
+                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }} @if($res_type->price)
+                                    ({{ $res_type->price }} تومان)@endif
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('reserve_type_id')
+                    <span class="text-danger text-wrap">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div ng-if="tables.length > 0 && has_reserve_type_options" class="form-group">
+                    <label>شماره میز مد نظر</label>
+
+                    <select required class="form-control"
+                            id="id_table_id" name="table_id">
+                        <option value="">شماره میز مد نظر را انتخاب کنید</option>
+
+                        <option ng-repeat="item in tables"
+                                ng-selected="item.id == {{ old('table_id', '-1') }}"
+                                value="[[ item.id ]]">[[ item.title ]] ([[ GetPriceAsNumberHumanize(item.price) ]]
+                            تومان)
+                        </option>
+                    </select>
+
+                    @error('table_id')
+                    <span class="text-danger text-wrap">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="text-center text-danger mt-2 mb-2"><b>سفارش تشریفات در صورت
+                        تمایل در
+                        مرحله بعد
+                        انجام می شود</b></div>
+
+                <div class="text-center">
+                    <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
+                           ng-show="!is_submited"
+                           class="btn_1 full-width">
+                    <input type="button" disabled id="aaaaa" ng-disabled="is_submit" value="مرحله بعد"
+                           ng-show="is_submited" style="cursor: not-allowed !important;"
+                           class="btn_1 full-width disabled">
+
+                    <input ng-click="form = 1" type="button" ng-disabled="is_submit" value="بازکشت"
+                           class="btn_1 full-width">
+                </div>
+            </div>
+
+            <div class="sign-in-wrapper" ng-show="form == 3">
 
                 <div class="text-center mt-2 mb-2"><b>تشریفات</b></div>
                 <hr>
@@ -636,7 +649,7 @@
                     <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
                            class="btn_1 full-width">
 
-                    <input ng-click="form = 1" type="button" ng-disabled="is_submit" value="بازکشت"
+                    <input ng-click="@if($object->type == 'hotel') form = 1 @else form = 2 @endif" type="button" ng-disabled="is_submit" value="بازکشت"
                            class="btn_1 full-width">
                 </div>
             </div>
@@ -780,14 +793,22 @@
                 $scope.is_submited = true;
 
                 if ($scope.form == 1) {
-                    // $('#id_submit_button_1').css('cursor', 'not-allowed');
 
-                    $scope.form = 2;
+                    @if($object->type == 'hotel')
+                        $scope.form = 3;
+                    @else
+                        $scope.form = 2;
+                    @endif
+
                     $scope.is_submited = false;
-                } else {
+                } else if($scope.form == 2){
+                    $scope.form = 3;
+                    $scope.is_submited = false;
+                }else {
                     @if($object->type == 'hotel')
                     if (!$('input[name="hotel_room_id"]:checked').val()) {
                         showToast('لطفا اتاق مد نظر خودتان را انتخاب کنید!', 'error');
+                        $('#id_hotel_room_id_required_error').show();
                         $scope.is_submited = false;
                         return;
                     }
@@ -822,7 +843,7 @@
                     }).catch(err => {
                         showToast('خطایی رخ داد.', 'error');
                     });
-                }else{
+                } else {
                     $scope.is_submited = false;
                 }
 
@@ -861,7 +882,7 @@
 
     <script>
         @if($errors->any() && (!$errors->has('body') && !$errors->has('title') && !$errors->has('star')))
-            showToast('{{ $errors->first() }}', 'error');
+        showToast('{{ $errors->first() }}', 'error');
         @endif
     </script>
 @endpush
