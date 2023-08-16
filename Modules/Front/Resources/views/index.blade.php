@@ -261,13 +261,13 @@
                                         <small
                                             style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف خدمات و اتاق ({{$dis_place->food_discount}}%)
+                                            تخفیف تشریفات و اتاق ({{$dis_place->food_discount}}%)
                                         </small>
                                     @else
                                         <small
                                             style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف خدمات و غذا ({{$dis_place->food_discount}}%)
+                                            تخفیف تشریفات و غذا ({{$dis_place->food_discount}}%)
                                         </small>
                                     @endif
 
@@ -292,7 +292,7 @@
                                     <small
                                         style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                        تخفیف خدمات
+                                        تخفیف تشریفات
                                     </small>
 
                                 @endif

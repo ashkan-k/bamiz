@@ -5,7 +5,7 @@
                 <span class="dash-widget-icon bg-success " style="border-radius: 50px;">
                     <i class="fa fa-money" aria-hidden="true"></i></span>
                 <div class="dash-widget-info">
-                    <h3>ت {{ $data['income'] }}</h3>
+                    <h3>ت {{ number_format($data['income']) }}</h3>
                     <span>درآمد</span>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                         class="fa fa-files-o"></i></span>
                 <div class="dash-widget-info">
                     <h3>{{ $data['restaurants'] }}</h3>
-                    <span>رستوران ها</span>
+                    <span>مراکز</span>
                 </div>
             </div>
         </div>

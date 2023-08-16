@@ -184,7 +184,7 @@
                         </div>
                         <hr>
                         <div class="form_title">
-                            <h3><strong>2</strong>خدمات تشریفات</h3>
+                            <h3><strong>2</strong>تشریفات</h3>
                             <br>
                             {{--                            <h6>در صورت تمایل می توانید میز خود را با انتخاب هر کدام از موارد زیر تزئین نمائید</h6>--}}
                             <h6>در صورت تمایل می توانید هر یک از تشریفات زیر را به رزرو خود اضافه نمائید.</h6>
@@ -284,7 +284,7 @@
                                 <ul class="cart_details" id="card_detail">
                                     <li> مبلغ رزرو مرکز
                                         <span>{{ number_format($total_price - $options_price) }} تومان</span></li>
-                                    <li>مبلغ رزرو خدمات تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span>
+                                    <li>مبلغ رزرو تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span>
                                     </li>
                                 </ul>
                                 <div id="total_cart">

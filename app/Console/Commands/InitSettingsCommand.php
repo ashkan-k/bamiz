@@ -23,7 +23,7 @@ class InitSettingsCommand extends Command
 	<li>کنسلی تا 48 الی 24 ساعت قبل از ورود مهمان مصادف با کسر هزینه یک شب اقامت مهمان در اتاق های هتل می باشد.</li>
 	<li>کنسلی کمتر از 24 ساعت قبل از ورود مهمان مصادف با 100 درصد جریمه است.</li>
 </ul>",
-        'banner_title' => "سامانه خدمات رزرواسیون بامیز",
+        'banner_title' => "سامانه رزرواسیون بامیز",
         'banner_description' => "کافه و رستوران یا هتل خود را جهت مشاهده تورمجازی و رزرو آنلاین جستجو نمائید",
         'banner_image' => "/front/img/intro_banner.jpg",
         'banner_video_mp4' => "/front/video/intro_gif.mp4",
@@ -36,8 +36,8 @@ class InitSettingsCommand extends Command
         'manager_phone_2' => "09396988720",
         'contact_us_phone' => "+989396988720",
         'about_us_title' => "بامیز سایت رزرو آنلاین کافه و رستوران و هتل",
-        'about_us_text' => "ما درسامانه خدمات رزرواسیون بامیز در راستای پیشرفت و بروز شدن سیستم های مدیریت کافه رستوران ها وهتل ها،با امکاناتی نظیر:
- ۱.تولید محتوا  ۲. راه اندازی سیستم رزرواسیون مراکز  ۳.  راه اندازی تور مجازی ، ۴.  ساخت صفحه اختصاصی مراکز،
+        'about_us_text' => "ما درسامانه رزرواسیون بامیز در راستای پیشرفت و بروز شدن سیستم های مدیریت کافه رستوران ها وهتل ها،با امکاناتی نظیر:
+ ۱.تولید محتوا  ۲. سیستم رزرواسیون مراکز  ۳.  تور مجازی ، ۴.  ساخت صفحه اختصاصی مراکز،
 در تلاشیم که شرایطی فراهم کنیم تا هم وطنان عزیز در شهر خود یا در مسافرت بهترین مراکز را با شناخت کامل از :
 ۱.محیط کافه رستوران یا هتل(با تور مجازی)
 ۲.قیمت
@@ -60,7 +60,7 @@ class InitSettingsCommand extends Command
         'work_with_us_banner_image' => "/front/img/contact_us_banner.jpeg",
 
         #Banner
-        'advertise_banner_title' => "سامانه خدمات رزرواسیون بامیز",
+        'advertise_banner_title' => "سامانه رزرواسیون بامیز",
         'advertise_banner_text' => "توضیخاتی بنر تبلیغاتی قرار گرفته در صفحه اصلی",
         'advertise_banner_link' => '/about-us',
         'advertise_banner_image' => "/front/img/banner_3.webp",
