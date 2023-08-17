@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/fddsfdsf', function () {
+Route::get('/aaa', function () {
+    $result = \Illuminate\Support\Facades\Http::get("http://sms.rajat.ir/send_line.php?username=16471&password=09916226328&to=09396988720&fori=2&from=50002192287030&text=سلام");
+
+    dd($result->status(), $result->json());
+
     return view('test_map');
 });
 
