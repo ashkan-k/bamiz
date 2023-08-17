@@ -11,17 +11,18 @@ trait SmsHelpers
         if (is_array($phones)){
             $phones = implode(',', $phones);
         }
-        ## Todo add sms sender service code
         $username = env('SMS_USERNAME');
         $password = env('SMS_PASSWORD');
         $sender = env('SMS_SENDER_NUMBER');
 
-        $sms_url = "http://sms.rajat.ir/send_line.php?username=$username&password=$password&to=$phones&fori=2&from=$sender&text=$message";
-        $response = Http::get($sms_url);
-
-        if ($response->status() == 200 && $response->json() == null) {
-            return true;
-        }
-        return false;
+        try {
+//            $sms_url = "http://sms.rajat.ir/send_line.php?username=$username&password=$password&to=$phones&fori=2&from=$sender&text=$message";
+//            $response = Http::get($sms_url);
+//
+//            if ($response->status() == 200 && $response->json() == null) {
+//                return true;
+//            }
+            return false;
+        }catch (\Exception $exception){}
     }
 }

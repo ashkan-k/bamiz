@@ -63,10 +63,10 @@ class User extends Authenticatable
     public function fullname()
     {
         if ($this->first_name && $this->last_name) {
-            return $this->frist_name . ' ' . $this->last_name;
+            return $this->first_name . ' ' . $this->last_name;
         }
 
-        return $this->username;
+        return $this->phone;
     }
 
     public function set_password($new_password)
