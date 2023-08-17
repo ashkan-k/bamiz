@@ -558,8 +558,8 @@
                         @foreach($reserve_types as $res_type)
                             <option data-has-price="{{ $res_type->price }}"
                                     @if(old('reserve_type_id') == $res_type->id) selected
-                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }} @if($res_type->price)
-                                    ({{ $res_type->price }} تومان)@endif
+                                    @endif value="{{ $res_type->id }}">{{ $res_type->title }}
+{{--                                @if($res_type->price)({{ $res_type->price }} تومان)@endif--}}
                             </option>
                         @endforeach
                     </select>
