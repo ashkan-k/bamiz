@@ -158,7 +158,7 @@
                         <label class="control-label col-lg-2">نامک (کد مرکز)</label>
                         <div class="col-md-10">
                             <input id="slug" type="text" name="slug"
-                                   class="form-control" required
+                                   class="form-control"
                                    placeholder="نامک (کد مرکز) را وارد کنید"
                                    value="@if(old('slug')){{ old('slug') }}@elseif(isset($item->slug)){{ $item->slug }}@endif">
 
