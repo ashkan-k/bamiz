@@ -133,6 +133,10 @@
 
 @push("StackScript")
     <script>
+        CKEDITOR.replace('id_description');
+    </script>
+
+    <script>
         $('#id_place').select2();
     </script>
 @endpush

@@ -519,7 +519,7 @@
                                    value="{{ $room->id }}">
 
                            @if($room->description)
-                                <p style="margin-bottom: 0px !important;">{{ $room->description ?: '---' }}</p>
+                                <p style="margin-bottom: 0px !important;">{!! $room->description ?: '---' !!}</p>
                            @endif
 
                             <p class="pull-left">{{ number_format($room->price) ?: '---' }} تومان</p>
