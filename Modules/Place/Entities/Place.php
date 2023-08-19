@@ -112,7 +112,9 @@ class Place extends Model
 
     public function save(array $options = [])
     {
-        $this->slug = Slugify($this->name);
+        if (!$this->slug){
+            $this->slug = Slugify($this->name);
+        }
 
         try {
             $saved =  parent::save($options);

@@ -18,6 +18,7 @@
             box-sizing: border-box;
             font-family: Vazir, serif;
         }
+
         html {
             font-size: 10px;
         }
@@ -33,6 +34,7 @@
             border: 0;
             margin: 10px;
         }
+
         textarea:focus,
         input:focus {
             outline: none;
@@ -75,13 +77,16 @@
             padding: 10px;
             cursor: pointer;
         }
+
         .search-result-item img {
             width: 20px;
             margin-left: 5px;
         }
+
         .search-result-item-title {
             font-weight: bolder;
         }
+
         .search-result-item-address {
             font-size: 1rem;
         }
@@ -144,6 +149,20 @@
                                    value="@if(old('name')){{ old('name') }}@elseif(isset($item->name)){{ $item->name }}@endif">
 
                             @error('name')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">نامک (کد مرکز)</label>
+                        <div class="col-md-10">
+                            <input id="slug" type="text" name="slug"
+                                   class="form-control" required
+                                   placeholder="نامک (کد مرکز) را وارد کنید"
+                                   value="@if(old('slug')){{ old('slug') }}@elseif(isset($item->slug)){{ $item->slug }}@endif">
+
+                            @error('slug')
                             <span class="text-danger text-wrap">{{ $message }}</span>
                             @enderror
                         </div>
@@ -460,7 +479,9 @@
                         <div class="col-md-10" style="margin-top: 30px !important;">
                             <div class="map_container search-box">
                                 <div class="map_container search-box__item  flex-row">
-                                    <input autocomplete="off" type="text" id="search" placeholder="دنبال کجا می&zwnj;گردید..." /><span class="clear-seach">&#10006;</span>
+                                    <input autocomplete="off" type="text" id="search"
+                                           placeholder="دنبال کجا می&zwnj;گردید..."/><span
+                                        class="clear-seach">&#10006;</span>
                                     <div class="btn-seach">
                                         <span>برو</span>
                                     </div>
@@ -530,7 +551,7 @@
     </script>
 
     <script type="module">
-        $(document).ready(function() {
+        $(document).ready(function () {
             var API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjkxODM2YTc4YjQ1MWY1ODk5NmE1NTM2MmNiYmFjZmFiZGRmYTY5MzQzN2YxNDUzOTNmN2Q2MWE1MjI3ZmViNTRmYmI2OTM4ZmM5YWMyYTkyIn0.eyJhdWQiOiIyMjk0MSIsImp0aSI6IjkxODM2YTc4YjQ1MWY1ODk5NmE1NTM2MmNiYmFjZmFiZGRmYTY5MzQzN2YxNDUzOTNmN2Q2MWE1MjI3ZmViNTRmYmI2OTM4ZmM5YWMyYTkyIiwiaWF0IjoxNjg4MTQ1NzA4LCJuYmYiOjE2ODgxNDU3MDgsImV4cCI6MTY5MDczNzcwOCwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.lA2hR9BeYbGBvk0APHQR2goL78g40sNGIuRICJumxLY2J33UQzamiHQaAk_DJNYaHLZjfDqG8toL3sg7ayWaeOlmkB-WnqS2iAaepdAwG_JX98-ciY6kn8amIwpUGHD8q7DYMfZvTZojjIGXOKTjjQhJDVwl53G86vJEpelC4_Zy-Lobydel2IDvW39MPifL3tkNIMnA-cwAlXz83HyGTMDYN987cqI7FXtaFsgo6Qf6KjDNERKE3br67sTifkZTPagM30CUQZebLTWDK1aDWuBa2L3HvnC_ux4V1SPVlrWaM-hx7peKcieHXgOJEfSA2Bvf3XlAXYE-tM8LeJLW0A';
 
             //create map and layers
@@ -568,7 +589,7 @@
 
             // Show selected location as a marker
             @if(isset($item->address_lat) && isset($item->address_long))
-                ShowMarker(app, '{{ $item->address_lat }}', '{{ $item->address_long }}');
+            ShowMarker(app, '{{ $item->address_lat }}', '{{ $item->address_long }}');
             @endif
 
             //search object
@@ -576,7 +597,7 @@
                 params: {
                     text: null
                 },
-                search: function(options, calback) {
+                search: function (options, calback) {
                     if (options.text === null || options.text === '') {
                         return null;
                     }
@@ -592,19 +613,19 @@
                         url: `https://map.ir/search/v2/`,
                         data: JSON.stringify(data),
                         method: 'POST',
-                        beforeSend: function(request) {
+                        beforeSend: function (request) {
                             request.setRequestHeader('x-api-key', API_KEY);
                             request.setRequestHeader('content-type', 'application/json');
                         },
-                        success: function(data, status) {
+                        success: function (data, status) {
                             calback(data); ///show results
                         },
-                        error: function(error) {
-                            calback({ 'odata.count': 0, value: [] }); /// show results
+                        error: function (error) {
+                            calback({'odata.count': 0, value: []}); /// show results
                         }
                     });
                 },
-                setParams: function(key, value, onUpdate, calback) {
+                setParams: function (key, value, onUpdate, calback) {
                     this.params[key] = value;
                     if (onUpdate) {
                         this.search(this.params, calback);
@@ -621,7 +642,7 @@
                     if (count > 0) {
                         $('.clear-seach').show();
                         let html = '';
-                        results['value'].forEach(function(item, index) {
+                        results['value'].forEach(function (item, index) {
                             html += `<div data-title="${item.title}" data-address="${
                                 item.address
                             }" data-lat="${item.geom.coordinates[1]}" data-lon="${
@@ -635,7 +656,7 @@
                         });
                         //show results
                         $('.search-results').html(html);
-                        $('.search-result-item').on('click', function(e) {
+                        $('.search-result-item').on('click', function (e) {
                             let lat = e.currentTarget.getAttribute('data-lat');
                             let lng = e.currentTarget.getAttribute('data-lon');
                             let title = e.currentTarget.getAttribute('data-title');
@@ -746,7 +767,7 @@
             }
 
             //clear search
-            $('.clear-seach').click(function() {
+            $('.clear-seach').click(function () {
                 search.params = {
                     text: null
                 };
@@ -766,7 +787,7 @@
             });
 
             //text change event handling
-            $('#search').on('keyup paste', function(e) {
+            $('#search').on('keyup paste', function (e) {
                 let text = $('input#search').val();
                 if (text.length > 1) {
                     search.setParams('text', text, true, showResults);
