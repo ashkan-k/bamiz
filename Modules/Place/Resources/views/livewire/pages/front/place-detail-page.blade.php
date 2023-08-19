@@ -518,15 +518,19 @@
                             <input id="id_hotel_room_id_{{ $room->id }}" type="radio" name="hotel_room_id"
                                    value="{{ $room->id }}">
 
-                            <p style="margin-bottom: 0px !important;">{{ $room->description ?: '---' }}</p>
+                           @if($room->description)
+                                <p style="margin-bottom: 0px !important;">{{ $room->description ?: '---' }}</p>
+                           @endif
 
                             <p class="pull-left">{{ number_format($room->price) ?: '---' }} تومان</p>
 
-                            <a href="{{ $room->get_image() }}" target="_blank"><img class="pull-left mb-3"
-                                                                                    style="clear: both !important;"
-                                                                                    src="{{ $room->get_image() }}"
-                                                                                    width="50"
-                                                                                    alt="{{ $room->title }}"></a>
+                           @if($room->get_image())
+                                <a href="{{ $room->get_image() }}" target="_blank"><img class="pull-left mb-3"
+                                                                                        style="clear: both !important;"
+                                                                                        src="{{ $room->get_image() }}"
+                                                                                        width="50"
+                                                                                        alt="{{ $room->title }}"></a>
+                           @endif
                             <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
                         </div>
 
@@ -629,12 +633,13 @@
                                 <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
                             @endif
 
-
-                            <a href="{{ $op->get_image() }}" target="_blank"><img class="pull-left mb-3"
-                                                                                  style="clear: both !important;"
-                                                                                  src="{{ $op->get_image() }}"
-                                                                                  width="50"
-                                                                                  alt="{{ $op->title }}"></a>
+                            @if($op->get_image())
+                                <a href="{{ $op->get_image() }}" target="_blank"><img class="pull-left mb-3"
+                                                                                      style="clear: both !important;"
+                                                                                      src="{{ $op->get_image() }}"
+                                                                                      width="50"
+                                                                                      alt="{{ $op->title }}"></a>
+                            @endif
                             <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
                         </div>
 
