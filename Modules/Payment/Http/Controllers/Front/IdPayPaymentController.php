@@ -48,7 +48,7 @@ class IdPayPaymentController extends BaseGatewayController
             $this->send_sms($payment->reserve->place->user->phone, $restaurant_manager_text);
 
             // Send Sms for user who were reserved
-            $user_text = sprintf(sms_helper::$SMS_PATTERNS['reserve_success_restaurant_manager'], $payment->reserve->place->name, $payment->reserve->user->fullname(), str_replace('-', '/', $payment->reserve->date));
+            $user_text = sprintf(sms_helper::$SMS_PATTERNS['reserve_success_user'], $payment->reserve->place->name, str_replace('-', '/', $payment->reserve->date));
 //            dispatch(new SendSmsJob($payment->reserve->place->user->phone, $user_text));
             $this->send_sms($payment->reserve->place->user->phone, $user_text);
 
