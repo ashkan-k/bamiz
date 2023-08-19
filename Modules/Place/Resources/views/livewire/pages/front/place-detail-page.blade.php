@@ -393,7 +393,7 @@
                 @if(in_array($object->type, ['restaurant', 'cafe']))
                     <p class="text-danger" style="margin-bottom: 0 !important;">
                         مدت زمان حضور در محل دو ساعت می باشد. در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ
-                        کنید.
+                        شود.
                     </p>
                 @endif
 
