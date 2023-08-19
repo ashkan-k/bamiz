@@ -15,12 +15,14 @@ trait SmsHelpers
         $password = env('SMS_PASSWORD');
         $sender = env('SMS_SENDER_NUMBER');
 
-        $sms_url = "http://sms.rajat.ir/send_line.php?username=$username&password=$password&to=$phones&fori=2&from=$sender&text=$message";
-        $response = Http::get($sms_url);
+        try {
+            $sms_url = "http://sms.rajat.ir/send_line.php?username=$username&password=$password&to=$phones&fori=2&from=$sender&text=$message";
+            $response = Http::get($sms_url);
 
-        if ($response->status() == 200 && $response->json() == null) {
-            return true;
-        }
-        return false;
+            if ($response->status() == 200 && $response->json() == null) {
+                return true;
+            }
+            return false;
+        }catch (\Exception $exception){}
     }
 }
