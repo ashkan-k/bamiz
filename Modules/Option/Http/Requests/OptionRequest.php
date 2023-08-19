@@ -15,7 +15,7 @@ class OptionRequest extends FormRequest
     {
         $rules = [
             'title' => 'required|string',
-            'description' => 'required',
+            'description' => 'nullable',
             'amount' => 'required|numeric',
             'discount_amount' => 'nullable|numeric',
             'image' => 'nullable|mimes:jpeg,png,bmp,jpg',

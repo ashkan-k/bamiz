@@ -33,7 +33,7 @@
                         <label class="control-label col-lg-2">توضیحات</label>
                         <div class="col-md-10">
                                 <textarea id="id_description" type="text" name="description"
-                                          class="form-control" required rows="8"
+                                          class="form-control" rows="8"
                                           placeholder="توضیحات را وارد کنید">@if(old('description')){{ old('description') }}@elseif(isset($item->description)){{ $item->description }}@endif</textarea>
 
                             @error('description')
