@@ -7,10 +7,13 @@ use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 use Modules\Auth\Entities\ActivationCode;
 use Modules\Sms\Helpers\sms_helper;
+use Modules\Sms\Http\Traits\SmsHelpers;
 use Modules\Sms\Jobs\SendSmsJob;
 
 trait AuthHelpers
 {
+    use SmsHelpers;
+
     private function verify_code($code, $user)
     {
         $code_obj = ActivationCode::where('code', $code)->where('user_id', $user->id)->first();
@@ -24,7 +27,8 @@ trait AuthHelpers
     {
         $code = $this->CreateNewCode($user);
         $message = sprintf(sms_helper::$SMS_PATTERNS['verify_user'], $code->code);
-        dispatch(new SendSmsJob($user->phone, $message));
+//        dispatch(new SendSmsJob($user->phone, $message));
+        $this->send_sms($user->phone, $message);
     }
 
     private function check_code_sent($user)

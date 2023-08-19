@@ -15,7 +15,8 @@ class ApiSmsController extends Controller
 
     public function send_sms_store(SmsRequest $request)
     {
-        dispatch(new SendSmsJob($request->users, $request->message));
+//        dispatch(new SendSmsJob($request->users, $request->message));
+        $this->send_sms($request->users, $request->message);
         return $this->SuccessResponse('با موفقیت ارسال شد.');
     }
 }

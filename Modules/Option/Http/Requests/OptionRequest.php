@@ -18,12 +18,12 @@ class OptionRequest extends FormRequest
             'description' => 'required',
             'amount' => 'required|numeric',
             'discount_amount' => 'nullable|numeric',
-            'image' => 'mimes:jpeg,png,bmp,jpg',
+            'image' => 'nullable|mimes:jpeg,png,bmp,jpg',
         ];
 
-        if (request()->method == 'POST'){
-            $rules['image'] .= '|required';
-        }
+//        if (request()->method == 'POST'){
+//            $rules['image'] .= '|required';
+//        }
 
         return $rules;
     }

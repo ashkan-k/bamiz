@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('amount');
             $table->integer('discount_amount')->nullable();
             $table->text('description')->nullable();
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

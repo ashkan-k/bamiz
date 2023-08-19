@@ -28,8 +28,8 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="id_phone">شماره موبایل</label>
-                    <input type="text" class="form-control" required name="phone" id="id_phone">
+                    <label for="id_phone">شماره موبایل (نام کاربری)</label>
+                    <input type="text" class="form-control" required name="phone" id="id_phone" value="{{ old('phone') }}">
                     <i class="icon_phone"></i>
                     @error('phone')
                     <span class="text-danger text-wrap">{{ $message }}</span>

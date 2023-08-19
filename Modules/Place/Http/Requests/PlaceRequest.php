@@ -15,7 +15,7 @@ class PlaceRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|string',
-            'description' => 'required',
+            'description' => 'nullable',
             'tour_link' => 'required',
             'food_discount' => 'nullable|numeric',
             'chairs_people_count' => 'required|numeric',

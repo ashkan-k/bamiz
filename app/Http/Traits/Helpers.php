@@ -9,6 +9,8 @@ use App\Models\NotificationMessage;
 
 trait Helpers
 {
+    use AuthHelpers;
+
     public function check_myself_queryset($object, $guard = 'api')
     {
         if (auth()->user()->level != 'admin' && $object->user_id != auth()->id()) {
@@ -29,7 +31,8 @@ trait Helpers
 
     public function SendSms($receiver, $message)
     {
-        dispatch(new SendSmsJob($receiver, $message));
+//        dispatch(new SendSmsJob($receiver, $message));
+        $this->send_sms($receiver, $message);
     }
 
     public function ConvertNumbersToEnglish($string)

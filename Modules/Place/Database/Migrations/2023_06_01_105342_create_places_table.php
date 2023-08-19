@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(true);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('chairs_people_count')->default(1);
             $table->integer('viewCount')->default(0);
             $table->text('cover');

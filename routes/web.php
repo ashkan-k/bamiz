@@ -15,11 +15,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/aaa', function () {
-    $result = \Illuminate\Support\Facades\Http::get("http://sms.rajat.ir/send_line.php?username=16471&password=09916226328&to=09396988720&fori=2&from=50002192287030&text=سلام");
+    $result = \Illuminate\Support\Facades\Http::get("http://sms.rajat.ir/send_line.php?username=16471&password=09916226328&to=09396988720&fori=2&from=50002192287030&text=کاربر گرامی کد تایید شما:\n 1234\nلغو 11");
 
     dd($result->status(), $result->json());
 
     return view('test_map');
+});
+
+Route::get('/bbb', function () {
+    $api = new \Ghasedak\GhasedakApi('fff31530b6a85e6b8c58607d665ac4327463e46bb4eb734dcd6daa8ff23a2cfd');
+//    $api->SendSimple(
+//        "09396988720", // receptor
+//        "سلام!", // message
+//        "300002525" // choose a line number from your account
+//    );
+
+    $api->Verify(
+        "09396988720",  // receptor
+        "placereservationmessage",  // name of the template which you've created in you account
+        "خورشید",       // parameters (supporting up to 10 parameters)
+        "اشکان کریمی",
+        "1402/05/28"
+    );
+
 });
 
 Route::get('/', function () {
