@@ -524,7 +524,7 @@
 
                             <p class="pull-left">{{ number_format($room->price) ?: '---' }} تومان</p>
 
-                           @if($room->get_image())
+                           @if($room->image)
                                 <a href="{{ $room->get_image() }}" target="_blank"><img class="pull-left mb-3"
                                                                                         style="clear: both !important;"
                                                                                         src="{{ $room->get_image() }}"
@@ -633,7 +633,7 @@
                                 <p class="pull-left">{{ number_format($op->amount) ?: '---' }} تومان</p>
                             @endif
 
-                            @if($op->get_image())
+                            @if($op->image)
                                 <a href="{{ $op->get_image() }}" target="_blank"><img class="pull-left mb-3"
                                                                                       style="clear: both !important;"
                                                                                       src="{{ $op->get_image() }}"
