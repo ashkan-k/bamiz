@@ -412,7 +412,7 @@
                            placeholder="تعداد خردسالان">
 
                     <p class="text-danger" style="margin-bottom: 0 !important;">
-{{--                        نفر اضافه یا فرزند بالای دوسال در محل هتل حساب میشود.--}}
+                        نفر اضافه یا فرزند بالای دوسال در محل هتل حساب میشود.
                         هزینه هر نفر اضافه ۲۵۴/۰۰۰هزار تومان
                     </p>
 
@@ -510,7 +510,9 @@
                 <div class="text-center mt-2 mb-2"><b>انتخاب اتاق</b></div>
                 <hr>
 
-                <div id="id_hotel_room_id_required_error" style="display: none" class="text-center text-danger mt-2 mb-2"><b>فیلد اتاق الزامی است. لطفا اتاق مد نظر خود را انتخاب کنید.</b></div>
+                <div id="id_hotel_room_id_required_error" style="display: none"
+                     class="text-center text-danger mt-2 mb-2"><b>فیلد اتاق الزامی است. لطفا اتاق مد نظر خود را انتخاب
+                        کنید.</b></div>
 
                 <div class="row">
                     @foreach($object->hotel_rooms as $room)
@@ -519,19 +521,19 @@
                             <input id="id_hotel_room_id_{{ $room->id }}" type="radio" name="hotel_room_id"
                                    value="{{ $room->id }}">
 
-                           @if($room->description)
+                            @if($room->description)
                                 <p style="margin-bottom: 0px !important;">{!! $room->description ?: '---' !!}</p>
-                           @endif
+                            @endif
 
                             <p class="pull-left">{{ number_format($room->price) ?: '---' }} تومان</p>
 
-                           @if($room->image)
+                            @if($room->image)
                                 <a href="{{ $room->get_image() }}" target="_blank"><img class="pull-left mb-3"
                                                                                         style="clear: both !important;"
                                                                                         src="{{ $room->get_image() }}"
                                                                                         width="50"
                                                                                         alt="{{ $room->title }}"></a>
-                           @endif
+                            @endif
                             <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
                         </div>
 
@@ -564,7 +566,7 @@
                             <option data-has-price="{{ $res_type->price }}"
                                     @if(old('reserve_type_id') == $res_type->id) selected
                                     @endif value="{{ $res_type->id }}">{{ $res_type->title }}
-{{--                                @if($res_type->price)({{ $res_type->price }} تومان)@endif--}}
+                                {{--                                @if($res_type->price)({{ $res_type->price }} تومان)@endif--}}
                             </option>
                         @endforeach
                     </select>
@@ -655,7 +657,8 @@
                     <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
                            class="btn_1 full-width">
 
-                    <input ng-click="@if($object->type == 'hotel') form = 1 @else form = 2 @endif" type="button" ng-disabled="is_submit" value="بازکشت"
+                    <input ng-click="@if($object->type == 'hotel') form = 1 @else form = 2 @endif" type="button"
+                           ng-disabled="is_submit" value="بازکشت"
                            class="btn_1 full-width">
                 </div>
             </div>
@@ -806,11 +809,11 @@
                         $scope.form = 2;
                     @endif
 
-                    $scope.is_submited = false;
-                } else if($scope.form == 2){
+                        $scope.is_submited = false;
+                } else if ($scope.form == 2) {
                     $scope.form = 3;
                     $scope.is_submited = false;
-                }else {
+                } else {
                     @if($object->type == 'hotel')
                     if (!$('input[name="hotel_room_id"]:checked').val()) {
                         showToast('لطفا اتاق مد نظر خودتان را انتخاب کنید!', 'error');
