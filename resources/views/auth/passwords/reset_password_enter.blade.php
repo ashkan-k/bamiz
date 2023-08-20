@@ -20,7 +20,8 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="id_password">تکرار رمز عبور</label>
+{{--                    <label for="id_password">تکرار رمز عبور</label>--}}
+                    <label for="id_password">نام کاربری</label>
                     <input type="password" class="form-control" required name="password" id="id_password">
                     <i class="icon_lock_alt"></i>
                     @error('password')
@@ -29,7 +30,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_password_confirmation">تکرار رمز عبور</label>
+{{--                    <label for="id_password_confirmation">تکرار رمز عبور</label>--}}
+                    <label for="id_password_confirmation">تکرار نام کاربری</label>
                     <input type="password" class="form-control" required name="password_confirmation"
                            id="id_password_confirmation">
                     <i class="icon_lock_alt"></i>

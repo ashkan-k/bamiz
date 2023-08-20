@@ -20,7 +20,7 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="id_phone">شماره موبایل (نام کاربری)</label>
+                    <label for="id_phone">شماره موبایل</label>
                     <input type="text" class="form-control" required name="phone" id="id_phone" value="{{ old('phone') }}">
                     <i class="icon_phone"></i>
                     @error('phone')
@@ -29,7 +29,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_password">گذرواژه</label>
+{{--                    <label for="id_password">گذرواژه</label>--}}
+                    <label for="id_password">نام کاربری</label>
                     <input type="password" class="form-control" required name="password" id="id_password">
                     <i class="icon_lock_alt"></i>
                     @error('password')
@@ -38,7 +39,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_password_confirmation">تکرار گذرواژه</label>
+{{--                    <label for="id_password_confirmation">تکرار گذرواژه</label>--}}
+                    <label for="id_password_confirmation">تکرار نام کاربری</label>
                     <input type="password" class="form-control" required name="password_confirmation" id="id_password_confirmation">
                     <i class="icon_lock_alt"></i>
                     @error('password_confirmation')
