@@ -282,10 +282,10 @@
                     @endif
 
                     <div class="form-group" id="id_extra_person_fee_box" style="display: none !important;">
-                        <label class="control-label col-lg-2">حداکثر سن خردسالان</label>
+                        <label class="control-label col-lg-2">هزینه هر نفر اضافه</label>
                         <div class="col-md-10">
                             <input id="id_minor_min_age" type="number" name="minor_min_age"
-                                   placeholder="حداکثر سن خردسالان را وارد کنید"
+                                   placeholder="هزینه هر نفر اضافه را وارد کنید"
                                    value="@if(old('minor_min_age')){{ old('minor_min_age') }}@elseif(isset($item->minor_min_age)){{ $item->minor_min_age }}@endif"
                                    class="form-control">
 
@@ -296,10 +296,10 @@
                     </div>
 
                     <div class="form-group" id="id_minor_min_age_box">
-                        <label class="control-label col-lg-2">هزینه هر نفر اضافه</label>
+                        <label class="control-label col-lg-2">حداکثر سن خردسالان</label>
                         <div class="col-md-10">
                             <input id="id_extra_person_fee" type="number" name="extra_person_fee"
-                                   placeholder="هزینه هر نفر اضافه را وارد کنید"
+                                   placeholder="حداکثر سن خردسالان را وارد کنید"
                                    value="@if(old('extra_person_fee')){{ old('extra_person_fee') }}@elseif(isset($item->extra_person_fee)){{ $item->extra_person_fee }}@endif"
                                    class="form-control">
 
