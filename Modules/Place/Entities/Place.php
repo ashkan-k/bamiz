@@ -123,7 +123,7 @@ class Place extends Model
         }
 
         if ($this->type != 'hotel'){
-            $this->minor_max_age = $this->extra_person_fee = null;
+            $this->minor_max_age = null;
         }
 
         try {
