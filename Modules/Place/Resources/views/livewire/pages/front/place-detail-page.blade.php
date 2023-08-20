@@ -320,9 +320,9 @@
                         @endif
                     </div>
 
-                    <hr>
-
                     @if(count($work_days))
+                        <hr>
+
                         <h3 id="worktime">ساعات کاری</h3>
                         <p>ساعات کاری {{ $object->get_type() }} {{ $object->name ?: '---' }} به شرح ذیل می باشد</p>
 
