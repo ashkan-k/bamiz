@@ -409,15 +409,21 @@
             @if($object->type == 'hotel')
                 <div class="form-group">
 
-                    <label>تعداد خردسالان <small style="color: red">(کمتر از دو سال)</small></label>
+                    <label>تعداد خردسالان @if($object->type == 'hotel' && $object->minor_min_age)<small
+                            style="color: red">(کمتر از {{ $object->minor_min_age }} سال)</small>@endif</label>
                     <input class="form-control" type="text"
                            value="{{ old('children_guest_count') }}"
                            name="children_guest_count" id="quest_count"
                            placeholder="تعداد خردسالان">
 
                     <p class="text-danger" style="margin-bottom: 0 !important;">
-                        نفر اضافه یا فرزند بالای دوسال در محل هتل حساب میشود.
-                        هزینه هر نفر اضافه ۲۵۴/۰۰۰هزار تومان
+                        @if($object->type == 'hotel' && $object->minor_min_age)
+                            نفر اضافه یا فرزند بالای {{ $object->minor_min_age }} سال در محل هتل حساب میشود.
+                        @endif
+
+                        @if($object->type == 'hotel' && $object->extra_person_fee)
+                            هزینه هر نفر اضافه {{ number_format($object->extra_person_fee) }} تومان
+                        @endif
                     </p>
 
                     @error('children_guest_count')
@@ -654,17 +660,17 @@
                     <div class="text-center mt-2 mb-5"><b><h5>تشریفاتی موجود نیست.</h5></b></div>
                 @endforelse
 
-                    <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
-                            (اختیاری)</b></div>
+                <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
+                        (اختیاری)</b></div>
 
-                    <div class="text-center">
-                        <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
-                               class="btn_1 full-width">
+                <div class="text-center">
+                    <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
+                           class="btn_1 full-width">
 
-                        <input ng-click="@if($object->type == 'hotel') form = 1 @else form = 2 @endif" type="button"
-                               ng-disabled="is_submit" value="بازکشت"
-                               class="btn_1 full-width">
-                    </div>
+                    <input ng-click="@if($object->type == 'hotel') form = 1 @else form = 2 @endif" type="button"
+                           ng-disabled="is_submit" value="بازکشت"
+                           class="btn_1 full-width">
+                </div>
             </div>
         @endif
 
