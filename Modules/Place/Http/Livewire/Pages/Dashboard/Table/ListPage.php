@@ -5,6 +5,7 @@ namespace Modules\Place\Http\Livewire\Pages\Dashboard\Table;
 use App\Http\Traits\BulkActions;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Modules\Place\Entities\Place;
 use Modules\Place\Entities\Table;
 
 class ListPage extends Component
@@ -18,10 +19,12 @@ class ListPage extends Component
     public $data;
     public $place_id;
     protected $items;
+    public $place;
 
     public function mount()
     {
         $this->place_id = request('place_id');
+        $this->place = Place::findOrFail(request('place_id'));
         $this->pagination = env('PAGINATION', 10);
     }
 

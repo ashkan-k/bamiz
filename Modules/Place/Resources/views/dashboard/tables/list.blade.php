@@ -10,7 +10,7 @@
 
     @livewire('place::pages.dashboard.table.list-page' , [
 
-    'titlePage' => 'میز های مراکز',
+    'titlePage' => 'میز های',
 
     ])
 

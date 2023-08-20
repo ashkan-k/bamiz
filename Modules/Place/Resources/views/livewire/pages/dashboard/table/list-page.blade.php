@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card-box">
             <div class="card-block">
-                <h4 class="card-title">{{$titlePage}}</h4>
+                <h4 class="card-title">{{$titlePage}} مرکز {{ $place->name }}</h4>
 
                 <hr>
                 <form id="search">
@@ -14,7 +14,7 @@
                     </div>
                 </form>
 
-                <a class="btn btn-primary pull-right" href="{{ route('tables.create') }}?place_id={{ $place_id }}">افزودن میز مرکز جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('tables.create') }}?place_id={{ $place_id }}">افزودن میز جدید برای {{ $place->name }}</a>
 
                 <table class="table table-hover">
                     <thead>
