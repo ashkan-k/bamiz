@@ -368,7 +368,7 @@
                         <div class="col-md-10">
                                 <textarea type="text" name="terms" id="id_terms"
                                           class="form-control" required rows="6"
-                                          placeholder="قوانین و مقررات مرکز را وارد کنید">@if(old('terms')){{ old('terms') }}@elseif(isset($item->terms)){{ $item->terms }} @else @if($item->type == 'hotel')
+                                          placeholder="قوانین و مقررات مرکز را وارد کنید">@if(old('terms')){{ old('terms') }}@elseif(isset($item->terms)){{ $item->terms }} @else @if(isset($item->type) && $item->type == 'hotel')
                                         <ul>
                                         <li>خردسال زیر ۲ سال رایگان</li>
                                         <li>لغو تا ۲۴ ساعت کل هزینه یک شب </li>

@@ -398,8 +398,8 @@
                     <p class="text-danger" style="margin-bottom: 0 !important;">
                         مدت زمان حضور در محل دو ساعت می باشد. در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ
                         شود.
-                        @if($object->minor_max_age)
-                            نفر اضافه یا فرزند بالای {{ $object->minor_max_age }} سال در محل هتل حساب میشود.
+                        @if($object->extra_person_fee)
+                            هزینه هر نفر اضافه {{ number_format($object->extra_person_fee) }} تومان می باشید و در محل هتل حساب میشود.
                         @endif
                     </p>
                 @endif
