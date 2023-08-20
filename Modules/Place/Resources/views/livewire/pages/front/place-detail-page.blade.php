@@ -398,8 +398,9 @@
                     <p class="text-danger" style="margin-bottom: 0 !important;">
                         مدت زمان حضور در محل دو ساعت می باشد. در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ
                         شود.
+                        <br>
                         @if($object->extra_person_fee)
-                            هزینه هر نفر اضافه {{ number_format($object->extra_person_fee) }} تومان می باشید و در محل هتل حساب میشود.
+                            هزینه هر نفر اضافه {{ number_format($object->extra_person_fee) }} تومان می باشد و در محل هتل حساب میشود.
                         @endif
                     </p>
                 @endif

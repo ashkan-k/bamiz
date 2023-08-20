@@ -181,7 +181,7 @@
                         </div>
                     </div>
 
-                    @if(isset($item->type) && $item->type == 'hotel')
+                    @if(isset($item->type) && $item->type != 'hotel')
                         <div class="form-group">
                             <label class="control-label col-lg-2">تعداد صندلی های هر میز مرکز</label>
                             <div class="col-md-10">
@@ -375,7 +375,7 @@
                                         <li>لغو تا ۴۸ساعت ۵۰ درصد یک شب</li>
                                         <li>لغوتا ۷۲ ساعت ۳۰ درصد</li>
                                         <li>پذیرش زوج فقط با مدارک محرمیت</li>
-                                        </ul> @else <ul>
+                                        </ul> @elseif(isset($item->type) && $item->type != 'hotel') <ul>
                                         <li>کنسلی کمتر از 24 ساعت قبل از ورود مهمان مصادف با 100 درصد جریمه است.</li>
                                         <li>رعایت نظم در محیط کافه و رستوران الزامی است.</li>
                                         <li>رعایت حجاب اسلامی در محیط کافه و رستوران الزامی است.</li>
