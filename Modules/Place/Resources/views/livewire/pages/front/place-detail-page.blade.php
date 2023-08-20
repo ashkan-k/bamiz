@@ -421,7 +421,7 @@
                             نفر اضافه یا فرزند بالای {{ $object->minor_min_age }} سال در محل هتل حساب میشود.
                         @endif
 
-                        @if($object->type == 'hotel' && $object->extra_person_fee)
+                        @if($object->extra_person_fee)
                             هزینه هر نفر اضافه {{ number_format($object->extra_person_fee) }} تومان
                         @endif
                     </p>

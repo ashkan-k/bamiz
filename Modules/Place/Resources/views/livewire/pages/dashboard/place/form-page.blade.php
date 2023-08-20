@@ -295,7 +295,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" id="id_minor_min_age_box" style="display: none !important;">
+                    <div class="form-group" id="id_minor_min_age_box">
                         <label class="control-label col-lg-2">هزینه هر نفر اضافه</label>
                         <div class="col-md-10">
                             <input id="id_extra_person_fee" type="number" name="extra_person_fee"
@@ -606,17 +606,17 @@
         $(document).ready(function () {
             @if($item->type == 'hotel')
             $('#id_minor_min_age_box').show();
-            $('#id_extra_person_fee_box').show();
+            // $('#id_extra_person_fee_box').show();
             @endif
 
             $("#id_type").change(function () {
                 var selected_type = $('#id_type').find(":selected").val();
                 if (selected_type == 'hotel') {
                     $('#id_minor_min_age_box').show();
-                    $('#id_extra_person_fee_box').show();
+                    // $('#id_extra_person_fee_box').show();
                 } else {
                     $('#id_minor_min_age_box').hide();
-                    $('#id_extra_person_fee_box').hide();
+                    // $('#id_extra_person_fee_box').hide();
                 }
             });
         });
