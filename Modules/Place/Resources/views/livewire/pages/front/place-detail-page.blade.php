@@ -125,7 +125,9 @@
                     <li><a href="#galley">گالری تصاویر</a></li>
                     <li><a href="#map">موقعیت</a></li>
                     <li><a href="#comments">نظرات</a></li>
-                    <li><a href="#worktime">ساعت کاری</a></li>
+                    @if(count($work_days))
+                        <li><a href="#worktime">ساعت کاری</a></li>
+                    @endif
                     {{--                    <li><a href="#sidebar">رزرو</a></li>--}}
                 </ul>
 
@@ -320,29 +322,31 @@
 
                     <hr>
 
-                    <h3 id="worktime">ساعات کاری</h3>
-                    <p>ساعات کاری {{ $object->get_type() }} {{ $object->name ?: '---' }} به شرح ذیل می باشد</p>
+                    @if(count($work_days))
+                        <h3 id="worktime">ساعات کاری</h3>
+                        <p>ساعات کاری {{ $object->get_type() }} {{ $object->name ?: '---' }} به شرح ذیل می باشد</p>
 
-                    <ul class="cbp_tmtimeline">
+                        <ul class="cbp_tmtimeline">
 
-                        @foreach($work_days as $d)
+                            @foreach($work_days as $d)
 
-                            <li>
-                                <time class="cbp_tmtime" datetime="09:30"><span>روز</span></time>
-                                <div class="cbp_tmicon">
-                                    <small style="font-size: small">{{ $d }}</small>
-                                </div>
-                                <div class="cbp_tmlabel">
-                                    <p>
-                                        ساعت کاری از ساعت {{ $object->work_time->start_time }} صبح
-                                        الی {{ $object->work_time->end_time }} شب
-                                    </p>
-                                </div>
-                            </li>
+                                <li>
+                                    <time class="cbp_tmtime" datetime="09:30"><span>روز</span></time>
+                                    <div class="cbp_tmicon">
+                                        <small style="font-size: small">{{ $d }}</small>
+                                    </div>
+                                    <div class="cbp_tmlabel">
+                                        <p>
+                                            ساعت کاری از ساعت {{ $object->work_time->start_time }} صبح
+                                            الی {{ $object->work_time->end_time }} شب
+                                        </p>
+                                    </div>
+                                </li>
 
-                        @endforeach
+                            @endforeach
 
-                    </ul>
+                        </ul>
+                    @endif
                 </div>
                 <!-- /col -->
             </div>
