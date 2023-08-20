@@ -181,19 +181,23 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-lg-2">تعداد صندلی های هر میز مرکز</label>
-                        <div class="col-md-10">
-                            <input id="chairs_people_count" type="text" name="chairs_people_count"
-                                   class="form-control" required
-                                   placeholder="تعداد صندلی ها را وارد کنید"
-                                   value="@if(old('chairs_people_count')){{ old('chairs_people_count') }}@elseif(isset($item->chairs_people_count)){{ $item->chairs_people_count }}@else 1 @endif">
+                    @if(isset($item->type) && $item->type == 'hotel')
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">تعداد صندلی های هر میز مرکز</label>
+                            <div class="col-md-10">
+                                <input id="chairs_people_count" type="text" name="chairs_people_count"
+                                       class="form-control" required
+                                       placeholder="تعداد صندلی ها را وارد کنید"
+                                       value="@if(old('chairs_people_count')){{ old('chairs_people_count') }}@elseif(isset($item->chairs_people_count)){{ $item->chairs_people_count }}@else 1 @endif">
 
-                            @error('chairs_people_count')
-                            <span class="text-danger text-wrap">{{ $message }}</span>
-                            @enderror
+                                @error('chairs_people_count')
+                                <span class="text-danger text-wrap">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <input type="hidden" name="chairs_people_count" value="1">
+                    @endif
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">تخفیف (درصد)</label>
@@ -364,17 +368,18 @@
                         <div class="col-md-10">
                                 <textarea type="text" name="terms" id="id_terms"
                                           class="form-control" required rows="6"
-                                          placeholder="قوانین و مقررات مرکز را وارد کنید">@if(old('terms')){{ old('terms') }}@elseif(isset($item->terms)){{ $item->terms }} @else @if($item->type == 'hotel')<ul>
-                                    <li>خردسال زیر ۲ سال رایگان</li>
-                                    <li>لغو تا ۲۴ ساعت کل هزینه یک شب </li>
-                                    <li>لغو تا ۴۸ساعت ۵۰ درصد یک شب</li>
-                                    <li>لغوتا ۷۲ ساعت ۳۰ درصد</li>
-                                    <li>پذیرش زوج فقط با مدارک محرمیت</li>
-                                    </ul> @else <ul>
-                                    <li>کنسلی کمتر از 24 ساعت قبل از ورود مهمان مصادف با 100 درصد جریمه است.</li>
-                                    <li>رعایت نظم در محیط کافه و رستوران الزامی است.</li>
-                                    <li>رعایت حجاب اسلامی در محیط کافه و رستوران الزامی است.</li>
-                                    </ul>@endif @endif</textarea>
+                                          placeholder="قوانین و مقررات مرکز را وارد کنید">@if(old('terms')){{ old('terms') }}@elseif(isset($item->terms)){{ $item->terms }} @else @if($item->type == 'hotel')
+                                        <ul>
+                                        <li>خردسال زیر ۲ سال رایگان</li>
+                                        <li>لغو تا ۲۴ ساعت کل هزینه یک شب </li>
+                                        <li>لغو تا ۴۸ساعت ۵۰ درصد یک شب</li>
+                                        <li>لغوتا ۷۲ ساعت ۳۰ درصد</li>
+                                        <li>پذیرش زوج فقط با مدارک محرمیت</li>
+                                        </ul> @else <ul>
+                                        <li>کنسلی کمتر از 24 ساعت قبل از ورود مهمان مصادف با 100 درصد جریمه است.</li>
+                                        <li>رعایت نظم در محیط کافه و رستوران الزامی است.</li>
+                                        <li>رعایت حجاب اسلامی در محیط کافه و رستوران الزامی است.</li>
+                                        </ul>@endif @endif</textarea>
 
                             @error('terms')
                             <span class="text-danger text-wrap">{{ $message }}</span>
@@ -604,7 +609,7 @@
 
     <script>
         $(document).ready(function () {
-            @if($item->type == 'hotel')
+            @if(isset($item->type) && $item->type == 'hotel')
             $('#id_minor_max_age_box').show();
             // $('#id_extra_person_fee_box').show();
             @endif
