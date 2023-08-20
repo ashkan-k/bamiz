@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('places', function (Blueprint $table) {
-            $table->integer('minor_min_age')->nullable();
+            $table->integer('minor_max_age')->nullable();
         });
     }
 

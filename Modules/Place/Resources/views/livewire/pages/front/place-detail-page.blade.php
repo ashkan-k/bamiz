@@ -409,16 +409,16 @@
             @if($object->type == 'hotel')
                 <div class="form-group">
 
-                    <label>تعداد خردسالان @if($object->type == 'hotel' && $object->minor_min_age)<small
-                            style="color: red">(کمتر از {{ $object->minor_min_age }} سال)</small>@endif</label>
+                    <label>تعداد خردسالان @if($object->type == 'hotel' && $object->minor_max_age)<small
+                            style="color: red">(کمتر از {{ $object->minor_max_age }} سال)</small>@endif</label>
                     <input class="form-control" type="text"
                            value="{{ old('children_guest_count') }}"
                            name="children_guest_count" id="quest_count"
                            placeholder="تعداد خردسالان">
 
                     <p class="text-danger" style="margin-bottom: 0 !important;">
-                        @if($object->type == 'hotel' && $object->minor_min_age)
-                            نفر اضافه یا فرزند بالای {{ $object->minor_min_age }} سال در محل هتل حساب میشود.
+                        @if($object->type == 'hotel' && $object->minor_max_age)
+                            نفر اضافه یا فرزند بالای {{ $object->minor_max_age }} سال در محل هتل حساب میشود.
                         @endif
 
                         @if($object->extra_person_fee)

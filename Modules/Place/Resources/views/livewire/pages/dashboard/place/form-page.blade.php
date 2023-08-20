@@ -284,26 +284,26 @@
                     <div class="form-group" id="id_extra_person_fee_box">
                         <label class="control-label col-lg-2">هزینه هر نفر اضافه</label>
                         <div class="col-md-10">
-                            <input id="id_minor_min_age" type="number" name="minor_min_age"
+                            <input id="id_extra_person_fee" type="number" name="extra_person_fee"
                                    placeholder="هزینه هر نفر اضافه را وارد کنید"
-                                   value="@if(old('minor_min_age')){{ old('minor_min_age') }}@elseif(isset($item->minor_min_age)){{ $item->minor_min_age }}@endif"
+                                   value="@if(old('extra_person_fee')){{ old('extra_person_fee') }}@elseif(isset($item->extra_person_fee)){{ $item->extra_person_fee }}@endif"
                                    class="form-control">
 
-                            @error('minor_min_age')
+                            @error('extra_person_fee')
                             <span class="text-danger text-wrap">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
 
-                    <div class="form-group" id="id_minor_min_age_box" style="display: none !important;">
+                    <div class="form-group" id="id_minor_max_age_box" style="display: none !important;">
                         <label class="control-label col-lg-2">حداکثر سن خردسالان</label>
                         <div class="col-md-10">
-                            <input id="id_extra_person_fee" type="number" name="extra_person_fee"
+                            <input id="id_minor_max_age" type="number" name="minor_max_age"
                                    placeholder="حداکثر سن خردسالان را وارد کنید"
-                                   value="@if(old('extra_person_fee')){{ old('extra_person_fee') }}@elseif(isset($item->extra_person_fee)){{ $item->extra_person_fee }}@endif"
+                                   value="@if(old('minor_max_age')){{ old('minor_max_age') }}@elseif(isset($item->minor_max_age)){{ $item->minor_max_age }}@endif"
                                    class="form-control">
 
-                            @error('extra_person_fee')
+                            @error('minor_max_age')
                             <span class="text-danger text-wrap">{{ $message }}</span>
                             @enderror
                         </div>
@@ -605,17 +605,17 @@
     <script>
         $(document).ready(function () {
             @if($item->type == 'hotel')
-            $('#id_minor_min_age_box').show();
+            $('#id_minor_max_age_box').show();
             // $('#id_extra_person_fee_box').show();
             @endif
 
             $("#id_type").change(function () {
                 var selected_type = $('#id_type').find(":selected").val();
                 if (selected_type == 'hotel') {
-                    $('#id_minor_min_age_box').show();
+                    $('#id_minor_max_age_box').show();
                     // $('#id_extra_person_fee_box').show();
                 } else {
-                    $('#id_minor_min_age_box').hide();
+                    $('#id_minor_max_age_box').hide();
                     // $('#id_extra_person_fee_box').hide();
                 }
             });

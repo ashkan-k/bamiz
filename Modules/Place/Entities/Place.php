@@ -41,7 +41,7 @@ class Place extends Model
         'address_long',
         'type',
         'food_discount',
-        'minor_min_age',
+        'minor_max_age',
         'extra_person_fee',
         'terms',
     ];
@@ -59,7 +59,7 @@ class Place extends Model
         'tour_gif',
         'address_lat',
         'address_long',
-        'minor_min_age',
+        'minor_max_age',
         'terms',
         'extra_person_fee',
         'user.username',
@@ -123,7 +123,7 @@ class Place extends Model
         }
 
         if ($this->type != 'hotel'){
-            $this->minor_min_age = $this->extra_person_fee = null;
+            $this->minor_max_age = $this->extra_person_fee = null;
         }
 
         try {
