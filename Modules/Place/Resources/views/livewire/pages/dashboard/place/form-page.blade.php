@@ -281,7 +281,7 @@
                         </div>
                     @endif
 
-                    <div class="form-group" id="id_extra_person_fee_box" style="display: none !important;">
+                    <div class="form-group" id="id_extra_person_fee_box">
                         <label class="control-label col-lg-2">هزینه هر نفر اضافه</label>
                         <div class="col-md-10">
                             <input id="id_minor_min_age" type="number" name="minor_min_age"
@@ -295,7 +295,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" id="id_minor_min_age_box">
+                    <div class="form-group" id="id_minor_min_age_box" style="display: none !important;">
                         <label class="control-label col-lg-2">حداکثر سن خردسالان</label>
                         <div class="col-md-10">
                             <input id="id_extra_person_fee" type="number" name="extra_person_fee"
