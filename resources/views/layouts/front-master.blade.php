@@ -371,6 +371,18 @@
     </script>
 @endauth
 
+{{--<script type="text/javascript">--}}
+{{--    window.RAYCHAT_TOKEN = "efe7ff0b-4a97-4c8b-b345-c8a6c8ad1810";--}}
+{{--    (function () {--}}
+{{--        d = document;--}}
+{{--        s = d.createElement("script");--}}
+{{--        s.src = "https://widget-react.raychat.io/install/widget.js";--}}
+{{--        s.async = 1;--}}
+{{--        d.getElementsByTagName("head")[0].appendChild(s);--}}
+{{--    })();--}}
+{{--</script>--}}
+
+
 @livewireScripts
 
 @yield('Scripts')

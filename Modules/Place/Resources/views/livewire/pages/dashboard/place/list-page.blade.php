@@ -114,11 +114,14 @@
                                        data-toggle="tooltip" title=""
                                        data-original-title="زمان کاری"><i
                                             class="fa fa-clock-o"> </i> </a>
-                                    <a href="{{ route('tables.index') }}?place_id={{ $item->id }}"
-                                       class="btn btn-success btn-action mr-1"
-                                       data-toggle="tooltip" title=""
-                                       data-original-title="میز ها"><i
-                                            class="fa fa-table"> </i> </a>
+
+                                    @if($item->type != 'hotel')
+                                        <a href="{{ route('tables.index') }}?place_id={{ $item->id }}"
+                                           class="btn btn-success btn-action mr-1"
+                                           data-toggle="tooltip" title=""
+                                           data-original-title="میز ها"><i
+                                                class="fa fa-table"> </i> </a>
+                                    @endif
 
                                     @if($item->type == 'hotel')
                                         <a href="{{ route('hotel-rooms.index') }}?place_id={{ $item->id }}"
