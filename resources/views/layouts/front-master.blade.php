@@ -75,10 +75,10 @@
             <div data-loader="circle-side"></div>
         </div><!-- /Page Preload -->
         <div id="logo">
-{{--            <a href="/">--}}
-{{--                <img src="{{ $settings['logo'] }}" width="150" height="36" alt="" class="logo_normal">--}}
-{{--                <img src="{{ $settings['logo'] }}" width="150" height="36" alt="" class="logo_sticky">--}}
-{{--            </a>--}}
+            {{--            <a href="/">--}}
+            {{--                <img src="{{ $settings['logo'] }}" width="150" height="36" alt="" class="logo_normal">--}}
+            {{--                <img src="{{ $settings['logo'] }}" width="150" height="36" alt="" class="logo_sticky">--}}
+            {{--            </a>--}}
         </div>
         <ul id="top_menu">
 
@@ -149,12 +149,15 @@
                     <div class="follow_us">
                         <ul>
                             <li>ما را دنبال کنید</li>
-                            <li><a href="https://www.facebook.com/{{ $settings['facebook'] }}"><i style="font-family: themify!important;"
-                                                                         class="ti-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/tweeter/{{ $settings['twitter'] }}"><i style="font-family: themify!important;"
-                                                                        class="ti-twitter-alt"></i></a></li>
-                            <li><a href="https://www.instagram.com/{{ $settings['instagram'] }}"><i style="font-family: themify!important;"
-                                                                          class="ti-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/{{ $settings['facebook'] }}"><i
+                                        style="font-family: themify!important;"
+                                        class="ti-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/tweeter/{{ $settings['twitter'] }}"><i
+                                        style="font-family: themify!important;"
+                                        class="ti-twitter-alt"></i></a></li>
+                            <li><a href="https://www.instagram.com/{{ $settings['instagram'] }}"><i
+                                        style="font-family: themify!important;"
+                                        class="ti-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -171,10 +174,12 @@
                 <div class="col-lg-3 col-md-6">
                     <h5>تماس با ما</h5>
                     <ul class="contacts">
-                        <li><a href="tel://{{ $settings['phone'] }}"><i class="ti-mobile" style="font-family: themify!important;"></i>{{ $settings['phone'] }}
+                        <li><a href="tel://{{ $settings['phone'] }}"><i class="ti-mobile"
+                                                                        style="font-family: themify!important;"></i>{{ $settings['phone'] }}
                             </a></li>
                         <li><a href='mailto:{{ $settings['email'] }}'><i style="font-family: themify!important;"
-                                    class="ti-email"></i>{{ $settings['email'] }}</a></li>
+                                                                         class="ti-email"></i>{{ $settings['email'] }}
+                            </a></li>
                     </ul>
                     <div id="newsletter">
                         <h6>خبر نامه</h6>
@@ -194,7 +199,11 @@
             <div class="row">
                 <div class="col-lg-6">
                     <ul id="footer-selector">
-                    <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=366657&amp;Code=6bvwSDJuNXjJcyluwzQu"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=366657&amp;Code=6bvwSDJuNXjJcyluwzQu" alt="" style="cursor:pointer" id="6bvwSDJuNXjJcyluwzQu"></a>
+                        <a referrerpolicy="origin" target="_blank"
+                           href="https://trustseal.enamad.ir/?id=366657&amp;Code=6bvwSDJuNXjJcyluwzQu"><img
+                                referrerpolicy="origin"
+                                src="https://Trustseal.eNamad.ir/logo.aspx?id=366657&amp;Code=6bvwSDJuNXjJcyluwzQu"
+                                alt="" style="cursor:pointer" id="6bvwSDJuNXjJcyluwzQu"></a>
                     </ul>
                 </div>
                 <div class="col-lg-6">
@@ -268,7 +277,9 @@
         @auth
             <a style="display: none !important;" href="#sign-in-dialog" id="sign-in" class="btn_1 rounded">رزرو</a>
         @else
-            <a style="display: none !important;" onclick="window.location.href='{{ route('register') }}?next={{ request()->path() }}'" id="sign-in" class="btn_1 rounded">رزرو</a>
+            <a style="display: none !important;"
+               onclick="window.location.href='{{ route('register') }}?next={{ request()->path() }}'" id="sign-in"
+               class="btn_1 rounded">رزرو</a>
         @endif
     </p>
 @endif
@@ -328,6 +339,37 @@
     </script>
 
 @endif
+
+<!---start GOFTINO code--->
+<script type="text/javascript">
+    !function () {
+        var i = "CTcDeX", a = window, d = document;
+
+        function g() {
+            var g = d.createElement("script"), s = "https://www.goftino.com/widget/" + i,
+                l = localStorage.getItem("goftino_" + i);
+            g.async = !0, g.src = l ? s + "?o=" + l : s;
+            d.getElementsByTagName("head")[0].appendChild(g);
+        }
+
+        "complete" === d.readyState ? g() : a.attachEvent ? a.attachEvent("onload", g) : a.addEventListener("load", g, !1);
+    }();
+</script>
+<!---end GOFTINO code--->
+
+@auth
+    <script>
+        window.addEventListener('goftino_ready', function () {
+            Goftino.setUser({
+                email: '{{ auth()->user()->email }}',
+                name: '{{ auth()->user()->fullname() }}',
+                phone: '{{ auth()->user()->phone }}',
+                avatar: '{{ auth()->user()->get_avatar() }}',
+                forceUpdate: true
+            })
+        });
+    </script>
+@endauth
 
 @livewireScripts
 
