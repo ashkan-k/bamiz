@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('reserves', function (Blueprint $table) {
             $table->id();
             $table->string('date');
-            $table->string('start_time');
+            $table->string('start_time')->nullable();
             $table->string('end_time')->nullable();
             $table->integer('guest_count')->default(1);
             $table->integer('children_guest_count')->default(0);

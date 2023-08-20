@@ -237,7 +237,7 @@
                         <label class="control-label col-lg-2">نوع مرکز</label>
                         <div class="col-md-10">
 
-                            <select class="form-control" name="type" required>
+                            <select id="id_type" class="form-control" name="type" required>
                                 <option value="">نوع مرکز را انتخاب کنید</option>
 
                                 @foreach($types as $type)
@@ -280,6 +280,34 @@
                             </div>
                         </div>
                     @endif
+
+                    <div class="form-group" id="id_extra_person_fee_box" style="display: none !important;">
+                        <label class="control-label col-lg-2">حداکثر سن خردسالان</label>
+                        <div class="col-md-10">
+                            <input id="id_minor_min_age" type="number" name="minor_min_age"
+                                   placeholder="حداکثر سن خردسالان را وارد کنید"
+                                   value="@if(old('minor_min_age')){{ old('minor_min_age') }}@elseif(isset($item->minor_min_age)){{ $item->minor_min_age }}@endif"
+                                   class="form-control">
+
+                            @error('minor_min_age')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="id_minor_min_age_box" style="display: none !important;">
+                        <label class="control-label col-lg-2">هزینه هر نفر اضافه</label>
+                        <div class="col-md-10">
+                            <input id="id_extra_person_fee" type="number" name="extra_person_fee"
+                                   placeholder="هزینه هر نفر اضافه را وارد کنید"
+                                   value="@if(old('extra_person_fee')){{ old('extra_person_fee') }}@elseif(isset($item->extra_person_fee)){{ $item->extra_person_fee }}@endif"
+                                   class="form-control">
+
+                            @error('extra_person_fee')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
 
                     <div class="form-group" wire:ignore>
                         <label class="control-label col-lg-2">استان</label>
@@ -550,6 +578,26 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function () {
+            @if($item->type == 'hotel')
+                $('#id_minor_min_age_box').show();
+                $('#id_extra_person_fee_box').show();
+            @endif
+
+            $("#id_type").change(function () {
+                var selected_type = $('#id_type').find(":selected").val();
+                if (selected_type == 'hotel') {
+                    $('#id_minor_min_age_box').show();
+                    $('#id_extra_person_fee_box').show();
+                } else {
+                    $('#id_minor_min_age_box').hide();
+                    $('#id_extra_person_fee_box').hide();
+                }
+            });
+        });
+    </script>
+
     <script type="module">
         $(document).ready(function () {
             var API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjkxODM2YTc4YjQ1MWY1ODk5NmE1NTM2MmNiYmFjZmFiZGRmYTY5MzQzN2YxNDUzOTNmN2Q2MWE1MjI3ZmViNTRmYmI2OTM4ZmM5YWMyYTkyIn0.eyJhdWQiOiIyMjk0MSIsImp0aSI6IjkxODM2YTc4YjQ1MWY1ODk5NmE1NTM2MmNiYmFjZmFiZGRmYTY5MzQzN2YxNDUzOTNmN2Q2MWE1MjI3ZmViNTRmYmI2OTM4ZmM5YWMyYTkyIiwiaWF0IjoxNjg4MTQ1NzA4LCJuYmYiOjE2ODgxNDU3MDgsImV4cCI6MTY5MDczNzcwOCwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.lA2hR9BeYbGBvk0APHQR2goL78g40sNGIuRICJumxLY2J33UQzamiHQaAk_DJNYaHLZjfDqG8toL3sg7ayWaeOlmkB-WnqS2iAaepdAwG_JX98-ciY6kn8amIwpUGHD8q7DYMfZvTZojjIGXOKTjjQhJDVwl53G86vJEpelC4_Zy-Lobydel2IDvW39MPifL3tkNIMnA-cwAlXz83HyGTMDYN987cqI7FXtaFsgo6Qf6KjDNERKE3br67sTifkZTPagM30CUQZebLTWDK1aDWuBa2L3HvnC_ux4V1SPVlrWaM-hx7peKcieHXgOJEfSA2Bvf3XlAXYE-tM8LeJLW0A';
@@ -796,9 +844,3 @@
         });
     </script>
 @endsection
-
-@push("StackScript")
-
-
-
-@endpush

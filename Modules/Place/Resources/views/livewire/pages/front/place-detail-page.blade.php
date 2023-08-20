@@ -622,8 +622,8 @@
                 <div class="text-center mt-2 mb-2"><b>تشریفات</b></div>
                 <hr>
 
-                <div class="row">
-                    @foreach($object->options as $op)
+                @forelse($object->options as $op)
+                    <div class="row">
                         <div class="form-group col-12">
                             <label for="id_option_{{ $op->id }}">{{ $op->title }}</label>
                             <input id="id_option_{{ $op->id }}" type="checkbox" name="option_id[]"
@@ -649,22 +649,22 @@
                             @endif
                             <hr style="clear: both !important;margin-top: 1rem;margin-bottom: 1rem;border: 0;border-top: 3px solid rgba(0, 0, 0, 0.1);"/>
                         </div>
+                    </div>
+                @empty
+                    <div class="text-center mt-2 mb-5"><b><h5>تشریفاتی موجود نیست.</h5></b></div>
+                @endforelse
 
+                    <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
+                            (اختیاری)</b></div>
 
-                    @endforeach
-                </div>
+                    <div class="text-center">
+                        <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
+                               class="btn_1 full-width">
 
-                <div class="text-center text-danger mt-2 mb-2"><b>تشریفات مورد نظر خود را در صورت نیاز انتخاب کنید.
-                        (اختیاری)</b></div>
-
-                <div class="text-center">
-                    <input type="submit" id="id_submit_button_2" ng-disabled="is_submit" value="تکمیل رزرو"
-                           class="btn_1 full-width">
-
-                    <input ng-click="@if($object->type == 'hotel') form = 1 @else form = 2 @endif" type="button"
-                           ng-disabled="is_submit" value="بازکشت"
-                           class="btn_1 full-width">
-                </div>
+                        <input ng-click="@if($object->type == 'hotel') form = 1 @else form = 2 @endif" type="button"
+                               ng-disabled="is_submit" value="بازکشت"
+                               class="btn_1 full-width">
+                    </div>
             </div>
         @endif
 

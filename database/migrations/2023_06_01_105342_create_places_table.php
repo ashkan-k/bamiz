@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('chairs_people_count')->default(1);
             $table->integer('viewCount')->default(0);
             $table->text('cover');
+            $table->text('banner')->nullable();
             $table->text('menu_image')->nullable();
             $table->text('tour_link')->nullable();
             $table->text('tour_gif')->nullable();
@@ -31,6 +32,9 @@ return new class extends Migration
             $table->double('address_long')->nullable();
 
             $table->integer('food_discount')->nullable();
+
+            $table->integer('minor_min_age')->nullable();
+            $table->string('extra_person_fee')->nullable();
 
             $table->enum('type', EnumHelpers::$PlaceTypesEnum)->default('restaurant');
 

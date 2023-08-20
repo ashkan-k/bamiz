@@ -41,6 +41,8 @@ class Place extends Model
         'address_long',
         'type',
         'food_discount',
+        'minor_min_age',
+        'extra_person_fee',
     ];
 
     protected $casts = [
@@ -56,6 +58,8 @@ class Place extends Model
         'tour_gif',
         'address_lat',
         'address_long',
+        'minor_min_age',
+        'extra_person_fee',
         'user.username',
         'user.first_name',
         'user.last_name',
@@ -114,6 +118,10 @@ class Place extends Model
     {
         if (!$this->slug){
             $this->slug = Slugify($this->name);
+        }
+
+        if ($this->type != 'hotel'){
+            $this->minor_min_age = $this->extra_person_fee = null;
         }
 
         try {

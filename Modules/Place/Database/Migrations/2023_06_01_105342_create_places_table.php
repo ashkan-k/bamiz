@@ -33,6 +33,9 @@ return new class extends Migration
 
             $table->integer('food_discount')->nullable();
 
+            $table->integer('minor_min_age')->nullable();
+            $table->string('extra_person_fee')->nullable();
+
             $table->enum('type', EnumHelpers::$PlaceTypesEnum)->default('restaurant');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
