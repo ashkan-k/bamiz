@@ -28,6 +28,7 @@ class PlaceRequest extends FormRequest
             'tour_gif' => 'nullable',
             'minor_min_age' => 'nullable|numeric',
             'extra_person_fee' => 'nullable|numeric',
+            'terms' => 'nullable',
             'address_lat' => ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
             'address_long' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/']
         ];

@@ -247,14 +247,12 @@
 {{--                        </div>--}}
 {{--                        <hr>--}}
 
-                        <div id="policy">
-                            <h5>قوانین و مقررارت</h5>
-                            @if($place->type == 'hotel')
-                                <p class="nomargin">{!! $settings['reserve_hotel_terms'] !!}</p>
-                            @else
-                                <p class="nomargin">{!! $settings['reserve_restaurant_terms'] !!}</p>
-                            @endif
-                        </div>
+                        @if($place->terms)
+                            <div id="policy">
+                                <h5>قوانین و مقررارت</h5>
+                                <p class="nomargin">{!! $place->terms !!}</p>
+                            </div>
+                        @endif
 
                         {{--                        <div id="policy">--}}
                         {{--                            <h5>کسر از فیش</h5>--}}

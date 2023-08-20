@@ -43,6 +43,7 @@ class Place extends Model
         'food_discount',
         'minor_min_age',
         'extra_person_fee',
+        'terms',
     ];
 
     protected $casts = [
@@ -59,6 +60,7 @@ class Place extends Model
         'address_lat',
         'address_long',
         'minor_min_age',
+        'terms',
         'extra_person_fee',
         'user.username',
         'user.first_name',

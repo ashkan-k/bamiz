@@ -359,6 +359,29 @@
                     </div>
 
 
+                    <div class="form-group">
+                        <label class="control-label col-lg-2">قوانین و مقررات مرکز</label>
+                        <div class="col-md-10">
+                                <textarea type="text" name="terms" id="id_terms"
+                                          class="form-control" required rows="6"
+                                          placeholder="قوانین و مقررات مرکز را وارد کنید">@if(old('terms')){{ old('terms') }}@elseif(isset($item->terms)){{ $item->terms }} @else @if($item->type == 'hotel')<ul>
+                                    <li>خردسال زیر ۲ سال رایگان</li>
+                                    <li>لغو تا ۲۴ ساعت کل هزینه یک شب </li>
+                                    <li>لغو تا ۴۸ساعت ۵۰ درصد یک شب</li>
+                                    <li>لغوتا ۷۲ ساعت ۳۰ درصد</li>
+                                    <li>پذیرش زوج فقط با مدارک محرمیت</li>
+                                    </ul> @else <ul>
+                                    <li>کنسلی کمتر از 24 ساعت قبل از ورود مهمان مصادف با 100 درصد جریمه است.</li>
+                                    <li>رعایت نظم در محیط کافه و رستوران الزامی است.</li>
+                                    <li>رعایت حجاب اسلامی در محیط کافه و رستوران الزامی است.</li>
+                                    </ul>@endif @endif</textarea>
+
+                            @error('terms')
+                            <span class="text-danger text-wrap">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
                     @if(auth()->user()->is_staff())
 
                         <div class="form-group">
@@ -557,6 +580,7 @@
 
     <script>
         CKEDITOR.replace('id_description');
+        CKEDITOR.replace('id_terms');
     </script>
 
     <script>
@@ -581,8 +605,8 @@
     <script>
         $(document).ready(function () {
             @if($item->type == 'hotel')
-                $('#id_minor_min_age_box').show();
-                $('#id_extra_person_fee_box').show();
+            $('#id_minor_min_age_box').show();
+            $('#id_extra_person_fee_box').show();
             @endif
 
             $("#id_type").change(function () {
