@@ -773,11 +773,19 @@
 
     <script>
         kamaDatepicker('id_date', {
-            placeholder: 'تاریخ رزرو',
-            buttonsColor: 'blue',
-            markHolidays: true,
-            markToday: true,
+            placeholder: "تاریخ رزرو"
+            // , closeAfterSelect: false
+            , nextButtonIcon: "fa fa-arrow-circle-right"
+            , previousButtonIcon: "fa fa-arrow-circle-left"
+            , buttonsColor: "orange"
+            // , forceFarsiDigits: true
+            , markToday: true
+            , markHolidays: true
+            , highlightSelectedDay: true
+            , sync: true
+            , gotoToday: true
         });
+
         $("#id_date").attr('autocomplete', 'off');
 
         $('#id_date').on('change', function () {
