@@ -3,6 +3,7 @@
 namespace Modules\Option\Http\Livewire\Pages\Dashboard\Option;
 
 use Livewire\Component;
+use Modules\Place\Entities\Place;
 
 class FormPage extends Component
 {
@@ -13,6 +14,9 @@ class FormPage extends Component
 
     public function render()
     {
-        return view('option::livewire.pages.dashboard.option.form-page');
+        $data = [
+            'places' => Place::ActivePlaces()->get()
+        ];
+        return view('option::livewire.pages.dashboard.option.form-page', $data);
     }
 }

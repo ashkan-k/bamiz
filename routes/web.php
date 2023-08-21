@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/aaa', function () {
-    $result = \Illuminate\Support\Facades\Http::get("http://sms.rajat.ir/send_line.php?username=16471&password=09916226328&to=09396988720&fori=2&from=50002192287030&text=کاربر گرامی کد تایید شما:\n 1234\nلغو 11");
+    $result = \Illuminate\Support\Facades\Http::get("http://sms.rajat.ir/send_line.php?username=16471&password=09916226328&to=09396988720&fori=2&from=50002192287030&text=مدیریت گرامی یک رزرو برای %s %s توسط کاربر %s برای تاریخ %s ثبت شد.\nلغو 11");
 
     dd($result->status(), $result->json());
 

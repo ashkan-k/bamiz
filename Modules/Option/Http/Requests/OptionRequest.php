@@ -19,6 +19,7 @@ class OptionRequest extends FormRequest
             'amount' => 'required|numeric',
             'discount_amount' => 'nullable|numeric',
             'image' => 'nullable|mimes:jpeg,png,bmp,jpg',
+            'place_id' => 'nullable|exists:places,id',
         ];
 
 //        if (request()->method == 'POST'){

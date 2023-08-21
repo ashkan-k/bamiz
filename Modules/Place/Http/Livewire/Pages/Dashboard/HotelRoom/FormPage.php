@@ -15,7 +15,7 @@ class FormPage extends Component
     public function render()
     {
         $data = [
-            'places' => Place::all(),
+            'places' => Place::ActivePlaces()->get()
         ];
 
         return view('place::livewire.pages.dashboard.hotel-room.form-page', $data);

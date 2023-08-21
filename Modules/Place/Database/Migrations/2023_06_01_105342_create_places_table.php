@@ -35,6 +35,7 @@ return new class extends Migration
 
             $table->integer('minor_max_age')->nullable();
             $table->string('extra_person_fee')->nullable();
+            $table->text('terms')->nullable();
 
             $table->enum('type', EnumHelpers::$PlaceTypesEnum)->default('restaurant');
 

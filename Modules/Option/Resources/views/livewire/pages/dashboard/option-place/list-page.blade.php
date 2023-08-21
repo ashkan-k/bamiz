@@ -15,6 +15,7 @@
                 </form>
 
                 <a class="btn btn-primary pull-right" href="{{ route('option_places.create') }}?place_id={{ $this->place_id }}&next_url={{ $full_url }}">الحاق تشریفات به مرکز {{ $place->name }}</a>
+                <a class="btn btn-primary pull-right" style="margin-left: 10px !important;" href="{{ route('options.create') }}?place_id={{ $this->place_id }}&next_url={{ $full_url }}">ثبت تشریفات جدید برای مرکز {{ $place->name }}</a>
 
                 <table class="table table-hover">
                     <thead>

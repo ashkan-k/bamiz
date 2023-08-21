@@ -8,7 +8,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Option\Entities\Option;
+use Modules\Option\Entities\OptionPlace;
 use Modules\Option\Http\Requests\OptionRequest;
+use Modules\Place\Entities\Place;
 
 class OptionController extends Controller
 {
@@ -28,7 +30,18 @@ class OptionController extends Controller
     {
         $image = $this->UploadFile($request, 'image', 'options_images', $request->title);
 
-        Option::create(array_merge($request->all(), ['image' => $image]));
+        $data = $request->validated();
+        $option = Option::create(array_merge($data, ['image' => $image]));
+        if (isset($data['place_id'])) {
+            OptionPlace::create([
+                'place_id' => $data['place_id'],
+                'option_id' => $option->id,
+            ]);
+        }
+
+        if ($next_url = \request('next_url')) {
+            return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ثبت شد.', $next_url);
+        }
         return $this->SuccessRedirect('آیتم مورد نظر با موفقیت ثبت شد.', 'options.index');
     }
 

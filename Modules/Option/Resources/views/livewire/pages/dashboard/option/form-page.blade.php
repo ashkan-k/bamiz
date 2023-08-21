@@ -15,6 +15,37 @@
 
                     @csrf
 
+                        @if(request('place_id'))
+                            <input type="hidden" name="place_id" value="{{ request('place_id') }}">
+                            <input type="hidden" name="next_url"
+                                   value="{{ route('option_places.index') }}?place_id={{ request('place_id') }}">
+                        @endif
+
+                    @if(!isset($item->id) && !request('place_id'))
+                            <div class="form-group" wire:ignore>
+                                <label class="control-label col-lg-2">مرکز</label>
+                                <div class="col-md-10">
+
+                                    <select id="id_place" class="form-control" name="place_id">
+                                        <option value="">مرکز را انتخاب کنید</option>
+
+                                        @foreach($places as $place)
+
+                                            <option @if(isset($item->place_id) && $item->place_id == $place->id) selected
+                                                    @endif value="{{ $place->id }}">{{ $place->name }}
+                                            </option>
+
+                                        @endforeach
+
+                                    </select>
+
+                                    @error('place_id')
+                                    <span class="text-danger text-wrap">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                    @endif
+
                     <div class="form-group">
                         <label class="control-label col-lg-2">نام</label>
                         <div class="col-md-10">
@@ -99,7 +130,7 @@
                     <div class="col-lg-12">
                         <div class="m-1-25 m-b-20">
                             <div class="modal-footer">
-                                <a href="{{ route('options.index') }}"
+                                <a href="{{ route('options.index') }}?place_id={{ request('place_id') }}"
                                    class="btn btn-danger btn-border-radius waves-effect">
                                     بازگشت
                                 </a>
@@ -115,6 +146,10 @@
 </div>
 
 @section('Scripts')
+    <script>
+        $('#id_place').select2();
+    </script>
+
     <script>
         CKEDITOR.replace('id_description');
     </script>
