@@ -4,7 +4,7 @@
             <div class="card-box">
                 <h2 class="card-title"><b>{{ $titlePage }}</b></h2>
 
-                <form class="form-horizontal"
+                <form class="form-horizontal" id="id_frm"
                       action="{{ $type == 'edit' ? route('hotel-rooms.update' , $item->id) : route('hotel-rooms.store') }}"
                       method="post"
                       enctype="multipart/form-data">
@@ -76,7 +76,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">قیمت</label>
                         <div class="col-md-10">
-                            <input id="price" type="number" name="price"
+                            <input id="price" type="text" name="price"
                                    class="form-control" required
                                    placeholder="قیمت را وارد کنید"
                                    value="@if(old('price')){{ old('price') }}@elseif(isset($item->price)){{ $item->price }}@endif">
@@ -132,6 +132,14 @@
 </div>
 
 @push("StackScript")
+    <script>
+        FormatInputNumberWithComma('price', 'id_frm');
+
+        @if(isset($item->price))
+        $('#price').val('{{ number_format($item->price) }}');
+        @endif
+    </script>
+
     <script>
         CKEDITOR.replace('id_description');
     </script>

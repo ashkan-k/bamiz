@@ -129,7 +129,7 @@
             <div class="card-box">
                 <h2 class="card-title"><b>{{ $titlePage }}</b></h2>
 
-                <form class="form-horizontal"
+                <form class="form-horizontal" id="id_frm"
                       action="{{ $type == 'edit' ? route('places.update' , $item->id) : route('places.store') }}"
                       method="post"
                       enctype="multipart/form-data">
@@ -288,7 +288,7 @@
                     <div class="form-group" id="id_extra_person_fee_box">
                         <label class="control-label col-lg-2">هزینه هر نفر اضافه</label>
                         <div class="col-md-10">
-                            <input id="id_extra_person_fee" type="number" name="extra_person_fee"
+                            <input id="id_extra_person_fee" type="text" name="extra_person_fee"
                                    placeholder="هزینه هر نفر اضافه را وارد کنید"
                                    value="@if(old('extra_person_fee')){{ old('extra_person_fee') }}@elseif(isset($item->extra_person_fee)){{ $item->extra_person_fee }}@endif"
                                    class="form-control">
@@ -582,6 +582,14 @@
 @section('Scripts')
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.env.js"></script>
     <script type="text/javascript" src="https://cdn.map.ir/web-sdk/1.4.2/js/mapp.min.js"></script>
+
+    <script>
+        FormatInputNumberWithComma('id_extra_person_fee', 'id_frm');
+
+        @if(isset($item->extra_person_fee))
+            $('#id_extra_person_fee').val('{{ number_format($item->extra_person_fee) }}');
+        @endif
+    </script>
 
     <script>
         CKEDITOR.replace('id_description');
