@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="https://cdn.map.ir/web-sdk/1.4.2/css/fa/style.css">
 
     <style>
+        @media screen and (max-width: 1023px) {
+            .place_banner_background {
+                background: url('{{ $object->get_banner() }}') !important;
+                width: 100% !important;
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
+            }
+        }
+    </style>
+
+    <style>
         #app {
             width: 100%;
             height: 100%;
@@ -72,8 +83,7 @@
 
 <div>
     <section class="header-video">
-        <div id="hero_video"
-             style="background: url('{{ $object->get_banner() }}'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
+        <div id="hero_video" class="place_banner_background">
             <div class="wrapper">
                 <div class="container">
 
