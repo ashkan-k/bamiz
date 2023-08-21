@@ -604,6 +604,8 @@
                         </option>
                     </select>
 
+                    <p class="text-danger" style="margin-bottom: 0 !important;">برای مشاهده میز و سالن به تور مجازی مراجعه کنید.</p>
+
                     @error('table_id')
                     <span class="text-danger text-wrap">{{ $message }}</span>
                     @enderror
