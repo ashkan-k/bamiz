@@ -40,11 +40,19 @@
           integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
           crossorigin="anonymous"/>
 
+    <style>
+        aside{
+            width: 100% !important;
+        }
+    </style>
+
     @yield('Styles')
 
 </head>
 
-<body id="login_bg" class="rtl" ng-app="myApp" ng-controller="myCtrl">
+<body
+{{--    id="login_bg" --}}
+      class="rtl" ng-app="myApp" ng-controller="myCtrl">
 
 <nav id="menu" class="fake_menu"></nav>
 
