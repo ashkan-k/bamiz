@@ -267,5 +267,6 @@ return [
         'place_id' => 'مرکز',
         'menu_image' => 'تصویر منو',
         'amount' => 'مبلغ',
+        'discount_amount' => 'ملبغ تخفیفی',
     ],
 ];

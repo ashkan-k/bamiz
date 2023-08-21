@@ -4,7 +4,7 @@
             <div class="card-box">
                 <h2 class="card-title"><b>{{ $titlePage }}</b></h2>
 
-                <form class="form-horizontal"
+                <form class="form-horizontal" id="id_frm"
                       action="{{ $type == 'edit' ? route('options.update' , $item->id) : route('options.store') }}"
                       method="post"
                       enctype="multipart/form-data">
@@ -76,10 +76,10 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">ملبغ (تومان)</label>
                         <div class="col-md-10">
-                            <input id="amount" type="number" name="amount"
+                            <input id="amount" type="text" name="amount"
                                    class="form-control" required
                                    placeholder="ملبغ (تومان) را وارد کنید"
-                                   value="@if(old('amount')){{ old('amount') }}@elseif(isset($item->amount)){{ $item->amount }}@else 1 @endif">
+                                   value="@if(old('amount')){{ old('amount') }}@elseif(isset($item->amount)){{ $item->amount }}@endif">
 
                             @error('amount')
                             <span class="text-danger text-wrap">{{ $message }}</span>
@@ -90,10 +90,10 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">ملبغ تخفیفی (تومان)</label>
                         <div class="col-md-10">
-                            <input id="discount_amount" type="number" name="discount_amount"
+                            <input id="discount_amount" type="text" name="discount_amount"
                                    class="form-control"
                                    placeholder="ملبغ تخفیفی (تومان) را وارد کنید"
-                                   value="@if(old('discount_amount')){{ old('discount_amount') }}@elseif(isset($item->discount_amount)){{ $item->discount_amount }}@else 1 @endif">
+                                   value="@if(old('discount_amount')){{ old('discount_amount') }}@elseif(isset($item->discount_amount)){{ $item->discount_amount }}@endif">
 
                             @error('discount_amount')
                             <span class="text-danger text-wrap">{{ $message }}</span>
@@ -146,6 +146,18 @@
 </div>
 
 @section('Scripts')
+    <script>
+        FormatInputNumberWithComma('amount', 'id_frm');
+        FormatInputNumberWithComma('discount_amount', 'id_frm');
+
+        @if(isset($item->amount))
+            $('#amount').val('{{ number_format($item->amount) }}');
+        @endif
+        @if(isset($item->discount_amount))
+            $('#discount_amount').val('{{ number_format($item->discount_amount) }}');
+        @endif
+    </script>
+
     <script>
         $('#id_place').select2();
     </script>

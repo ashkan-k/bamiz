@@ -110,3 +110,25 @@ function showToast(error, type) {
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+function FormatInputNumberWithComma(element_id, form_id) {
+    $(document).ready(function() {
+        $(`#${element_id}`).on('input', function() {
+            // Get the input value
+            var inputValue = $(this).val();
+
+            // Remove existing commas and non-numeric characters
+            var sanitizedValue = inputValue.replace(/[^0-9]/g, '');
+
+            // Format the value with commas
+            var formattedValue = sanitizedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            // Update the input value
+            $(this).val(formattedValue);
+        });
+    });
+
+    $( `#${form_id}`).on('submit', function (event) {
+        $(`#${element_id}`).val($(`#${element_id}`).val().replaceAll(',', ''));
+    })
+}

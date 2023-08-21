@@ -4,7 +4,7 @@
             <div class="card-box">
                 <h2 class="card-title"><b>{{ $titlePage }}</b></h2>
 
-                <form class="form-horizontal"
+                <form class="form-horizontal" id="id_frm"
                       action="{{ $type == 'edit' ? route('reserve-types.update' , $item->id) : route('reserve-types.store') }}"
                       method="post"
                       enctype="multipart/form-data">
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-2">قیمت</label>
                         <div class="col-md-10">
-                            <input id="id_price" type="number" name="price"
+                            <input id="price" type="text" name="price"
                                    class="form-control"
                                    placeholder=" قیمت را وارد کنید"
                                    value="@if(old('price')){{ old('price') }}@elseif(isset($item->price)){{ $item->price }}@endif">
@@ -63,3 +63,13 @@
 
     </div>
 </div>
+
+@section('Scripts')
+    <script>
+        FormatInputNumberWithComma('price', 'id_frm');
+
+        @if(isset($item->price))
+            $('#price').val('{{ number_format($item->price) }}');
+        @endif
+    </script>
+@endsection
