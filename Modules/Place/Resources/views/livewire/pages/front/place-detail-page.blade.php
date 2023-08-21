@@ -775,8 +775,8 @@
         kamaDatepicker('id_date', {
             placeholder: "تاریخ رزرو"
             // , closeAfterSelect: false
-            , nextButtonIcon: "fa fa-arrow-circle-right"
-            , previousButtonIcon: "fa fa-arrow-circle-left"
+            // , nextButtonIcon: "fa fa-arrow-circle-right"
+            // , previousButtonIcon: "fa fa-arrow-circle-left"
             , buttonsColor: "orange"
             // , forceFarsiDigits: true
             , markToday: true
