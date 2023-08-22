@@ -54,7 +54,7 @@ class IdPayPaymentController extends BaseGatewayController
 
             // Send Sms for website,s manager
             $manager_phone = Setting::where('key', 'manager_phone_1')->first()->value;
-            $manager_text = sprintf(sms_helper::$SMS_PATTERNS['reserve_success_manager'], $payment->reserve->place->get_type(), $payment->reserve->place->name, $payment->reserve->user->fullname(), str_replace('-', '/', $payment->reserve->date));
+            $manager_text = sprintf(sms_helper::$SMS_PATTERNS['reserve_success_manager'], $payment->reserve->place->name, $payment->reserve->user->fullname(), str_replace('-', '/', $payment->reserve->date));
 //            dispatch(new SendSmsJob($manager_phone, $manager_text));
             $this->send_sms($manager_phone, $manager_text);
 

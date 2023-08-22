@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Modules\Sms\Helpers\sms_helper;
+use Modules\Sms\Http\Traits\SmsHelpers;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/aaa', function () {
-    $result = \Illuminate\Support\Facades\Http::get("http://sms.rajat.ir/send_line.php?username=16471&password=09916226328&to=09396988720&fori=2&from=50002192287030&text=مدیریت گرامی یک رزرو برای %s %s توسط کاربر %s برای تاریخ %s ثبت شد.\nلغو 11");
+
+    $payment = \Modules\Payment\Entities\Payment::first();
+
+    $restaurant_manager_text = sprintf(sms_helper::$SMS_PATTERNS['reserve_success_restaurant_manager'], $payment->reserve->place->name, $payment->reserve->user->fullname(), str_replace('-', '/', $payment->reserve->date));
+
+    $username = env('SMS_USERNAME');
+    $password = env('SMS_PASSWORD');
+    $sender = env('SMS_SENDER_NUMBER');
+
+    $result = \Illuminate\Support\Facades\Http::get("http://sms.rajat.ir/send_line.php?username=$username&password=$password&to=09396988720&fori=2&from=$sender&text=$restaurant_manager_text");
 
     dd($result->status(), $result->json());
 
