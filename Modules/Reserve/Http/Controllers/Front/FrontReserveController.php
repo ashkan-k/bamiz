@@ -39,6 +39,10 @@ class FrontReserveController extends Controller
             $data['amount'] = $hotel_room->price;
         }
 
+        if ($place->type == 'hotel' && $place->food_discount){
+            $data['amount'] = $place->CalculateDiscount($data['amount']);
+        }
+
         if (!isset($data['amount']) || $data['amount'] <= 0) {
             throw ValidationException::withMessages(['amount' => 'لطفا اطلاعات را تکمیل کنید! قیمت نهایی رزرو نمی تواند 0 باشد!'])->status(400);
         }

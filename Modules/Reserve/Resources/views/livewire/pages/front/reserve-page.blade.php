@@ -264,11 +264,26 @@
                                     <h5 style="text-align: center"> لیست سفارش رزرو میز</h5>
                                 </div>
                                 <ul class="cart_details" id="card_detail">
+                                    @php
+                                        $calculated_total_price = $total_price - $options_price;
+                                    @endphp
+
                                     <li> مبلغ رزرو مرکز
-                                        <span>{{ number_format($total_price - $options_price) }} تومان</span></li>
+                                        <span>
+                                            <del>{{ number_format($total_price + $place->CalculateDiscountAmount($reserve->hotel_room->price)) }} تومان</del>
+                                        </span></li>
+
+                                    @if($place->food_discount)
+                                        <li> مبلغ با تخفیف
+                                            <span>{{ number_format($calculated_total_price) }} تومان</span></li>
+                                    @endif
+                                </ul>
+
+                                <ul class="cart_details" id="card_detail">
                                     <li>مبلغ رزرو تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span>
                                     </li>
                                 </ul>
+
                                 <div id="total_cart">
                                     جمع کل <span class="float-right" id="total_price">{{ number_format($total_price) }}  تومان </span>
                                 </div>

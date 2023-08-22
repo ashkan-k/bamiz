@@ -82,14 +82,14 @@ class Place extends Model
         return \Modules\Place\Database\factories\PlaceFactory::new();
     }
 
-    public function get_type(){
-        if ($this->type == 'restaurant'){
+    public function get_type()
+    {
+        if ($this->type == 'restaurant') {
             return 'رستوران';
-        }
-        elseif ($this->type == 'cafe'){
+        } elseif ($this->type == 'cafe') {
             return 'کافه';
         }
-        return  'هتل';
+        return 'هتل';
     }
 
     public function get_cover($size)
@@ -116,21 +116,31 @@ class Place extends Model
         ];
     }
 
+    public function CalculateDiscountAmount($total_amount)
+    {
+        return round(($this->food_discount * $total_amount) / 100);
+    }
+
+    public function CalculateDiscount($total_amount)
+    {
+        return intval(round($total_amount - $this->CalculateDiscountAmount($total_amount)));
+    }
+
     public function save(array $options = [])
     {
-        if (!$this->slug){
+        if (!$this->slug) {
             $this->slug = Slugify($this->name);
         }
 
-        if ($this->type != 'hotel'){
+        if ($this->type != 'hotel') {
             $this->minor_max_age = null;
         }
 
         try {
-            $saved =  parent::save($options);
-        }catch (\Exception $exception){
+            $saved = parent::save($options);
+        } catch (\Exception $exception) {
             $this->slug = Str::random(20);
-            $saved =  parent::save($options);
+            $saved = parent::save($options);
         }
         return $saved;
     }
@@ -189,12 +199,12 @@ class Place extends Model
 
     public function comments()
     {
-        return $this->morphMany(Comment::class , 'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function wish_lists()
     {
-        return $this->morphMany(WishList::class , 'wish_listable');
+        return $this->morphMany(WishList::class, 'wish_listable');
     }
 
     public function work_time()
