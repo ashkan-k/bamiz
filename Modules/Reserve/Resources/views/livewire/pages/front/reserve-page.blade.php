@@ -201,8 +201,15 @@
                                 @foreach($place->options as $op)
                                     <tr>
                                         <td style="padding-right: 0 !important; text-align: center !important;"> {{ $op->title }} </td>
-                                        <td style="padding-right: 0 !important; text-align: center !important;"> @if($op->discount_amount) {{ number_format($op->discount_amount) }} @else {{ number_format($op->amount) }} @endif
-                                            تومان
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+{{--                                            @if($op->discount_amount) {{ number_format($op->discount_amount) }} @else {{ number_format($op->amount) }} @endif--}}
+                                            @if($op->discount_amount)
+                                                <del>{{ number_format($op->amount) }}</del> تومان
+                                                <br>
+                                                {{ number_format($op->discount_amount) }} تومان
+                                            @else
+                                                {{ number_format($op->amount) }} تومان
+                                            @endif
                                         </td>
                                         <td style="padding-right: 0 !important; text-align: center !important;">
                                             <a href="{{ $op->get_image() }}" target="_blank">
@@ -286,7 +293,7 @@
                                 </ul>
 
                                 <ul class="cart_details" id="card_detail">
-                                    <li>مالیات بر ارزش افزوذه: <span id="task_amount">{{ number_format(CalculateTaskAmount($total_price)) }} تومان </span>
+                                    <li>مالیات بر ارزش افزوده: <span id="task_amount">{{ number_format(CalculateTaskAmount($total_price)) }} تومان </span>
                                     </li>
                                 </ul>
 
