@@ -264,23 +264,29 @@
                                     <h5 style="text-align: center"> لیست سفارش رزرو میز</h5>
                                 </div>
                                 <ul class="cart_details" id="card_detail">
-                                    @php
-                                        $calculated_total_price = $total_price - $options_price;
-                                    @endphp
-
                                     <li> مبلغ رزرو مرکز
                                         <span>
-                                            <del>{{ number_format($total_price + $place->CalculateDiscountAmount($reserve->hotel_room->price)) }} تومان</del>
+                                             @if($place->food_discount)
+                                                <del>{{ number_format(CalculateAmountWithoutTask($total_price_without_discount)) }} تومان</del>
+                                            @else
+                                                {{ number_format(CalculateAmountWithoutTask($total_price_without_discount)) }} تومان
+                                            @endif
+
                                         </span></li>
 
                                     @if($place->food_discount)
                                         <li> مبلغ با تخفیف
-                                            <span>{{ number_format($calculated_total_price) }} تومان</span></li>
+                                            <span>{{ number_format(CalculateAmountWithoutTask($total_price - $options_price)) }} تومان</span></li>
                                     @endif
                                 </ul>
 
                                 <ul class="cart_details" id="card_detail">
                                     <li>مبلغ رزرو تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span>
+                                    </li>
+                                </ul>
+
+                                <ul class="cart_details" id="card_detail">
+                                    <li>ارزش افزوذه: <span id="task_amount">{{ number_format(CalculateTaskAmount($total_price)) }} تومان </span>
                                     </li>
                                 </ul>
 
@@ -342,6 +348,7 @@
 
             $('#total_price').html(`${numberWithCommas(event['detail']['price'])} تومان`);
             $('#options_price').html(`${numberWithCommas(event['detail']['options_price'])} تومان`);
+            $('#task_amount').html(`${numberWithCommas(event['detail']['task_amount'])} تومان`);
         });
     </script>
 @endpush

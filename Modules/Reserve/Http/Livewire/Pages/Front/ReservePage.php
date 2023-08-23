@@ -16,6 +16,7 @@ class ReservePage extends Component
 
     public $price;
     public $total_price;
+    public $total_price_without_discount;
     public $options_price = 0;
 
     public $is_submitted = 0;
@@ -26,7 +27,9 @@ class ReservePage extends Component
     private function DispatchOptionEvent($option_id = null)
     {
         $this->reserve->update(['amount' => $this->total_price]);
-        $this->dispatchBrowserEvent('reserveOptionsUpdated', ['option_id' => $option_id, 'price' => $this->total_price, 'options_price' => $this->options_price]);
+
+        $task_amount = CalculateTaskAmount($this->total_price);
+        $this->dispatchBrowserEvent('reserveOptionsUpdated', ['option_id' => $option_id, 'price' => $this->total_price, 'options_price' => $this->options_price, 'task_amount' => $task_amount]);
     }
 
     public function AddNewOption($option_id, $price)
@@ -60,6 +63,8 @@ class ReservePage extends Component
             $this->options = $options->pluck('id')->toArray();
             $this->DispatchOptionEvent();
         }
+
+        $this->total_price_without_discount = intval($this->total_price + $this->place->CalculateDiscountAmount($this->reserve->hotel_room->price));
     }
 
     public function updated($propertyName)
