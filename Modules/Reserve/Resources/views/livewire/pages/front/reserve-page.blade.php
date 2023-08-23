@@ -286,7 +286,7 @@
                                 </ul>
 
                                 <ul class="cart_details" id="card_detail">
-                                    <li>ارزش افزوذه: <span id="task_amount">{{ number_format(CalculateTaskAmount($total_price)) }} تومان </span>
+                                    <li>مالیات بر ارزش افزوذه: <span id="task_amount">{{ number_format(CalculateTaskAmount($total_price)) }} تومان </span>
                                     </li>
                                 </ul>
 
