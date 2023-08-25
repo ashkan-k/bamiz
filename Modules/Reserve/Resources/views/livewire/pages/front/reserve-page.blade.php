@@ -179,6 +179,21 @@
                                     </td>
                                 </tr>
 
+                                @if($place->food_discount)
+                                    <tr>
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            @if($place->type == 'hotel')
+                                                تخفیف اتاق
+                                            @else
+                                                تخفیف سفارش غذا (در محل)
+                                            @endif
+                                        </td>
+                                        <td style="padding-right: 0 !important; text-align: center !important;">
+                                            <strong>{{ $place->food_discount }} درصد</strong>
+                                        </td>
+                                    </tr>
+                                @endif
+
                                 </tbody>
                             </table>
                         </div>
@@ -273,17 +288,17 @@
                                 <ul class="cart_details" id="card_detail">
                                     <li> مبلغ رزرو مرکز
                                         <span>
-                                             @if($place->food_discount)
-                                                <del>{{ number_format(CalculateAmountWithoutTask($total_price_without_discount)) }} تومان</del>
+                                             @if($place->food_discount && $place->type == 'hotel')
+                                                <del>{{ number_format($total_price_without_discount) }} تومان</del>
                                             @else
-                                                {{ number_format(CalculateAmountWithoutTask($total_price_without_discount)) }} تومان
+                                                {{ number_format($total_price_without_discount) }} تومان
                                             @endif
 
                                         </span></li>
 
-                                    @if($place->food_discount)
+                                    @if($place->food_discount && $place->type == 'hotel')
                                         <li> مبلغ با تخفیف
-                                            <span>{{ number_format(CalculateAmountWithoutTask($total_price - $options_price)) }} تومان</span></li>
+                                            <span>{{ number_format($total_price - $options_price) }} تومان</span></li>
                                     @endif
                                 </ul>
 

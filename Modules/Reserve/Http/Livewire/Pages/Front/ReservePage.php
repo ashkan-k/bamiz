@@ -64,7 +64,11 @@ class ReservePage extends Component
             $this->DispatchOptionEvent();
         }
 
-        $this->total_price_without_discount = intval($this->total_price + $this->place->CalculateDiscountAmount($this->reserve->hotel_room->price));
+        if ($this->place->type == 'hotel'){
+            $this->total_price_without_discount = intval($this->total_price + $this->place->CalculateDiscountAmount($this->reserve->hotel_room->price));
+        }else{
+            $this->total_price_without_discount = intval($this->total_price - $this->options_price);
+        }
     }
 
     public function updated($propertyName)
