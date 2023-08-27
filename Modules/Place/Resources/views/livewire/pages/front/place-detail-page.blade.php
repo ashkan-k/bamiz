@@ -58,6 +58,16 @@
             width: 100%;
             height: 210px !important;
         }
+
+        #owl-demo-2 .item {
+            margin: 3px;
+        }
+
+        #owl-demo-2 .item img {
+            display: block;
+            width: 100%;
+            height: 210px !important;
+        }
     </style>
 
     <style>
@@ -156,22 +166,38 @@
                         <hr>
 
                         @if($object->type != 'hotel')
-                            <h3>منوی غذا</h3>
-                            <div id="instagram-feed" class="clearfix"></div>
-                            <div class="mt-3 mb-5" id="menu_image"
-                                 style="width: 300px !important; height: 169px !important; !important; ;border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55);">
-                                <label class="control-label">
-                                    <a href="{{ $object->get_menu_image('original') }}" target="_blank"><img
-                                            style="border-radius: 20px; margin-bottom: 8px; width: 300px!important; height: 169px !important;"
-                                            src="{{ $object->get_menu_image(300) }}"></a>
-                                </label>
+                            <h3 id="galley">منوی غذا</h3>
+                            <div class="clearfix"></div>
+
+                            <div dir="ltr">
+                                <div id="owl-demo-2" class="owl-carousel owl-theme">
+
+                                    @foreach($object->menus()->get() as $image)
+                                        <div class="item">
+                                            <a href="{{ $image->get_image() }}" target="_blank"><img
+                                                    src="{{ $image->get_image() }}" alt="{{ $object->name }}"></a>
+                                        </div>
+                                    @endforeach
+
+                                </div>
                             </div>
-                            {{--                        <img src="{{ $object->get_menu_image(300) }}" style="width: 200px !important; height: 200% !important;" alt="{{ $object->name }}">--}}
-                            <hr>
+
+{{--                            <h3>منوی غذا</h3>--}}
+{{--                            <div id="instagram-feed" class="clearfix"></div>--}}
+{{--                            <div class="mt-3 mb-5" id="menu_image"--}}
+{{--                                 style="width: 300px !important; height: 169px !important; !important; ;border-radius: 20px;box-shadow: 5px 10px 18px rgba(32,32,32,0.55);">--}}
+{{--                                <label class="control-label">--}}
+{{--                                    <a href="{{ $object->get_menu_image('original') }}" target="_blank"><img--}}
+{{--                                            style="border-radius: 20px; margin-bottom: 8px; width: 300px!important; height: 169px !important;"--}}
+{{--                                            src="{{ $object->get_menu_image(300) }}"></a>--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            --}}{{--                        <img src="{{ $object->get_menu_image(300) }}" style="width: 200px !important; height: 200% !important;" alt="{{ $object->name }}">--}}
+{{--                            <hr>--}}
                         @endif
 
 
-                        <h3 id="galley">گالری تصاویر</h3>
+                        <h3 id="galley" class="mt-5">گالری تصاویر</h3>
                         <div class="clearfix"></div>
 
                         <div dir="ltr">
@@ -805,6 +831,16 @@
         $(document).ready(function () {
 
             $("#owl-demo").owlCarousel({
+
+                loop: true,
+                autoPlay: 3000,
+                // items : 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 3]
+
+            });
+
+            $("#owl-demo-2").owlCarousel({
 
                 loop: true,
                 autoPlay: 3000,
