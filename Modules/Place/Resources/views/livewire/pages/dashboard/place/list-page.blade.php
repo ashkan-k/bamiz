@@ -103,12 +103,20 @@
                                        data-original-title="تشریفات"><i
                                             class="fas fa-check-square-o-alt"></i><i
                                             class="fa fa-check-square-o"> </i> </a>
+
                                     <a href="{{ route('galleries.index') }}?place_id={{ $item->id }}"
                                        class="btn btn-warning btn-action mr-1"
                                        data-toggle="tooltip" title=""
                                        data-original-title="گالری تصاویر"><i
                                             class="fas fa-image-alt"></i><i
                                             class="fa fa-image"> </i> </a>
+
+                                    <a href="{{ route('menus.index') }}?place_id={{ $item->id }}"
+                                       class="btn btn-warning btn-action mr-1"
+                                       data-toggle="tooltip" title=""
+                                       data-original-title="منوی غذا"><i
+                                            class="fa fa-meanpath"> </i> </a>
+
                                     <a href="{{ route('worktimes.index') }}?place_id={{ $item->id }}"
                                        class="btn btn-danger btn-action mr-1"
                                        data-toggle="tooltip" title=""
