@@ -3,6 +3,7 @@
 namespace Modules\Reserve\Entities;
 
 use App\Http\Traits\Searchable;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Option\Entities\Option;
@@ -107,6 +108,17 @@ class Reserve extends Model
             ['id' => 'table_for_birth_day_with_food', 'name' => 'رزرو میز برای تولد با سرو'],
             ['id' => 'table_for_birth_day_without_food', 'name' => 'رزرو میز برای تولد بدون سرو'],
         ];
+    }
+
+    public function CheckCancelTime()
+    {
+        $today = Verta::parse(\verta())->setTime(0, 0, 0, 0);
+        $reserve_date = Verta::parse($this->date);
+
+        if (!$reserve_date->gt($today)) {
+            return false;
+        }
+        return true;
     }
 
     protected static function newFactory()

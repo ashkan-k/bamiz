@@ -178,7 +178,7 @@
                                                         id="id_button_{{ $item->id }}"
                                                         class="btn btn-outline-danger"> لغو شده
                                                 </button>
-                                            @elseif($item->status == 'success')
+                                            @elseif($item->status == 'success' && $item->CheckCancelTime())
                                                 <button type="button" style="width: 80px !important;"
                                                         wire:click="$emit('triggerCancel' , {{ $item->id }})"
                                                         id="id_button_{{ $item->id }}"
