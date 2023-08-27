@@ -139,6 +139,7 @@
                                 <th>زمان شروع (ساعت)</th>
                                 <th>تعداد نفرات</th>
                                 <th>مبلغ</th>
+                                <th>ارزش افزوده مبلغ</th>
                                 <th>نوع</th>
                                 <th>اتاق هتل</th>
                                 <th>تشریفات</th>
@@ -153,7 +154,8 @@
                                         <td>{{ \Hekmatinasser\Verta\Verta:: instance($item->date)->format('%B %d، %Y') }}</td>
                                         <td>{{ $item->start_time }}</td>
                                         <td>{{ $item->guest_count }}</td>
-                                        <td>{{ number_format($item->amount) }}</td>
+                                        <td>{{ number_format($item->amount) }} تومان</td>
+                                        <td>{{ number_format(CalculateTaskAmount($item->amount)) }} تومان</td>
                                         <td>
                                             {{  $item->get_type() }}
                                         </td>
@@ -172,15 +174,15 @@
 
                                         <td style="padding-right: 0 !important; text-align: center !important;">
                                             @if($item->status == 'cancel')
-                                                <button type="button"
+                                                <button type="button" style="width: 80px !important;"
                                                         id="id_button_{{ $item->id }}"
-                                                        class="btn btn-sm btn-danger"> لغو شده
+                                                        class="btn btn-outline-danger"> لغو شده
                                                 </button>
                                             @else
-                                                <button type="button"
+                                                <button type="button" style="width: 80px !important;"
                                                         wire:click="$emit('triggerCancel' , {{ $item->id }})"
                                                         id="id_button_{{ $item->id }}"
-                                                        class="btn btn-sm btn-warning"> لغو
+                                                        class="btn btn-outline-warning"> لغو
                                                 </button>
                                             @endif
                                         </td>

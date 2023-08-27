@@ -63,8 +63,8 @@
                             </td>
                             <td>
                                 <a href="{{ $item->get_banner() }}" target="-_blank"><img width="50"
-                                                                                            src="{{ $item->get_banner() }}"
-                                                                                            alt="عکس بنر"></a>
+                                                                                          src="{{ $item->get_banner() }}"
+                                                                                          alt="عکس بنر"></a>
                             </td>
                             <td>
                                 @if($item->get_menu_image(300))
@@ -111,11 +111,13 @@
                                             class="fas fa-image-alt"></i><i
                                             class="fa fa-image"> </i> </a>
 
-                                    <a href="{{ route('menus.index') }}?place_id={{ $item->id }}"
-                                       class="btn btn-warning btn-action mr-1"
-                                       data-toggle="tooltip" title=""
-                                       data-original-title="منوی غذا"><i
-                                            class="fa fa-meanpath"> </i> </a>
+                                    @if($item->type != 'hotel')
+                                        <a href="{{ route('menus.index') }}?place_id={{ $item->id }}"
+                                           class="btn btn-warning btn-action mr-1"
+                                           data-toggle="tooltip" title=""
+                                           data-original-title="منوی غذا"><i
+                                                class="fa fa-meanpath"> </i> </a>
+                                    @endif
 
                                     <a href="{{ route('worktimes.index') }}?place_id={{ $item->id }}"
                                        class="btn btn-danger btn-action mr-1"
@@ -233,9 +235,10 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
 
-        @this.on('triggerChangeStatusModal', orderId => {
-            $('#changeStatusModal').modal('show');
-        });
+            @this.
+            on('triggerChangeStatusModal', orderId => {
+                $('#changeStatusModal').modal('show');
+            });
         });
 
         window.addEventListener('itemStatusUpdated', event => {
