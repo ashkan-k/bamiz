@@ -15,8 +15,8 @@
 
                     @csrf
 
-                        <input type="hidden" name="place_id" value="{{ request('place_id') }}">
-                        <input type="hidden" name="next_url" value="{{ request('next_url') }}">
+                    <input type="hidden" name="place_id" value="{{ request('place_id') }}">
+                    <input type="hidden" name="next_url" value="{{ request('next_url') }}">
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">عکس</label>

@@ -8,7 +8,7 @@
 
 @section('content')
     @if(isset($gallery))
-        @livewire("place::pages.dashboard.menus.form-page" , [
+        @livewire("place::pages.dashboard.menu.form-page" , [
 
         'titlePage' => 'ویرایش منو',
         'type' => 'edit',
@@ -16,7 +16,7 @@
 
         ])
     @else
-        @livewire("place::pages.dashboard.menus.form-page" , [
+        @livewire("place::pages.dashboard.menu.form-page" , [
 
         'titlePage' => 'افزودن منو جدید'
 

@@ -177,6 +177,11 @@ class Place extends Model
         return $this->hasMany(Gallery::class);
     }
 
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
+
     public function options()
     {
         return $this->belongsToMany(Option::class, 'option_places');

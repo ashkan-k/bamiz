@@ -49,6 +49,6 @@ class ListPage extends Component
     {
         $this->items = Menu::Search($this->search)->latest();
         $this->items = $this->FilterByPlace();
-        return view('place::livewire.pages.dashboard.menus.list-page', ['items' => $this->items->paginate($this->pagination)]);
+        return view('place::livewire.pages.dashboard.menu.list-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }

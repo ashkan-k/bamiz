@@ -31,8 +31,8 @@ class MenuController extends Controller
         $images = $request->file('images', []);
 
         foreach ($images as $image) {
-            $image = $this->Upload($image, 'places_galleries', $place->name);
-            $place->images()->create(['image' => $image]);
+            $image = $this->Upload($image, 'places_menus', $place->name);
+            $place->menus()->create(['image' => $image]);
         }
 
         return $this->SuccessRedirectUrl('آیتم مورد نظر با موفقیت ثبت شد.', $request->next_url);

@@ -13,6 +13,6 @@ class FormPage extends Component
 
     public function render()
     {
-        return view('gallery::livewire.pages.dashboard.form-page');
+        return view('place::livewire.pages.dashboard.menu.form-page');
     }
 }

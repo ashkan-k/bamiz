@@ -14,7 +14,7 @@
                     </div>
                 </form>
 
-                <a class="btn btn-primary pull-right" href="{{ route('menus.create') }}?place_id={{ $this->place_id }}&next_url={{ $full_url }}">افزودن گالری جدید</a>
+                <a class="btn btn-primary pull-right" href="{{ route('menus.create') }}?place_id={{ $this->place_id }}&next_url={{ $full_url }}">افزودن منو جدید</a>
 
                 <table class="table table-hover">
                     <thead>
@@ -44,12 +44,12 @@
 
                             <td>
                                 <div class="buttons ">
-{{--                                    <a href="{{ route('menus.edit' , $item->id) }}"--}}
-{{--                                       class="btn btn-primary btn-action mr-1"--}}
-{{--                                       data-toggle="tooltip" title=""--}}
-{{--                                       data-original-title="ویرایش"><i--}}
-{{--                                            class="fas fa-pencil-alt"></i><i--}}
-{{--                                            class="fa fa-pencil"> </i> </a>--}}
+                                    {{--                                    <a href="{{ route('menus.edit' , $item->id) }}"--}}
+                                    {{--                                       class="btn btn-primary btn-action mr-1"--}}
+                                    {{--                                       data-toggle="tooltip" title=""--}}
+                                    {{--                                       data-original-title="ویرایش"><i--}}
+                                    {{--                                            class="fas fa-pencil-alt"></i><i--}}
+                                    {{--                                            class="fa fa-pencil"> </i> </a>--}}
                                     <button wire:click="$emit('triggerDelete' , {{ $item->id }})"
                                             type="button"
                                             data-original-title="حذف"
