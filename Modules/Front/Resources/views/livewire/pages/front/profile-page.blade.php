@@ -1,5 +1,5 @@
 <div>
-{{--    <div class="bg_color_1" style="transform: none; margin-top: 100px !important;">--}}
+    {{--    <div class="bg_color_1" style="transform: none; margin-top: 100px !important;">--}}
     <div>
         <section class="hero_in general">
             <div class="wrapper">
@@ -178,7 +178,7 @@
                                                         id="id_button_{{ $item->id }}"
                                                         class="btn btn-outline-danger"> لغو شده
                                                 </button>
-                                            @else
+                                            @elseif($item->status == 'success')
                                                 <button type="button" style="width: 80px !important;"
                                                         wire:click="$emit('triggerCancel' , {{ $item->id }})"
                                                         id="id_button_{{ $item->id }}"
@@ -219,26 +219,28 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
 
-        @this.on('triggerCancel', orderId => {
-            Swal.fire({
-                title: "هشدار ! ",
-                icon: 'warning',
-                text: "آیا از لغو این رزرو اطمینان دارید ؟ 🤔",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: '#00aced',
-                cancelButtonColor: '#e6294b',
-                confirmButtonText: 'تایید',
-                cancelButtonText: 'انصراف'
-            }).then((result) => {
-                //if user clicks on delete
-                if (result.value) {
-                    // calling destroy method to delete
-                @this.call('cancel', orderId)
-                    // success response
-                }
+            @this.
+            on('triggerCancel', orderId => {
+                Swal.fire({
+                    title: "هشدار ! ",
+                    icon: 'warning',
+                    text: "آیا از لغو این رزرو اطمینان دارید ؟ 🤔",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#00aced',
+                    cancelButtonColor: '#e6294b',
+                    confirmButtonText: 'تایید',
+                    cancelButtonText: 'انصراف'
+                }).then((result) => {
+                    //if user clicks on delete
+                    if (result.value) {
+                        // calling destroy method to delete
+                        @this.
+                        call('cancel', orderId)
+                        // success response
+                    }
+                });
             });
-        });
         })
     </script>
 
