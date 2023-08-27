@@ -28,6 +28,7 @@
                         <th>زمان پایان</th>
                         <th>تعداد نفرات</th>
                         <th>مبلغ</th>
+                        <th>ارززش افزوده مبلغ</th>
                         <th>نوع</th>
                         <th>میز</th>
                         <th>اتاق هتل</th>
@@ -55,6 +56,7 @@
                             <td>{{ $item->end_time }}</td>
                             <td>{{ $item->guest_count + $item->children_guest_count }}</td>
                             <td>{{ number_format($item->amount) }}</td>
+                            <td>{{ number_format(CalculateTaskAmount($item->amount)) }}</td>
                             <td>
                                 {{  $item->get_type() }}
                             </td>
