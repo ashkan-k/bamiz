@@ -832,7 +832,8 @@
 
             $("#owl-demo").owlCarousel({
 
-                loop: true,
+                loop: false,
+                rewind: true,
                 autoPlay: 3000,
                 // items : 4,
                 itemsDesktop: [1199, 3],
@@ -842,7 +843,8 @@
 
             $("#owl-demo-2").owlCarousel({
 
-                loop: true,
+                loop: false,
+                rewind: true,
                 autoPlay: 3000,
                 // items : 4,
                 itemsDesktop: [1199, 3],
