@@ -98,6 +98,6 @@ class ProfilePage extends Component
     {
         $this->items = auth()->user()->reserves()->latest();
         $this->items = $this->Filter();
-        return view('front::livewire.pages.front.profile-page', ['items' => $this->items->get()]);
+        return view('front::livewire.pages.front.profile-page', ['items' => $this->items->paginate($this->pagination)]);
     }
 }

@@ -192,8 +192,12 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="step">
                         </div>
+
+                        {{ $items->onEachSide(3)->links('livewire.front_pagination') }}
+
                     </div>
                 </div>
                 <!-- /col -->
