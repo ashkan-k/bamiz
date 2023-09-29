@@ -647,16 +647,16 @@
                     @enderror
                 </div>
 
-                <div class="text-center text-danger mt-2 mb-2"><b>سفارش تشریفات در صورت
-                        تمایل در
-                        مرحله بعد
-                        انجام می شود</b></div>
+{{--                <div class="text-center text-danger mt-2 mb-2"><b>سفارش تشریفات در صورت--}}
+{{--                        تمایل در--}}
+{{--                        مرحله بعد--}}
+{{--                        انجام می شود</b></div>--}}
 
                 <div class="text-center">
-                    <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="مرحله بعد"
+                    <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="تکمیل رزرو"
                            ng-show="!is_submited"
                            class="btn_1 full-width">
-                    <input type="button" disabled id="aaaaa" ng-disabled="is_submit" value="مرحله بعد"
+                    <input type="button" disabled id="aaaaa" ng-disabled="is_submit" value="تکمیل رزرو"
                            ng-show="is_submited" style="cursor: not-allowed !important;"
                            class="btn_1 full-width disabled">
 
@@ -873,6 +873,20 @@
             $scope.SubmitReserveForm = function () {
                 $scope.is_submited = true;
 
+                @if($object->type != 'hotel')
+                    if ($scope.form == 2) {
+
+                        $('#id_submit_button_2').css('cursor', 'not-allowed');
+
+                        $("#id_reserve_form").attr('action', '{{ route('reserve', $object->slug) }}');
+                        $("#id_reserve_form").submit();
+
+                        $scope.is_submited = false;
+
+                       return;
+                    }
+                @endif
+
                 if ($scope.form == 1) {
 
                     @if($object->type == 'hotel')
@@ -881,7 +895,7 @@
                         $scope.form = 2;
                     @endif
 
-                        $scope.is_submited = false;
+                    $scope.is_submited = false;
                 } else if ($scope.form == 2) {
                     $scope.form = 3;
                     $scope.is_submited = false;

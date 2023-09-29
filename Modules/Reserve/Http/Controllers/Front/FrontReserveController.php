@@ -40,6 +40,7 @@ class FrontReserveController extends Controller
         }
 
         if ($place->type == 'hotel' && $place->food_discount){
+            $data['amount'] = ($data['amount'] * 10) / 100;
             $data['amount'] = $place->CalculateDiscount($data['amount']);
         }
 
