@@ -432,9 +432,9 @@
 
                 @if(in_array($object->type, ['restaurant', 'cafe']))
                     <p class="text-danger" style="margin-bottom: 0 !important;">
-                        مدت زمان حضور در محل دو ساعت می باشد. در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ
-                        شود.
-                        <br>
+{{--                        مدت زمان حضور در محل دو ساعت می باشد. در صورت حضور بیش از ۲ ساعت با مدیریت کافه رستوران هماهنگ--}}
+{{--                        شود.--}}
+{{--                        <br>--}}
                         @if($object->extra_person_fee)
                             هزینه هر نفر اضافه {{ number_format($object->extra_person_fee) }} تومان می باشد و در محل هتل حساب میشود.
                         @endif
@@ -478,11 +478,11 @@
                        id="id_date" value="{{ old('date') }}"
                        placeholder="تاریخ رزرو">
 
-                @if($object->type == 'hotel')
-                    <span class="text-danger text-wrap">تاریخ انتخابی می تواند تا یک ماه آینده باشد.</span>
-                @else
-                    <span class="text-danger text-wrap">تاریخ انتخابی می تواند تا یک هفته آینده باشد.</span>
-                @endif
+{{--                @if($object->type == 'hotel')--}}
+{{--                    <span class="text-danger text-wrap">تاریخ انتخابی می تواند تا یک ماه آینده باشد.</span>--}}
+{{--                @else--}}
+{{--                    <span class="text-danger text-wrap">تاریخ انتخابی می تواند تا یک هفته آینده باشد.</span>--}}
+{{--                @endif--}}
 
                 {{--                @error('date')--}}
                 {{--                <span class="text-danger text-wrap">{{ $message }}</span>--}}

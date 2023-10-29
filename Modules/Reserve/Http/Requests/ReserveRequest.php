@@ -24,7 +24,8 @@ class ReserveRequest extends FormRequest
             $before_date = \verta()->addWeek();
             $this->before_date_message = 'یک هفته';
         }
-        $date_rules = "required|jdate:Y-m-d|after:{$after_date}|before:{$before_date}";
+//        $date_rules = "required|jdate:Y-m-d|after:{$after_date}|before:{$before_date}";
+        $date_rules = "required";
 
         $start_time_rules = 'numeric';
         if (request('place_type') != 'hotel') {
