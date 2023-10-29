@@ -120,7 +120,7 @@ class PlaceDetailPage extends Component
 
 //        $reserve_types = Reserve::GetTypes();
         if ($this->object->type != 'hotel')
-            $reserve_types = ReserveType::all();
+            $reserve_types = ReserveType::query()->whereNotIn('id', [4, 5]);
         else
             $reserve_types = [];
 
