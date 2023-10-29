@@ -864,7 +864,7 @@
         app.controller('myCtrl', function ($scope, $http) {
             $scope.form = 1;
             $scope.place_type = '{{ $object->type }}';
-            $scope.reserve_type_id = 2;
+            $scope.reserve_type_id = '2';
             $scope.has_reserve_type_options = false;
             $scope.tables = [];
             $scope.is_submited = false;
