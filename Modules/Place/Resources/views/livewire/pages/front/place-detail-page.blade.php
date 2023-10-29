@@ -653,7 +653,7 @@
 {{--                        مرحله بعد--}}
 {{--                        انجام می شود</b></div>--}}
 
-                <div class="text-center text-danger mt-2 mb-2"><b>هزینه سفارش آنلاین 10،000 تومان است و رایگان در محل از صورت حساب شما کسر می شود.</b></div>
+                <div class="text-center text-danger mt-2 mb-2"><b>هزینه سفارش آنلاین 10،000 تومان است و رایگان در محل از صورتحساب شما کسر می شود.</b></div>
 
                 <div class="text-center">
                     <input type="submit" id="id_submit_button_1" ng-disabled="is_submit" value="تکمیل رزرو"
