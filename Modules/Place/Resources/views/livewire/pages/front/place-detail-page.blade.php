@@ -610,11 +610,12 @@
                     <label>مناسبت (موضوع رزرو)</label>
                     <select ng-model="reserve_type_id" ng-change="GetReserveTypeTables()" ng-required="form == 2"
                             class="form-control" id="id_reserve_type" name="reserve_type_id">
-{{--                        <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید--}}
-{{--                        </option>--}}
+                        <option value="" data-has-price="null">مناسبت (موضوع رزرو) را انتخاب کنید
+                        </option>
 
                         @foreach($reserve_types as $res_type)
                             <option data-has-price="{{ $res_type->price }}"
+                                    selected
                                     @if(old('reserve_type_id') == $res_type->id) selected
                                     @endif value="{{ $res_type->id }}">{{ $res_type->title }}
                                 {{--                                @if($res_type->price)({{ $res_type->price }} تومان)@endif--}}
