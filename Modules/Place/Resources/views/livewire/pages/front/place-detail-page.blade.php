@@ -615,7 +615,6 @@
 
                         @foreach($reserve_types as $res_type)
                             <option data-has-price="{{ $res_type->price }}"
-                                    selected
                                     @if(old('reserve_type_id') == $res_type->id) selected
                                     @endif value="{{ $res_type->id }}">{{ $res_type->title }}
                                 {{--                                @if($res_type->price)({{ $res_type->price }} تومان)@endif--}}
@@ -865,7 +864,7 @@
         app.controller('myCtrl', function ($scope, $http) {
             $scope.form = 1;
             $scope.place_type = '{{ $object->type }}';
-            $scope.reserve_type_id = null;
+            $scope.reserve_type_id = 2;
             $scope.has_reserve_type_options = false;
             $scope.tables = [];
             $scope.is_submited = false;
