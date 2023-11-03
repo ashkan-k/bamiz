@@ -198,68 +198,68 @@
                             </table>
                         </div>
                         <hr>
-                        <div class="form_title">
-                            <h3><strong>2</strong>تشریفات</h3>
-                            <br>
-                            {{--                            <h6>در صورت تمایل می توانید میز خود را با انتخاب هر کدام از موارد زیر تزئین نمائید</h6>--}}
-                            <h6>در صورت تمایل می توانید هر یک از تشریفات زیر را به رزرو خود اضافه نمائید.</h6>
-                            <br>
-                            <table class="table table-striped cart-list">
-                                <thead>
-                                <th>عنوان</th>
-                                <th style="content: 'مبلغ' !important;">مبلغ</th>
-                                <th>تصویر نمونه</th>
-                                <th>توضیحات</th>
-                                <th>عملیات</th>
-                                </thead>
-                                <tbody>
-                                @foreach($place->options as $op)
-                                    <tr>
-                                        <td style="padding-right: 0 !important; text-align: center !important;"> {{ $op->title }} </td>
-                                        <td style="padding-right: 0 !important; text-align: center !important;">
+{{--                        <div class="form_title">--}}
+{{--                            <h3><strong>2</strong>تشریفات</h3>--}}
+{{--                            <br>--}}
+{{--                            --}}{{--                            <h6>در صورت تمایل می توانید میز خود را با انتخاب هر کدام از موارد زیر تزئین نمائید</h6>--}}
+{{--                            <h6>در صورت تمایل می توانید هر یک از تشریفات زیر را به رزرو خود اضافه نمائید.</h6>--}}
+{{--                            <br>--}}
+{{--                            <table class="table table-striped cart-list">--}}
+{{--                                <thead>--}}
+{{--                                <th>عنوان</th>--}}
+{{--                                <th style="content: 'مبلغ' !important;">مبلغ</th>--}}
+{{--                                <th>تصویر نمونه</th>--}}
+{{--                                <th>توضیحات</th>--}}
+{{--                                <th>عملیات</th>--}}
+{{--                                </thead>--}}
+{{--                                <tbody>--}}
+{{--                                @foreach($place->options as $op)--}}
+{{--                                    <tr>--}}
+{{--                                        <td style="padding-right: 0 !important; text-align: center !important;"> {{ $op->title }} </td>--}}
+{{--                                        <td style="padding-right: 0 !important; text-align: center !important;">--}}
 {{--                                            @if($op->discount_amount) {{ number_format($op->discount_amount) }} @else {{ number_format($op->amount) }} @endif--}}
-                                            @if($op->discount_amount)
-                                                <del>{{ number_format($op->amount) }}</del> تومان
-                                                <br>
-                                                {{ number_format($op->discount_amount) }} تومان
-                                            @else
-                                                {{ number_format($op->amount) }} تومان
-                                            @endif
-                                        </td>
-                                        <td style="padding-right: 0 !important; text-align: center !important;">
-                                            <a href="{{ $op->get_image() }}" target="_blank">
-                                                <img width="50" src="{{ $op->get_image() }}"
-                                                     alt="{{ $op->title }}">
-                                            </a>
-                                        </td>
-                                        <td style="padding-right: 0 !important; text-align: center !important;"> {!! \Illuminate\Support\Str::limit($op->description , 20) !!} </td>
-                                        <td style="padding-right: 0 !important; text-align: center !important;">
-                                            @if(array_search($op->id , $options) !== false)
-                                                <button
-                                                    wire:click="RemoveOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"
-                                                    id="id_button_{{ $op->id }}"
-                                                    onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
-                                                    class="btn btn-danger"> حذف
-                                                </button>
-                                            @else
-                                                <button
-                                                    wire:click="AddNewOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"
-                                                    id="id_button_{{ $op->id }}"
-                                                    onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"
-                                                    class="btn btn-success"> افزودن
-                                                </button>
-                                            @endif
-                                        </td>
-                                    </tr>
+{{--                                            @if($op->discount_amount)--}}
+{{--                                                <del>{{ number_format($op->amount) }}</del> تومان--}}
+{{--                                                <br>--}}
+{{--                                                {{ number_format($op->discount_amount) }} تومان--}}
+{{--                                            @else--}}
+{{--                                                {{ number_format($op->amount) }} تومان--}}
+{{--                                            @endif--}}
+{{--                                        </td>--}}
+{{--                                        <td style="padding-right: 0 !important; text-align: center !important;">--}}
+{{--                                            <a href="{{ $op->get_image() }}" target="_blank">--}}
+{{--                                                <img width="50" src="{{ $op->get_image() }}"--}}
+{{--                                                     alt="{{ $op->title }}">--}}
+{{--                                            </a>--}}
+{{--                                        </td>--}}
+{{--                                        <td style="padding-right: 0 !important; text-align: center !important;"> {!! \Illuminate\Support\Str::limit($op->description , 20) !!} </td>--}}
+{{--                                        <td style="padding-right: 0 !important; text-align: center !important;">--}}
+{{--                                            @if(array_search($op->id , $options) !== false)--}}
+{{--                                                <button--}}
+{{--                                                    wire:click="RemoveOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"--}}
+{{--                                                    id="id_button_{{ $op->id }}"--}}
+{{--                                                    onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"--}}
+{{--                                                    class="btn btn-danger"> حذف--}}
+{{--                                                </button>--}}
+{{--                                            @else--}}
+{{--                                                <button--}}
+{{--                                                    wire:click="AddNewOption('{{ $op->id }}', {{ $op->discount_amount ?: $op->amount }})"--}}
+{{--                                                    id="id_button_{{ $op->id }}"--}}
+{{--                                                    onclick="$('#id_button_{{ $op->id }}').prop('disabled', true)"--}}
+{{--                                                    class="btn btn-success"> افزودن--}}
+{{--                                                </button>--}}
+{{--                                            @endif--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
 
-                                @endforeach
+{{--                                @endforeach--}}
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="step">
-                        </div>
-                        <hr>
+{{--                                </tbody>--}}
+{{--                            </table>--}}
+{{--                        </div>--}}
+{{--                        <div class="step">--}}
+{{--                        </div>--}}
+{{--                        <hr>--}}
 
                         @if($place->terms)
                             <div id="policy">
@@ -302,10 +302,10 @@
                                     @endif
                                 </ul>
 
-                                <ul class="cart_details" id="card_detail">
-                                    <li>مبلغ رزرو تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span>
-                                    </li>
-                                </ul>
+{{--                                <ul class="cart_details" id="card_detail">--}}
+{{--                                    <li>مبلغ رزرو تشریفات <span id="options_price">{{ number_format($options_price) }} تومان </span>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
 
                                 <ul class="cart_details" id="card_detail">
                                     <li>مالیات بر ارزش افزوده: <span id="task_amount">{{ number_format(CalculateTaskAmount($total_price)) }} تومان </span>

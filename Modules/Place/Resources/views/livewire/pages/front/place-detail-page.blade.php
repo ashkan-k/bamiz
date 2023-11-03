@@ -532,11 +532,17 @@
                 @enderror
             </div>
 
+
+            @if($object->type != 'hotel')
+                <input type="hidden" name="reserve_type_id" value="{{ $reserve_types->first() ? $reserve_types->first()->id : '' }}">
+            @endif
+
             @if($object->type == 'hotel')
                 <div class="text-center text-danger mt-2 mb-2"><b>انتخاب اتاق مد نظر در
                         مرحله بعد
                         انجام می شود</b></div>
             @else
+                <div class="text-center text-danger mt-2 mb-2"><b>هزینه سفارش آنلاین 10،000 تومان است و رایگان در محل از صورتحساب شما کسر می شود.</b></div>
 {{--                <div class="text-center text-danger mt-2 mb-2"><b>سفارش تشریفات در صورت--}}
 {{--                        تمایل در--}}
 {{--                        مرحله بعد--}}
@@ -895,7 +901,14 @@
                     @if($object->type == 'hotel')
                         $scope.form = 3;
                     @else
-                        $scope.form = 2;
+                        // $scope.form = 2;
+                    $('#id_submit_button_2').css('cursor', 'not-allowed');
+
+                    $("#id_reserve_form").attr('action', '{{ route('reserve', $object->slug) }}');
+                    $("#id_reserve_form").submit();
+
+                    $scope.is_submited = false;
+
                     @endif
 
                     $scope.is_submited = false;
