@@ -109,7 +109,7 @@
                                         تاریخ رزرو
                                     </td>
                                     <td style="padding-right: 0 !important; text-align: center !important;">
-                                        <strong> {{ $data['date'] }} </strong>
+                                        <strong> {{ str_replace('-', '/', $data['date']) }} </strong>
                                     </td>
                                 </tr>
                                 @if(isset($data['start_time']))
