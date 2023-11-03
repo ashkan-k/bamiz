@@ -122,20 +122,24 @@
                                         </td>
                                     </tr>
                                 @endif
-                                <tr>
-                                    <td style="padding-right: 0 !important; text-align: center !important;">
-                                        مدت رزرو
-                                    </td>
-                                    @if($place->type == 'hotel')
+
+                                @if($place->type == 'hotel')
+                                    <tr>
                                         <td style="padding-right: 0 !important; text-align: center !important;">
-                                            <strong>{{ $data['days_number'] }} روز </strong>
+                                            مدت رزرو
                                         </td>
-                                    @else
-                                        <td style="padding-right: 0 !important; text-align: center !important;">
-                                            <strong>2 ساعت </strong>
-                                        </td>
-                                    @endif
-                                </tr>
+                                        @if($place->type == 'hotel')
+                                            <td style="padding-right: 0 !important; text-align: center !important;">
+                                                <strong>{{ $data['days_number'] }} روز </strong>
+                                            </td>
+                                        @else
+                                            <td style="padding-right: 0 !important; text-align: center !important;">
+                                                <strong>2 ساعت </strong>
+                                            </td>
+                                        @endif
+                                    </tr>
+                                @endif
+
                                 <tr>
                                     <td style="padding-right: 0 !important; text-align: center !important;">
                                         تعداد مهمان
@@ -307,10 +311,10 @@
 {{--                                    </li>--}}
 {{--                                </ul>--}}
 
-                                <ul class="cart_details" id="card_detail">
-                                    <li>مالیات بر ارزش افزوده: <span id="task_amount">{{ number_format(CalculateTaskAmount($total_price)) }} تومان </span>
-                                    </li>
-                                </ul>
+{{--                                <ul class="cart_details" id="card_detail">--}}
+{{--                                    <li>مالیات بر ارزش افزوده: <span id="task_amount">{{ number_format(CalculateTaskAmount($total_price)) }} تومان </span>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
 
                                 <div id="total_cart">
                                     جمع کل <span class="float-right" id="total_price">{{ number_format($total_price) }}  تومان </span>
