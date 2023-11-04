@@ -364,22 +364,35 @@
 
                         <ul class="cbp_tmtimeline">
 
-                            @foreach($work_days as $d)
+                            <li>
+{{--                                <time class="cbp_tmtime" datetime="09:30"><span>روز</span></time>--}}
+                                <div class="cbp_tmicon">
+                                    <small style="font-size: small">هر روز</small>
+                                </div>
+                                <div class="cbp_tmlabel">
+                                    <p>
+                                        ساعت کاری از ساعت {{ $object->work_time->start_time }} صبح
+                                        الی {{ $object->work_time->end_time }} شب
+                                    </p>
+                                </div>
+                            </li>
 
-                                <li>
-                                    <time class="cbp_tmtime" datetime="09:30"><span>روز</span></time>
-                                    <div class="cbp_tmicon">
-                                        <small style="font-size: small">{{ $d }}</small>
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <p>
-                                            ساعت کاری از ساعت {{ $object->work_time->start_time }} صبح
-                                            الی {{ $object->work_time->end_time }} شب
-                                        </p>
-                                    </div>
-                                </li>
+{{--                            @foreach($work_days as $d)--}}
 
-                            @endforeach
+{{--                                <li>--}}
+{{--                                    <time class="cbp_tmtime" datetime="09:30"><span>روز</span></time>--}}
+{{--                                    <div class="cbp_tmicon">--}}
+{{--                                        <small style="font-size: small">{{ $d }}</small>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="cbp_tmlabel">--}}
+{{--                                        <p>--}}
+{{--                                            ساعت کاری از ساعت {{ $object->work_time->start_time }} صبح--}}
+{{--                                            الی {{ $object->work_time->end_time }} شب--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                </li>--}}
+
+{{--                            @endforeach--}}
 
                         </ul>
                     @endif
