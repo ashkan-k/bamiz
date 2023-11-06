@@ -89,11 +89,62 @@
                                 </div>
                                 <ul>
                                     <li><i class="ti-eye"></i>{{ $place->viewCount }} بازدید</li>
-                                    <li>
-                                        <div class="score">
-                                            <strong>{{ $place->province ? $place->province->title : '---' }}</strong>
-                                        </div>
-                                    </li>
+
+                                    @if($place->food_discount && $place->options()->where('discount_amount', '>', 0)->exists())
+
+                                        @if($place->type == 'hotel')
+
+                                            <li>
+                                                <div class="score">
+                                                    <strong> تخفیف تشریفات و اتاق ({{$place->food_discount}}%)</strong>
+                                                </div>
+                                            </li>
+
+                                        @else
+
+                                            <li>
+                                                <div class="score">
+                                                    <strong>   تخفیف تشریفات و غذا ({{$place->food_discount}}%)</strong>
+                                                </div>
+                                            </li>
+
+                                        @endif
+
+                                    @elseif($place->food_discount)
+
+                                        @if($place->type == 'hotel')
+
+                                            <li>
+                                                <div class="score">
+                                                    <strong> تخفیف اتاق ({{$place->food_discount}}%)</strong>
+                                                </div>
+                                            </li>
+
+                                        @else
+
+                                            <li>
+                                                <div class="score">
+                                                    <strong> تخفیف غذا ({{$place->food_discount}}%)</strong>
+                                                </div>
+                                            </li>
+
+                                        @endif
+
+                                    @else
+
+                                        <li>
+                                            <div class="score">
+{{--                                                <strong>تخفیف تشریفات</strong>--}}
+                                            </div>
+                                        </li>
+
+                                    @endif
+
+{{--                                    <li>--}}
+{{--                                        <div class="score">--}}
+{{--                                            <strong>{{ $place->province ? $place->province->title : '---' }}</strong>--}}
+{{--                                        </div>--}}
+{{--                                    </li>--}}
                                 </ul>
                             </div>
                         </div>
