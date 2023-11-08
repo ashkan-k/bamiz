@@ -98,7 +98,7 @@
                 <div class="container">
 
                     <h3 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h3>
-                    <p>سامانه رزرواسیون کافه و رستوران و هتل بامیز</p>
+                    <p>سامانه رزرواسیون کافه و رستوران و هتل <span style="font-size: 28px !important; font-weight: bold !important;">بامیز</span></p>
 
                     <div class="row text-center no-gutters mt-5">
                         <div class="col-lg-12">
