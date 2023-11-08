@@ -97,17 +97,17 @@
             <div class="wrapper">
                 <div class="container">
 
-                    <h3 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h3>
+{{--                    <h3 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h3>--}}
+                    <p class="mt-5">سامانه رزرو آنلاین میز رستوران و اقامتگاه <h5 style="color: white !important; font-size: 40px !important; font-weight: bold !important;">بامیز</h5></p>
+
 
                     <div class="row text-center no-gutters mt-5">
                         <div class="col-lg-12">
                             <input onclick="window.location.href = '{{ $object->tour_link }}'"
                                    style="font-size: 22px !important; ;width: 350px !important;" role="button"
-                                   type="submit" class="btn_search btn_1 rounded" value="تور مجازی">
+                                   type="submit" class="btn_search btn_1 rounded" value="تور مجازی {{ $object->name ?: '---' }}">
                         </div>
                     </div>
-
-                    <p class="mt-5">سامانه رزرو آنلاین میز رستوران و اقامتگاه <span style="font-size: 28px !important; font-weight: bold !important;">بامیز</span></p>
 
                     {{--                    <p class="btn_home_align" style="text-align: center !important;">--}}
                     {{--                        <a style="display: none !important;" href="#sign-in-dialog" id="dsadsa" class="btn_1 rounded">ثبت سفارش</a>--}}
