@@ -109,6 +109,10 @@
                         </div>
                     </div>
 
+                    @if($object->food_discount)
+                        <h5 class="mt-5" style="color: white !important; font-size: 40px !important; font-weight: bold !important;">{{ $object->food_discount }} درصد تخفیف رزرو رایگان از بامیز</h5>
+                    @endif
+
                     {{--                    <p class="btn_home_align" style="text-align: center !important;">--}}
                     {{--                        <a style="display: none !important;" href="#sign-in-dialog" id="dsadsa" class="btn_1 rounded">ثبت سفارش</a>--}}
                     {{--                    </p>--}}
