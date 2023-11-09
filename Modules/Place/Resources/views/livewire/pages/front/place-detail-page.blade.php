@@ -98,8 +98,11 @@
                 <div class="container">
 
 {{--                    <h3 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h3>--}}
-                    <p class="mt-5" style="font-size: 27px !important; font-weight: bold !important;">سامانه رزرو آنلاین میز رستوران و اقامتگاه <h5 style="color: white !important; font-size: 40px !important; font-weight: bold !important;">بامیز</h5></p>
+{{--                    <p class="mt-5" style="font-size: 27px !important; font-weight: bold !important;">سامانه رزرو آنلاین میز رستوران و اقامتگاه <h5 style="color: white !important; font-size: 40px !important; font-weight: bold !important;">بامیز</h5></p>--}}
 
+                    @if($object->food_discount)
+                        <h5 class="mt-5" style="font-size: 27px !important; font-weight: bold !important; color: white !important">{{ $object->food_discount }} درصد تخفیف حضوری با رزرو رایگان از سامانه بامیز</h5>
+                    @endif
 
                     <div class="row text-center no-gutters mt-5">
                         <div class="col-lg-12">
@@ -109,9 +112,9 @@
                         </div>
                     </div>
 
-                    @if($object->food_discount)
-                        <h5 class="mt-5" style="color: white !important; font-size: 40px !important; font-weight: bold !important;">{{ $object->food_discount }} درصد تخفیف حضوری با رزرو رایگان از بامیز</h5>
-                    @endif
+{{--                    @if($object->food_discount)--}}
+{{--                        <h5 class="mt-5" style="color: white !important; font-size: 40px !important; font-weight: bold !important;">{{ $object->food_discount }} درصد تخفیف حضوری با رزرو رایگان از بامیز</h5>--}}
+{{--                    @endif--}}
 
                     {{--                    <p class="btn_home_align" style="text-align: center !important;">--}}
                     {{--                        <a style="display: none !important;" href="#sign-in-dialog" id="dsadsa" class="btn_1 rounded">ثبت سفارش</a>--}}
