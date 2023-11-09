@@ -98,7 +98,7 @@
                 <div class="container">
 
 {{--                    <h3 class="fadeInUp animated"><span></span>تور مجازی {{ $object->name ?: '---' }}</h3>--}}
-                    <p class="mt-5">سامانه رزرو آنلاین میز رستوران و اقامتگاه <h5 style="color: white !important; font-size: 40px !important; font-weight: bold !important;">بامیز</h5></p>
+                    <p class="mt-5" style="font-size: 27px !important; font-weight: bold !important;">سامانه رزرو آنلاین میز رستوران و اقامتگاه <h5 style="color: white !important; font-size: 40px !important; font-weight: bold !important;">بامیز</h5></p>
 
 
                     <div class="row text-center no-gutters mt-5">
@@ -110,7 +110,7 @@
                     </div>
 
                     @if($object->food_discount)
-                        <h5 class="mt-5" style="color: white !important; font-size: 40px !important; font-weight: bold !important;">{{ $object->food_discount }} درصد تخفیف رزرو رایگان از بامیز</h5>
+                        <h5 class="mt-5" style="color: white !important; font-size: 40px !important; font-weight: bold !important;">{{ $object->food_discount }} درصد تخفیف حضوری با رزرو رایگان از بامیز</h5>
                     @endif
 
                     {{--                    <p class="btn_home_align" style="text-align: center !important;">--}}
