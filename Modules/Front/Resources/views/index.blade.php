@@ -379,7 +379,7 @@
 
         </section>
     </div>
-{{--    <div class="container container-custom margin_30_95">--}}
+    <div class="container container-custom margin_30_95">
     {{--        <section class="add_bottom_45">--}}
     {{--            <div class="main_title_3">--}}
     {{--                <span><em></em></span>--}}
