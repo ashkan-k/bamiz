@@ -25,7 +25,7 @@ class FrontController extends Controller
         $discount_places = Place::where('food_discount', '>', 0)->OrWhereHas('options', function ($query){
             return $query->whereNotNull('discount_amount');
         })->with('province')->latest()->limit(10)->get();
-        $categories = Category::whereDoesntHave('children')->get();
+        $categories = Category::whereDoesntHave('children')->orderByDesc('id')->get();
         $latest_galleries = Gallery::with('place')->latest()->limit(20)->get();
         $latest_articles = Article::where('status', 'publish')->latest()->limit(4)->get();
 

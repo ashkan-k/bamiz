@@ -78,308 +78,308 @@
 
             </div>
 
-            <div class="banner mt-5"
-                 style='    background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat;
-                     -webkit-background-size: cover;
-                     -moz-background-size: cover;
-                     -o-background-size: cover;
-                     background-size: cover;
-                     width: 100%;
-                     height: 500px;
-                     margin-bottom: 60px;
-                     position: relative;
-                     }'
-                {{--                 style='background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat !important;'--}}
-            >
-                <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
-                    <div>
-                        <h3>{{ $settings['advertise_banner_title'] }}</h3>
-                        {{--                        <p>{{ $settings['advertise_banner_text'] }}</p>--}}
-                        <a href="{{ $settings['advertise_banner_link'] }}" class="btn_1 mt-3">برای اطلاعات بیشتر کلیک
-                            کنید</a>
-                    </div>
-                </div>
-                <!-- /wrapper -->
-            </div>
+{{--            <div class="banner mt-5"--}}
+{{--                 style='    background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat;--}}
+{{--                     -webkit-background-size: cover;--}}
+{{--                     -moz-background-size: cover;--}}
+{{--                     -o-background-size: cover;--}}
+{{--                     background-size: cover;--}}
+{{--                     width: 100%;--}}
+{{--                     height: 500px;--}}
+{{--                     margin-bottom: 60px;--}}
+{{--                     position: relative;--}}
+{{--                     }'--}}
+{{--                --}}{{--                 style='background: url({{ $settings['advertise_banner_image'] }}) center center no-repeat !important;'--}}
+{{--            >--}}
+{{--                <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">--}}
+{{--                    <div>--}}
+{{--                        <h3>{{ $settings['advertise_banner_title'] }}</h3>--}}
+{{--                        --}}{{--                        <p>{{ $settings['advertise_banner_text'] }}</p>--}}
+{{--                        <a href="{{ $settings['advertise_banner_link'] }}" class="btn_1 mt-3">برای اطلاعات بیشتر کلیک--}}
+{{--                            کنید</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <!-- /wrapper -->--}}
+{{--            </div>--}}
 
-            <div class="main_title_2 mt-5">
-                <span><em></em></span>
-                <h2>کافه رستوران های محبوب</h2>
-                <p>کافه و رستوران هایی که بیشترین رزرو آنلاین را دارند</p>
-            </div>
-            <div id="reccomended" class="owl-carousel owl-theme">
+{{--            <div class="main_title_2 mt-5">--}}
+{{--                <span><em></em></span>--}}
+{{--                <h2>کافه رستوران های محبوب</h2>--}}
+{{--                <p>کافه و رستوران هایی که بیشترین رزرو آنلاین را دارند</p>--}}
+{{--            </div>--}}
+{{--            <div id="reccomended" class="owl-carousel owl-theme">--}}
 
-            @php $options = []; @endphp
-            @foreach($popular_places as $place)
+{{--            @php $options = []; @endphp--}}
+{{--            @foreach($popular_places as $place)--}}
 
-                @php
-                    foreach ($place->options as $o)
-                     {
-                            $options[] = $o['title'];
-                     }
-                @endphp
+{{--                @php--}}
+{{--                    foreach ($place->options as $o)--}}
+{{--                     {--}}
+{{--                            $options[] = $o['title'];--}}
+{{--                     }--}}
+{{--                @endphp--}}
 
-                <!-- item -->
-                    <div class="item">
-                        <div class="box_grid" style="border-radius: 10px">
-                            <figure>
+{{--                <!-- item -->--}}
+{{--                    <div class="item">--}}
+{{--                        <div class="box_grid" style="border-radius: 10px">--}}
+{{--                            <figure>--}}
 
-                                <a href="{{ route('place_detail', $place->slug) }}"><img
-                                        src="{{ $place->cover['images']['900'] }}"
-                                        class="img-fluid"
-                                        alt="{{ $place->name }}"
-                                        width="800" height="533">
-                                    <div class="read_more"><span>مشاهده</span></div>
-                                </a>
+{{--                                <a href="{{ route('place_detail', $place->slug) }}"><img--}}
+{{--                                        src="{{ $place->cover['images']['900'] }}"--}}
+{{--                                        class="img-fluid"--}}
+{{--                                        alt="{{ $place->name }}"--}}
+{{--                                        width="800" height="533">--}}
+{{--                                    <div class="read_more"><span>مشاهده</span></div>--}}
+{{--                                </a>--}}
 
-                                <small style="background-color: #09b052e6;right: 0;color: white;font-size: medium;">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    {{ $place->province ? $place->province->title : '---' }}
-                                </small>
-                            </figure>
-                            <div class="wrapper row" style="height: 115px !important;">
-                                <div class="">
-                                    <img src="{{ $place->cover['images']['300'] }}" style="width: 50px; height: 50px">
-                                </div>
-                                <div class="text-center" style="padding: 10px ">
-                                    <h3>
-                                        <a href="{{ route('place_detail', $place->slug) }}">{{ \Illuminate\Support\Str::limit($place->name, 30) }}</a>
-                                    </h3>
-                                    <span>{!! \Illuminate\Support\Str::limit($place->description, 30) !!}</span>
-                                </div>
-                            </div>
-                            <ul>
-                                <li>
-                                    <i class="fa fa-wifi" title="اینترنت رایگان"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('اینترنت رایگان' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
+{{--                                <small style="background-color: #09b052e6;right: 0;color: white;font-size: medium;">--}}
+{{--                                    <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+{{--                                    {{ $place->province ? $place->province->title : '---' }}--}}
+{{--                                </small>--}}
+{{--                            </figure>--}}
+{{--                            <div class="wrapper row" style="height: 115px !important;">--}}
+{{--                                <div class="">--}}
+{{--                                    <img src="{{ $place->cover['images']['300'] }}" style="width: 50px; height: 50px">--}}
+{{--                                </div>--}}
+{{--                                <div class="text-center" style="padding: 10px ">--}}
+{{--                                    <h3>--}}
+{{--                                        <a href="{{ route('place_detail', $place->slug) }}">{{ \Illuminate\Support\Str::limit($place->name, 30) }}</a>--}}
+{{--                                    </h3>--}}
+{{--                                    <span>{!! \Illuminate\Support\Str::limit($place->description, 30) !!}</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <ul>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-wifi" title="اینترنت رایگان"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('اینترنت رایگان' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
 
-                                    ></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-music" title="موسیقی زنده"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('موسیقی زنده' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-music" title="موسیقی زنده"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('موسیقی زنده' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
 
-                                    ></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-tree" title="فضای سبز"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('فضای سبز' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-tree" title="فضای سبز"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('فضای سبز' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
 
-                                    ></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star" title="فضای vip"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('فضای vip' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-star" title="فضای vip"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('فضای vip' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
 
-                                    ></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-child" title="فضای بازی"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('فضای بازی' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-child" title="فضای بازی"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('فضای بازی' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
 
-                                    ></i>
-                                </li>
-
-
-                                <li class="text-left" title="بازدید">
-                                    <i class="fa fa-eye" style="font-family: FontAwesome !important;"></i>
-
-                                    {{ $place->viewCount }} بازدید
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /item -->
-
-                @endforeach
-
-            </div>
-            <!-- /carousel -->
-            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"
-                                                                              class="btn_1 rounded">نمایش
-                    همه</a></p>
-            <hr class="large">
+{{--                                    ></i>--}}
+{{--                                </li>--}}
 
 
-            {{--//////////////////////////////////////--}}
+{{--                                <li class="text-left" title="بازدید">--}}
+{{--                                    <i class="fa fa-eye" style="font-family: FontAwesome !important;"></i>--}}
+
+{{--                                    {{ $place->viewCount }} بازدید--}}
+
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- /item -->--}}
+
+{{--                @endforeach--}}
+
+{{--            </div>--}}
+{{--            <!-- /carousel -->--}}
+{{--            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"--}}
+{{--                                                                              class="btn_1 rounded">نمایش--}}
+{{--                    همه</a></p>--}}
+{{--            <hr class="large">--}}
 
 
-            <div class="main_title_2 mt-5">
-                <span><em></em></span>
-                <h2>کافه رستوران و هتل های تخفیف دار</h2>
-                <p>کافه و رستوران و هتل هایی که تخفیف رزرو غذا و اتاق دارند</p>
-            </div>
-            <div id="discount_products" class="owl-carousel owl-theme">
-
-            @php $options = []; @endphp
-            @foreach($discount_places as $dis_place)
-
-                @php
-                    foreach ($dis_place->options as $o)
-                     {
-                            $options[] = $o['title'];
-                     }
-                @endphp
-
-                <!-- item -->
-                    <div class="item">
-                        <div class="box_grid" style="border-radius: 10px">
-                            <figure>
-
-                                <a href="{{ route('place_detail', $dis_place->slug) }}"><img
-                                        src="{{ $dis_place->cover['images']['900'] }}"
-                                        class="img-fluid"
-                                        alt="{{ $dis_place->name }}"
-                                        width="800" height="533">
-                                    <div class="read_more"><span>مشاهده</span></div>
-                                </a>
-
-                                <small style="background-color: #09b052e6;right: 0;color: white;font-size: medium;">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    {{ $dis_place->province ? $dis_place->province->title : '---' }}
-                                </small>
-
-                                @if($dis_place->food_discount && $dis_place->options()->where('discount_amount', '>', 0)->exists())
-
-                                    @if($dis_place->type == 'hotel')
-                                        <small
-                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف تشریفات و اتاق ({{$dis_place->food_discount}}%)
-                                        </small>
-                                    @else
-                                        <small
-                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف تشریفات و غذا ({{$dis_place->food_discount}}%)
-                                        </small>
-                                    @endif
-
-                                @elseif($dis_place->food_discount)
-
-                                    @if($dis_place->type == 'hotel')
-                                        <small
-                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف اتاق ({{$dis_place->food_discount}}%)
-                                        </small>
-                                    @else
-                                        <small
-                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            تخفیف غذا ({{$dis_place->food_discount}}%)
-                                        </small>
-                                    @endif
-
-                                @else
-
-                                    <small
-                                        style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">
-                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                        تخفیف تشریفات
-                                    </small>
-
-                                @endif
-                            </figure>
-                            <div class="wrapper row" style="height: 115px !important;">
-                                <div class="">
-                                    <img src="{{ $dis_place->cover['images']['300'] }}"
-                                         style="width: 50px; height: 50px">
-                                </div>
-                                <div class="text-center" style="padding: 10px ">
-                                    <h3>
-                                        <a href="{{ route('place_detail', $dis_place->slug) }}">{{ \Illuminate\Support\Str::limit($dis_place->name, 30) }}</a>
-                                    </h3>
-                                    <span>{!! \Illuminate\Support\Str::limit($dis_place->description, 30) !!}</span>
-                                </div>
-                            </div>
-                            <ul>
-                                <li>
-                                    <i class="fa fa-wifi" title="اینترنت رایگان"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('اینترنت رایگان' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
-
-                                    ></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-music" title="موسیقی زنده"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('موسیقی زنده' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
-
-                                    ></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-tree" title="فضای سبز"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('فضای سبز' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
-
-                                    ></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star" title="فضای vip"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('فضای vip' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
-
-                                    ></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-child" title="فضای بازی"
-                                       style="font-family: FontAwesome !important;"
-                                       @if(in_array('فضای بازی' , $options))
-                                       style="color: green; font-family: FontAwesome !important;"
-                                        @endif
-
-                                    ></i>
-                                </li>
+{{--            --}}{{--//////////////////////////////////////--}}
 
 
-                                <li class="text-left" title="بازدید">
-                                    <i class="fa fa-eye" style="font-family: FontAwesome !important;"></i>
+{{--            <div class="main_title_2 mt-5">--}}
+{{--                <span><em></em></span>--}}
+{{--                <h2>کافه رستوران و هتل های تخفیف دار</h2>--}}
+{{--                <p>کافه و رستوران و هتل هایی که تخفیف رزرو غذا و اتاق دارند</p>--}}
+{{--            </div>--}}
+{{--            <div id="discount_products" class="owl-carousel owl-theme">--}}
 
-                                    {{ $dis_place->viewCount }} بازدید
+{{--            @php $options = []; @endphp--}}
+{{--            @foreach($discount_places as $dis_place)--}}
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /item -->
+{{--                @php--}}
+{{--                    foreach ($dis_place->options as $o)--}}
+{{--                     {--}}
+{{--                            $options[] = $o['title'];--}}
+{{--                     }--}}
+{{--                @endphp--}}
 
-                @endforeach
+{{--                <!-- item -->--}}
+{{--                    <div class="item">--}}
+{{--                        <div class="box_grid" style="border-radius: 10px">--}}
+{{--                            <figure>--}}
 
-            </div>
-            <!-- /carousel -->
-            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"
-                                                                              class="btn_1 rounded">نمایش
-                    همه</a></p>
-            <hr class="large">
+{{--                                <a href="{{ route('place_detail', $dis_place->slug) }}"><img--}}
+{{--                                        src="{{ $dis_place->cover['images']['900'] }}"--}}
+{{--                                        class="img-fluid"--}}
+{{--                                        alt="{{ $dis_place->name }}"--}}
+{{--                                        width="800" height="533">--}}
+{{--                                    <div class="read_more"><span>مشاهده</span></div>--}}
+{{--                                </a>--}}
+
+{{--                                <small style="background-color: #09b052e6;right: 0;color: white;font-size: medium;">--}}
+{{--                                    <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+{{--                                    {{ $dis_place->province ? $dis_place->province->title : '---' }}--}}
+{{--                                </small>--}}
+
+{{--                                @if($dis_place->food_discount && $dis_place->options()->where('discount_amount', '>', 0)->exists())--}}
+
+{{--                                    @if($dis_place->type == 'hotel')--}}
+{{--                                        <small--}}
+{{--                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">--}}
+{{--                                            <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+{{--                                            تخفیف تشریفات و اتاق ({{$dis_place->food_discount}}%)--}}
+{{--                                        </small>--}}
+{{--                                    @else--}}
+{{--                                        <small--}}
+{{--                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">--}}
+{{--                                            <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+{{--                                            تخفیف تشریفات و غذا ({{$dis_place->food_discount}}%)--}}
+{{--                                        </small>--}}
+{{--                                    @endif--}}
+
+{{--                                @elseif($dis_place->food_discount)--}}
+
+{{--                                    @if($dis_place->type == 'hotel')--}}
+{{--                                        <small--}}
+{{--                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">--}}
+{{--                                            <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+{{--                                            تخفیف اتاق ({{$dis_place->food_discount}}%)--}}
+{{--                                        </small>--}}
+{{--                                    @else--}}
+{{--                                        <small--}}
+{{--                                            style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">--}}
+{{--                                            <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+{{--                                            تخفیف غذا ({{$dis_place->food_discount}}%)--}}
+{{--                                        </small>--}}
+{{--                                    @endif--}}
+
+{{--                                @else--}}
+
+{{--                                    <small--}}
+{{--                                        style="background-color: #09b052e6;right: unset !important; left: 0; color: white;font-size: medium;">--}}
+{{--                                        <i class="fa fa-map-marker" aria-hidden="true"></i>--}}
+{{--                                        تخفیف تشریفات--}}
+{{--                                    </small>--}}
+
+{{--                                @endif--}}
+{{--                            </figure>--}}
+{{--                            <div class="wrapper row" style="height: 115px !important;">--}}
+{{--                                <div class="">--}}
+{{--                                    <img src="{{ $dis_place->cover['images']['300'] }}"--}}
+{{--                                         style="width: 50px; height: 50px">--}}
+{{--                                </div>--}}
+{{--                                <div class="text-center" style="padding: 10px ">--}}
+{{--                                    <h3>--}}
+{{--                                        <a href="{{ route('place_detail', $dis_place->slug) }}">{{ \Illuminate\Support\Str::limit($dis_place->name, 30) }}</a>--}}
+{{--                                    </h3>--}}
+{{--                                    <span>{!! \Illuminate\Support\Str::limit($dis_place->description, 30) !!}</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <ul>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-wifi" title="اینترنت رایگان"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('اینترنت رایگان' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
+
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-music" title="موسیقی زنده"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('موسیقی زنده' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
+
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-tree" title="فضای سبز"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('فضای سبز' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
+
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-star" title="فضای vip"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('فضای vip' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
+
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <i class="fa fa-child" title="فضای بازی"--}}
+{{--                                       style="font-family: FontAwesome !important;"--}}
+{{--                                       @if(in_array('فضای بازی' , $options))--}}
+{{--                                       style="color: green; font-family: FontAwesome !important;"--}}
+{{--                                        @endif--}}
+
+{{--                                    ></i>--}}
+{{--                                </li>--}}
+
+
+{{--                                <li class="text-left" title="بازدید">--}}
+{{--                                    <i class="fa fa-eye" style="font-family: FontAwesome !important;"></i>--}}
+
+{{--                                    {{ $dis_place->viewCount }} بازدید--}}
+
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- /item -->--}}
+
+{{--                @endforeach--}}
+
+{{--            </div>--}}
+{{--            <!-- /carousel -->--}}
+{{--            <p class="btn_home_align" style="text-align: left !important;"><a href="{{ route('places') }}"--}}
+{{--                                                                              class="btn_1 rounded">نمایش--}}
+{{--                    همه</a></p>--}}
+{{--            <hr class="large">--}}
 
         </section>
     </div>
-    <div class="container container-custom margin_30_95">
+{{--    <div class="container container-custom margin_30_95">--}}
     {{--        <section class="add_bottom_45">--}}
     {{--            <div class="main_title_3">--}}
     {{--                <span><em></em></span>--}}
@@ -466,45 +466,45 @@
         {{--            <!-- /wrapper -->--}}
         {{--        </div>--}}
 
-        <div class="bg_color_1">
-            <div class="container margin_80_55">
-                <div class="main_title_2">
-                    <span><em></em></span>
-                    <h3>اخبار و مطالب</h3>
-                    <p>اخبار و مطالب سامانه رزرو آنلاین میز کافه و رستوران ها</p>
-                </div>
-                <div class="row">
+{{--        <div class="bg_color_1">--}}
+{{--            <div class="container margin_80_55">--}}
+{{--                <div class="main_title_2">--}}
+{{--                    <span><em></em></span>--}}
+{{--                    <h3>اخبار و مطالب</h3>--}}
+{{--                    <p>اخبار و مطالب سامانه رزرو آنلاین میز کافه و رستوران ها</p>--}}
+{{--                </div>--}}
+{{--                <div class="row">--}}
 
-                    @foreach($latest_articles as $la)
+{{--                    @foreach($latest_articles as $la)--}}
 
-                        <div class="col-lg-6">
-                            <a class="box_news" href="{{ route('article_detail', $la->slug) }}">
-                                <figure><img src="{{ $la->get_image() }}" alt="{{ $la->title }}">
+{{--                        <div class="col-lg-6">--}}
+{{--                            <a class="box_news" href="{{ route('article_detail', $la->slug) }}">--}}
+{{--                                <figure><img src="{{ $la->get_image() }}" alt="{{ $la->title }}">--}}
 
-                                </figure>
-                                <ul>
-                                    <li>
-                                        <i style="font-family: FontAwesome !important;" class="fa fa-calendar"></i>&nbsp; {{ \Carbon\Carbon::parse( $la->created_at )->diffForHumans() }}
-                                    </li>
-                                    <li><i style="font-family: FontAwesome !important;"
-                                           class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>
-                                </ul>
-                                <h4>{{ $la->title }}</h4>
-                                <p>
-                                    {!! \Illuminate\Support\Str::limit($la->text, 50) !!}
-                                </p>
-                            </a>
-                        </div>
+{{--                                </figure>--}}
+{{--                                <ul>--}}
+{{--                                    <li>--}}
+{{--                                        <i style="font-family: FontAwesome !important;" class="fa fa-calendar"></i>&nbsp; {{ \Carbon\Carbon::parse( $la->created_at )->diffForHumans() }}--}}
+{{--                                    </li>--}}
+{{--                                    <li><i style="font-family: FontAwesome !important;"--}}
+{{--                                           class="fa fa-eye"></i>&nbsp;{{ $la->	view_count }}</li>--}}
+{{--                                </ul>--}}
+{{--                                <h4>{{ $la->title }}</h4>--}}
+{{--                                <p>--}}
+{{--                                    {!! \Illuminate\Support\Str::limit($la->text, 50) !!}--}}
+{{--                                </p>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
 
-                    @endforeach
+{{--                    @endforeach--}}
 
-                </div>
-                <!-- /row -->
-                <p class="btn_home_align" style="text-align: left !important;"><a href="/blogs" class="btn_1 rounded">نمایش
-                        همه</a></p>
-            </div>
-            <!-- /container -->
-        </div>
+{{--                </div>--}}
+{{--                <!-- /row -->--}}
+{{--                <p class="btn_home_align" style="text-align: left !important;"><a href="/blogs" class="btn_1 rounded">نمایش--}}
+{{--                        همه</a></p>--}}
+{{--            </div>--}}
+{{--            <!-- /container -->--}}
+{{--        </div>--}}
 
         <div class="call_section"
              style='background: url({{ $settings['work_with_us_image'] }}) center center no-repeat !important;'>
