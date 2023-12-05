@@ -25,19 +25,19 @@
                     <h3>{{ $settings['banner_title'] }}</h3>
                     <p>{{ $settings['banner_description'] }}</p>
 
-                    <form action="{{ route('places') }}">
-                        <div class="row no-gutters custom-search-input-2 custom_search_box">
-                            <div class="col-lg-9">
-                                <div class="form-group">
-                                    <input class="form-control" type="text" name="search"
-                                           placeholder="بخشی از نام مرکز میزبان و... را وارد نمائید">
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <input type="submit" class="btn_search" value="جستجو">
-                            </div>
-                        </div>
-                    </form>
+{{--                    <form action="{{ route('places') }}">--}}
+{{--                        <div class="row no-gutters custom-search-input-2 custom_search_box">--}}
+{{--                            <div class="col-lg-9">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <input class="form-control" type="text" name="search"--}}
+{{--                                           placeholder="بخشی از نام مرکز میزبان و... را وارد نمائید">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-3">--}}
+{{--                                <input type="submit" class="btn_search" value="جستجو">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
 
                 </div>
             </div>
