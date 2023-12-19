@@ -199,7 +199,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <ul id="footer-selector">
-                        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=366657&Code=6bvwSDJuNXjJcyluwzQu'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=366657&Code=6bvwSDJuNXjJcyluwzQu' alt='' style='cursor:pointer' Code='6bvwSDJuNXjJcyluwzQu'></a>                    </ul>
+                        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=366657&Code=6bvwSDJuNXjJcyluwzQu'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=366657&Code=6bvwSDJuNXjJcyluwzQu' alt='' style='cursor:pointer' Code='6bvwSDJuNXjJcyluwzQu'></a>                   </ul>
                 </div>
                 <div class="col-lg-6">
                     <ul id="additional_links">
