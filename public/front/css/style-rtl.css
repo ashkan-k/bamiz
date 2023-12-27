@@ -56,32 +56,55 @@ a.btn_map:before {
 
 ul#top_menu {
   float: left;
-  margin: 0 30px 0 0;
+   margin: auto;
+   margin-top: 12px;
+   color: #e3464c;
+   /* background-color: rgb(252, 91, 98 , 90%); */
+   padding: 5px;
+   border-radius: 10px;
+   opacity: 90%;
+   align-items: center;
+   justify-content: center; 
 }
+
+ul#top_menu a{
+ justify-content: center !important;
+ justify-items: center !important;
+
+}
+
 @media (max-width: 991px) {
   ul#top_menu {
-    margin: -2px 10px 0 0;
+    margin: auto;
   }
 }
-ul#top_menu li {
+/* ul#top_menu li {
   float: left;
   margin-right: 15px;
-}
-@media (max-width: 991px) {
+} */
+/* @media (max-width: 991px) {
   ul#top_menu li {
     margin: 0 10px 0 0;
   }
+} */
+
+@media (max-width: 770px){
+ ul#top_menu {
+  margin: auto;
+ }
 }
-ul#top_menu li a.wishlist_bt_top, ul#top_menu li a.login {
+
+/* ul#top_menu li a.wishlist_bt_top, ul#top_menu li a.login {
   text-align: right;
-}
-ul#top_menu li a.cart-menu-btn strong {
+} */
+/* ul#top_menu li a.cart-menu-btn strong {
   right: -5px;
-}
+} */
 
 /* Menu */
 .main-menu {
   float: left;
+  padding-left: 10px;
 }
 
 /* Submenu*/
@@ -945,6 +968,11 @@ ul.list_feat li {
 
 /*-------- 2.14 Half screen map --------*/
 /* Header */
+
+header {
+ padding: auto;
+}
+
 header.header.map_view .hamburger {
   float: right;
   right: 15px;

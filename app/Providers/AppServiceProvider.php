@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        schema::defaultStringLength(191);
         if (Schema::hasTable('tickets') && str_contains(request()->url(), '/dashboard')){
             $not_answered_tickets = Ticket::whereStatus('waiting')->latest()->get();
             View::share('not_answered_tickets', $not_answered_tickets);
