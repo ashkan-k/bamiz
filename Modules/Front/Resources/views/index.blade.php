@@ -6,9 +6,10 @@
 
 @section('Styles')
     <style>
-        @media screen and (max-width: 1023px) {
+        /* 1023 - 1024*/
+        @media screen and (max-width: 1024px)  {  /* 1023 is not proper 1024 is replaced*/
             .main_banner_background {
-                background: url({{ $settings['banner_image'] }}) !important;
+                background: url({{ $settings['banner_video_mp4'] }}) !important; /* banner_image is changed */
                 width: 100% !important;
                 background-size: cover !important;
                 background-repeat: no-repeat !important;

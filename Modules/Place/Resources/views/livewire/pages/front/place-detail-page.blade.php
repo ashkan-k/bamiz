@@ -258,7 +258,7 @@
                         <h2>نظرات کاربران</h2>
                         <div class="reviews-container mt-5">
                             <div class="row">
-                                <h5>میانگین امتیاز</h5>
+                                <h5 class=" mr-10">میانگین امتیاز</h5>
                                 <div class="col-lg-12">
                                     <div id="review_summary">
                                         <strong>{{ $comments->avg('score') ?: '0' }}</strong>
