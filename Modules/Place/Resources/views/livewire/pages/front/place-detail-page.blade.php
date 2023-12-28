@@ -51,20 +51,27 @@
 
         #owl-demo .item {
             margin: 3px;
+            height: auto;
+            overflow: hidden;
         }
 
         #owl-demo .item img {
             display: block;
+            object-fit: cover;
             width: 100%;
             height: 210px !important;
         }
 
         #owl-demo-2 .item {
             margin: 3px;
+            width: auto;
+            height: auto;
+            overflow: hidden;
         }
 
         #owl-demo-2 .item img {
             display: block;
+            object-fit: cover;
             width: 100%;
             height: 210px !important;
         }

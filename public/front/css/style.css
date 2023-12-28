@@ -2137,8 +2137,12 @@ a#moveDown {
 
 /* Home video background*/
 .header-video {
+  display: flex;
   position: relative;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   background: #000;
   height: 600px !important;
 }
@@ -2159,6 +2163,14 @@ a#moveDown {
   z-index: 99;
   text-align: center;
   display: table;
+}
+@media (max-width: 767px) {
+  .hero_in #hero_video{
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    
+  }
 }
 #hero_video .wrapper {
   display: table-cell;
@@ -2204,6 +2216,7 @@ a#moveDown {
   }
 }
 
+
 video {
   position: absolute;
   top: 0;
@@ -2230,6 +2243,7 @@ video {
 .header-video--media {
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 @media (max-width: 1024px) {
