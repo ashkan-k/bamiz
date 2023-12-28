@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="https://cdn.map.ir/web-sdk/1.4.2/css/fa/style.css">
 
     <style>
-        @media screen and (max-width: 1023px) {
+        /* @media screen and (max-width: 1024px) {
             .place_banner_background {
                 background: url('{{ $object->get_banner() }}') !important;
                 width: 100% !important;
                 background-size: cover !important;
                 background-repeat: no-repeat !important;
             }
-        }
+        } */
     </style>
 
     <style>
@@ -98,6 +98,21 @@
     </style>
 @endsection
 
+@section('Styles')
+    <style>
+        /* 1023 - 1024*/
+        @media screen and (max-width: 10px)
+        {  /* 1023 is not proper 1024 is replaced*/
+            .place_banner_background {
+                background: url({{ $settings['banner_video_mp4'] }}) !important; /* banner_image is changed */
+                width: 100% !important;
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
+            }
+        }
+    </style>
+@endsection
+
 <div>
     <section class="header-video">
         <div id="hero_video" class="place_banner_background">
@@ -135,9 +150,13 @@
              data-teaser-source="video/adventure" data-provider="" data-video-width="1920" data-video-height="960"
              style="display: none;">
 
-        <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
+        <!-- <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
             <source src="{{ $object->tour_gif }}" type="video/mp4">
             {{--            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">--}}
+        </video> -->
+        <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
+            <source src="{{ $settings['banner_video_mp4'] }}" type="video/mp4">
+            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">
         </video>
     </section>
 
