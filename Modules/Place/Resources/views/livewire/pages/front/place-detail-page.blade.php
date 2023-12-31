@@ -150,13 +150,13 @@
              data-teaser-source="video/adventure" data-provider="" data-video-width="1920" data-video-height="960"
              style="display: none;">
 
-        <!-- <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
-            <source src="{{ $object->tour_gif }}" type="video/mp4">
-            {{--            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">--}}
-        </video> -->
+{{--        <!-- <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">--}}
+{{--            <source src="{{ $object->tour_gif }}" type="video/mp4">--}}
+{{--            --}}{{--            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">--}}
+{{--        </video> -->--}}
         <video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
-            <source src="{{ $settings['banner_video_mp4'] }}" type="video/mp4">
-            <source src="{{ $settings['banner_video_ogv'] }}" type="video/ogg">
+            <source src="{{ $object->tour_gif ?: $settings['banner_video_mp4'] }}" type="video/mp4">
+            <source src="{{ $object->tour_gif ?: $settings['banner_video_ogv'] }}" type="video/ogg">
         </video>
     </section>
 
