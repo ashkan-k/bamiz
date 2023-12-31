@@ -1,3 +1,28 @@
+<style> 
+
+@media (max-width: 770px) {
+.col-xl-4, .col-lg-6, .col-md-6 {
+ padding-left: 5px;
+ padding-right: 5px;
+ height: 275px;
+}
+
+.box_grid .wrapper{
+    height: 70px !important;
+    padding: 0;
+    padding-right: 10px;
+    padding-left: 0;
+    margin-top: 0px;
+}
+
+@media (max-width: 770px){
+.cat_star {
+    visibility: hidden;
+}
+}
+}
+</style>
+
 <div>
     <!-- I am here now -->
     <section class="hero_in restaurants start_bg_zoom"> 
@@ -84,7 +109,8 @@
 
                                     <small>{{ $place->category ? $place->category->title : '---' }}</small>
                                 </figure>
-                                <div class="wrapper" style="height: 110px !important;">
+                                <!-- !important -->
+                                <div class="wrapper" style="height: 110px;"> 
                                     <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
                                             class="icon_star"></i><i class="icon_star"></i></div>
                                     <h3>

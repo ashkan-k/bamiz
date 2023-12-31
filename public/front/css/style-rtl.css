@@ -425,6 +425,13 @@ a.box_news ul li:after {
   left: inherit;
   right: 20px;
 }
+
+@media (max-width: 770px){
+  .box_grid figure small{
+    right: 5px;
+    top: 10px;
+  }
+}
 .box_grid .wrapper {
   padding: 20px;
   padding-left: 5px;
@@ -435,9 +442,25 @@ a.box_news ul li:after {
   font-size: 1.25rem;
   margin-top: 0;
 }
+
+@media (max-width: 770px){
+  .box_grid .wrapper h3{
+    font-size: 16px;
+  }
+
+  .box_grid ul{
+    padding-top: 15px !important;
+    margin-top: 0px  !important;
+    padding: 0  !important;
+    padding-left: 5px  !important;
+    padding-right: 5px  !important;
+    padding-top: 15px  !important;
+    padding-bottom: 5px  !important;
+  }
+}
 .box_grid ul {
   margin-top: 10px;
-  padding: 20px 15px;
+  padding: 10px 5px;
   border-top: 1px solid #ededed;
 }
 .box_grid ul li {
@@ -449,6 +472,20 @@ a.box_news ul li:after {
 }
 .box_grid ul li:first-child {
   margin-right: 0;
+  margin-top: 2px;
+}
+
+@media (max-width: 770px){
+  .box_grid ul li:first-child{
+  margin-top: 2px;
+  position: relative;
+  bottom: 5px;
+
+  .box_grid .wrapper h3 {
+    font-size: 16px;
+  }
+}
+
 }
 .box_grid ul li:last-child {
   float: left;
