@@ -3633,6 +3633,7 @@ a.box_feat h3 {
   transform: translateY(0);
 }
 .box_list figure a img {
+  overflow: hidden;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -3666,11 +3667,13 @@ a.box_feat h3 {
     max-width: inherit;
     height: 460px;
     width: auto;
+    overflow: hidden;
   }
 }
 @media (max-width: 767px) {
   .box_list figure a img {
     height: 350px;
+    overflow: hidden;
   }
 }
 .box_list figure a:hover img {

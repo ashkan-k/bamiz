@@ -1,7 +1,7 @@
 <div>
     <!-- I am here now -->
     <section class="hero_in restaurants start_bg_zoom"> 
-        <div class="wrapper" style="background: url('public\front\img\intro_gif.gif'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
+        <div class="wrapper" style="background: url('/front/img/intro_gif.gif'); width: 100% !important;   background-size: cover !important; background-repeat: no-repeat !important;">
             <div class="container">
                 <h1 class="fadeInUp animated"><span></span>{{ $titlePage }}</h1>
             </div>
