@@ -3464,7 +3464,8 @@ a.box_feat h3 {
   transform: translate(-50%, -50%) scale(1);
 }
 .box_grid .wrapper {
-  padding: 25px;
+  /* padding: 25px; */
+  padding-right: 10px;
 }
 .box_grid .wrapper h3 {
   font-size: 20px;
