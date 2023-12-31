@@ -426,7 +426,9 @@ a.box_news ul li:after {
   right: 20px;
 }
 .box_grid .wrapper {
-  padding: 25px;
+  padding: 20px;
+  padding-left: 5px;
+  margin-top: -20px;
 }
 .box_grid .wrapper h3 {
   font-size: 20px;
@@ -434,6 +436,7 @@ a.box_news ul li:after {
   margin-top: 0;
 }
 .box_grid ul {
+  margin-top: 10px;
   padding: 20px 15px;
   border-top: 1px solid #ededed;
 }
