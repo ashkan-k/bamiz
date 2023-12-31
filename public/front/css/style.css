@@ -3320,6 +3320,25 @@ a.box_feat h3 {
   padding: 0 20px;
 }
 
+@media (max-width: 770px){
+  .wrapper-grid .row{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wrapper-grid {
+    padding: 0px;
+  }
+
+  .box_grid p{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    visibility: hidden;
+  }
+
+}
+
+
 .box_grid {
   background-color: #fff;
   display: block;
@@ -3378,6 +3397,13 @@ a.box_feat h3 {
   overflow: hidden;
   position: relative;
   height: 210px;
+}
+
+@media (max-width: 770px){
+  .box_grid figure{
+    height: 150px;
+    margin: 0;
+  }
 }
 .box_grid figure small {
   position: absolute;
