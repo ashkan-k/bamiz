@@ -15,6 +15,21 @@
                 background-repeat: no-repeat !important;
             }
         }
+
+        @media (max-width: 770px){
+            .col-xl-3, .col-lg-6, .col-md-6, .col-xs-12{
+                /* background-color: blue; */
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .grid_item img{
+                margin-top: 20px;
+                margin-right: 8px;
+                height: 180px !important;
+                width: 180px !important;
+            }
+        }
     </style>
 @endsection
 
@@ -58,14 +73,14 @@
         <section class="add_bottom_45">
             <div class="row">
 
-                @foreach($categories as $ca)
+                @foreach($categories as $ca) 
 
                     <div class="col-xl-3 col-lg-6 col-md-6 col-xs-12">
                         <a href="{{ route('categories', $ca->slug) }}" class="grid_item">
                             <figure>
                                 <small
                                     style="background-color: #09b052e6;right: 0;color: white;width: 150px; padding-left: 0px !important;">
-                                    <h6 style="color: white"><i style="font-family: FontAwesome !important;"
+                                    <h6 style="color: white; text-align: center;"><i style="font-family: FontAwesome !important;"
                                                                 class="fa fa-coffee"
                                                                 aria-hidden="true"></i>&nbsp;{{ $ca->title }}</h6>
                                 </small>

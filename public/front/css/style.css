@@ -3110,6 +3110,13 @@ a.grid_item figure small {
   line-height: 1;
   z-index: 9;
 }
+
+@media (max-width: 770px) {
+  a.grid_item figure small {
+    right: 20px !important;
+    top: 93px !important;
+  }
+}
 a.grid_item figure img {
   width: 100%;
   height: auto;
@@ -3124,6 +3131,13 @@ a.grid_item figure img {
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+@media (max-width: 770px){
+  a.grid_item figure img{
+    border-radius: 100%;
+  }
+}
+
 a.grid_item:hover figure img {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -7882,6 +7896,16 @@ ul.bullets li:before {
 
 .add_bottom_45 {
   margin-bottom: 45px;
+}
+
+@media (max-width: 770px){
+.add_bottom_45 .row {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  flex-direction: row-reverse;
+}
 }
 
 .add_bottom_60 {
