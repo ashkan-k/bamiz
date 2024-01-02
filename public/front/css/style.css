@@ -877,12 +877,21 @@ ul#top_menu li:last-child {
     display: none;
   }
 }
+
 ul#top_menu li a {
-  color: #fff;
+    color: #fff;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: rgb(252, 91, 98 , 90%) !important;
+    transition: background-color 0.3s;
+    border-radius: 90px;
 }
+
 ul#top_menu li a:hover {
   color: #fff;
-  opacity: 0.7;
+  background-color: rgba(241, 0, 12, 80%) !important;
+
 }
 ul#top_menu li a.login, ul#top_menu li a.wishlist_bt_top, ul#top_menu li a.cart-menu-btn {
   display: block;
@@ -2151,7 +2160,7 @@ a#moveDown {
     /* height: 620px !important; */
     height: auto;
     overflow: hidden;
-
+    height: 400px !important;
   }
 }
 
@@ -2183,6 +2192,7 @@ a#moveDown {
   color: #fff;
   font-size: 42px;
   font-size: 2.625rem;
+  padding-bottom: 15px;
   text-transform: uppercase;
   font-weight: bold;
   margin-bottom: 0;
@@ -2198,7 +2208,12 @@ a#moveDown {
 @media (max-width: 575px) {
   #hero_video .wrapper h3 {
     font-size: 22px;
+    padding-bottom: 15px;
     font-size: 1.375rem;
+    background-color: rgb(220 ,53 ,69, 0.7);
+    padding-top: 10px;
+    border-radius: 30px;
+    margin-bottom: 20px;
   }
 }
 #hero_video .wrapper p {
@@ -2214,7 +2229,7 @@ a#moveDown {
 @media (max-width: 767px) {
   #hero_video .wrapper p {
     padding: 0;
-    font-size: 14px;
+    font-size: 16px !important;
     font-size: 0.875rem;
   }
 }
