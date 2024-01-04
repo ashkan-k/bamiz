@@ -128,9 +128,11 @@
 
                     <div class="row text-center no-gutters mt-5">
                         <div class="col-lg-12">
-                            <input onclick="window.location.href = '{{ $object->tour_link }}'"
-                                   style="font-size: 22px !important; ;width: 350px !important;" role="button"
-                                   type="submit" class="btn_search btn_1 rounded" value="تور مجازی {{ $object->name ?: '---' }}">
+                            @if($object->id != 18)
+                                <input onclick="window.location.href = '{{ $object->tour_link }}'"
+                                       style="font-size: 22px !important; ;width: 350px !important;" role="button"
+                                       type="submit" class="btn_search btn_1 rounded" value="تور مجازی">
+                            @endif
                         </div>
                     </div>
 
@@ -172,19 +174,19 @@
 
         <nav class="secondary_nav sticky_horizontal" style="">
             <div class="container">
-                <ul class="clearfix">
-                    <li><a href="#description" class="active">اطلاعات</a></li>
-                    @if($object->type != 'hotel')
-                        <li><a href="#menu_image">منوی غذا</a></li>
-                    @endif
-                    <li><a href="#galley">گالری تصاویر</a></li>
-                    <li><a href="#map">موقعیت</a></li>
-                    <li><a href="#comments">نظرات</a></li>
-                    @if(count($work_days))
-                        <li><a href="#worktime">ساعت کاری</a></li>
-                    @endif
-                    {{--                    <li><a href="#sidebar">رزرو</a></li>--}}
-                </ul>
+{{--                <ul class="clearfix">--}}
+{{--                    <li><a href="#description" class="active">اطلاعات</a></li>--}}
+{{--                    @if($object->type != 'hotel')--}}
+{{--                        <li><a href="#menu_image">منوی غذا</a></li>--}}
+{{--                    @endif--}}
+{{--                    <li><a href="#galley">گالری تصاویر</a></li>--}}
+{{--                    <li><a href="#map">موقعیت</a></li>--}}
+{{--                    <li><a href="#comments">نظرات</a></li>--}}
+{{--                    @if(count($work_days))--}}
+{{--                        <li><a href="#worktime">ساعت کاری</a></li>--}}
+{{--                    @endif--}}
+{{--                    --}}{{--                    <li><a href="#sidebar">رزرو</a></li>--}}
+{{--                </ul>--}}
 
 
                 {{--                <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>--}}
