@@ -104,7 +104,7 @@
         @media screen and (max-width: 10px)
         {  /* 1023 is not proper 1024 is replaced*/
             .place_banner_background {
-                background: url({{ $object->get_banner() }}) !important; /* banner_image is changed */
+                background: url({{ $object->tour_gif ?: $settings['banner_video_mp4'] }}) !important; /* banner_image is changed */
                 width: 100% !important;
                 background-size: cover !important;
                 background-repeat: no-repeat !important;
